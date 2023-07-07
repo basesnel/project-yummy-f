@@ -1,14 +1,8 @@
 import { Button } from '@mui/material';
 import COLOR from 'constants';
-console.log(COLOR.dark);
-const SkewButton = ({
-  children,
-  bgColor = 'transparent',
-  px,
-  py,
-  handleClick,
-}) => {
-  const borderRadius = px * 1.2;
+
+const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
+  const borderRadius = paddingH * 1.2;
   const color = 'inherit';
   let border, bgHover, colorHover;
 
@@ -17,7 +11,7 @@ const SkewButton = ({
     border = '1px solid';
     bgHover = bgColor;
   } else {
-    bgColor = COLOR.main;
+    bgColor = bgColor || COLOR.main;
     colorHover = 'inherit';
     border = 'none';
     bgHover = COLOR.dark;
@@ -31,8 +25,7 @@ const SkewButton = ({
         transform: 'skew(30deg)',
         borderRadius,
         border,
-        px,
-        py,
+        padding: `${paddingH}px ${paddingW}px`,
         '&:hover': {
           color: colorHover,
           backgroundColor: bgHover,

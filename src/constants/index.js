@@ -1,7 +1,7 @@
-import { mainColor, darkColor, secondColor } from './colors';
+import { main, dark, second } from './colors';
 
 // Colors
-const COLOR = { mainColor, darkColor, secondColor };
+const COLOR = { main, dark, second };
 
 //
 
