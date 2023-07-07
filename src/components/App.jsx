@@ -1,16 +1,21 @@
+import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+// import SharedLayout from './SharedLayout';
+
+const WelcomPage = lazy(() => import('../pages/WelcomPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const SigninPage = lazy(() => import('../pages/SigninPage'));
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Routes>
+        {/* <Route path="/" element={<SharedLayout />}> */}
+        <Route index element={<WelcomPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/signin" element={<SigninPage />} />
+        {/* </Route> */}
+      </Routes>
     </div>
   );
 };
