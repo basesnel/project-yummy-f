@@ -3,6 +3,10 @@ import { styled } from 'styled-components';
 import { ReactComponent as MailIcon } from 'assets/images/footer/mail.svg';
 
 export const SubscribeFormContainer = styled.form`
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+
 	margin-bottom: 44px;
 
 	label {
@@ -25,7 +29,8 @@ export const SubscribeFormContainer = styled.form`
 	}
 
 	button {
-		min-width: 100%;
+		align-self: center;
+		max-width: 204px;
 		padding: 11px 67px;
 
 		background: #8BAA36;
