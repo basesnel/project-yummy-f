@@ -5,7 +5,10 @@ export function Footer() {
   return (
     <FooterWraper>
       <Navigation />
-      <div>© 2023 All Rights Reserved.</div>
+      <div>
+        <p>© 2023 All Rights Reserved.</p>
+        <p>Terms of Service</p>
+      </div>
     </FooterWraper>
   );
 }
