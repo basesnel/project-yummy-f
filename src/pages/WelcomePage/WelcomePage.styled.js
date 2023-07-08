@@ -5,6 +5,7 @@ import bgTab from '../../assets/images/welcome/bgTab.jpg';
 import bgTabRetina from '../../assets/images/welcome/bgTabRetina.jpg';
 import bgMob from '../../assets/images/welcome/bgMob.jpg';
 import bgMobRetina from '../../assets/images/welcome/bgMobRetina.jpg';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.section`
   display: flex;
@@ -135,4 +136,16 @@ export const BtnContainer = styled.div`
   gap: 18px;
   display: flex;
   gap: 18;
+`;
+
+export const BtnText = styled(NavLink)`
+  color: #fafafa;
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;

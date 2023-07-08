@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import COLOR from 'constants';
-import { BtnText } from './SkewButton.styled';
 
 const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
   const borderRadius = paddingH * 1.2;
@@ -33,9 +32,9 @@ const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
         },
       }}
     >
-      <BtnText className="text" style={{ transform: 'skew(-30deg)' }}>
+      <span className="text" style={{ transform: 'skew(-30deg)' }}>
         {children}
-      </BtnText>
+      </span>
     </Button>
   );
 };

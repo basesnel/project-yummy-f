@@ -4,8 +4,10 @@ import {
   Title,
   Text,
   BtnContainer,
+  BtnText,
 } from './WelcomePage.styled';
 import SkewButton from 'components/SkewButton/SkewButton';
+import { Link } from 'react-router-dom';
 
 export default function WelcomePage() {
   return (
@@ -22,10 +24,10 @@ export default function WelcomePage() {
       </Text>
       <BtnContainer>
         <SkewButton paddingH={22} paddingW={44}>
-          Registration
+          <BtnText to="/registration">Registration</BtnText>
         </SkewButton>
         <SkewButton bgColor={'transparent'} paddingH={22} paddingW={44}>
-          Sign In
+          <BtnText to="/signin">Sign In</BtnText>
         </SkewButton>
       </BtnContainer>
     </Container>
