@@ -11,6 +11,15 @@ export const LinkList = styled.ul`
 	li:not(:last-child) {
 		margin-bottom: 14px;
 	}
+
+	@media screen and (min-width: 1440px) {
+		align-items: start;
+		margin-bottom: 0;
+
+		li:not(:last-child) {
+			margin-bottom: 24px;
+		}
+	}
 `
 
 export const StyledLink = styled(Link)`

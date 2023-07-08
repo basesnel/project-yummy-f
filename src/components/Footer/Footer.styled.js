@@ -22,6 +22,11 @@ export const CopyrightContainer = styled.div`
 		padding: 32px 0;
 	}
 
+	@media screen and (min-width: 1440px) {
+		gap: 40px;
+		padding: 50px 0;
+	}
+
 	p {
 		color: #22252A;
 		font-size: 10px;
@@ -33,6 +38,8 @@ export const CopyrightContainer = styled.div`
 			font-size: 14px;
 			letter-spacing: -0.14px;
 		}
+
+		
 	}
 
 	p:first-child {
