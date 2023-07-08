@@ -8,7 +8,7 @@ const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
 
   if (bgColor === 'transparent') {
     colorHover = COLOR.main;
-    border = '1px solid';
+    border = '1px solid #fafafa';
     bgHover = bgColor;
   } else {
     bgColor = bgColor || COLOR.main;
