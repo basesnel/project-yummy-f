@@ -7,7 +7,6 @@ import {
   BtnText,
 } from './WelcomePage.styled';
 import SkewButton from 'components/SkewButton/SkewButton';
-import { Link } from 'react-router-dom';
 
 export default function WelcomePage() {
   return (
