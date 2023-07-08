@@ -1,8 +1,7 @@
-import { main, dark, second } from './colors';
-
-// Colors
-const COLOR = { main, dark, second };
+import * as COLOR from './colors';
+import * as SIZE from './sizes';
+import * as PADDING from './paddings';
 
 //
 
-export default COLOR;
+export { COLOR, SIZE, PADDING };
