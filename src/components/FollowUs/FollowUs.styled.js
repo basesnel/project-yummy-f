@@ -16,6 +16,10 @@ export const SocialList = styled.ul`
 	align-items: center;
 	gap: 14px;
 
+	@media screen and (min-width: 768px) {
+		gap: 18px;
+	}
+
 	a {
 		color: #8BAA36;
 		&:hover,
