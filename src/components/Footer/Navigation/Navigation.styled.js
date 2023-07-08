@@ -1,18 +1,19 @@
 import { styled } from "styled-components";
 import { ReactComponent as FooterLogo } from 'assets/images/footer/logo.svg';
 
-export const NavigationContainer = styled.div`
-	padding: 28px 85px 18px;
+export const NavigationWrapper = styled.div`
+	padding: 28px 0 18px;
 
 	background-color: #22252A;
+`
 
+export const NavigationContainer = styled.div`
 	> div{
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
 		margin-bottom: 39px;
-		
 
 		h3 {
 			color: #FAFAFA;

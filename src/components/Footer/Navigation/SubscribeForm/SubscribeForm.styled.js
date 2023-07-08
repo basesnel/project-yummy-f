@@ -3,15 +3,15 @@ import { styled } from 'styled-components';
 import { ReactComponent as MailIcon } from 'assets/images/footer/mail.svg';
 
 export const SubscribeFormContainer = styled.form`
-display: flex;
-flex-direction: column;
-/* align-items: center; */
+	display: flex;
+	flex-direction: column;
 
 	margin-bottom: 44px;
 
 	label {
+		align-self: center;
+		width: 204px;
 		position: relative;
-		display: block;
 		margin-bottom: 8px;
 
 		input {

@@ -9,24 +9,24 @@ export const FooterWraper = styled.footer`
 	background-image: url(${footerBottomBgImage});
 		background-position: right bottom;
 		background-repeat: no-repeat;
-	
-	div:last-child {
-		display: flex;
-		justify-content: center;
-		gap: 14px;
-		padding: 28px 0;
+`
 
-		p {
-			color: #22252A;
-			font-size: 10px;
-			line-height: 1;
-			letter-spacing: -0.1px;
-			opacity: 0.5;
-		}
+export const CopyrightContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	gap: 14px;
+	padding: 28px 0;
 
-		p:first-child {
-			font-weight: 500;
-		}
+	p {
+		color: #22252A;
+		font-size: 10px;
+		line-height: 1;
+		letter-spacing: -0.1px;
+		opacity: 0.5;
+	}
+
+	p:first-child {
+		font-weight: 500;
 	}
 `
 

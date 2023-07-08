@@ -1,4 +1,8 @@
-import { FooterTopBgImage, FooterWraper } from './Footer.styled';
+import {
+  CopyrightContainer,
+  FooterTopBgImage,
+  FooterWraper,
+} from './Footer.styled';
 import { Navigation } from './Navigation/Navigation';
 
 export function Footer() {
@@ -6,10 +10,10 @@ export function Footer() {
     <FooterWraper>
       <FooterTopBgImage />
       <Navigation />
-      <div>
+      <CopyrightContainer>
         <p>© 2023 All Rights Reserved.</p>
         <p>Terms of Service</p>
-      </div>
+      </CopyrightContainer>
     </FooterWraper>
   );
 }
