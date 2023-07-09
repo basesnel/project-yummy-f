@@ -10,12 +10,12 @@ export const FormSignin = styled.form`
   background: #2a2c36;
   box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.1);
   margin-bottom: 18px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     margin-top: -11px;
     width: 500px;
     padding: 44px 50px;
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
     margin-top: 40px;
   }
 `;
@@ -29,7 +29,7 @@ export const SigninLabel = styled.label`
   line-height: 1.167;
   letter-spacing: -0.48px;
   margin-bottom: 40px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     font-size: 28px;
     line-height: 1.07;
     margin-bottom: 50px;
@@ -49,7 +49,7 @@ export const SigninButton = styled.button`
   font-weight: 400;
   line-height: 1.125;
   margin-top: 16px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     margin-top: 26px;
     padding: 21px 138px;
   }
@@ -70,7 +70,7 @@ export const SigninInput = styled.input`
   background: #2a2c36;
   border: 1px solid #fafafa;
   border-radius: 6px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 50px;
@@ -82,7 +82,7 @@ export const SigninInputWrapper = styled.div`
   position: relative;
 
   margin-bottom: 12px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     margin-bottom: 24px;
   }
 `;
@@ -93,7 +93,7 @@ export const IconWrapper = styled.div`
   left: 14px;
   transform: translateY(-50%);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     width: 24px;
     height: 24px;
     svg {

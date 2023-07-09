@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
-import rectangle_375 from '../../img/SigninPage/Rectangle-375.png';
-import rectangle_768 from '../../img/SigninPage/Rectangle-768.png';
-import rectangle_1440 from '../../img/SigninPage/Rectangle-1440.png';
+import rectangle_375 from '../../assets/images/signin/Rectangle-375.png';
+import rectangle_768 from '../../assets/images/signin/Rectangle-768.png';
+import rectangle_1440 from '../../assets/images/signin/Rectangle-1440.png';
 
 export const SigninContainer = styled.div`
   background: #fafafa;
@@ -21,7 +21,7 @@ export const SigninContainer = styled.div`
   padding-right: 20px;
   padding-top: 87px;
   padding-bottom: 153px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
     background-image: url(${rectangle_768});
     background-position: center top 323px;
     padding-left: 134px;
@@ -31,12 +31,12 @@ export const SigninContainer = styled.div`
     padding-bottom: 120px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
     padding-left: 113px;
     padding-right: 180px;
     padding-top: 115px;
     padding-bottom: 153px;
-    min-width: 1440px;
+    width: 1440px;
     background-image: url(${rectangle_1440});
     background-position: center top 329px;
     flex-direction: row;

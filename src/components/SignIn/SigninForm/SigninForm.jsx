@@ -1,4 +1,4 @@
-import RegistrationLink from './RegistrationLink';
+import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import {
   Box,
   FormSignin,
@@ -8,8 +8,8 @@ import {
   SigninInputWrapper,
   SigninLabel,
 } from './SigninForm.styled';
-import { ReactComponent as EmailIcon } from '../../img/SigninPage/mail-01.svg';
-import { ReactComponent as LockIcon } from '../../img/SigninPage/lock-02.svg';
+import { ReactComponent as EmailIcon } from '../../../assets/images/signin/mail-01.svg';
+import { ReactComponent as LockIcon } from '../../../assets/images/signin/lock-02.svg';
 
 export default function SigninForm() {
   return (
