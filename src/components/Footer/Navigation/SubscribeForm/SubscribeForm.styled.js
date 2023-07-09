@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { SIZE } from 'constants';
+import { SIZE, COLOR, TRANSITION } from 'constants';
 
 import { ReactComponent as MailIcon } from 'assets/images/footer/mail.svg';
 
@@ -50,13 +50,15 @@ export const SubscribeFormContainer = styled.form`
 			border: 1px solid rgba(250, 250, 250, 0.15700000524520874);
 			border-radius: 5px;
 
-			color: #FAFAFA;
+			color: ${COLOR.second};
 			font-size: 10px;
 			letter-spacing: -0.2px;
 
+			transition: ${TRANSITION.forHoverBorderColor};
+
 			&:hover,
 			&:focus {
-				border-color: #FAFAFA;
+				border-color: ${COLOR.second};
 			}
 
 			@media screen and (min-width: ${SIZE.tablet}) {
@@ -81,17 +83,19 @@ export const SubscribeFormContainer = styled.form`
 		max-width: 204px;
 		padding: 11px 67px;
 
-		background: #8BAA36;
+		background: ${COLOR.main};
 		border: none;
 		border-radius: 6px;
 
-		color: #FAFAFA;
+		color: ${COLOR.second};
 		font-size: 14px;
 		line-height: ${16 / 14};
 
+		transition: ${TRANSITION.forHoverColor};
+
 		&:hover,
 		&:focus {
-			color: #22252A;
+			color: ${COLOR.dark};
 		}
 
 		@media screen and (min-width: ${SIZE.tablet}) {
@@ -120,13 +124,13 @@ export const SubscribeFormDescrBox = styled.div`
 	h4 {
 		margin-bottom: 14px;
 
-		color: #FAFAFA;
+		color: ${COLOR.second};
 		font-size: 18px;
 		font-weight: 700;
 	}
 
 	p {
-		color: #FAFAFA;
+		color: ${COLOR.second};
 		font-size: 14px;
 		line-height: ${18 / 14};
 		letter-spacing: -0.28px;
