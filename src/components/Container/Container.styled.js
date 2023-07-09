@@ -1,24 +1,25 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
+import { SIZE, PADDING } from 'constants';
 
 export const MainContainer = styled.div`
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 16px;
-	padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ${PADDING.mobile};
+  padding-right: ${PADDING.mobile};
 
-	@media screen and (min-width: 375px) {
-		width: 375px;
-	}
+  @media screen and (min-width: ${SIZE.mobile}) {
+    width: ${SIZE.mobile};
+  }
 
-	@media screen and (min-width: 768px) {
-		padding-left: 32px;
-		padding-right: 32px;
-		width: 768px;
-	}
+  @media screen and (min-width: ${SIZE.tablet}) {
+    padding-left: ${PADDING.tablet};
+    padding-right: ${PADDING.tablet};
+    width: ${SIZE.tablet};
+  }
 
-	@media screen and (min-width: 1200px) {
-		padding-left: 100px;
-		padding-right: 100px;
-		min-width: 1200px;
-	}
-`
+  @media screen and (min-width: ${SIZE.desktop}) {
+    padding-left: ${PADDING.desktop};
+    padding-right: ${PADDING.desktop};
+    min-width: ${SIZE.desktop};
+  }
+`;
