@@ -1,7 +1,5 @@
+import Register from 'components/Register/Register';
+
 export default function RegisterPage() {
-  return (
-    <section>
-      <h1>Registration</h1>
-    </section>
-  );
+  return <Register />;
 }
