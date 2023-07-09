@@ -1,8 +1,10 @@
 import { styled } from 'styled-components';
+import { SIZE, COLOR } from 'constants';
 
 export const HeaderContainer = styled.header`
   display: flex;
   margin-top: 18px;
+  // position: absolute;
   //   margin-left: auto;
   //   margin-right: auto;
   //   padding-left: 16px;
@@ -18,7 +20,8 @@ export const HeaderContainer = styled.header`
   //     width: 768px;
   //   }
 
-  //   @media screen and (min-width: 1200px) {
-  //     margin-top: 18px;
-  //   }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    margin-top: 18px;
+    width: auto;
+  }
 `;

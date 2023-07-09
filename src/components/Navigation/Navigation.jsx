@@ -1,4 +1,8 @@
-import { NavContainer, StyledLink } from './Navigation.styled';
+import {
+  NavContainer,
+  StyledLink,
+  WrapperSearchIcon,
+} from './Navigation.styled';
 
 const Navigation = () => {
   return (
@@ -8,7 +12,9 @@ const Navigation = () => {
       <StyledLink to="/my">My recipes</StyledLink>
       <StyledLink to="/favorite">Favorites</StyledLink>
       <StyledLink to="/shopping-list">Shopping list</StyledLink>
-      <StyledLink to="/search">Icon</StyledLink>
+      <StyledLink to="/search">
+        <WrapperSearchIcon />
+      </StyledLink>
     </NavContainer>
   );
 };

@@ -1,13 +1,14 @@
 import { styled } from 'styled-components';
-import { ReactComponent as LogoIconBig } from 'assets/images/header/logo_desktop_tablet.svg';
+import { SIZE, COLOR } from 'constants';
+import { ReactComponent as LogoHeader } from 'assets/images/header/logoHeader.svg';
 
-export const WrapperLogo = styled(LogoIconBig)`
-  @media screen and (min-width: 375px) {
+export const WrapperLogo = styled(LogoHeader)`
+  @media screen and (min-width: ${SIZE.mobile}) {
     width: 40px;
     height: 40px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 44px;
     height: 44px;
   }

@@ -1,5 +1,7 @@
+const { WrapperUserLogo } = require('./UserLogo.styled');
+
 const UserLogo = () => {
-  return <p>Component UserLogo</p>;
+  return <WrapperUserLogo>UserLogo</WrapperUserLogo>;
 };
 
 export default UserLogo;
