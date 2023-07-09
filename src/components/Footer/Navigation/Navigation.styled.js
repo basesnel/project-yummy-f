@@ -3,7 +3,7 @@ import { SIZE, COLOR } from 'constants';
 
 import { ReactComponent as FooterLogo } from 'assets/images/footer/logo.svg';
 
-export const NavigationWrapper = styled.div`
+export const NavigationWrapper = styled.section`
 	padding: 28px 0 18px;
 
 	background-color: ${COLOR.dark};
