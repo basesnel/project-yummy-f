@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
 
-import footerBottomBgImage from 'assets/images/footer/footerBotomBgImage.png'
 import footerTopBgImage from 'assets/images/footer/footerTopBgImage.png'
+import footerTopBgImageRetina from 'assets/images/footer/footerTopBgImageRetina.png'
+import footerBottomBgImage from 'assets/images/footer/footerBotomBgImage.png'
+import footerBottomBgImageRetina from 'assets/images/footer/footerBotomBgImageRetina.png'
 
 export const FooterWraper = styled.footer`
 	position: relative;
@@ -9,6 +11,13 @@ export const FooterWraper = styled.footer`
 	background-image: url(${footerBottomBgImage});
 		background-position: right bottom;
 		background-repeat: no-repeat;
+
+	@media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+		background-image: url(${footerBottomBgImageRetina});
+		background-position: right -30px bottom -10px;
+	}
 `
 
 export const CopyrightContainer = styled.div`
@@ -56,4 +65,13 @@ export const FooterTopBgImage = styled.div`
 	z-index: -99;
 	background-image: url(${footerTopBgImage});
 	background-repeat: no-repeat;
+
+	@media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+		height: 600px;
+		background-image: url(${footerTopBgImageRetina});
+		top: -450px;
+		left: -100px;
+	}
 `
