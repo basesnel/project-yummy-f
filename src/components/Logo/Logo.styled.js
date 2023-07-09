@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { SIZE, COLOR } from 'constants';
+import { SIZE } from 'constants';
 import { ReactComponent as LogoHeader } from 'assets/images/header/logoHeader.svg';
 
 export const WrapperLogo = styled(LogoHeader)`
