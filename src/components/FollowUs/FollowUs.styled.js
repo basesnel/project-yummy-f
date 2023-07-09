@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { SIZE } from 'constants';
+import { SIZE, COLOR, TRANSITION } from 'constants';
 
 import {
 	Facebook,
@@ -22,7 +22,8 @@ export const SocialList = styled.ul`
 	}
 
 	a {
-		color: #8BAA36;
+		color: ${COLOR.main};
+		transition: ${TRANSITION.forHoverColor};
 		&:hover,
 		&:focus {
 			color: ${(props) => props.hovercolor};

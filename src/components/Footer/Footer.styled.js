@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { SIZE } from 'constants';
+import { SIZE, COLOR } from 'constants';
 
 import {
 	footerTopBgImage,
@@ -71,7 +71,7 @@ export const CopyrightContainer = styled.div`
 	}
 
 	p {
-		color: #22252A;
+		color: ${COLOR.dark};
 		font-size: 10px;
 		line-height: 1;
 		letter-spacing: -0.1px;
@@ -81,8 +81,6 @@ export const CopyrightContainer = styled.div`
 			font-size: 14px;
 			letter-spacing: -0.14px;
 		}
-
-		
 	}
 
 	p:first-child {

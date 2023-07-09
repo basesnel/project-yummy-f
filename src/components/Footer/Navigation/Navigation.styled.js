@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
-import { SIZE } from 'constants';
+import { SIZE, COLOR } from 'constants';
 
 import { ReactComponent as FooterLogo } from 'assets/images/footer/logo.svg';
 
 export const NavigationWrapper = styled.div`
 	padding: 28px 0 18px;
 
-	background-color: #22252A;
+	background-color: ${COLOR.dark};
 
 	@media screen and (min-width: ${SIZE.tablet}) {
 		padding: 50px 0 24px;
@@ -69,7 +69,7 @@ export const FooterTitleContainer = styled.div`
 		}
 
 		h3 {
-			color: #FAFAFA;
+			color: ${COLOR.second};
 			font-size: 18px;
 			font-weight: 700;
 			line-height: 1;
@@ -92,7 +92,7 @@ export const FooterTitleContainer = styled.div`
 		}
 
 		li {
-			color: #FAFAFA;
+			color: ${COLOR.second};
 			font-size: 14px;
 			line-height: ${18 / 14};
 			letter-spacing: -0.28px;

@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 import { Link } from 'react-router-dom';
-import { SIZE } from 'constants';
+import { SIZE, COLOR, TRANSITION } from 'constants';
 
 export const LinkList = styled.ul`
 	display: flex;
@@ -24,15 +24,17 @@ export const LinkList = styled.ul`
 `
 
 export const StyledLink = styled(Link)`
-	color: #FAFAFA;
+	color: ${COLOR.second};
 	font-size: 14px;
 	font-weight: 500;
 	line-height: ${18 / 14};
 	letter-spacing: -0.28px;
 	text-decoration: none;
 
+	transition: ${TRANSITION.forHoverColor};
+
 	&:hover,
 	&:focus {
-		color: #8BAA36;
+		color: ${COLOR.main};
 	}
 `
