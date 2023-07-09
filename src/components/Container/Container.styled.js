@@ -8,10 +8,11 @@ export const MainContainer = styled.div`
   padding-right: ${PADDING.mobile};
 
   @media screen and (min-width: ${SIZE.mobile}) {
-    width: ${SIZE.mobile};
+    max-width: ${SIZE.mobile};
   }
 
   @media screen and (min-width: ${SIZE.tablet}) {
+	max-width: none;
     padding-left: ${PADDING.tablet};
     padding-right: ${PADDING.tablet};
     width: ${SIZE.tablet};
