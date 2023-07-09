@@ -54,7 +54,7 @@ export const FooterWraper = styled.footer`
 	}
 `
 
-export const CopyrightContainer = styled.div`
+export const CopyrightContainer = styled.section`
 	display: flex;
 	justify-content: center;
 	gap: 14px;
