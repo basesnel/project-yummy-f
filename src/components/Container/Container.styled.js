@@ -1,7 +1,6 @@
 import { styled } from 'styled-components';
 import { SIZE, PADDING } from 'constants';
-console.log(SIZE);
-console.log(PADDING);
+
 export const MainContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
