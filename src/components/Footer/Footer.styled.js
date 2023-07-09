@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { SIZE } from 'constants';
 
 import {
 	footerTopBgImage,
@@ -31,7 +32,7 @@ export const FooterWraper = styled.footer`
 		background-position: right -30px bottom -10px;
 	}
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		background-image: url(${footerBottomBgImageTablet});
 
 		@media (min-device-pixel-ratio: 2),
@@ -42,7 +43,7 @@ export const FooterWraper = styled.footer`
 		}
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		background-image: url(${footerBottomBgImageDesktop});
 
 		@media (min-device-pixel-ratio: 2),
@@ -59,12 +60,12 @@ export const CopyrightContainer = styled.div`
 	gap: 14px;
 	padding: 28px 0;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		gap: 28px;
 		padding: 32px 0;
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		gap: 40px;
 		padding: 50px 0;
 	}
@@ -76,7 +77,7 @@ export const CopyrightContainer = styled.div`
 		letter-spacing: -0.1px;
 		opacity: 0.5;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: ${SIZE.tablet}) {
 			font-size: 14px;
 			letter-spacing: -0.14px;
 		}
@@ -108,7 +109,7 @@ export const FooterTopBgImage = styled.div`
 		left: -100px;
 	}
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		background-image: url(${footerTopBgImageTablet});
 		height: 500px;
 		top: -400px;
@@ -123,7 +124,7 @@ export const FooterTopBgImage = styled.div`
 		}
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		background-image: url(${footerTopBgImageDesktop});
 		width: 400px;
 		height: 600px;

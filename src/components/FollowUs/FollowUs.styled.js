@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { SIZE } from 'constants';
 
 import {
 	Facebook,
@@ -16,7 +17,7 @@ export const SocialList = styled.ul`
 	align-items: center;
 	gap: 14px;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		gap: 18px;
 	}
 

@@ -1,4 +1,6 @@
 import { styled } from "styled-components";
+import { SIZE } from 'constants';
+
 import { ReactComponent as FooterLogo } from 'assets/images/footer/logo.svg';
 
 export const NavigationWrapper = styled.div`
@@ -6,18 +8,18 @@ export const NavigationWrapper = styled.div`
 
 	background-color: #22252A;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		padding: 50px 0 24px;
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		padding: 64px 0 50px;
 	}
 `
 
 export const NavigationContainer = styled.div`
 	> div {
-		@media screen and (min-width: 1440px) {
+		@media screen and (min-width: ${SIZE.desktop}) {
 			display: flex;
 			gap: 235px;
 			margin-bottom: 41px;
@@ -28,13 +30,13 @@ export const NavigationContainer = styled.div`
 
 export const FooterTabletWrapper = styled.div`
 	
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		display: flex;
 		gap: 175px;
 		margin-bottom: 72px;
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		gap: 130px;
 		margin-bottom: 0;
 	}
@@ -46,7 +48,7 @@ export const FooterTitleContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		align-items: start;
 	}
 
@@ -57,12 +59,12 @@ export const FooterTitleContainer = styled.div`
 		gap: 8px;
 		margin-bottom: 39px;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: ${SIZE.tablet}) {
 			gap: 12px;
 			margin-bottom: 24px;
 		}
 
-		@media screen and (min-width: 1440px) {
+		@media screen and (min-width: ${SIZE.desktop}) {
 			margin-bottom: 40px;
 		}
 
@@ -73,7 +75,7 @@ export const FooterTitleContainer = styled.div`
 			line-height: 1;
 			letter-spacing: 0.27px;
 
-			@media screen and (min-width: 768px) {
+			@media screen and (min-width: ${SIZE.tablet}) {
 				font-size: 28px;
 				letter-spacing: 0.42px;
 			}
@@ -85,7 +87,7 @@ export const FooterTitleContainer = styled.div`
 		padding-left: 20px;
 		list-style: outside;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: ${SIZE.tablet}) {
 			display: block;
 		}
 
@@ -99,7 +101,7 @@ export const FooterTitleContainer = styled.div`
 				margin-bottom: 10px;
 			}
 
-			@media screen and (min-width: 1440px) {
+			@media screen and (min-width: ${SIZE.desktop}) {
 				font-size: 18px;
 				line-height: ${24 / 18};
 				letter-spacing: -0.36px;
@@ -115,7 +117,7 @@ export const FooterTitleContainer = styled.div`
 export const NavLogo = styled(FooterLogo)`
 	width: 32px;
 	height: 32px;
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		width: 44px;
 		height: 44px;
 	}

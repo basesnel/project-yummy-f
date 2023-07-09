@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 import { Link } from 'react-router-dom';
+import { SIZE } from 'constants';
 
 export const LinkList = styled.ul`
 	display: flex;
@@ -12,7 +13,7 @@ export const LinkList = styled.ul`
 		margin-bottom: 14px;
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		align-items: start;
 		margin-bottom: 0;
 

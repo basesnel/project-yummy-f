@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { SIZE } from 'constants';
 
 import { ReactComponent as MailIcon } from 'assets/images/footer/mail.svg';
 
@@ -8,14 +9,14 @@ export const SubscribeFormContainer = styled.form`
 
 	margin-bottom: 44px;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		flex-direction: row;
 		justify-content: center;
 		gap: 12px;
 		margin-bottom: 38px;
 	}
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		max-width: 339px;
 		flex-direction: column;
 		gap: 0;
@@ -29,12 +30,12 @@ export const SubscribeFormContainer = styled.form`
 		position: relative;
 		margin-bottom: 8px;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: ${SIZE.tablet}) {
 			width: 259px;
 			margin-bottom: 0;
 		}
 
-		@media screen and (min-width: 1440px) {
+		@media screen and (min-width: ${SIZE.desktop}) {
 			width: 100%;
 			align-self: baseline;
 			margin-bottom: 16px;
@@ -58,7 +59,7 @@ export const SubscribeFormContainer = styled.form`
 				border-color: #FAFAFA;
 			}
 
-			@media screen and (min-width: 768px) {
+			@media screen and (min-width: ${SIZE.tablet}) {
 				height: 50px;
 				padding: 15px 14px 15px 40px;
 
@@ -66,7 +67,7 @@ export const SubscribeFormContainer = styled.form`
 				letter-spacing: -0.28px;
 			}
 
-			@media screen and (min-width: 1440px) {
+			@media screen and (min-width: ${SIZE.desktop}) {
 				padding: 17.5px 14px 17.5px 42px;
 
 				font-size: 18px;
@@ -93,14 +94,14 @@ export const SubscribeFormContainer = styled.form`
 			color: #22252A;
 		}
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: ${SIZE.tablet}) {
 			padding: 16px 50px;
 
 			font-size: 16px;
 			line-height: ${18 / 16};
 		}
 
-		@media screen and (min-width: 1440px) {
+		@media screen and (min-width: ${SIZE.desktop}) {
 			max-width: none;
 			width: 100%;
 			padding: 21px 50px;
@@ -112,7 +113,7 @@ export const SubscribeFormDescrBox = styled.div`
 	display: none;
 	margin-bottom: 28px;
 
-	@media screen and (min-width: 1440px) {
+	@media screen and (min-width: ${SIZE.desktop}) {
 		display: block;
 	}
 
@@ -142,7 +143,7 @@ export const EmailIcon = styled(MailIcon)`
 
 	stroke: rgba(250, 250, 250, 0.800000011920929);
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: ${SIZE.tablet}) {
 		width: 20px;
 		height: 16px;
 
