@@ -1,9 +1,21 @@
 import { styled } from "styled-components";
 
-import footerTopBgImage from 'assets/images/footer/footerTopBgImage.png'
-import footerTopBgImageRetina from 'assets/images/footer/footerTopBgImageRetina.png'
-import footerBottomBgImage from 'assets/images/footer/footerBotomBgImage.png'
-import footerBottomBgImageRetina from 'assets/images/footer/footerBotomBgImageRetina.png'
+import {
+	footerTopBgImage,
+	footerTopBgImageRetina,
+	footerTopBgImageTablet,
+	footerTopBgImageTabletRetina,
+	footerTopBgImageDesktop,
+	footerTopBgImageDesktopRetina,
+	footerBottomBgImage,
+	footerBottomBgImageRetina,
+	footerBottomBgImageTablet,
+	footerBottomBgImageTabletRetina,
+	footerBottomBgImageDesktop,
+	footerBottomBgImageDesktopRetina
+} from 'assets/images/footer'
+
+
 
 export const FooterWraper = styled.footer`
 	position: relative;
@@ -17,6 +29,27 @@ export const FooterWraper = styled.footer`
     (min-resolution: 2dppx) {
 		background-image: url(${footerBottomBgImageRetina});
 		background-position: right -30px bottom -10px;
+	}
+
+	@media screen and (min-width: 768px) {
+		background-image: url(${footerBottomBgImageTablet});
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerBottomBgImageTabletRetina});
+			background-position: right -50px bottom -30px;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		background-image: url(${footerBottomBgImageDesktop});
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerBottomBgImageDesktopRetina});
+		}
 	}
 `
 
@@ -73,5 +106,37 @@ export const FooterTopBgImage = styled.div`
 		background-image: url(${footerTopBgImageRetina});
 		top: -450px;
 		left: -100px;
+	}
+
+	@media screen and (min-width: 768px) {
+		background-image: url(${footerTopBgImageTablet});
+		height: 500px;
+		top: -400px;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerTopBgImageTabletRetina});
+			height: 800px;
+			width: 500px;
+			top: -700px;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		background-image: url(${footerTopBgImageDesktop});
+		width: 400px;
+		height: 600px;
+		top: -500px;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerTopBgImageDesktopRetina});
+			height: 1100px;
+			width: 650px;
+			top: -1000px;
+			left: -200px;
+		}
 	}
 `

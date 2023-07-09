@@ -35,7 +35,7 @@ export const FooterTabletWrapper = styled.div`
 	}
 
 	@media screen and (min-width: 1440px) {
-		gap: 159px;
+		gap: 130px;
 		margin-bottom: 0;
 	}
 	
