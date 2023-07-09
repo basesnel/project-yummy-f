@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { SIZE, COLOR } from 'constants';
+import { SIZE } from 'constants';
 
 export const WrapperUserLogo = styled.div`
   margin-left: auto;
