@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import COLOR from 'constants';
+import { COLOR } from 'constants';
 
 const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
   const borderRadius = paddingH * 1.2;
