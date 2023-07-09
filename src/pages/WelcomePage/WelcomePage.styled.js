@@ -6,8 +6,10 @@ import bgTabRetina from '../../assets/images/welcome/bgTabRetina.jpg';
 import bgMob from '../../assets/images/welcome/bgMob.jpg';
 import bgMobRetina from '../../assets/images/welcome/bgMobRetina.jpg';
 import { NavLink } from 'react-router-dom';
+import { COLOR, SIZE } from 'constants';
 
 export const Container = styled.section`
+  color: ${COLOR.second};
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -37,7 +39,7 @@ export const Container = styled.section`
       );
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     background-image: url('${bgTab}'),
       linear-gradient(
         180deg,
@@ -59,7 +61,7 @@ export const Container = styled.section`
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     background-image: url('${bgDesk}'),
       linear-gradient(
         180deg,
@@ -87,14 +89,14 @@ export const Logo = styled.img`
   height: 54px;
   margin-bottom: 44px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 68px;
     height: 68px;
   }
 `;
 
 export const Title = styled.h1`
-  color: #fafafa;
+  /* color: #fafafa; */
   font-family: 'Poppins';
   font-size: 24px;
   font-weight: 600;
@@ -110,7 +112,7 @@ export const Title = styled.h1`
 
 export const Text = styled.p`
   width: 305px;
-  color: #fafafa;
+  /* color: #fafafa; */
   text-align: center;
   font-family: 'Poppins';
   font-size: 14px;
@@ -132,6 +134,7 @@ export const Text = styled.p`
 `;
 
 export const BtnContainer = styled.div`
+  color: inherit;
   margin: 0;
   gap: 18px;
   display: flex;
@@ -139,7 +142,7 @@ export const BtnContainer = styled.div`
 `;
 
 export const BtnText = styled(NavLink)`
-  color: #fafafa;
+  color: inherit;
   font-family: 'Poppins';
   font-size: 14px;
   font-weight: 400;

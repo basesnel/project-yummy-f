@@ -4,21 +4,23 @@ import { COLOR } from 'constants';
 const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
   const borderRadius = paddingH * 1.2;
   const color = 'inherit';
-  let border, bgHover, colorHover;
+  let bgHover = bgColor,
+    colorHover = 'inherit',
+    border = 'none';
 
   if (bgColor === 'transparent') {
     colorHover = COLOR.main;
-    border = '1px solid #fafafa';
-    bgHover = bgColor;
+    border = '1px solid';
+  } else if (bgColor === 'dark') {
+    bgColor = COLOR.dark;
+    bgHover = COLOR.main;
   } else {
     bgColor = bgColor || COLOR.main;
-    colorHover = 'inherit';
-    border = 'none';
     bgHover = COLOR.dark;
   }
   return (
     <Button
-      onClick={handleClick}
+      onClick={handleClick || null}
       sx={{
         color,
         backgroundColor: bgColor,

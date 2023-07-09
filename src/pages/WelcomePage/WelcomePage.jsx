@@ -22,12 +22,16 @@ export default function WelcomePage() {
         your own recipes at any time.
       </Text>
       <BtnContainer>
-        <SkewButton paddingH={22} paddingW={44}>
-          <BtnText to="/registration">Registration</BtnText>
-        </SkewButton>
-        <SkewButton bgColor={'transparent'} paddingH={22} paddingW={44}>
-          <BtnText to="/signin">Sign In</BtnText>
-        </SkewButton>
+        <BtnText to="/register">
+          <SkewButton paddingH={22} paddingW={44}>
+            Registration
+          </SkewButton>
+        </BtnText>
+        <BtnText to="/signin">
+          <SkewButton bgColor={'transparent'} paddingH={22} paddingW={44}>
+            Sign In
+          </SkewButton>
+        </BtnText>
       </BtnContainer>
     </Container>
   );
