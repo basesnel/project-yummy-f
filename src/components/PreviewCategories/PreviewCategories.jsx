@@ -1,102 +1,102 @@
 import { Container } from 'components/Container/Container';
 import {
+    CategoriesBox,
     CategoriesList,
     OtherBtn,
     PreviewCategoriesWrapper,
     RecipesList,
+    SeeAllBtn,
 } from './PreviewCategories.styled';
 
 import plug from 'assets/images/PreviewCategories/1.jpg';
+import { useEffect, useState } from 'react';
+import { resize } from 'helpers/resize';
+
+const categoriesNames = ['Breakfast', 'Miscellaneous', 'Chicken', 'Desserts'];
 
 export function PreviewCategories() {
+    const [amountRecipe, setAmountRecipe] = useState(0);
     const data = {
-        breakfast: [{ photo: plug, title: 'Banana Pancakes', id: 1 }],
-        miscellaneous: [{ photo: plug, title: 'Portuguese prego Por ', id: 2 }],
-        chicken: [{ photo: plug, title: 'Teriyaki Chicken Casserole', id: 3 }],
-        desserts: [{ photo: plug, title: 'Blackberry Fool', id: 4 }],
+        breakfast: [
+            { photo: plug, title: 'Banana Pancakes', id: 1 },
+            { photo: plug, title: 'Banana Pancakes1', id: 5 },
+            { photo: plug, title: 'Banana Pancakes', id: 3434234321 },
+            { photo: plug, title: 'Banana Pancakes1', id: 5565463452 },
+        ],
+        miscellaneous: [
+            { photo: plug, title: 'Portuguese prego Por ', id: 2 },
+            { photo: plug, title: 'Portuguese prego Por ', id: 7563454654 },
+            { photo: plug, title: 'Portuguese prego Por ', id: 37574565 },
+            { photo: plug, title: 'Portuguese prego Por ', id: 789742165 },
+        ],
+        chicken: [
+            { photo: plug, title: 'Teriyaki Chicken Casserole', id: 3 },
+            {
+                photo: plug,
+                title: 'Teriyaki Chicken Casserole',
+                id: 876872146876,
+            },
+            {
+                photo: plug,
+                title: 'Teriyaki Chicken Casserole',
+                id: 1654654748,
+            },
+            {
+                photo: plug,
+                title: 'Teriyaki Chicken Casserole',
+                id: 231657984549874,
+            },
+        ],
+        desserts: [
+            { photo: plug, title: 'Blackberry Fool', id: 4 },
+            { photo: plug, title: 'Blackberry Fool', id: 798798756416 },
+            { photo: plug, title: 'Blackberry Fool', id: 321654987 },
+            { photo: plug, title: 'Blackberry Fool', id: 1798513944 },
+        ],
     };
+
+    useEffect(() => {
+        setAmountRecipe(resize());
+    }, []);
     return (
         <PreviewCategoriesWrapper>
             <Container>
-                <CategoriesList>
-                    <li>
-                        <h2>Breakfast</h2>
-                        <RecipesList>
-                            {data.breakfast.map(recipe => {
-                                return (
-                                    <li key={recipe.id}>
-                                        <img
-                                            src={recipe.photo}
-                                            alt={recipe.title}
-                                        />
-                                        <div>
-                                            <h3>{recipe.title}</h3>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </RecipesList>
-                        <button>See all</button>
-                    </li>
-                    <li>
-                        <h2>Miscellaneous</h2>
-                        <RecipesList>
-                            {data.miscellaneous.map(recipe => {
-                                return (
-                                    <li key={recipe.id}>
-                                        <img
-                                            src={recipe.photo}
-                                            alt={recipe.title}
-                                        />
-                                        <div>
-                                            <h3>{recipe.title}</h3>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </RecipesList>
-                        <button>See all</button>
-                    </li>
-                    <li>
-                        <h2>Chicken</h2>
-                        <RecipesList>
-                            {data.chicken.map(recipe => {
-                                return (
-                                    <li key={recipe.id}>
-                                        <img
-                                            src={recipe.photo}
-                                            alt={recipe.title}
-                                        />
-                                        <div>
-                                            <h3>{recipe.title}</h3>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </RecipesList>
-                        <button>See all</button>
-                    </li>
-                    <li>
-                        <h2>Desserts</h2>
-                        <RecipesList>
-                            {data.desserts.map(recipe => {
-                                return (
-                                    <li key={recipe.id}>
-                                        <img
-                                            src={recipe.photo}
-                                            alt={recipe.title}
-                                        />
-                                        <div>
-                                            <h3>{recipe.title}</h3>
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </RecipesList>
-                        <button>See all</button>
-                    </li>
-                </CategoriesList>
-                <OtherBtn>Other categories</OtherBtn>
+                <CategoriesBox>
+                    <CategoriesList>
+                        {categoriesNames.map(name => {
+                            return (
+                                <li key={name}>
+                                    <h2>{name}</h2>
+                                    <RecipesList>
+                                        {data[name.toLowerCase()]
+                                            .slice(0, amountRecipe)
+                                            .map(recipe => {
+                                                return (
+                                                    <li key={recipe.id}>
+                                                        <img
+                                                            src={recipe.photo}
+                                                            alt={recipe.title}
+                                                        />
+                                                        <div>
+                                                            <h3>
+                                                                {recipe.title}
+                                                            </h3>
+                                                        </div>
+                                                    </li>
+                                                );
+                                            })}
+                                    </RecipesList>
+                                    <SeeAllBtn
+                                        to={`/categories/${name.toLowerCase()}`}
+                                    >
+                                        See all
+                                    </SeeAllBtn>
+                                </li>
+                            );
+                        })}
+                    </CategoriesList>
+                    <OtherBtn to="/categories">Other categories</OtherBtn>
+                </CategoriesBox>
             </Container>
         </PreviewCategoriesWrapper>
     );

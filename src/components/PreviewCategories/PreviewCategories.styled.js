@@ -1,5 +1,6 @@
 import { TRANSITION } from "constants";
 import { COLOR } from "constants";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const PreviewCategoriesWrapper = styled.section`
@@ -21,28 +22,16 @@ export const CategoriesList = styled.ul`
 			line-height: 1;
 			letter-spacing: -0.56px;
 		}
-
-		button {
-			align-self: end;
-			padding: 10px 24px;
-
-			border: none;
-			border-radius: 6px;
-			background-color: #8AA936;
-
-			color: ${COLOR.second};
-			font-size: 14px;
-			line-height: ${18 / 14};
-			transition: ${TRANSITION.forHoverColor};
-
-			&:hover,
-			&:focus {
-				color: ${COLOR.dark};
-			}
-		}
 	}
 	
 `
+
+export const CategoriesBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	
+`
+
 
 export const RecipesList = styled.ul`
 	margin-bottom: 24px;
@@ -75,11 +64,30 @@ export const RecipesList = styled.ul`
 	}
 	
 `
+export const SeeAllBtn = styled(Link)`
+	align-self: end;
+	padding: 10px 24px;
+	text-decoration: none;
 
-export const OtherBtn = styled.button`
-	display: block;
-	margin: 0 auto;
+	border: none;
+	border-radius: 6px;
+	background-color: #8AA936;
+
+	color: ${COLOR.second};
+	font-size: 14px;
+	line-height: ${18 / 14};
+	transition: ${TRANSITION.forHoverColor};
+
+	&:hover,
+	&:focus {
+		color: ${COLOR.dark};
+	}
+`
+
+export const OtherBtn = styled(Link)`
+	align-self: center;
 	padding: 14px 32px;
+	text-decoration: none;
 
 	background-color: transparent;
 	border-radius: 24px 44px;
