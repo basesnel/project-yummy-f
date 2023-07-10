@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+
 import SigninLink from '../SigninLink/SigninLink';
 import {
   Box,
@@ -14,6 +16,7 @@ import {
 import { ReactComponent as EmailIcon } from '../../../assets/images/signin/mail-01.svg';
 import { ReactComponent as LockIcon } from '../../../assets/images/signin/lock-02.svg';
 import { ReactComponent as ManIcon } from '../../../assets/images/signin/man-03.svg';
+import { register } from 'redux/auth/operations';
 
 const validationSchema = yup.object({
   name: yup
@@ -31,6 +34,8 @@ const validationSchema = yup.object({
 });
 
 export default function RegisterPage() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -40,6 +45,7 @@ export default function RegisterPage() {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       console.log(values);
+      dispatch(register(values));
       resetForm();
     },
   });
