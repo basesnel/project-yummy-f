@@ -30,7 +30,7 @@ export const SigninContainer = styled.div`
     padding-right: 134px;
     padding-top: 96px;
     width: 768px;
-    padding-bottom: 120px;
+    padding-bottom: 119px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
