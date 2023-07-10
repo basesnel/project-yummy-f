@@ -1,13 +1,15 @@
 import { styled } from 'styled-components';
-import rectangle_375 from '../../img/SigninPage/Rectangle-375.png';
-import rectangle_768 from '../../img/SigninPage/Rectangle-768.png';
-import rectangle_1440 from '../../img/SigninPage/Rectangle-1440.png';
+import rectangle_375 from '../../assets/images/signin/Rectangle-375.png';
+import rectangle_768 from '../../assets/images/signin/Rectangle-768.png';
+import rectangle_1440 from '../../assets/images/signin/Rectangle-1440.png';
+import { COLOR } from 'constants';
+import { SIZE } from 'constants';
 
 export const SigninContainer = styled.div`
-  background: #fafafa;
+  background: ${COLOR.second};
   background-image: url(${rectangle_375});
-  background-position: center top 290px;
-  background-size: cover;
+  background-position: center top 322px;
+  background-size: contain;
   background-repeat: no-repeat;
   position: relative;
   width: 375px;
@@ -21,24 +23,24 @@ export const SigninContainer = styled.div`
   padding-right: 20px;
   padding-top: 87px;
   padding-bottom: 153px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     background-image: url(${rectangle_768});
-    background-position: center top 323px;
+    background-position: center top 418px;
     padding-left: 134px;
     padding-right: 134px;
     padding-top: 96px;
     width: 768px;
-    padding-bottom: 120px;
+    padding-bottom: 119px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     padding-left: 113px;
     padding-right: 180px;
     padding-top: 115px;
     padding-bottom: 153px;
-    min-width: 1440px;
+    width: 1440px;
     background-image: url(${rectangle_1440});
-    background-position: center top 329px;
+    background-position: center top 444px;
     flex-direction: row;
     align-items: start;
     gap: 115px;

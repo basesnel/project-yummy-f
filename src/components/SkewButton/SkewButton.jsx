@@ -1,8 +1,17 @@
 import { Button } from '@mui/material';
 import { COLOR } from 'constants';
 
-const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
-  const borderRadius = paddingH * 1.2;
+const SkewButton = ({
+  children,
+  bgColor,
+  paddingHxs,
+  paddingHmd,
+  paddingHlg,
+  paddingWxs,
+  paddingWmd,
+  paddingWlg,
+}) => {
+  // const theme = useTheme();
   const color = 'inherit';
   let bgHover = bgColor,
     colorHover = 'inherit',
@@ -20,14 +29,24 @@ const SkewButton = ({ children, bgColor, paddingH, paddingW, handleClick }) => {
   }
   return (
     <Button
-      onClick={handleClick || null}
       sx={{
         color,
         backgroundColor: bgColor,
+        // [theme.breakpoints.up(theme.breakpoints.values.tablet)]: {
+        //   backgroundColor: 'red',
+        // },
         transform: 'skew(30deg)',
-        borderRadius,
         border,
-        padding: `${paddingH}px ${paddingW}px`,
+        borderRadius: {
+          xs: `${paddingHxs * 1.4}px`,
+          md: `${paddingHmd * 1.4}px`,
+          lg: `${paddingHlg * 1.4}px`,
+        },
+        padding: {
+          xs: `${paddingHxs}px ${paddingWxs}px`,
+          md: `${paddingHmd}px ${paddingWmd}px`,
+          lg: `${paddingHlg}px ${paddingWlg}px`,
+        },
         '&:hover': {
           color: colorHover,
           backgroundColor: bgHover,

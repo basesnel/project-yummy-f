@@ -23,12 +23,27 @@ export default function WelcomePage() {
       </Text>
       <BtnContainer>
         <BtnText to="/register">
-          <SkewButton paddingH={22} paddingW={44}>
+          <SkewButton
+            paddingHxs={12}
+            paddingHmd={22}
+            paddingHlg={22}
+            paddingWxs={24}
+            paddingWmd={44}
+            paddingWlg={44}
+          >
             Registration
           </SkewButton>
         </BtnText>
         <BtnText to="/signin">
-          <SkewButton bgColor={'transparent'} paddingH={22} paddingW={44}>
+          <SkewButton
+            bgColor={'transparent'}
+            paddingHxs={12}
+            paddingHmd={22}
+            paddingHlg={22}
+            paddingWxs={24}
+            paddingWmd={44}
+            paddingWlg={44}
+          >
             Sign In
           </SkewButton>
         </BtnText>

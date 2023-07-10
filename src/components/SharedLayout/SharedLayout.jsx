@@ -3,11 +3,12 @@ import { Outlet } from 'react-router-dom';
 
 import Loader from 'components/Loader/Loader';
 import { Footer } from 'components/Footer/Footer';
+import Header from 'components/Header/Header';
 
 const SharedLayout = () => {
   return (
     <>
-      {/* HEADER GOES HERE */}
+      <Header />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

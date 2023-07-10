@@ -1,14 +1,5 @@
-import SigninForm from './SigninForm';
-import SigninImg from './SigninImg';
-import { SigninContainer } from './SigninPage.styled';
+import Signin from 'components/SignIn/SignIn';
 
 export default function SigninPage() {
-  return (
-    <section>
-      <SigninContainer>
-        <SigninImg />
-        <SigninForm />
-      </SigninContainer>
-    </section>
-  );
+  return <Signin />;
 }
