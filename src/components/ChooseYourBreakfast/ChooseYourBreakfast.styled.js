@@ -16,7 +16,7 @@ import { SIZE, COLOR, TRANSITION } from "constants";
 
 export const BreakfastContainer = styled.div`
 	position: relative;
-	width: 320px;
+	max-width: 320px;
 	height: 296px;
 	margin: 0 auto;
 	margin-bottom: 24px;
@@ -33,6 +33,7 @@ export const BreakfastContainer = styled.div`
 	}
 
 	@media screen and (min-width: ${SIZE.tablet}) {
+		max-width: none;
 		width: 378px;
 		height: 351px;
 		margin: 0;
