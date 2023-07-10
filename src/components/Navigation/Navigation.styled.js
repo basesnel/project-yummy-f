@@ -58,6 +58,7 @@ export const StyledLink = styled(NavLink)`
 export const WrapperSearchIcon = styled(SearchHeaderIcon)`
     // display: inline-flex;
     // align-items: center;
+
     @media screen and (min-width: ${SIZE.mobile}) {
         width: 20px;
         height: 20px;
