@@ -22,7 +22,7 @@ export const RegisterContainer = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 87px;
-  padding-bottom: 153px;
+  padding-bottom: 80px;
   @media screen and (min-width: ${SIZE.tablet}) {
     background-image: url(${rectangle_768});
     background-position: center top 418px;
@@ -30,14 +30,14 @@ export const RegisterContainer = styled.div`
     padding-right: 134px;
     padding-top: 96px;
     width: 768px;
-    padding-bottom: 120px;
+    padding-bottom: 31px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
     padding-left: 113px;
     padding-right: 180px;
     padding-top: 115px;
-    padding-bottom: 153px;
+    padding-bottom: 68px;
     width: 1440px;
     background-image: url(${rectangle_1440});
     background-position: center top 444px;

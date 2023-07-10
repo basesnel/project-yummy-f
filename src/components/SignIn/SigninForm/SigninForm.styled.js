@@ -20,6 +20,10 @@ export const FormSignin = styled.form`
   @media screen and (min-width: ${SIZE.desktop}) {
     margin-top: 40px;
   }
+
+  .input__error {
+    border: 1px solid #e74a3b;
+  }
 `;
 
 export const SigninLabel = styled.label`
@@ -121,4 +125,10 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const Warning = styled.p`
+  position: absolute;
+  top: 65px;
+  color: #e74a3b;
 `;
