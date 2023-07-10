@@ -13,10 +13,9 @@ import {
 import { SIZE, COLOR, TRANSITION } from "constants";
 
 export const BreakfastContainer = styled.div`
+	position: relative;
 	width: 320px;
 	height: 296px;
-	padding-top: 113px;
-	padding-left: 88px;
 	margin: 0 auto;
 	margin-bottom: 24px;
 
@@ -35,9 +34,6 @@ export const BreakfastContainer = styled.div`
 		width: 378px;
 		height: 351px;
 		margin: 0;
-		padding-top: 213px;
-		padding-left: 38px;
-		padding-right: 43px;
 		margin-bottom: 0;
 
 		background-image: url(${saladTablet});
@@ -51,6 +47,9 @@ export const BreakfastContainer = styled.div`
 	}
 
 	@media screen and (min-width: ${SIZE.desktop}) {
+		width: 578px;
+		height: 539px;
+
 		background-image: url(${saladDesktop});
 
 		@media (min-device-pixel-ratio: 2),
@@ -61,13 +60,30 @@ export const BreakfastContainer = styled.div`
 	}
 
 	div {
+		position: absolute;
+		top: 113px;
+		left: 88px;
+		right: 7px;
+
 		padding: 8px;
 
 		background-color: ${COLOR.second};
 		border-radius: 8px;
 
 		@media screen and (min-width: ${SIZE.tablet}) {
+			top: 213px;
+			left: 75px;
+			right: 43px;
+
 			padding: 12px;
+		}
+
+		@media screen and (min-width: ${SIZE.desktop}) {
+			top: 336px;
+			left: 342px;
+			right: -62px;
+
+			padding: 16px;
 		}
 
 		p {
@@ -83,6 +99,11 @@ export const BreakfastContainer = styled.div`
 				font-size: 14px;
 				line-height: ${18 / 14};
 			}
+
+			@media screen and (min-width: ${SIZE.desktop}) {
+				line-height: ${20 / 14};
+			}
+
 
 			span {
 				color: ${COLOR.main};

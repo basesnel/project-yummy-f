@@ -10,6 +10,15 @@ export const PreviewCategoriesWrapper = styled.section`
 	@media screen and (min-width: ${SIZE.tablet}) {
 		padding: 72px 0 100px;
 	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		padding: 100px 0 118px;
+	}
+`
+
+export const CategoriesBox = styled.div`
+	display: flex;
+	flex-direction: column;
 `
 
 export const CategoriesList = styled.ul`
@@ -17,6 +26,10 @@ export const CategoriesList = styled.ul`
 
 	@media screen and (min-width: ${SIZE.tablet}) {
 		margin-bottom: 32px;
+	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		margin-bottom: 102px;
 	}
 
 	> li {
@@ -31,6 +44,12 @@ export const CategoriesList = styled.ul`
 		@media screen and (min-width: ${SIZE.tablet}) {
 			&:not(:last-child){
 				margin-bottom: 50px;
+			}
+		}
+
+		@media screen and (min-width: ${SIZE.desktop}) {
+			&:not(:last-child){
+				margin-bottom: 100px;
 			}
 		}
 
@@ -49,14 +68,12 @@ export const CategoriesList = styled.ul`
 				font-size: 44px;
 				letter-spacing: -0.88px;
 			}
+
+			@media screen and (min-width: ${SIZE.desktop}) {
+				margin-bottom: 50px;
+			}
 		}
 	}
-	
-`
-
-export const CategoriesBox = styled.div`
-	display: flex;
-	flex-direction: column;
 	
 `
 
@@ -71,12 +88,33 @@ export const RecipesList = styled.ul`
 		gap: 32px;
 	}
 
-	> li {
-		position: relative;
+	@media screen and (min-width: ${SIZE.desktop}) {
+		margin-bottom: 50px;
 
+		gap: 14px;
+	}
+
+	> li {
 		@media screen and (min-width: ${SIZE.tablet}) {
 			flex-basis: calc((100% - 32px) / 2);
 		}
+
+		@media screen and (min-width: ${SIZE.desktop}) {
+			flex-basis: calc((100% - 14px * 3) / 4);
+		}
+	}
+	
+`
+
+export const RecipesLink = styled(Link)`
+	position: relative;
+
+	transition: ${TRANSITION.forHoverOpacity};
+
+	&:hover,
+	&:focus {
+		opacity: 0.7;
+	}
 
 		img {
 			width: 100%;
@@ -92,7 +130,11 @@ export const RecipesList = styled.ul`
 			background-color: #FFFFFF;
 			border-radius: 8px;
 
-			
+			@media screen and (min-width: ${SIZE.desktop}) {
+				bottom: 23px;
+				left: 16px;
+				right: 16px;
+			}
 
 			h3 {
 				color: #3E4462;
@@ -102,9 +144,8 @@ export const RecipesList = styled.ul`
 				letter-spacing: -0.24px;
 			}
 		}
-	}
-	
 `
+
 export const SeeAllBtn = styled(Link)`
 	align-self: end;
 	padding: 10px 24px;

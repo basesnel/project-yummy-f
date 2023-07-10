@@ -33,6 +33,10 @@ export const SearchForm = styled.form`
 		max-width: 362px;
 	}
 
+	@media screen and (min-width: ${SIZE.desktop}) {
+		max-width: 510px;
+	}
+
 	input {
 		width: 100%;
 		padding: 17px 130px 17px 32px;
@@ -47,6 +51,10 @@ export const SearchForm = styled.form`
 		@media screen and (min-width: ${SIZE.tablet}) {
 			padding: 18px 130px 18px 38px;
 			font-size: 16px;
+		}
+
+		@media screen and (min-width: ${SIZE.desktop}) {
+			padding: 23px 130px 23px 48px;
 		}
 	}
 `
@@ -75,5 +83,9 @@ export const SearchBtn = styled.button`
 	@media screen and (min-width: ${SIZE.tablet}) {
 		padding: 18px 52px;
 		font-size: 16px;
+	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		padding: 23px 52px;
 	}
 `

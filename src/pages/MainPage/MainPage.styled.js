@@ -4,13 +4,24 @@ import { COLOR } from 'constants'
 import { SIZE } from "constants";
 
 export const Hero = styled.section`
-	padding: 132px 36px 83px;
+	
+`
+
+export const HeroWrapper = styled.div`
+	padding: 132px 0 83px;
+	margin: 0 auto;
 
 	@media screen and (min-width: ${SIZE.tablet}) {
-		padding: 159px 0 130px 32px;
+		padding: 159px 0 130px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		padding: 126px 0 135px;
+		gap: 68px;
+		justify-content: start;
 	}
 `
 
@@ -26,6 +37,10 @@ export const HeroTitle = styled.section`
 
 		@media screen and (min-width: ${SIZE.tablet}) {
 			margin-bottom: 32px;
+		}
+
+		@media screen and (min-width: ${SIZE.desktop}) {
+			margin-bottom: 50px;
 		}
 
 		h1 {
@@ -44,6 +59,13 @@ export const HeroTitle = styled.section`
 
 				font-size: 72px;
 				letter-spacing: -0.36px;
+			}
+
+			@media screen and (min-width: ${SIZE.desktop}) {
+				margin-bottom: 14px;
+
+				font-size: 100px;
+				letter-spacing: -0.5px;
 			}
 	
 			span {
@@ -64,6 +86,16 @@ export const HeroTitle = styled.section`
 
 			@media screen and (min-width: ${SIZE.tablet}) {
 				max-width: 362px;
+				text-align: start;
+				margin: 0;
+			}
+
+			@media screen and (min-width: ${SIZE.desktop}) {
+				max-width: 465px;
+
+				font-size: 18px;
+				line-height: ${24 / 18};
+				letter-spacing: -0.36px;
 			}
 		}
 	}

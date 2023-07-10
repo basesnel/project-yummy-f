@@ -4,6 +4,7 @@ import {
     CategoriesList,
     OtherBtn,
     PreviewCategoriesWrapper,
+    RecipesLink,
     RecipesList,
     SeeAllBtn,
 } from './PreviewCategories.styled';
@@ -74,15 +75,25 @@ export function PreviewCategories() {
                                             .map(recipe => {
                                                 return (
                                                     <li key={recipe.id}>
-                                                        <img
-                                                            src={recipe.photo}
-                                                            alt={recipe.title}
-                                                        />
-                                                        <div>
-                                                            <h3>
-                                                                {recipe.title}
-                                                            </h3>
-                                                        </div>
+                                                        <RecipesLink
+                                                            to={`/recipe/${recipe.id}`}
+                                                        >
+                                                            <img
+                                                                src={
+                                                                    recipe.photo
+                                                                }
+                                                                alt={
+                                                                    recipe.title
+                                                                }
+                                                            />
+                                                            <div>
+                                                                <h3>
+                                                                    {
+                                                                        recipe.title
+                                                                    }
+                                                                </h3>
+                                                            </div>
+                                                        </RecipesLink>
                                                     </li>
                                                 );
                                             })}
