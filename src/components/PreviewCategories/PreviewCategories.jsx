@@ -13,51 +13,52 @@ import { useEffect, useState } from 'react';
 import { resize } from 'helpers/resize';
 
 const categoriesNames = ['Breakfast', 'Miscellaneous', 'Chicken', 'Desserts'];
+const data = {
+    breakfast: [
+        { photo: plug, title: 'Banana Pancakes', id: 1 },
+        { photo: plug, title: 'Banana Pancakes1', id: 5 },
+        { photo: plug, title: 'Banana Pancakes', id: 3434234321 },
+        { photo: plug, title: 'Banana Pancakes1', id: 5565463452 },
+    ],
+    miscellaneous: [
+        { photo: plug, title: 'Portuguese prego Por ', id: 2 },
+        { photo: plug, title: 'Portuguese prego Por ', id: 7563454654 },
+        { photo: plug, title: 'Portuguese prego Por ', id: 37574565 },
+        { photo: plug, title: 'Portuguese prego Por ', id: 789742165 },
+    ],
+    chicken: [
+        { photo: plug, title: 'Teriyaki Chicken Casserole', id: 3 },
+        {
+            photo: plug,
+            title: 'Teriyaki Chicken Casserole',
+            id: 876872146876,
+        },
+        {
+            photo: plug,
+            title: 'Teriyaki Chicken Casserole',
+            id: 1654654748,
+        },
+        {
+            photo: plug,
+            title: 'Teriyaki Chicken Casserole',
+            id: 231657984549874,
+        },
+    ],
+    desserts: [
+        { photo: plug, title: 'Blackberry Fool', id: 4 },
+        { photo: plug, title: 'Blackberry Fool', id: 798798756416 },
+        { photo: plug, title: 'Blackberry Fool', id: 321654987 },
+        { photo: plug, title: 'Blackberry Fool', id: 1798513944 },
+    ],
+};
 
 export function PreviewCategories() {
     const [amountRecipe, setAmountRecipe] = useState(0);
-    const data = {
-        breakfast: [
-            { photo: plug, title: 'Banana Pancakes', id: 1 },
-            { photo: plug, title: 'Banana Pancakes1', id: 5 },
-            { photo: plug, title: 'Banana Pancakes', id: 3434234321 },
-            { photo: plug, title: 'Banana Pancakes1', id: 5565463452 },
-        ],
-        miscellaneous: [
-            { photo: plug, title: 'Portuguese prego Por ', id: 2 },
-            { photo: plug, title: 'Portuguese prego Por ', id: 7563454654 },
-            { photo: plug, title: 'Portuguese prego Por ', id: 37574565 },
-            { photo: plug, title: 'Portuguese prego Por ', id: 789742165 },
-        ],
-        chicken: [
-            { photo: plug, title: 'Teriyaki Chicken Casserole', id: 3 },
-            {
-                photo: plug,
-                title: 'Teriyaki Chicken Casserole',
-                id: 876872146876,
-            },
-            {
-                photo: plug,
-                title: 'Teriyaki Chicken Casserole',
-                id: 1654654748,
-            },
-            {
-                photo: plug,
-                title: 'Teriyaki Chicken Casserole',
-                id: 231657984549874,
-            },
-        ],
-        desserts: [
-            { photo: plug, title: 'Blackberry Fool', id: 4 },
-            { photo: plug, title: 'Blackberry Fool', id: 798798756416 },
-            { photo: plug, title: 'Blackberry Fool', id: 321654987 },
-            { photo: plug, title: 'Blackberry Fool', id: 1798513944 },
-        ],
-    };
 
     useEffect(() => {
         setAmountRecipe(resize());
     }, []);
+
     return (
         <PreviewCategoriesWrapper>
             <Container>

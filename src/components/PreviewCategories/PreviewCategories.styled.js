@@ -1,17 +1,38 @@
 import { TRANSITION } from "constants";
+import { SIZE } from "constants";
 import { COLOR } from "constants";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const PreviewCategoriesWrapper = styled.section`
 	padding: 64px 0 100px;
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		padding: 72px 0 100px;
+	}
 `
 
 export const CategoriesList = styled.ul`
+	margin-bottom: 40px;
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		margin-bottom: 32px;
+	}
+
 	> li {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 32px;
+
+		&:not(:last-child){
+			margin-bottom: 32px;
+		}
+		
+
+		@media screen and (min-width: ${SIZE.tablet}) {
+			&:not(:last-child){
+				margin-bottom: 50px;
+			}
+		}
 
 		h2 {
 			margin-bottom: 32px;
@@ -21,6 +42,13 @@ export const CategoriesList = styled.ul`
 			font-weight: 600;
 			line-height: 1;
 			letter-spacing: -0.56px;
+
+			@media screen and (min-width: ${SIZE.tablet}) {
+				margin-bottom: 40px;
+
+				font-size: 44px;
+				letter-spacing: -0.88px;
+			}
 		}
 	}
 	
@@ -36,8 +64,19 @@ export const CategoriesBox = styled.div`
 export const RecipesList = styled.ul`
 	margin-bottom: 24px;
 
+	@media screen and (min-width: ${SIZE.tablet}) {
+		margin-bottom: 40px;
+
+		display: flex;
+		gap: 32px;
+	}
+
 	> li {
 		position: relative;
+
+		@media screen and (min-width: ${SIZE.tablet}) {
+			flex-basis: calc((100% - 32px) / 2);
+		}
 
 		img {
 			width: 100%;
@@ -52,6 +91,8 @@ export const RecipesList = styled.ul`
 
 			background-color: #FFFFFF;
 			border-radius: 8px;
+
+			
 
 			h3 {
 				color: #3E4462;
@@ -102,5 +143,11 @@ export const OtherBtn = styled(Link)`
 	&:focus {
 		background-color: ${COLOR.main};
 		color: ${COLOR.second};
+	}
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		padding: 20px 52px;
+
+		font-size: 16px;
 	}
 `

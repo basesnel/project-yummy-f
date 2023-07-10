@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SearchBtn, SearchForm } from './Search.styled';
 import { useNavigate } from 'react-router';
 
-export function Search() {
+export function Search({ ver }) {
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState('');
 
@@ -16,7 +16,7 @@ export function Search() {
     }
 
     return (
-        <SearchForm onSubmit={handleSubmit}>
+        <SearchForm onSubmit={handleSubmit} ver={ver}>
             <input
                 type="text"
                 onChange={e => {
