@@ -2,23 +2,34 @@ import { ChooseYourBreakfast } from 'components/ChooseYourBreakfast/ChooseYourBr
 import { PreviewCategories } from 'components/PreviewCategories/PreviewCategories';
 import { Search } from 'components/Search/Search';
 
-import { Hero, HeroTitle } from './MainPage.styled';
+import { Hero, HeroTitle, HeroWrapper } from './MainPage.styled';
+import { Container } from 'components/Container/Container';
 
 export default function MainPage() {
-  return (
-    <main>
-      <Hero>
-        <HeroTitle>
-          <h1>SoYummy</h1>
-          <p>
-            "What to cook?" is not only a recipe app, it is, in fact, your
-            cookbook. You can add your own recipes to save them for the future.
-          </p>
-        </HeroTitle>
-        <ChooseYourBreakfast />
-        <Search />
-      </Hero>
-      <PreviewCategories />
-    </main>
-  );
+    return (
+        <main>
+            <Hero>
+                <Container>
+                    <HeroWrapper>
+                        <HeroTitle>
+                            <div>
+                                <h1>
+                                    <span>So</span>Yummy
+                                </h1>
+                                <p>
+                                    "What to cook?" is not only a recipe app, it
+                                    is, in fact, your cookbook. You can add your
+                                    own recipes to save them for the future.
+                                </p>
+                            </div>
+                            <Search ver="tablet" />
+                        </HeroTitle>
+                        <ChooseYourBreakfast />
+                        <Search ver="mobile" />
+                    </HeroWrapper>
+                </Container>
+            </Hero>
+            <PreviewCategories />
+        </main>
+    );
 }
