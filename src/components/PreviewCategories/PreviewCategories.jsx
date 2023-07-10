@@ -13,6 +13,7 @@ import {
 } from './PreviewCategories.styled';
 
 import plug from 'assets/images/PreviewCategories/1.jpg';
+import { SIZE } from 'constants';
 
 const categoriesNames = ['Breakfast', 'Miscellaneous', 'Chicken', 'Desserts'];
 const data = {
@@ -58,8 +59,11 @@ export function PreviewCategories() {
     const [amountRecipe, setAmountRecipe] = useState(0);
 
     const isMobileScreen = useMediaQuery({ maxWidth: 767 });
-    const isTabletScreen = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
-    const isDesktopScreen = useMediaQuery({ minWidth: 1440 });
+    const isTabletScreen = useMediaQuery({
+        minWidth: SIZE.tablet,
+        maxWidth: 1439,
+    });
+    const isDesktopScreen = useMediaQuery({ minWidth: SIZE.desktop });
 
     useEffect(() => {
         function resize() {
