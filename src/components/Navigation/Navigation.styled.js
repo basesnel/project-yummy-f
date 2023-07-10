@@ -4,14 +4,14 @@ import { styled } from 'styled-components';
 import { ReactComponent as SearchHeaderIcon } from 'assets/images/header/searchHeader.svg';
 
 export const NavContainer = styled.nav`
-  display: none;
+    display: none;
 
-  @media screen and (min-width: ${SIZE.desktop}) {
-    display: block;
-    margin-left: 187px;
-    padding-top: 10px;
-    padding-bottom: 11px;
-  }
+    @media screen and (min-width: ${SIZE.desktop}) {
+        display: block;
+        margin-left: 187px;
+        padding-top: 10px;
+        padding-bottom: 11px;
+    }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -37,15 +37,13 @@ line-height: 1.6;
 `;
 
 export const WrapperSearchIcon = styled(SearchHeaderIcon)`
-  // display: inline-flex;
-  // align-items: center;
-  @media screen and (min-width: ${SIZE.mobile}) {
-    width: 20px;
-    height: 20px;
-  }
+    @media screen and (min-width: ${SIZE.mobile}) {
+        width: 20px;
+        height: 20px;
+    }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
-    width: 24px;
-    height: 24px;
-  }
+    @media screen and (min-width: ${SIZE.tablet}) {
+        width: 24px;
+        height: 24px;
+    }
 `;
