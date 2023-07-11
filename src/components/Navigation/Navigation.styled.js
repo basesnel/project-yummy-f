@@ -57,6 +57,10 @@ export const WrapperSearchIcon = styled(SearchHeaderIcon)`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    // не прибирайте pointer-events:none, це щоб модалка закривалась по кліку на посилання
+    pointer-events: none;
+
     // fill: inherit;
 
     @media screen and (min-width: ${SIZE.mobile}) {
@@ -78,6 +82,10 @@ export const TextContainer = styled.p`
     line-height: 1;
     text-decoration: none;
     letter-spacing: -0.36px;
+
+    // не прибирайте pointer-events:none, це щоб модалка закривалась по кліку на посилання
+    pointer-events: none;
+
     @media screen and (min-width: ${SIZE.tablet}) {
         font-size: 24px;
         letter-spacing: -0.48px;
@@ -85,4 +93,5 @@ export const TextContainer = styled.p`
 
     @media screen and (min-width: ${SIZE.desktop}) {
         display: none;
+    }
 `;

@@ -4,10 +4,23 @@ import {
     TextContainer,
     WrapperSearchIcon,
 } from './Navigation.styled';
+import { useMediaQuery } from 'react-responsive';
 
-const Navigation = () => {
+const Navigation = ({ closeModal }) => {
+    const isMobile = useMediaQuery({
+        query: `(max-width: 1439px)`,
+    });
+
+    const handleLinkClick = e => {
+        console.log(e.target);
+
+        if (e.target.nodeName === 'A' && isMobile) {
+            closeModal();
+        }
+    };
+
     return (
-        <NavContainer>
+        <NavContainer onClick={handleLinkClick}>
             <StyledLink to="/categories/:categoryName">Categories</StyledLink>
             <StyledLink to="/add">Add recipes</StyledLink>
             <StyledLink to="/my">My recipes</StyledLink>
