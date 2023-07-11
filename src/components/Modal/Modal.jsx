@@ -20,7 +20,7 @@ export const Modal = ({ closeModal }) => {
                 </CloseBtn>
             </TopFrame>
             <NavigationContainer>
-                <Navigation />
+                <Navigation closeModal={closeModal} />
             </NavigationContainer>
         </ModalContainer>
     );
