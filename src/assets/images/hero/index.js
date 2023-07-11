@@ -4,6 +4,8 @@ import squareHeroDesktop from './squareHeroDesktop.png'
 
 import bottomBgHeroMobile from './bottomBgHeroMobile.png'
 import bottomBgHeroMobileRetina from './bottomBgHeroMobile@2x.png'
+import bottomBgHeroTablet from './bottomBgHeroTablet.png'
+import bottomBgHeroTabletRetina from './bottomBgHeroTablet@2x.png'
 import bottomBgHeroDesktop from './bottomBgHeroDesktop.png'
 import bottomBgHeroDesktopRetina from './bottomBgHeroDesktop@2x.png'
 
@@ -23,6 +25,8 @@ export {
 	squareHeroDesktop,
 	bottomBgHeroMobile,
 	bottomBgHeroMobileRetina,
+	bottomBgHeroTablet,
+	bottomBgHeroTabletRetina,
 	bottomBgHeroDesktop,
 	bottomBgHeroDesktopRetina,
 	topBgHeroMobile,
