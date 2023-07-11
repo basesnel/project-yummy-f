@@ -5,16 +5,17 @@ import UserLogo from 'components/UserLogo/UserLogo';
 import { HeaderContainer } from './Header.styled';
 
 const Header = () => {
-  return (
-    <MainContainer>
-      <HeaderContainer>
-        <Logo />
-        <Navigation />
-        <UserLogo />
-        {/* <ThemeToggler/> */}
-      </HeaderContainer>
-    </MainContainer>
-  );
+    return (
+        <MainContainer>
+            <HeaderContainer>
+                <Logo />
+                <Navigation />
+                <UserLogo />
+
+                {/* <ThemeToggler/> */}
+            </HeaderContainer>
+        </MainContainer>
+    );
 };
 
 export default Header;
