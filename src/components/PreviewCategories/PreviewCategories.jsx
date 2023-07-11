@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
 import { Container } from 'components/Container/Container';
 import {
     CategoriesBox,
@@ -10,8 +13,7 @@ import {
 } from './PreviewCategories.styled';
 
 import plug from 'assets/images/PreviewCategories/1.jpg';
-import { useEffect, useState } from 'react';
-import { resize } from 'helpers/resize';
+import { SIZE } from 'constants';
 
 const categoriesNames = ['Breakfast', 'Miscellaneous', 'Chicken', 'Desserts'];
 const data = {
@@ -56,9 +58,30 @@ const data = {
 export function PreviewCategories() {
     const [amountRecipe, setAmountRecipe] = useState(0);
 
+    const isMobileScreen = useMediaQuery({ maxWidth: 767 });
+    const isTabletScreen = useMediaQuery({
+        minWidth: SIZE.tablet,
+        maxWidth: 1439,
+    });
+    const isDesktopScreen = useMediaQuery({ minWidth: SIZE.desktop });
+
     useEffect(() => {
+        function resize() {
+            if (isMobileScreen) {
+                return 1;
+            }
+
+            if (isTabletScreen) {
+                return 2;
+            }
+
+            if (isDesktopScreen) {
+                return 4;
+            }
+        }
+
         setAmountRecipe(resize());
-    }, []);
+    }, [isDesktopScreen, isMobileScreen, isTabletScreen]);
 
     return (
         <PreviewCategoriesWrapper>

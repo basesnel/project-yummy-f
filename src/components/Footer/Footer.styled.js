@@ -16,7 +16,57 @@ import {
 	footerBottomBgImageDesktopRetina
 } from 'assets/images/footer'
 
+export const FooterTopBgImage = styled.div`
+	position: absolute;
+	top: -250px;
+	left: 0;
+	width: 300px;
+	height: 300px;
+	z-index: -99;
+	background-image: url(${footerTopBgImage});
+	background-repeat: no-repeat;
 
+	@media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+		height: 600px;
+		top: -240px;
+		
+		background-image: url(${footerTopBgImageRetina});
+		background-size: contain;
+	}
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		background-image: url(${footerTopBgImageTablet});
+		height: 500px;
+		top: -400px;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerTopBgImageTabletRetina});
+			height: 800px;
+			width: 500px;
+			top: -400px;
+		}
+	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		background-image: url(${footerTopBgImageDesktop});
+		width: 400px;
+		height: 600px;
+		top: -500px;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${footerTopBgImageDesktopRetina});
+			height: 1100px;
+			width: 650px;
+			top: -500px;
+		}
+	}
+`
 
 export const FooterWraper = styled.footer`
 	position: relative;
@@ -29,7 +79,8 @@ export const FooterWraper = styled.footer`
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
 		background-image: url(${footerBottomBgImageRetina});
-		background-position: right -30px bottom -10px;
+		background-size: 200px;
+		background-position: right bottom -10px;
 	}
 
 	@media screen and (min-width: ${SIZE.tablet}) {
@@ -39,7 +90,8 @@ export const FooterWraper = styled.footer`
 		(min-resolution: 192dpi),
 		(min-resolution: 2dppx) {
 			background-image: url(${footerBottomBgImageTabletRetina});
-			background-position: right -50px bottom -30px;
+			background-position: right bottom;
+			background-size: 320px;
 		}
 	}
 
@@ -50,6 +102,7 @@ export const FooterWraper = styled.footer`
 		(min-resolution: 192dpi),
 		(min-resolution: 2dppx) {
 			background-image: url(${footerBottomBgImageDesktopRetina});
+			background-size: 540px;
 		}
 	}
 `
@@ -85,57 +138,5 @@ export const CopyrightContainer = styled.section`
 
 	p:first-child {
 		font-weight: 500;
-	}
-`
-
-export const FooterTopBgImage = styled.div`
-	position: absolute;
-	top: -250px;
-	left: 0;
-	width: 300px;
-	height: 300px;
-	z-index: -99;
-	background-image: url(${footerTopBgImage});
-	background-repeat: no-repeat;
-
-	@media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-		height: 600px;
-		background-image: url(${footerTopBgImageRetina});
-		top: -450px;
-		left: -100px;
-	}
-
-	@media screen and (min-width: ${SIZE.tablet}) {
-		background-image: url(${footerTopBgImageTablet});
-		height: 500px;
-		top: -400px;
-
-		@media (min-device-pixel-ratio: 2),
-		(min-resolution: 192dpi),
-		(min-resolution: 2dppx) {
-			background-image: url(${footerTopBgImageTabletRetina});
-			height: 800px;
-			width: 500px;
-			top: -700px;
-		}
-	}
-
-	@media screen and (min-width: ${SIZE.desktop}) {
-		background-image: url(${footerTopBgImageDesktop});
-		width: 400px;
-		height: 600px;
-		top: -500px;
-
-		@media (min-device-pixel-ratio: 2),
-		(min-resolution: 192dpi),
-		(min-resolution: 2dppx) {
-			background-image: url(${footerTopBgImageDesktopRetina});
-			height: 1100px;
-			width: 650px;
-			top: -1000px;
-			left: -200px;
-		}
 	}
 `
