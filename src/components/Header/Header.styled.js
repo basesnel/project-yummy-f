@@ -1,34 +1,25 @@
 import { styled } from 'styled-components';
-import { SIZE } from 'constants';
+import { SIZE, COLOR } from 'constants';
 
 export const HeaderContainer = styled.header`
     display: flex;
     margin-top: 18px;
-    // position: absolute;
-    //   margin-left: auto;
-    //   margin-right: auto;
-    //   padding-left: 16px;
-    //   padding-right: 16px;
-
-    //   @media screen and (min-width: 375px) {
-    //     width: 375px;
-    //   }
-
-    //   @media screen and (min-width: 768px) {
-    //     padding-left: 32px;
-    //     padding-right: 32px;
-    //     width: 768px;
-    //   }
 
     @media screen and (min-width: ${SIZE.desktop}) {
+        position: absolute;
         margin-top: 18px;
-        width: auto;
+        width: 1240px;
     }
 `;
 
 export const Burger = styled.img`
     width: 28px;
     height: 28px;
+
+    &:hover,
+    &:focus {
+        fill: inherit;
+    }
 
     @media screen and (min-width: ${SIZE.mobile}) {
         width: 32px;
@@ -39,11 +30,17 @@ export const Burger = styled.img`
 export const BurgerBtn = styled.button`
     background-color: transparent;
     border: none;
+    margin: 9px 0;
 
     width: 28px;
     height: 28px;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    &:hover,
+    &:focus {
+        color: ${COLOR.hover};
+    }
+
+    @media screen and (min-width: ${SIZE.tablet}) {
         width: 32px;
         height: 32px;
     }
