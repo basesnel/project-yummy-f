@@ -3,33 +3,30 @@ import { useState, useEffect } from 'react';
 // import plug from 'assets/images/PreviewCategories/1.jpg';
 // import { resize } from 'helpers/resize';
 import { Container } from 'components/Container/Container';
-import theme from 'theme';
 import { useNavigate, useParams } from 'react-router-dom';
 import categoriesArr from 'tempFiles/categoriesArr';
 
 const CategoriesPage = () => {
-    // const [categorie, setCategorie] = useState('');
-    const [categories, setCategories] = useState(categoriesArr);
+    const [recipieArr, setRecipieArr] = useState([]);
     const navigate = useNavigate();
     const { categoryName } = useParams();
 
     useEffect(() => {
         return () => {
             if (categoryName === ':categoryName') {
-                setValue(categoriesArr[1]);
-                navigate(`/categories/${categoriesArr[1]}`);
+                setCategorie(categoriesArr[1]);
+                navigate(`/categories/${categoriesArr[1]}`, { replace: true });
             }
         };
     }, [categoryName, navigate]);
 
     // useEffect(() => {
-    //   navigate(`/categories/${categoriesArr[1]}`);
+    //     navigate(`/categories/${categoriesArr[1]}`);
+    // }, [navigate]);
 
-    // }, [newValue])
-
-    const [value, setValue] = useState(categoryName);
+    const [categorie, setCategorie] = useState(categoryName);
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setCategorie(categorie);
         navigate(`/categories/${newValue}`);
     };
     return (
@@ -38,9 +35,10 @@ const CategoriesPage = () => {
             <Box sx={{ width: '100%' }}>
                 <Tabs
                     sx={{}}
-                    value={value}
+                    value={categoryName}
                     onChange={handleChange}
-                    aria-label="wrapped label tabs example"
+                    variant="scrollable"
+                    scrollButtons="auto"
                 >
                     {categoriesArr.map(({ _id, name }) => (
                         <Tab
