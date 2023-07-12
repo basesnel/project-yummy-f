@@ -1,6 +1,6 @@
 import { Backdrop } from 'components/UserProfile/UserProfile.styled';
 import { CancelBtn, Container, LogOutBtn, Wrapper } from './LogOut.styled';
-import { useState } from 'react';
+
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operations';
