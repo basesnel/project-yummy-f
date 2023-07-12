@@ -2,17 +2,19 @@ import { styled } from 'styled-components';
 import { SIZE } from 'constants';
 
 export const PageHeader = styled.h1`
-    margin-top: 50px;
+	color: #001833;
     font-size: 28px;
     font-weight: 600;
+	line-height: 1;
+	letter-spacing: -0.56px;
 
     @media screen and (min-width: ${SIZE.tablet}) {
-        margin-top: 72px;
         font-size: 32px;
+		letter-spacing: -0.64px;
     }
 
     @media screen and (min-width: ${SIZE.desktop}) {
-        margin-top: 100px;
         font-size: 44px;
+		letter-spacing: -0.88px;
     }
 `;

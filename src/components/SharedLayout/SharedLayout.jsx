@@ -13,7 +13,9 @@ const SharedLayout = () => {
     <>
       {isLoggedIn ? <Header /> : null}
       <Suspense fallback={<Loader />}>
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </Suspense>
       {isLoggedIn ? <Footer /> : null}
     </>
