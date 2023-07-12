@@ -1,13 +1,13 @@
+import { MainContainer } from 'components/Container/Container.styled';
+import MainTitle from 'components/MainTitle/MainTitle';
+import AddRecipeForm from 'components/AddRecipeForm/AddRecipeForm';
+
 const AddRecipePage = () => {
     return (
-        <h1
-            style={{
-                padding: '200px',
-                textAlign: 'center',
-            }}
-        >
-            AddRecipePage
-        </h1>
+        <MainContainer>
+            <MainTitle title={'Add recipe'} />
+            <AddRecipeForm />
+        </MainContainer>
     );
 };
 
