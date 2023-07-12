@@ -6,7 +6,7 @@ import { SIZE } from "constants";
 
 export const SearchForm = styled.form`
 	display: ${(props) => {
-		switch (props.ver) {
+		switch (props.$ver) {
 			case 'mobile':
 				return 'block';
 			case 'tablet':
@@ -21,7 +21,7 @@ export const SearchForm = styled.form`
 
 	@media screen and (min-width: ${SIZE.tablet}) {
 		display: ${(props) => {
-			switch (props.ver) {
+			switch (props.$ver) {
 				case 'mobile':
 					return 'none';
 				case 'tablet':

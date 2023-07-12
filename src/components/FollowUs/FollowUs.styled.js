@@ -26,7 +26,7 @@ export const SocialList = styled.ul`
 		transition: ${TRANSITION.forHoverColor};
 		&:hover,
 		&:focus {
-			color: ${(props) => props.hovercolor};
+			color: ${(props) => props.$hovercolor};
 		}
 	}
 
