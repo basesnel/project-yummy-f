@@ -1,22 +1,35 @@
 import {
   Avatar,
-  AvatarIcon,
+  //   AvatarIcon,
+  AvatarImg,
+  AvatarInput,
   Backdrop,
   CloseBtn,
   Container,
   EditIcon,
   Input,
+  InputBtnWrapper,
   InputWrapper,
-  PlusBtn,
   PlusIcon,
   ProfileForm,
   UserIcon,
 } from './UserProfile.styled';
 import { ReactComponent as CloseSvg } from '../../assets/images/userProfile/close.svg';
-
+import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-export function UserProfile({ closeUserProfile }) {
+export function UserProfile({
+  closeUserProfile,
+  user,
+  setUserName,
+  setAvatarIcon,
+}) {
+  const fileInputRef = useRef(null);
+
+  const [object, setObject] = useState(null);
+  const [name, setName] = useState(user.name);
+  const [avatar, setAvatar] = useState(null);
+
   const handleBackdropClick = event => {
     if (event.target.id === 'profileBackdrop') {
       closeUserProfile();
@@ -38,6 +51,46 @@ export function UserProfile({ closeUserProfile }) {
   //     };
   // }, [isOpen]);
 
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+  const editAvatar = ({ target }) => {
+    const selectedFile = target.files[0];
+    const objectURL = URL.createObjectURL(selectedFile);
+    setObject(objectURL);
+    setAvatar(selectedFile);
+  };
+  const editName = e => {
+    setName(e.target.value);
+  };
+  const editProfile = e => {
+    e.preventDefault();
+    //     URL.revokeObjectURL(file);
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('avatar', avatar);
+
+    const storageData = localStorage.getItem('persist:auth');
+    const { token } = JSON.parse(storageData);
+
+    fetch('https://project-yummy-b.onrender.com/users/update-user', {
+      method: 'PATCH',
+
+      headers: {
+        Authorization: `Bearer ${token.slice(1, -1)}`,
+      },
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {})
+      .catch(error => {
+        // Обробка помилок
+      });
+
+    closeUserProfile();
+  };
+
   const UserProfileElement = (
     <>
       <Backdrop id="profileBackdrop" onClick={handleBackdropClick}>
@@ -45,20 +98,36 @@ export function UserProfile({ closeUserProfile }) {
           <CloseBtn onClick={closeUserProfile}>
             <CloseSvg />
           </CloseBtn>
-          <Avatar>
-            <AvatarIcon />
-            <PlusBtn>
-              <PlusIcon />
-            </PlusBtn>
-          </Avatar>
+          <ProfileForm encType="multipart/form-data" onSubmit={editProfile}>
+            <Avatar>
+              {/* <AvatarIcon /> */}
+              <AvatarImg src={object ? object : user.avatarURL} />
 
-          <ProfileForm>
-            <InputWrapper>
-              <UserIcon />
-              <Input type="text" id="name-input" name="name" value="Olena" />
-              <EditIcon />
-            </InputWrapper>
-            <button type="submit">Save changes</button>
+              <AvatarInput
+                type="file"
+                ref={fileInputRef}
+                onChange={editAvatar}
+              />
+
+              {/* <PlusBtn> */}
+              <PlusIcon onClick={handleClick} />
+              {/* </PlusBtn> */}
+            </Avatar>
+
+            <InputBtnWrapper>
+              <InputWrapper>
+                <UserIcon />
+                <Input
+                  type="text"
+                  id="name-input"
+                  name="name"
+                  value={name}
+                  onChange={editName}
+                />
+                <EditIcon />
+              </InputWrapper>
+              <button type="submit">Save changes</button>
+            </InputBtnWrapper>
           </ProfileForm>
         </Container>
       </Backdrop>
