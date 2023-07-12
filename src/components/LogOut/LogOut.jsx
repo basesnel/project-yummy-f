@@ -5,13 +5,8 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operations';
 
-export function LogOut() {
+export function LogOut({ closeModal }) {
   const dispatch = useDispatch();
-
-  const [isOpen, setIsOpen] = useState(true);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   const handleBackdropClick = event => {
     if (event.target.id === 'logOutBackdrop') {
@@ -35,17 +30,15 @@ export function LogOut() {
   // }, [isOpen, handleKeyDown]);
   const LogOutElement = (
     <>
-      {isOpen && (
-        <Backdrop id="logOutBackdrop" onClick={handleBackdropClick}>
-          <Container>
-            <p>Are you sure you want to log out?</p>
-            <Wrapper>
-              <LogOutBtn onClick={() => dispatch(logout())}>Log out</LogOutBtn>
-              <CancelBtn onClick={closeModal}>Cancel</CancelBtn>
-            </Wrapper>
-          </Container>
-        </Backdrop>
-      )}
+      <Backdrop id="logOutBackdrop" onClick={handleBackdropClick}>
+        <Container>
+          <p>Are you sure you want to log out?</p>
+          <Wrapper>
+            <LogOutBtn onClick={() => dispatch(logout())}>Log out</LogOutBtn>
+            <CancelBtn onClick={closeModal}>Cancel</CancelBtn>
+          </Wrapper>
+        </Container>
+      </Backdrop>
     </>
   );
   return createPortal(LogOutElement, document.getElementById('logout-root'));

@@ -6,52 +6,63 @@ import { LogOut } from 'components/LogOut/LogOut';
 import { UserProfile } from 'components/UserProfile/UserProfile';
 
 const UserLogo = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [showLogOut, setShowLogOut] = useState(false);
-    const [showUserProfile, setShowUserProfile] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [showLogOut, setShowLogOut] = useState(false);
+  const [showUserProfile, setShowUserProfile] = useState(false);
 
-    const handleClick = event => {
-        if (anchorEl) {
-            setAnchorEl(null);
-        } else {
-            setAnchorEl(event.currentTarget);
-        }
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const showModal = () => {
-        setShowLogOut(true);
-    };
-    const showProfile = () => {
-        setShowUserProfile(true);
-    };
-    const open = Boolean(anchorEl);
+  const handleClick = event => {
+    if (showLogOut || showUserProfile) {
+      return;
+    }
+    if (anchorEl) {
+      setAnchorEl(null);
+    } else {
+      console.log('hello');
+      setAnchorEl(event.currentTarget);
+    }
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const showModal = () => {
+    setShowLogOut(true);
+  };
+  const closeModal = () => {
+    setAnchorEl(null);
+    setShowLogOut(false);
+  };
+  const closeUserProfile = () => {
+    setShowUserProfile(false);
+  };
+  const showProfile = () => {
+    setShowUserProfile(true);
+  };
+  const open = Boolean(anchorEl);
 
-    return (
-        <WrapperUserLogo onClick={handleClick}>
-            <UserPhoto />
-            <UserName>UserName</UserName>
+  return (
+    <WrapperUserLogo onClick={handleClick}>
+      <UserPhoto />
+      <UserName>UserName</UserName>
 
-            <Popover
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                }}
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}
-            >
-                <PopUp showModal={showModal} showProfile={showProfile} />
-            </Popover>
-            {showLogOut && <LogOut />}
-            {showUserProfile && <UserProfile />}
-        </WrapperUserLogo>
-    );
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <PopUp showModal={showModal} showProfile={showProfile} />
+      </Popover>
+      {showLogOut && <LogOut closeModal={closeModal} />}
+      {showUserProfile && <UserProfile closeUserProfile={closeUserProfile} />}
+    </WrapperUserLogo>
+  );
 };
 
 export default UserLogo;
