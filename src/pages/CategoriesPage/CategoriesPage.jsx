@@ -39,41 +39,76 @@ const CategoriesPage = () => {
             fontFamily: 'Poppins',
             fontWeight: '600',
             lineHeight: '1',
-            xs: {
-              fontSize: '28px',
-              letterSpacing: '-0.56px',
+            pt: {
+              xs: 6.5,
+              md: 9,
+              lg: 20.5,
             },
-            md: {
-              fontSize: '28px',
-              letterSpacing: '-0.64px',
+            fontSize: {
+              xs: '28px',
+              md: '32px',
+              lg: '44px',
             },
-            lg: {
-              fontSize: '28px',
-              letterSpacing: '-0.88px',
+            letterSpacing: {
+              xs: '-0.56px',
+              md: '-0.64px',
+              lg: '-0.88px',
             },
+            mb: { xs: '28px', md: '32px', lg: '72px' },
           }}
         >
           Categories
         </Typography>
-        <Box sx={{ width: '100%' }}>
+
+        <Box
+          sx={{
+            width: '100%',
+            // p: '10px',
+            // color: '#BDBDBD',
+            // fontWeight: '400',
+            // lineHeight: '1',
+
+            // fontSize: { xs: '14px', md: '18px' },
+            // mt: { xs: '60px', md: '100px' },
+            // mb: { xs: '22px', md: '18px' },
+          }}
+        >
           {categoriesArr.length && categoryName !== ':categoryName' && (
             <Tabs
-              sx={{ mt: 10 }}
+              sx={{
+                mt: 10,
+                borderBottom: '1px solid #eaeaea',
+              }}
               value={categoryName}
               onChange={handleChange}
               variant="scrollable"
               scrollButtons="auto"
             >
               {categoriesArr.map(({ _id, name }) => (
-                <Tab key={_id.$oid} value={name.toLowerCase()} label={name} />
+                <Tab
+                  sx={{
+                    py: { xs: '32px', md: '28px' },
+                    px: { xs: '14px', md: '28px' },
+                    textTransform: 'capitalize',
+                    color: '#BDBDBD',
+                    fontWeight: '400',
+                    lineHeight: '1',
+                    fontFamily: 'Poppins',
+                    fontSize: { xs: '14px', md: '18px' },
+                  }}
+                  key={_id.$oid}
+                  value={name.toLowerCase()}
+                  label={name}
+                />
               ))}
             </Tabs>
           )}
         </Box>
-        <h2>{categoryName}</h2>
 
         <Grid
           container
+          pt={{ xs: '32px', md: '50px' }}
+          mb={{ xs: '60px', md: '100px' }}
           rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
           columnSpacing={{ md: 4, lg: 1.5 }}
         >
