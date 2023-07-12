@@ -33,7 +33,7 @@ const validationSchema = yup.object({
     .required('Password is required'),
 });
 
-export default function RegisterPage() {
+export default function RegisterForm() {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -44,7 +44,7 @@ export default function RegisterPage() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      // console.log(values);
       dispatch(register(values));
       resetForm();
     },
@@ -66,7 +66,9 @@ export default function RegisterPage() {
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={formik.errors.name && 'input__error'}
+            className={
+              formik.submitCount > 0 && formik.errors.password && 'input__error'
+            }
           />
           {formik.submitCount > 0 && formik.errors.name && (
             <Warning>{formik.errors.name}</Warning>
@@ -85,7 +87,9 @@ export default function RegisterPage() {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={formik.errors.email && 'input__error'}
+            className={
+              formik.submitCount > 0 && formik.errors.password && 'input__error'
+            }
           />
           {formik.submitCount > 0 && formik.errors.email && (
             <Warning>{formik.errors.email}</Warning>
@@ -105,7 +109,9 @@ export default function RegisterPage() {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={formik.errors.password && 'input__error'}
+            className={
+              formik.submitCount > 0 && formik.errors.password && 'input__error'
+            }
           />
           {formik.submitCount > 0 && formik.errors.password && (
             <Warning>{formik.errors.password}</Warning>

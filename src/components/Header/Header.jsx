@@ -4,7 +4,7 @@ import Navigation from 'components/Navigation/Navigation';
 import UserLogo from 'components/UserLogo/UserLogo';
 import { HeaderContainer, Burger, BurgerBtn } from './Header.styled';
 import { useMediaQuery } from 'react-responsive';
-import { SIZE } from 'constants';
+// import { SIZE } from 'constants';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 
@@ -12,7 +12,7 @@ const Header = () => {
     const [isModalShown, setIsModalShown] = useState(false);
 
     const isBurgerShown = useMediaQuery({
-        query: `(max-width: ${SIZE.tablet})`,
+        query: `(max-width: 1439px)`,
     });
 
     const handleBurgerClick = e => {

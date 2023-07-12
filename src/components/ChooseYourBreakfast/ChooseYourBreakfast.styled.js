@@ -10,11 +10,13 @@ import {
 	saladDesktop,
 	saladDesktopRetina
 } from 'assets/images/chooseYourBreakfast';
+import { ArrowHero } from "assets/images/hero";
+
 import { SIZE, COLOR, TRANSITION } from "constants";
 
 export const BreakfastContainer = styled.div`
 	position: relative;
-	width: 320px;
+	max-width: 320px;
 	height: 296px;
 	margin: 0 auto;
 	margin-bottom: 24px;
@@ -31,6 +33,7 @@ export const BreakfastContainer = styled.div`
 	}
 
 	@media screen and (min-width: ${SIZE.tablet}) {
+		max-width: none;
 		width: 378px;
 		height: 351px;
 		margin: 0;
@@ -71,9 +74,9 @@ export const BreakfastContainer = styled.div`
 		border-radius: 8px;
 
 		@media screen and (min-width: ${SIZE.tablet}) {
-			top: 213px;
-			left: 75px;
-			right: 43px;
+			top: 200px;
+			left: 60px;
+			right: 20px;
 
 			padding: 12px;
 		}
@@ -110,6 +113,25 @@ export const BreakfastContainer = styled.div`
 			}
 		}
 	}
+`
+
+export const HeroArrowIcon = styled(ArrowHero)`
+	display: none;
+	position: absolute;
+	top: 275px;
+	left: 110px;
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		display: block;
+	}
+	
+	@media screen and (min-width: ${SIZE.desktop}) {
+		top: 428px;
+		left: 400px;
+
+		transform: rotate(-5deg);
+	}
+
 `
 
 export const SeeRecipesBtn = styled(Link)`

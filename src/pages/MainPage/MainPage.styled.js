@@ -1,10 +1,62 @@
 import { styled } from "styled-components";
 
-import { COLOR } from 'constants'
-import { SIZE } from "constants";
+import { COLOR, SIZE } from 'constants';
+import {
+	squareHeroMobile,
+	squareHeroTablet,
+	squareHeroDesktop,
+	bottomBgHeroMobile,
+	bottomBgHeroMobileRetina,
+	bottomBgHeroTablet,
+	bottomBgHeroTabletRetina,
+	bottomBgHeroDesktop,
+	bottomBgHeroDesktopRetina,
+	topBgHeroMobile,
+	topBgHeroMobileRetina,
+	topBgHeroTablet,
+	topBgHeroTabletRetina,
+	topBgHeroDesktop,
+	topBgHeroDesktopRetina
+} from 'assets/images/hero'
 
 export const Hero = styled.section`
-	
+	background-image: url(${bottomBgHeroMobile}), url(${squareHeroMobile}), url(${topBgHeroMobile});
+	background-repeat: no-repeat;
+	background-position: right top 50px, right top 150px, left top 40px;
+
+	@media (min-device-pixel-ratio: 2),
+	(min-resolution: 192dpi),
+	(min-resolution: 2dppx) {
+		background-image: url(${bottomBgHeroMobileRetina}), url(${squareHeroMobile}), url(${topBgHeroMobileRetina});
+		background-size: contain, auto, 50px;
+		background-position: right top 80px, right top 150px, left top 40px;
+	}
+
+	@media screen and (min-width: ${SIZE.tablet}) {
+		background-image: url(${bottomBgHeroTablet}), url(${squareHeroTablet}), url(${topBgHeroTablet});
+		background-size: contain, auto, auto;
+		background-position: right top, right top 20px, left top;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${bottomBgHeroTabletRetina}), url(${squareHeroTablet}), url(${topBgHeroTabletRetina});
+			background-size: contain, auto, 60px;
+			background-position: right top, right top 20px, left top 20px;
+		}
+	}
+
+	@media screen and (min-width: ${SIZE.desktop}) {
+		background-image: url(${bottomBgHeroDesktop}), url(${squareHeroDesktop}), url(${topBgHeroDesktop});
+		background-position: right top, right top 20px, left top;
+
+		@media (min-device-pixel-ratio: 2),
+		(min-resolution: 192dpi),
+		(min-resolution: 2dppx) {
+			background-image: url(${bottomBgHeroDesktopRetina}), url(${squareHeroDesktop}), url(${topBgHeroDesktopRetina});
+			background-size: contain, auto, 120px;
+		}
+	}
 `
 
 export const HeroWrapper = styled.div`

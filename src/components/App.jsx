@@ -1,6 +1,13 @@
 import { lazy } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
+import RestrictedRoute from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
+import { useDispatch } from 'react-redux';
+import Loader from './Loader/Loader';
+import { useAuth } from 'hooks';
+import { refreshUser } from 'redux/auth/operations';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -16,30 +23,115 @@ const ShoppingListPage = lazy(() => import('../pages/ShoppingListPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
-    return (
-        <div>
-            <Routes>
-                <Route path="/" element={<SharedLayout />}>
-                    <Route index element={<WelcomePage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/signin" element={<SigninPage />} />
-                    <Route path="/main" element={<MainPage />} />
-                    <Route
-                        path="/categories/:categoryName"
-                        element={<CategoriesPage />}
-                    />
-                    <Route path="/add" element={<AddRecipePage />} />
-                    <Route path="/favorite" element={<FavoritePage />} />
-                    <Route path="/recipe/:recipeId" element={<RecipePage />} />
-                    <Route path="/my" element={<MyRecipesPage />} />
-                    <Route path="/search" element={<SearchPage />} />
-                    <Route
-                        path="/shopping-list"
-                        element={<ShoppingListPage />}
-                    />
-                    <Route path="*" element={<NotFoundPage />} />
-                </Route>
-            </Routes>
-        </div>
-    );
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return (
+    <>
+      {isRefreshing ? (
+        <Loader />
+      ) : (
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<WelcomePage />} />
+
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<SigninPage />}
+                />
+              }
+            />
+            <Route
+              path="/main"
+              element={
+                <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+              }
+            />
+            <Route
+              path="/categories/:categoryName"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<CategoriesPage />}
+                />
+              }
+            />
+            <Route
+              path="/add"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<AddRecipePage />}
+                />
+              }
+            />
+            <Route
+              path="/favorite"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<FavoritePage />}
+                />
+              }
+            />
+            <Route
+              path="/recipe/:recipeId"
+              element={
+                <PrivateRoute redirectTo="/signin" component={<RecipePage />} />
+              }
+            />
+            <Route
+              path="/my"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<MyRecipesPage />}
+                />
+              }
+            />
+            <Route
+              path="/seaarch"
+              element={
+                <PrivateRoute redirectTo="/signin" component={<SearchPage />} />
+              }
+            />
+            <Route
+              path="/shopping-list"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<ShoppingListPage />}
+                />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<NotFoundPage />}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      )}
+    </>
+  );
 };
