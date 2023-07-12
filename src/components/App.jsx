@@ -106,7 +106,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/seaarch"
+              path="/search"
               element={
                 <PrivateRoute redirectTo="/signin" component={<SearchPage />} />
               }
