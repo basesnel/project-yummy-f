@@ -37,7 +37,15 @@ export const App = () => {
       ) : (
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route index element={<WelcomePage />} />
+            <Route
+              index
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<WelcomePage />}
+                />
+              }
+            />
 
             <Route
               path="/register"
@@ -106,7 +114,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/seaarch"
+              path="/search"
               element={
                 <PrivateRoute redirectTo="/signin" component={<SearchPage />} />
               }
