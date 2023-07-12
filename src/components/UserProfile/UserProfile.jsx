@@ -13,7 +13,7 @@ import {
   UserIcon,
 } from './UserProfile.styled';
 import { ReactComponent as CloseSvg } from '../../assets/images/userProfile/close.svg';
-import { useState } from 'react';
+
 import { createPortal } from 'react-dom';
 
 export function UserProfile({ closeUserProfile }) {
