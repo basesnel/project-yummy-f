@@ -72,3 +72,14 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const verify = createAsyncThunk('auth/verify', async verifyId => {
+  try {
+    const res = await axios.post(`users/verify/${verifyId}`);
+    setAuthHeader(res.data.token);
+    // console.log(res.data);
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+});
