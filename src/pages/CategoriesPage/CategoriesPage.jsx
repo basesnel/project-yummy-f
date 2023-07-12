@@ -12,14 +12,17 @@ function getRecipies(str) {
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
+
   const [recipieArr, setRecipieArr] = useState([]);
   // const [categorie, setCategorie] = useState('');
   let { categoryName } = useParams();
 
   useEffect(() => {
-    setRecipieArr(getRecipies('beef'));
-    navigate(`/categories/beef`, { replace: true });
-  }, []);
+    if (categoryName === ':categoryName') {
+      setRecipieArr(getRecipies('beef'));
+      navigate(`/categories/beef`, { replace: true });
+    }
+  }, [categoryName, navigate]);
 
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
@@ -32,7 +35,7 @@ const CategoriesPage = () => {
         <Box sx={{ width: '100%' }}>
           {categoriesArr.length && categoryName !== ':categoryName' && (
             <Tabs
-              sx={{}}
+              sx={{ mt: 10 }}
               value={categoryName}
               onChange={handleChange}
               variant="scrollable"
