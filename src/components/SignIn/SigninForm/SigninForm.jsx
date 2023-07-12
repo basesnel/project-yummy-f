@@ -38,7 +38,7 @@ export default function SigninForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      // console.log(values);
       dispatch(login(values));
       resetForm();
     },

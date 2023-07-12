@@ -8,7 +8,7 @@ import {
 
 export function FollowUs({ hoverColor }) {
   return (
-    <SocialList hovercolor={hoverColor}>
+    <SocialList $hovercolor={hoverColor}>
       <li>
         <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
           <FacebookLogo />
