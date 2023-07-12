@@ -17,7 +17,6 @@ const UserLogo = () => {
     if (anchorEl) {
       setAnchorEl(null);
     } else {
-      console.log('hello');
       setAnchorEl(event.currentTarget);
     }
   };
