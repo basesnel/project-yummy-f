@@ -8,10 +8,10 @@ import API from 'api';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
-
   const [recipieArr, setRecipieArr] = useState([]);
   const [categoriesArr, setCategoriesArr] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const { categoryName } = useParams();
 
   // download list categories name
@@ -32,6 +32,8 @@ const CategoriesPage = () => {
       try {
         const res = await API.fetchRecipies(categoryName);
         setRecipieArr(res?.recipes);
+        setTotalPages(res?.totalPages);
+        setPage(1);
       } catch (err) {
         console.log(err);
       }
@@ -49,7 +51,7 @@ const CategoriesPage = () => {
   const setPageHandler = async (_, value) => {
     setPage(value);
     try {
-      const res = await API.fetchRecipies(categoryName, page);
+      const res = await API.fetchRecipies(categoryName, value);
       setRecipieArr(res?.recipes);
     } catch (err) {
       console.log(err);
@@ -152,7 +154,7 @@ const CategoriesPage = () => {
         </Grid>
 
         <Pagination
-          count={10}
+          count={totalPages}
           page={page}
           onChange={setPageHandler}
           variant="outlined"
