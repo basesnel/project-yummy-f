@@ -35,20 +35,20 @@ export const Hero = styled.section`
 	@media screen and (min-width: ${SIZE.tablet}) {
 		background-image: url(${bottomBgHeroTablet}), url(${squareHeroTablet}), url(${topBgHeroTablet});
 		background-size: contain, auto, auto;
-		background-position: right top, right top 20px, left top;
+		background-position: right top, right top, left top;
 
 		@media (min-device-pixel-ratio: 2),
 		(min-resolution: 192dpi),
 		(min-resolution: 2dppx) {
 			background-image: url(${bottomBgHeroTabletRetina}), url(${squareHeroTablet}), url(${topBgHeroTabletRetina});
 			background-size: contain, auto, 60px;
-			background-position: right top, right top 20px, left top 20px;
+			background-position: right top, right top, left top 20px;
 		}
 	}
 
 	@media screen and (min-width: ${SIZE.desktop}) {
 		background-image: url(${bottomBgHeroDesktop}), url(${squareHeroDesktop}), url(${topBgHeroDesktop});
-		background-position: right top, right top 20px, left top;
+		background-position: right top, right top, left top;
 
 		@media (min-device-pixel-ratio: 2),
 		(min-resolution: 192dpi),
