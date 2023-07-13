@@ -171,7 +171,7 @@ export const PrepSection = styled.section`
     ul {
       margin: 31.5px 0 0 0;
 
-      @media screen and (min-width: ${SIZE.monile}) {
+      @media screen and (min-width: ${SIZE.mobile}) {
         margin: 33.5px 0 0 0;
       }
     }
