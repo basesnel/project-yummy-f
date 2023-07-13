@@ -10,7 +10,7 @@ export default function SigninPage() {
   const dispatch = useDispatch();
 
   if (verifyId) {
-    dispatch(verify(verifyId));
+    setTimeout(() => dispatch(verify(verifyId)), 200);
   }
 
   return <Signin />;

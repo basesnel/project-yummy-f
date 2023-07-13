@@ -75,7 +75,7 @@ export const refreshUser = createAsyncThunk(
 
 export const verify = createAsyncThunk('auth/verify', async verifyId => {
   try {
-    const res = await axios.post(`users/verify/${verifyId}`);
+    const res = await axios.get(`users/verify/${verifyId}`);
     setAuthHeader(res.data.token);
     // console.log(res.data);
     return res.data;
