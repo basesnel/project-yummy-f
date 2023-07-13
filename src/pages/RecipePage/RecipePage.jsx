@@ -10,9 +10,13 @@ const RecipePage = () => {
   const navigate = useNavigate();
   const { recipeId } = useParams();
   // const [recipe, setRecipe] = useState(null);
-  const [hero, setHero] = useState(null);
+  //const [hero, setHero] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [preparation, setPreparation] = useState('');
+  const [title, setTitle] = useState('');
+  const [descr, setDescr] = useState('');
+  const [time, setTime] = useState('');
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const getRecipe = async recipeId => {
@@ -20,12 +24,10 @@ const RecipePage = () => {
         const recipe = await API.getRecipeById(recipeId);
         console.log(recipe);
         //  setRecipe(recipe);
-        setHero({
-          title: recipe.title,
-          descr: recipe.description,
-          time: recipe.time,
-          isFavorite: recipe.favorite || false,
-        });
+        setTitle(recipe.title);
+        setDescr(recipe.description);
+        setTime(recipe.time);
+        setIsFavorite(recipe.favorite ? true : false);
         setIngredients(recipe.ingredients);
         setPreparation(recipe.instructions);
       } catch (error) {
@@ -38,7 +40,12 @@ const RecipePage = () => {
 
   return (
     <>
-      <RecipePageHero hero={hero} />
+      <RecipePageHero
+        title={title}
+        descr={descr}
+        time={time}
+        isFavorite={isFavorite}
+      />
       <RecipeIngredientsList ingredients={ingredients} />
       <RecipePreparation instructions={preparation} />
     </>
