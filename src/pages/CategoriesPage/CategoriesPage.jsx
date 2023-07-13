@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 import { Container } from 'components/Container/Container';
 import { useNavigate, useParams } from 'react-router-dom';
-import categoriesArr from 'tempFiles/categoriesArr';
+// import categoriesArr from 'tempFiles/categoriesArr';
 import recipies from 'tempFiles/recipies';
 import CardCategorie from 'components/CardCategorie/CardCategorie';
+import { fetchCategories } from 'api/categories';
+// import categoriesArr from 'tempFiles/categoriesArr';
 
 function getRecipies(str) {
   return recipies.filter(({ category }) => category.toLowerCase() === str);
@@ -15,8 +18,19 @@ const CategoriesPage = () => {
   const navigate = useNavigate();
 
   const [recipieArr, setRecipieArr] = useState([]);
+  const [categoriesArr, setCategoriesArr] = useState([]);
   // const [categorie, setCategorie] = useState('');
   let { categoryName } = useParams();
+
+  // download list categories name
+  useEffect(() => {
+    const f = async () => {
+      const result = await fetchCategories();
+      console.log(result);
+      setCategoriesArr(result);
+    };
+    f();
+  }, []);
 
   useEffect(() => {
     if (categoryName === ':categoryName') {
@@ -73,7 +87,7 @@ const CategoriesPage = () => {
             // mb: { xs: '22px', md: '18px' },
           }}
         >
-          {categoriesArr.length && categoryName !== ':categoryName' && (
+          {categoriesArr?.length && categoryName !== ':categoryName' && (
             <Tabs
               sx={{
                 mt: 10,
@@ -84,23 +98,24 @@ const CategoriesPage = () => {
               variant="scrollable"
               scrollButtons="auto"
             >
-              {categoriesArr.map(({ _id, name }) => (
-                <Tab
-                  sx={{
-                    py: { xs: '32px', md: '28px' },
-                    px: { xs: '14px', md: '28px' },
-                    textTransform: 'capitalize',
-                    color: '#BDBDBD',
-                    fontWeight: '400',
-                    lineHeight: '1',
-                    fontFamily: 'Poppins',
-                    fontSize: { xs: '14px', md: '18px' },
-                  }}
-                  key={_id.$oid}
-                  value={name.toLowerCase()}
-                  label={name}
-                />
-              ))}
+              {categoriesArr.length &&
+                categoriesArr.map(categ => (
+                  <Tab
+                    sx={{
+                      py: { xs: '32px', md: '28px' },
+                      px: { xs: '14px', md: '28px' },
+                      textTransform: 'capitalize',
+                      color: '#BDBDBD',
+                      fontWeight: '400',
+                      lineHeight: '1',
+                      fontFamily: 'Poppins',
+                      fontSize: { xs: '14px', md: '18px' },
+                    }}
+                    key={categ}
+                    value={categ.toLowerCase()}
+                    label={categ}
+                  />
+                ))}
             </Tabs>
           )}
         </Box>
