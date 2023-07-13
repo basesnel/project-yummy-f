@@ -49,11 +49,14 @@ export default function RegisterForm() {
       // console.log(values);
       dispatch(register(values));
       resetForm();
+      notify('Check your email to verify your profile');
     },
   });
 
-  const notify = () => {
-    toast('Check your email to verify your profile');
+  const notify = msg => {
+    toast(msg, {
+      toastId: 'idEmailAuth',
+    });
   };
 
   return (
@@ -74,7 +77,7 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
+              formik.submitCount > 0 && formik.errors.name && 'input__error'
             }
           />
           {formik.submitCount > 0 && formik.errors.name && (
@@ -95,7 +98,7 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
+              formik.submitCount > 0 && formik.errors.email && 'input__error'
             }
           />
           {formik.submitCount > 0 && formik.errors.email && (
@@ -124,9 +127,7 @@ export default function RegisterForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </RegisterInputWrapper>
-        <RegisterButton type="submit" onClick={notify}>
-          Sign Up
-        </RegisterButton>
+        <RegisterButton type="submit">Sign Up</RegisterButton>
       </FormRegister>
       <SigninLink />
       <ToastContainer />
