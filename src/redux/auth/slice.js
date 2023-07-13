@@ -11,6 +11,7 @@ import {
 const initialState = {
   user: { name: null, email: null, verify: null },
   token: null,
+  error: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -33,7 +34,9 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = action.payload.verify;
       })
-      .addCase(login.rejected, (state, action) => state)
+      .addCase(login.rejected, (state, action) => {
+        state.error = action.payload;
+      })
       .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
