@@ -1,48 +1,49 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 import { Container } from 'components/Container/Container';
 import { useNavigate, useParams } from 'react-router-dom';
-// import categoriesArr from 'tempFiles/categoriesArr';
-import recipies from 'tempFiles/recipies';
 import CardCategorie from 'components/CardCategorie/CardCategorie';
-import { fetchCategories } from 'api/categories';
-// import categoriesArr from 'tempFiles/categoriesArr';
-
-function getRecipies(str) {
-  return recipies.filter(({ category }) => category.toLowerCase() === str);
-}
+import API from 'api';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
 
   const [recipieArr, setRecipieArr] = useState([]);
   const [categoriesArr, setCategoriesArr] = useState([]);
-  // const [categorie, setCategorie] = useState('');
-  let { categoryName } = useParams();
+
+  const { categoryName } = useParams();
 
   // download list categories name
   useEffect(() => {
-    const f = async () => {
-      setCategoriesArr(await fetchCategories());
+    const categoriesList = async () => {
+      try {
+        setCategoriesArr(await API.fetchCategories());
+      } catch (error) {
+        console.log(error);
+      }
     };
-    f();
+    categoriesList();
   }, []);
 
   // set RecipierArr and url to initial state
   useEffect(() => {
-    if (categoryName === ':categoryName') {
-      setRecipieArr(getRecipies('beef'));
-      navigate(`/categories/beef`, { replace: true });
-    } else {
-      setRecipieArr(getRecipies(categoryName));
-    }
+    const oneCategorie = async categoryName => {
+      try {
+        const res = await API.fetchRecipies(categoryName);
+        setRecipieArr(res.recipes);
+      } catch (err) {
+        console.log();
+      }
+    };
+    const tempCategoryName =
+      categoryName === ':categoryName' ? 'beef' : categoryName;
+    oneCategorie(tempCategoryName);
+    navigate(`/categories/${tempCategoryName}`);
   }, [categoryName, navigate]);
 
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
-    setRecipieArr(getRecipies(newValue));
   };
 
   // transition to RecipePage
@@ -135,12 +136,13 @@ const CategoriesPage = () => {
           rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
           columnSpacing={{ md: 4, lg: 1.5 }}
         >
-          {recipieArr.length &&
+          {recipieArr &&
+            recipieArr.length &&
             recipieArr?.map(({ _id, title, thumb }) => (
-              <Grid item xs={12} md={6} lg={3} key={_id.$oid}>
+              <Grid item xs={12} md={6} lg={3} key={_id}>
                 <CardCategorie
                   handleRecipe={chooseRecipe}
-                  id={_id.$oid}
+                  id={_id}
                   title={title}
                   thumb={thumb}
                 ></CardCategorie>
