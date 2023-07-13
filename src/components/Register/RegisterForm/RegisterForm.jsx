@@ -1,6 +1,8 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import SigninLink from '../SigninLink/SigninLink';
 import {
@@ -49,6 +51,11 @@ export default function RegisterForm() {
       resetForm();
     },
   });
+
+  const notify = () => {
+    toast('Check your email to verify your profile');
+  };
+
   return (
     <Box>
       <FormRegister onSubmit={formik.handleSubmit}>
@@ -117,9 +124,12 @@ export default function RegisterForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </RegisterInputWrapper>
-        <RegisterButton type="submit">Sign Up</RegisterButton>
+        <RegisterButton type="submit" onClick={notify}>
+          Sign Up
+        </RegisterButton>
       </FormRegister>
       <SigninLink />
+      <ToastContainer />
     </Box>
   );
 }
