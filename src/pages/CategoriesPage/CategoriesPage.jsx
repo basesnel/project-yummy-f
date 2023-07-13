@@ -25,13 +25,12 @@ const CategoriesPage = () => {
   // download list categories name
   useEffect(() => {
     const f = async () => {
-      const result = await fetchCategories();
-      console.log(result);
-      setCategoriesArr(result);
+      setCategoriesArr(await fetchCategories());
     };
     f();
   }, []);
 
+  // set RecipierArr and url to initial state
   useEffect(() => {
     if (categoryName === ':categoryName') {
       setRecipieArr(getRecipies('beef'));
@@ -43,6 +42,13 @@ const CategoriesPage = () => {
     navigate(`/categories/${newValue}`);
     setRecipieArr(getRecipies(newValue));
   };
+
+  // transition to RecipePage
+  const chooseRecipe = id => {
+    console.log(id);
+    navigate(`/recipe/${id}`);
+  };
+
   return (
     <section>
       <Container>
@@ -130,7 +136,12 @@ const CategoriesPage = () => {
           {recipieArr.length &&
             recipieArr?.map(({ _id, title, thumb }) => (
               <Grid item xs={12} md={6} lg={3} key={_id.$oid}>
-                <CardCategorie title={title} thumb={thumb}></CardCategorie>
+                <CardCategorie
+                  handleRecipe={chooseRecipe}
+                  id={_id.$oid}
+                  title={title}
+                  thumb={thumb}
+                ></CardCategorie>
               </Grid>
             ))}
         </Grid>
