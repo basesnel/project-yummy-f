@@ -1,10 +1,12 @@
+import { ThemeProvider, createTheme } from '@mui/material';
+
 import MainTitle from 'components/MainTitle/MainTitle';
 import { MyRecipesContainer, TitleContainer } from './MyRecipesPage.styled';
 import { Container } from 'components/Container/Container';
-import { MyRecipesList } from 'components/MyRecipesPage/MyRecipesList';
-import { Paginator } from 'components/Paginator/Paginator';
 
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Paginator } from 'components/Paginator/Paginator';
+import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
+import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
 
 const theme = createTheme({
   palette: {
@@ -21,7 +23,12 @@ const MyRecipesPage = () => {
         <TitleContainer>
           <MainTitle title="My recipes" />
         </TitleContainer>
-        <MyRecipesList />
+        <MyRecipesList>
+          <MyRecipesItem />
+          <MyRecipesItem />
+          <MyRecipesItem />
+          <MyRecipesItem />
+        </MyRecipesList>
         <ThemeProvider theme={theme}>
           <Paginator />
         </ThemeProvider>

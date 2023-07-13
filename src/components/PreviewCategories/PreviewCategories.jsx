@@ -31,8 +31,7 @@ export function PreviewCategories() {
   useEffect(() => {
     const mainListRecipes = async () => {
       try {
-        const data = await API.fetchRecipesMainPage();
-        setMainPageRecipes(data);
+        setMainPageRecipes(await API.fetchRecipesMainPage());
       } catch (error) {
         console.log(error);
       }
@@ -75,7 +74,15 @@ export function PreviewCategories() {
                           .map(recipe => {
                             return (
                               <li key={recipe._id}>
-                                <RecipesLink to={`/recipe/${recipe._id}`}>
+                                <RecipesLink
+                                  onClick={() => {
+                                    window.scrollTo({
+                                      top: 0,
+                                      behavior: 'smooth',
+                                    });
+                                  }}
+                                  to={`/recipe/${recipe._id}`}
+                                >
                                   <img
                                     src={recipe.preview ? recipe.preview : plug}
                                     alt={recipe.title}
@@ -90,7 +97,12 @@ export function PreviewCategories() {
                       </RecipesList>
                     )}
 
-                    <SeeAllBtn to={`/categories/${name.toLowerCase()}`}>
+                    <SeeAllBtn
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      to={`/categories/${name.toLowerCase()}`}
+                    >
                       See all
                     </SeeAllBtn>
                   </li>
@@ -101,7 +113,14 @@ export function PreviewCategories() {
             <Loader />
           )}
 
-          <OtherBtn to="/categories">Other categories</OtherBtn>
+          <OtherBtn
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            to="/categories"
+          >
+            Other categories
+          </OtherBtn>
         </CategoriesBox>
       </Container>
     </PreviewCategoriesWrapper>
