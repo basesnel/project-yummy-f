@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 //import getRecipeById from 'api/recipeById';
-import { useParams, useNavigation, useNavigate } from 'react-router';
+import { useParams } from 'react-router';
 import API from 'api';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 
 const RecipePage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { recipeId } = useParams();
   // const [recipe, setRecipe] = useState(null);
   //const [hero, setHero] = useState(null);
