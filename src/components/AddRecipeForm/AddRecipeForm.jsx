@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
 import { RecipeForm } from './AddRecipeForm.styled';
+import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
+import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
 import API from 'api';
 
@@ -19,8 +21,6 @@ const AddRecipeForm = () => {
     getCategories();
   }, []);
 
-  console.log(categories);
-
   return (
     <Formik
       initialValues={{ preparation: '' }}
@@ -30,6 +30,8 @@ const AddRecipeForm = () => {
     >
       {({ values, handleSubmit }) => (
         <RecipeForm onSubmit={handleSubmit}>
+          <RecipeDescriptionFields categories={categories} />
+          <RecipeIngredientsFields />
           <RecipePreparationFields />
           <button type="submit">Submit</button>
         </RecipeForm>
