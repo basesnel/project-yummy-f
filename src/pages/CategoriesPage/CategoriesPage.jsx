@@ -35,6 +35,8 @@ const CategoriesPage = () => {
     if (categoryName === ':categoryName') {
       setRecipieArr(getRecipies('beef'));
       navigate(`/categories/beef`, { replace: true });
+    } else {
+      setRecipieArr(getRecipies(categoryName));
     }
   }, [categoryName, navigate]);
 
