@@ -83,3 +83,16 @@ export const verify = createAsyncThunk('auth/verify', async verifyId => {
     return error.message;
   }
 });
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('users/update-user', credentials);
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
