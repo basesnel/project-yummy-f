@@ -1,4 +1,4 @@
-import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Grid, Pagination, Tab, Tabs, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 import { Container } from 'components/Container/Container';
@@ -11,7 +11,7 @@ const CategoriesPage = () => {
 
   const [recipieArr, setRecipieArr] = useState([]);
   const [categoriesArr, setCategoriesArr] = useState([]);
-
+  //   const [page, setPage] = useState(0);
   const { categoryName } = useParams();
 
   // download list categories name
@@ -86,14 +86,6 @@ const CategoriesPage = () => {
         <Box
           sx={{
             width: '100%',
-            // p: '10px',
-            // color: '#BDBDBD',
-            // fontWeight: '400',
-            // lineHeight: '1',
-
-            // fontSize: { xs: '14px', md: '18px' },
-            // mt: { xs: '60px', md: '100px' },
-            // mb: { xs: '22px', md: '18px' },
           }}
         >
           {categoriesArr?.length && categoryName !== ':categoryName' && (
@@ -149,6 +141,13 @@ const CategoriesPage = () => {
               </Grid>
             ))}
         </Grid>
+
+        <Pagination
+          count={10}
+          //   onChange={handleChangePag}
+          variant="outlined"
+          color="primary"
+        />
       </Container>
     </section>
   );
