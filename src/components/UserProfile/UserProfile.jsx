@@ -16,14 +16,13 @@ import {
 } from './UserProfile.styled';
 import { ReactComponent as CloseSvg } from '../../assets/images/userProfile/close.svg';
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
+import { updateUser } from 'redux/auth/operations';
 
-export function UserProfile({
-  closeUserProfile,
-  user,
-  setUserName,
-  setAvatarIcon,
-}) {
+export function UserProfile({ closeUserProfile, user }) {
+  const dispatch = useDispatch();
+
   const fileInputRef = useRef(null);
 
   const [object, setObject] = useState(null);
@@ -71,23 +70,17 @@ export function UserProfile({
     formData.append('name', name);
     formData.append('avatar', avatar);
 
-    const storageData = localStorage.getItem('persist:auth');
-    const { token } = JSON.parse(storageData);
+    // const storageData = localStorage.getItem('persist:auth');
+    // const { token } = JSON.parse(storageData);
 
-    fetch('https://project-yummy-b.onrender.com/users/update-user', {
-      method: 'PATCH',
+    // const credentials = {
+    //   headers: {
+    //     Authorization: `Bearer ${token.slice(1, -1)}`,
+    //   },
+    //   body: formData,
+    // };
 
-      headers: {
-        Authorization: `Bearer ${token.slice(1, -1)}`,
-      },
-      body: formData,
-    })
-      .then(response => response.json())
-      .then(data => {})
-      .catch(error => {
-        // Обробка помилок
-      });
-
+    dispatch(updateUser(formData));
     closeUserProfile();
   };
 

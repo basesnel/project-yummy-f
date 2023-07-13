@@ -75,7 +75,7 @@ export const refreshUser = createAsyncThunk(
 
 export const verify = createAsyncThunk('auth/verify', async verifyId => {
   try {
-    const res = await axios.post(`users/verify/${verifyId}`);
+    const res = await axios.get(`users/verify/${verifyId}`);
     setAuthHeader(res.data.token);
     // console.log(res.data);
     return res.data;
@@ -83,3 +83,16 @@ export const verify = createAsyncThunk('auth/verify', async verifyId => {
     return error.message;
   }
 });
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('users/update-user', credentials);
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

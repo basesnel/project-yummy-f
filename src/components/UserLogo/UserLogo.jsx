@@ -12,8 +12,6 @@ const UserLogo = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showLogOut, setShowLogOut] = useState(false);
   const [showUserProfile, setShowUserProfile] = useState(false);
-  const [userName, setUserName] = useState(user.name);
-  const [avatarIcon, setAvatarIcon] = useState(user.avatarURL);
 
   const handleClick = event => {
     if (showLogOut || showUserProfile) {
@@ -45,8 +43,8 @@ const UserLogo = () => {
 
   return (
     <WrapperUserLogo onClick={handleClick}>
-      <UserPhoto src={avatarIcon} />
-      <UserName>{userName}</UserName>
+      <UserPhoto src={user.avatarURL} />
+      <UserName>{user.name}</UserName>
 
       <Popover
         open={open}
@@ -65,12 +63,7 @@ const UserLogo = () => {
       </Popover>
       {showLogOut && <LogOut closeModal={closeModal} />}
       {showUserProfile && (
-        <UserProfile
-          closeUserProfile={closeUserProfile}
-          user={user}
-          setUserName={setUserName}
-          setAvatarIcon={setAvatarIcon}
-        />
+        <UserProfile closeUserProfile={closeUserProfile} user={user} />
       )}
     </WrapperUserLogo>
   );
