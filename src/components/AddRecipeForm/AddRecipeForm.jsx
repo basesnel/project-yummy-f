@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
-import { fetchCategories } from 'api/categories';
+import API from 'api';
 import { RecipeForm } from './AddRecipeForm.styled';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
 import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
@@ -12,8 +12,11 @@ const AddRecipeForm = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const result = await fetchCategories();
-      setCategories(result);
+      try {
+        setCategories(await API.fetchCategories());
+      } catch (error) {
+        console.log(error);
+      }
     };
     getCategories();
   }, []);
