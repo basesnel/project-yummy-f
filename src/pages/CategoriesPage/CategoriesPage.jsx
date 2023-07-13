@@ -1,34 +1,66 @@
-import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Grid, Pagination, Tab, Tabs, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 import { Container } from 'components/Container/Container';
 import { useNavigate, useParams } from 'react-router-dom';
-import categoriesArr from 'tempFiles/categoriesArr';
-import recipies from 'tempFiles/recipies';
 import CardCategorie from 'components/CardCategorie/CardCategorie';
-
-function getRecipies(str) {
-  return recipies.filter(({ category }) => category.toLowerCase() === str);
-}
+import API from 'api';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
 
   const [recipieArr, setRecipieArr] = useState([]);
-  // const [categorie, setCategorie] = useState('');
-  let { categoryName } = useParams();
+  const [categoriesArr, setCategoriesArr] = useState([]);
+  const [page, setPage] = useState(1);
+  const { categoryName } = useParams();
 
+  // download list categories name
   useEffect(() => {
-    if (categoryName === ':categoryName') {
-      setRecipieArr(getRecipies('beef'));
-      navigate(`/categories/beef`, { replace: true });
-    }
+    const categoriesList = async () => {
+      try {
+        setCategoriesArr(await API.fetchCategories());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    categoriesList();
+  }, []);
+
+  // set RecipierArr and url to initial state
+  useEffect(() => {
+    const oneCategorie = async categoryName => {
+      try {
+        const res = await API.fetchRecipies(categoryName);
+        setRecipieArr(res?.recipes);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const tempCategoryName =
+      categoryName === ':categoryName' ? 'beef' : categoryName;
+    oneCategorie(tempCategoryName);
+    navigate(`/categories/${tempCategoryName}`);
   }, [categoryName, navigate]);
 
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
-    setRecipieArr(getRecipies(newValue));
   };
+
+  const setPageHandler = async (_, value) => {
+    setPage(value);
+    try {
+      const res = await API.fetchRecipies(categoryName, page);
+      setRecipieArr(res?.recipes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // transition to RecipePage
+  const chooseRecipe = id => {
+    navigate(`/recipe/${id}`);
+  };
+
   return (
     <section>
       <Container>
@@ -63,17 +95,9 @@ const CategoriesPage = () => {
         <Box
           sx={{
             width: '100%',
-            // p: '10px',
-            // color: '#BDBDBD',
-            // fontWeight: '400',
-            // lineHeight: '1',
-
-            // fontSize: { xs: '14px', md: '18px' },
-            // mt: { xs: '60px', md: '100px' },
-            // mb: { xs: '22px', md: '18px' },
           }}
         >
-          {categoriesArr.length && categoryName !== ':categoryName' && (
+          {categoriesArr?.length && categoryName !== ':categoryName' && (
             <Tabs
               sx={{
                 mt: 10,
@@ -84,23 +108,24 @@ const CategoriesPage = () => {
               variant="scrollable"
               scrollButtons="auto"
             >
-              {categoriesArr.map(({ _id, name }) => (
-                <Tab
-                  sx={{
-                    py: { xs: '32px', md: '28px' },
-                    px: { xs: '14px', md: '28px' },
-                    textTransform: 'capitalize',
-                    color: '#BDBDBD',
-                    fontWeight: '400',
-                    lineHeight: '1',
-                    fontFamily: 'Poppins',
-                    fontSize: { xs: '14px', md: '18px' },
-                  }}
-                  key={_id.$oid}
-                  value={name.toLowerCase()}
-                  label={name}
-                />
-              ))}
+              {categoriesArr.length &&
+                categoriesArr.map(categ => (
+                  <Tab
+                    sx={{
+                      py: { xs: '32px', md: '28px' },
+                      px: { xs: '14px', md: '28px' },
+                      textTransform: 'capitalize',
+                      color: '#BDBDBD',
+                      fontWeight: '400',
+                      lineHeight: '1',
+                      fontFamily: 'Poppins',
+                      fontSize: { xs: '14px', md: '18px' },
+                    }}
+                    key={categ}
+                    value={categ.toLowerCase()}
+                    label={categ}
+                  />
+                ))}
             </Tabs>
           )}
         </Box>
@@ -112,13 +137,27 @@ const CategoriesPage = () => {
           rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
           columnSpacing={{ md: 4, lg: 1.5 }}
         >
-          {recipieArr.length &&
+          {recipieArr &&
+            recipieArr.length &&
             recipieArr?.map(({ _id, title, thumb }) => (
-              <Grid item xs={12} md={6} lg={3} key={_id.$oid}>
-                <CardCategorie title={title} thumb={thumb}></CardCategorie>
+              <Grid item xs={12} md={6} lg={3} key={_id}>
+                <CardCategorie
+                  handleRecipe={chooseRecipe}
+                  id={_id}
+                  title={title}
+                  thumb={thumb}
+                ></CardCategorie>
               </Grid>
             ))}
         </Grid>
+
+        <Pagination
+          count={10}
+          page={page}
+          onChange={setPageHandler}
+          variant="outlined"
+          color="primary"
+        />
       </Container>
     </section>
   );

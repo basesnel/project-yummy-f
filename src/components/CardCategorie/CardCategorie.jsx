@@ -6,9 +6,9 @@ import {
   Typography,
 } from '@mui/material';
 
-const CardCategorie = ({ title, thumb }) => {
+const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
   return (
-    <Card sx={{ position: 'relative' }}>
+    <Card onClick={() => handleRecipe(id)} sx={{ position: 'relative' }}>
       <CardActionArea>
         <CardMedia
           sx={{

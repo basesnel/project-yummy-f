@@ -1,12 +1,11 @@
 import axios from 'axios';
+import { baseUrl } from 'constants';
 
-axios.defaults.baseURL = 'https://project-yummy-b.onrender.com/api';
+axios.defaults.baseURL = baseUrl;
 
-export const fetchCategories = async () => {
-    try {
-        const response = await axios.get('/recipes/category-list');
-        return response.data;
-    } catch (err) {
-        console.log(err);
-    }
+const fetchCategories = async () => {
+  const response = await axios.get('/recipes/category-list');
+  return response.data;
 };
+
+export default fetchCategories;
