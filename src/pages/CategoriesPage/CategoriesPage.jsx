@@ -11,7 +11,7 @@ const CategoriesPage = () => {
 
   const [recipieArr, setRecipieArr] = useState([]);
   const [categoriesArr, setCategoriesArr] = useState([]);
-  //   const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const { categoryName } = useParams();
 
   // download list categories name
@@ -31,9 +31,9 @@ const CategoriesPage = () => {
     const oneCategorie = async categoryName => {
       try {
         const res = await API.fetchRecipies(categoryName);
-        setRecipieArr(res.recipes);
+        setRecipieArr(res?.recipes);
       } catch (err) {
-        console.log();
+        console.log(err);
       }
     };
     const tempCategoryName =
@@ -46,9 +46,18 @@ const CategoriesPage = () => {
     navigate(`/categories/${newValue}`);
   };
 
+  const setPageHandler = async (_, value) => {
+    setPage(value);
+    try {
+      const res = await API.fetchRecipies(categoryName, page);
+      setRecipieArr(res?.recipes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // transition to RecipePage
   const chooseRecipe = id => {
-    console.log(id);
     navigate(`/recipe/${id}`);
   };
 
@@ -144,7 +153,8 @@ const CategoriesPage = () => {
 
         <Pagination
           count={10}
-          //   onChange={handleChangePag}
+          page={page}
+          onChange={setPageHandler}
           variant="outlined"
           color="primary"
         />
