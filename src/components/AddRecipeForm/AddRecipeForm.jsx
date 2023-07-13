@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
+import API from 'api';
 import { RecipeForm } from './AddRecipeForm.styled';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
 import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
-import API from 'api';
 
 const AddRecipeForm = () => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +13,7 @@ const AddRecipeForm = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        setCategories(await API.fetchCategories);
+        setCategories(await API.fetchCategories());
       } catch (error) {
         console.log(error);
       }
