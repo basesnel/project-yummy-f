@@ -1,7 +1,12 @@
 import { PopUp } from 'components/PopUp/PopUp';
 import { useState } from 'react';
-import { WrapperUserLogo, UserPhoto, UserName } from './UserLogo.styled';
-import Popover from '@mui/material/Popover';
+import {
+  WrapperUserLogo,
+  UserPhoto,
+  UserName,
+  StyledPopover,
+} from './UserLogo.styled';
+
 import { LogOut } from 'components/LogOut/LogOut';
 import { UserProfile } from 'components/UserProfile/UserProfile';
 import { selectUser } from 'redux/auth/selectors';
@@ -46,7 +51,7 @@ const UserLogo = () => {
       <UserPhoto src={user.avatarURL} />
       <UserName>{user.name}</UserName>
 
-      <Popover
+      <StyledPopover
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -60,7 +65,7 @@ const UserLogo = () => {
         }}
       >
         <PopUp showModal={showModal} showProfile={showProfile} />
-      </Popover>
+      </StyledPopover>
       {showLogOut && <LogOut closeModal={closeModal} />}
       {showUserProfile && (
         <UserProfile closeUserProfile={closeUserProfile} user={user} />
