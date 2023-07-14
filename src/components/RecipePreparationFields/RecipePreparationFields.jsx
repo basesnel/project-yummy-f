@@ -1,22 +1,26 @@
 import { useFormikContext } from 'formik';
 
-import { SectionTitle } from './RecipePreparationFields.styled';
+import {
+  SectionContainer,
+  SectionTitle,
+  TextFields,
+} from './RecipePreparationFields.styled';
 
 const RecipePreparationFields = () => {
-    const { values, handleChange, handleBlur } = useFormikContext();
+  const { values, handleChange, handleBlur } = useFormikContext();
 
-    return (
-        <>
-            <SectionTitle>Recipe Preparation</SectionTitle>
-            <textarea
-                name="preparation"
-                placeholder="Enter recipe"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.preparation}
-            ></textarea>
-        </>
-    );
+  return (
+    <SectionContainer>
+      <SectionTitle>Recipe Preparation</SectionTitle>
+      <TextFields
+        name="preparation"
+        placeholder="Enter recipe"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.preparation}
+      ></TextFields>
+    </SectionContainer>
+  );
 };
 
 export default RecipePreparationFields;

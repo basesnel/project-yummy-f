@@ -4,13 +4,17 @@ import { SIZE } from 'constants';
 export const SectionContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 67px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     flex-direction: row;
+    width: 704px;
     gap: 32px;
+    margin-bottom: 100px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
+    width: 800px;
     gap: 50px;
   }
 `;
@@ -33,6 +37,10 @@ export const ImagePlaceholder = styled.img`
   border-radius: 8px;
   width: 100%;
   height: 100%;
+`;
+
+export const FileInput = styled.input`
+  opacity: 0;
 `;
 
 export const InputsContainer = styled.div`
