@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://project-yummy-b.onrender.com';
+import { baseUrl } from 'constants';
+
+axios.defaults.baseURL = baseUrl;
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -17,10 +19,13 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('users/register', credentials);
       setAuthHeader(res.data.token);
-      // console.log(res.data);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response && error.response.data.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );
@@ -31,10 +36,14 @@ export const login = createAsyncThunk(
     try {
       const res = await axios.post('users/login', credentials);
       setAuthHeader(res.data.token);
-      // console.log(res.data);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response && error.response.data.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      // return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

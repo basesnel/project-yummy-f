@@ -9,41 +9,38 @@ import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 
 const Header = () => {
-    const [isModalShown, setIsModalShown] = useState(false);
+  const [isModalShown, setIsModalShown] = useState(false);
 
-    const isBurgerShown = useMediaQuery({
-        query: `(max-width: 1439px)`,
-    });
+  const isBurgerShown = useMediaQuery({
+    query: `(max-width: 1439px)`,
+  });
 
-    const handleBurgerClick = e => {
-        setIsModalShown(prev => !prev);
-    };
+  const handleBurgerClick = e => {
+    setIsModalShown(prev => !prev);
+  };
 
-    return (
-        <MainContainer>
-            <HeaderContainer>
-                <Logo />
-                {!isBurgerShown && !isModalShown && <Navigation />}
-                <UserLogo />
-                {/* <ThemeToggler/> */}
-                {isBurgerShown && !isModalShown && (
-                    <BurgerBtn onClick={handleBurgerClick}>
-                        <Burger
-                            src={
-                                require('../../assets/images/header/burger.svg')
-                                    .default
-                            }
-                            alt="burger-menu"
-                        />
-                    </BurgerBtn>
-                )}
+  return (
+    <MainContainer>
+      <HeaderContainer>
+        <Logo />
+        {!isBurgerShown && !isModalShown && <Navigation />}
+        <UserLogo />
+        {/* <ThemeToggler/> */}
+        {isBurgerShown && !isModalShown && (
+          <BurgerBtn onClick={handleBurgerClick}>
+            <Burger
+              src={require('../../assets/images/header/burger.svg').default}
+              alt="burger-menu"
+            />
+          </BurgerBtn>
+        )}
 
-                {isModalShown && isBurgerShown && (
-                    <Modal closeModal={handleBurgerClick} />
-                )}
-            </HeaderContainer>
-        </MainContainer>
-    );
+        {isModalShown && isBurgerShown && (
+          <Modal closeModal={handleBurgerClick} />
+        )}
+      </HeaderContainer>
+    </MainContainer>
+  );
 };
 
 export default Header;

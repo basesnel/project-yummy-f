@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -37,6 +38,7 @@ const validationSchema = yup.object({
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const { isVerify, authError } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -52,12 +54,22 @@ export default function RegisterForm() {
     },
   });
 
-  const notify = () => {
-    toast('Check your email to verify your profile');
+  const notify = msg => {
+    toast.success(msg, {
+      toastId: 'idEmailVerify',
+    });
+  };
+
+  const notifyError = msg => {
+    toast.error(msg, {
+      toastId: 'idError',
+    });
   };
 
   return (
     <Box>
+      {isVerify && notify('Check your email to verify your profile')}
+      {authError && notifyError(authError)}
       <FormRegister onSubmit={formik.handleSubmit}>
         <RegisterLabel>Registation</RegisterLabel>
 
@@ -74,7 +86,7 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
+              formik.submitCount > 0 && formik.errors.name && 'input__error'
             }
           />
           {formik.submitCount > 0 && formik.errors.name && (
@@ -95,7 +107,7 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
+              formik.submitCount > 0 && formik.errors.email && 'input__error'
             }
           />
           {formik.submitCount > 0 && formik.errors.email && (
@@ -124,12 +136,10 @@ export default function RegisterForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </RegisterInputWrapper>
-        <RegisterButton type="submit" onClick={notify}>
-          Sign Up
-        </RegisterButton>
+        <RegisterButton type="submit">Sign Up</RegisterButton>
       </FormRegister>
       <SigninLink />
-      <ToastContainer />
+      <ToastContainer autoClose={false} />
     </Box>
   );
 }

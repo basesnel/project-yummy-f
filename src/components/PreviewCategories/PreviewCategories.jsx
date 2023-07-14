@@ -3,136 +3,126 @@ import { useMediaQuery } from 'react-responsive';
 
 import { Container } from 'components/Container/Container';
 import {
-    CategoriesBox,
-    CategoriesList,
-    OtherBtn,
-    PreviewCategoriesWrapper,
-    RecipesLink,
-    RecipesList,
-    SeeAllBtn,
+  CategoriesBox,
+  CategoriesList,
+  OtherBtn,
+  PreviewCategoriesWrapper,
+  RecipesLink,
+  RecipesList,
+  SeeAllBtn,
 } from './PreviewCategories.styled';
 
 import plug from 'assets/images/PreviewCategories/1.jpg';
 import { SIZE } from 'constants';
-
-const categoriesNames = ['Breakfast', 'Miscellaneous', 'Chicken', 'Desserts'];
-const data = {
-    breakfast: [
-        { photo: plug, title: 'Banana Pancakes', id: 1 },
-        { photo: plug, title: 'Banana Pancakes1', id: 5 },
-        { photo: plug, title: 'Banana Pancakes', id: 3434234321 },
-        { photo: plug, title: 'Banana Pancakes1', id: 5565463452 },
-    ],
-    miscellaneous: [
-        { photo: plug, title: 'Portuguese prego Por ', id: 2 },
-        { photo: plug, title: 'Portuguese prego Por ', id: 7563454654 },
-        { photo: plug, title: 'Portuguese prego Por ', id: 37574565 },
-        { photo: plug, title: 'Portuguese prego Por ', id: 789742165 },
-    ],
-    chicken: [
-        { photo: plug, title: 'Teriyaki Chicken Casserole', id: 3 },
-        {
-            photo: plug,
-            title: 'Teriyaki Chicken Casserole',
-            id: 876872146876,
-        },
-        {
-            photo: plug,
-            title: 'Teriyaki Chicken Casserole',
-            id: 1654654748,
-        },
-        {
-            photo: plug,
-            title: 'Teriyaki Chicken Casserole',
-            id: 231657984549874,
-        },
-    ],
-    desserts: [
-        { photo: plug, title: 'Blackberry Fool', id: 4 },
-        { photo: plug, title: 'Blackberry Fool', id: 798798756416 },
-        { photo: plug, title: 'Blackberry Fool', id: 321654987 },
-        { photo: plug, title: 'Blackberry Fool', id: 1798513944 },
-    ],
-};
+import API from 'api';
+import Loader from 'components/Loader/Loader';
 
 export function PreviewCategories() {
-    const [amountRecipe, setAmountRecipe] = useState(0);
+  const [amountRecipe, setAmountRecipe] = useState(0);
+  const [mainPageRecipes, setMainPageRecipes] = useState({});
 
-    const isMobileScreen = useMediaQuery({ maxWidth: 767 });
-    const isTabletScreen = useMediaQuery({
-        minWidth: SIZE.tablet,
-        maxWidth: 1439,
-    });
-    const isDesktopScreen = useMediaQuery({ minWidth: SIZE.desktop });
+  const isMobileScreen = useMediaQuery({ maxWidth: 767 });
+  const isTabletScreen = useMediaQuery({
+    minWidth: SIZE.tablet,
+    maxWidth: 1439,
+  });
+  const isDesktopScreen = useMediaQuery({ minWidth: SIZE.desktop });
 
-    useEffect(() => {
-        function resize() {
-            if (isMobileScreen) {
-                return 1;
-            }
+  useEffect(() => {
+    const mainListRecipes = async () => {
+      try {
+        setMainPageRecipes(await API.fetchRecipesMainPage());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    mainListRecipes();
+  }, []);
 
-            if (isTabletScreen) {
-                return 2;
-            }
+  useEffect(() => {
+    function resize() {
+      if (isMobileScreen) {
+        return 1;
+      }
 
-            if (isDesktopScreen) {
-                return 4;
-            }
-        }
+      if (isTabletScreen) {
+        return 2;
+      }
 
-        setAmountRecipe(resize());
-    }, [isDesktopScreen, isMobileScreen, isTabletScreen]);
+      if (isDesktopScreen) {
+        return 4;
+      }
+    }
 
-    return (
-        <PreviewCategoriesWrapper>
-            <Container>
-                <CategoriesBox>
-                    <CategoriesList>
-                        {categoriesNames.map(name => {
+    setAmountRecipe(resize());
+  }, [isDesktopScreen, isMobileScreen, isTabletScreen]);
+
+  return (
+    <PreviewCategoriesWrapper>
+      <Container>
+        <CategoriesBox>
+          {Object.keys(mainPageRecipes).length !== 0 ? (
+            <CategoriesList>
+              {Object.keys(mainPageRecipes).map(name => {
+                return (
+                  <li key={name}>
+                    <h2>{name}</h2>
+                    {mainPageRecipes[name] && (
+                      <RecipesList>
+                        {mainPageRecipes[name]
+                          .slice(0, amountRecipe)
+                          .map(recipe => {
                             return (
-                                <li key={name}>
-                                    <h2>{name}</h2>
-                                    <RecipesList>
-                                        {data[name.toLowerCase()]
-                                            .slice(0, amountRecipe)
-                                            .map(recipe => {
-                                                return (
-                                                    <li key={recipe.id}>
-                                                        <RecipesLink
-                                                            to={`/recipe/${recipe.id}`}
-                                                        >
-                                                            <img
-                                                                src={
-                                                                    recipe.photo
-                                                                }
-                                                                alt={
-                                                                    recipe.title
-                                                                }
-                                                            />
-                                                            <div>
-                                                                <h3>
-                                                                    {
-                                                                        recipe.title
-                                                                    }
-                                                                </h3>
-                                                            </div>
-                                                        </RecipesLink>
-                                                    </li>
-                                                );
-                                            })}
-                                    </RecipesList>
-                                    <SeeAllBtn
-                                        to={`/categories/${name.toLowerCase()}`}
-                                    >
-                                        See all
-                                    </SeeAllBtn>
-                                </li>
+                              <li key={recipe._id}>
+                                <RecipesLink
+                                  onClick={() => {
+                                    window.scrollTo({
+                                      top: 0,
+                                      behavior: 'smooth',
+                                    });
+                                  }}
+                                  to={`/recipe/${recipe._id}`}
+                                >
+                                  <img
+                                    src={recipe.preview ? recipe.preview : plug}
+                                    alt={recipe.title}
+                                  />
+                                  <div>
+                                    <h3>{recipe.title}</h3>
+                                  </div>
+                                </RecipesLink>
+                              </li>
                             );
-                        })}
-                    </CategoriesList>
-                    <OtherBtn to="/categories">Other categories</OtherBtn>
-                </CategoriesBox>
-            </Container>
-        </PreviewCategoriesWrapper>
-    );
+                          })}
+                      </RecipesList>
+                    )}
+
+                    <SeeAllBtn
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      to={`/categories/${name.toLowerCase()}`}
+                    >
+                      See all
+                    </SeeAllBtn>
+                  </li>
+                );
+              })}
+            </CategoriesList>
+          ) : (
+            <Loader />
+          )}
+
+          <OtherBtn
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            to="/categories"
+          >
+            Other categories
+          </OtherBtn>
+        </CategoriesBox>
+      </Container>
+    </PreviewCategoriesWrapper>
+  );
 }

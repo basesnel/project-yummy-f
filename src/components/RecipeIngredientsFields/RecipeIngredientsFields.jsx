@@ -1,10 +1,13 @@
-import { SectionTitle } from './RecipeIngredientsFields.styled';
+import {
+  SectionContainer,
+  SectionTitle,
+} from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = () => {
   return (
-    <div>
+    <SectionContainer>
       <SectionTitle>Ingredients</SectionTitle>
-    </div>
+    </SectionContainer>
   );
 };
 

@@ -1,6 +1,9 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import {
@@ -30,6 +33,7 @@ const validationSchema = yup.object({
 
 export default function SigninForm() {
   const dispatch = useDispatch();
+  const { authError } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -38,13 +42,20 @@ export default function SigninForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      // console.log(values);
       dispatch(login(values));
       resetForm();
     },
   });
+
+  const notifyError = msg => {
+    toast.error(msg, {
+      toastId: 'idError',
+    });
+  };
+
   return (
     <Box>
+      {authError && notifyError(authError)}
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
@@ -60,7 +71,9 @@ export default function SigninForm() {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={formik.errors.email && 'input__error'}
+            className={
+              formik.submitCount > 0 && formik.errors.email && 'input__error'
+            }
           />
           {formik.submitCount > 0 && formik.errors.email && (
             <Warning>{formik.errors.email}</Warning>
@@ -79,7 +92,9 @@ export default function SigninForm() {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={formik.errors.password && 'input__error'}
+            className={
+              formik.submitCount > 0 && formik.errors.password && 'input__error'
+            }
           />
           {formik.submitCount > 0 && formik.errors.password && (
             <Warning>{formik.errors.password}</Warning>
@@ -88,6 +103,7 @@ export default function SigninForm() {
         <SigninButton type="submit">Sign In</SigninButton>
       </FormSignin>
       <RegistrationLink />
+      <ToastContainer autoClose={false} />
     </Box>
   );
 }
