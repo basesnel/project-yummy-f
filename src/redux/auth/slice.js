@@ -13,6 +13,7 @@ const initialState = {
   token: null,
   error: null,
   isLoggedIn: false,
+  isVerify: false,
   isRefreshing: false,
 };
 
@@ -25,18 +26,23 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = null;
-        state.isLoggedIn = action.payload.user.verify;
+        state.isVerify = true;
       })
-      .addCase(register.rejected, (state, action) => state)
+      .addCase(register.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isVerify = false;
+      })
       .addCase(login.pending, (state, action) => state)
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = action.payload.verify;
+        state.isLoggedIn = true;
+        state.isVerify = false;
         state.error = null;
       })
       .addCase(login.rejected, (state, action) => {
         state.error = action.payload;
+        state.isVerify = false;
       })
       .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };
@@ -59,7 +65,7 @@ const authSlice = createSlice({
       .addCase(verify.pending, (state, action) => state)
       .addCase(verify.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLoggedIn = action.payload.verify;
+        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(verify.rejected, (state, action) => state)
