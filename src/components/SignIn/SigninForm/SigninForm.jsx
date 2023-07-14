@@ -47,7 +47,7 @@ export default function SigninForm() {
     },
   });
 
-  const notify = msg => {
+  const notifyError = msg => {
     toast.error(msg, {
       toastId: 'idError',
     });
@@ -55,7 +55,7 @@ export default function SigninForm() {
 
   return (
     <Box>
-      {authError && notify(authError)}
+      {authError && notifyError(authError)}
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
