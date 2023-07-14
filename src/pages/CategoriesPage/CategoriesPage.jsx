@@ -1,12 +1,13 @@
 import { Grid, Pagination } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { Container } from 'components/Container/Container';
-import { useNavigate, useParams } from 'react-router-dom';
 import CardCategorie from 'components/CardCategorie/CardCategorie';
 import API from 'api';
 import Title from 'components/Title/Title';
 import CategoriesList from './CategoriesList/CategoriesList';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -77,12 +78,16 @@ const CategoriesPage = () => {
         </Grid>
 
         <Pagination
+          sx={{ display: 'flex', justifyContent: 'center', m: '50px 0 100px' }}
           count={totalPages}
           page={page}
           onChange={setPageHandler}
           variant="outlined"
           color="primary"
+          size="large"
         />
+
+        {(!recipieArr || !recipieArr.length) && <NotFoundPage />}
       </Container>
     </section>
   );
