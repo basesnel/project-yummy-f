@@ -1,1 +1,1 @@
-export const baseUrl = 'https://project-yummy-b.onrender.com/api';
+export const baseUrl = 'https://project-yummy-b.onrender.com';
