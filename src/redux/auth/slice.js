@@ -65,7 +65,7 @@ const authSlice = createSlice({
       .addCase(verify.pending, (state, action) => state)
       .addCase(verify.fulfilled, (state, action) => {
         state.user = action.payload;
-        // state.isLoggedIn = true;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(verify.rejected, (state, action) => state)
