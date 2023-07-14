@@ -103,7 +103,7 @@ export default function SigninForm() {
         <SigninButton type="submit">Sign In</SigninButton>
       </FormSignin>
       <RegistrationLink />
-      <ToastContainer />
+      <ToastContainer autoClose={false} />
     </Box>
   );
 }
