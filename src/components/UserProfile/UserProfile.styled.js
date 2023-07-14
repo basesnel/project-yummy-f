@@ -10,10 +10,7 @@ import { SIZE } from 'constants';
 export const Container = styled.div`
   margin: 100px auto;
   position: relative;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 54px;
-  //   align-items: center;
+
   width: 330px;
   padding: 32px 24px;
   border-radius: 24px;
@@ -21,12 +18,12 @@ export const Container = styled.div`
   box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.1);
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 480px;
-    // gap: 50px;
+
     padding: 50px 40px;
   }
   @media screen and (min-width: ${SIZE.desktop}) {
     width: 500px;
-    // gap: 52px;
+
     padding: 60px 50px;
   }
 `;
@@ -124,6 +121,9 @@ export const Input = styled.input`
     width: 400px;
     padding-left: 51px;
   }
+  &.input__error {
+    border-color: #e74a3b;
+  }
 `;
 
 export const InputWrapper = styled.label`
@@ -142,6 +142,7 @@ export const UserIcon = styled(UserSvg)`
     width: 24px;
     left: 19px;
   }
+  stroke: #23262a;
 `;
 
 export const EditIcon = styled(EditSvg)`
@@ -159,6 +160,7 @@ export const EditIcon = styled(EditSvg)`
 `;
 
 export const InputBtnWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -169,6 +171,7 @@ export const InputBtnWrapper = styled.div`
   line-height: normal;
   letter-spacing: -0.28px;
   line-height: 1.29px;
+
   button {
     height: 49px;
     width: 282px;
@@ -256,4 +259,12 @@ export const Backdrop = styled.div`
   overflow-y: auto;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99;
+`;
+
+export const Message = styled.p`
+  position: absolute;
+  bottom: -10px;
+  left: 5px;
+  color: #e74a3b;
+  font-size: 10px;
 `;
