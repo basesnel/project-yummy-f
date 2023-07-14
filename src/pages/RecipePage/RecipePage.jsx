@@ -17,6 +17,7 @@ const RecipePage = () => {
   const [descr, setDescr] = useState('');
   const [time, setTime] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [photo, setPhoto] = useState('');
 
   useEffect(() => {
     const getRecipe = async recipeId => {
@@ -30,6 +31,7 @@ const RecipePage = () => {
         setIsFavorite(recipe.favorite ? true : false);
         setIngredients(recipe.ingredients);
         setPreparation(recipe.instructions);
+        setPhoto(recipe.thumb);
       } catch (error) {
         console.log(error, recipeId);
       }
@@ -47,7 +49,7 @@ const RecipePage = () => {
         isFavorite={isFavorite}
       />
       <RecipeIngredientsList ingredients={ingredients} />
-      <RecipePreparation instructions={preparation} />
+      <RecipePreparation instructions={preparation} photo={photo} />
     </>
   );
 };
