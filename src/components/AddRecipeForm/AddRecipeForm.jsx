@@ -9,6 +9,7 @@ import RecipePreparationFields from 'components/RecipePreparationFields/RecipePr
 
 const AddRecipeForm = () => {
   const [categories, setCategories] = useState([]);
+  const [picture, setPicture] = useState(null);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -23,17 +24,41 @@ const AddRecipeForm = () => {
 
   return (
     <Formik
-      initialValues={{ preparation: '' }}
+      initialValues={{
+        title: '',
+        description: '',
+        category: '',
+        time: '',
+        preparation: '',
+      }}
       onSubmit={values => {
+        console.log(picture);
+        if (typeof values.preparation === 'string') {
+          values.preparation = values.preparation.split(/\r?\n/);
+        }
+        const formData = new FormData();
+        formData.append('picture', picture);
+
+        for (const key in values) {
+          formData.append(key, values[key]);
+          console.log(key, values[key]);
+        }
+
         alert(JSON.stringify(values, null, 2));
+        for (let pair of formData.entries()) {
+          console.log(pair[0] + ', ' + pair[1]);
+        }
       }}
     >
-      {({ values, handleSubmit }) => (
+      {({ handleSubmit }) => (
         <RecipeForm onSubmit={handleSubmit}>
-          <RecipeDescriptionFields categories={categories} />
+          <RecipeDescriptionFields
+            categories={categories}
+            setPicture={setPicture}
+          />
           <RecipeIngredientsFields />
           <RecipePreparationFields />
-          <button type="submit">Submit</button>
+          <button type="submit">Add</button>
         </RecipeForm>
       )}
     </Formik>

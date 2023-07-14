@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
-// import { useFormikContext } from 'formik';
+import { useFormikContext } from 'formik';
 
 import blank from '../../assets/images/addRecipe/blank.png';
 import { timeOptions } from 'utils/selectors';
@@ -8,13 +8,14 @@ import {
   SectionContainer,
   ImageHolder,
   ImagePlaceholder,
+  FileInput,
   InputsContainer,
   InputField,
 } from './RecipeDescriptionFields.styled';
 import { COLOR } from 'constants';
 
-const RecipeDescriptionFields = ({ categories }) => {
-  //   const { values, handleChange, handleBlur } = useFormikContext();
+const RecipeDescriptionFields = ({ categories, setPicture }) => {
+  const { values, handleChange } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
 
   const fileInputRef = useRef(null);
@@ -25,8 +26,10 @@ const RecipeDescriptionFields = ({ categories }) => {
 
   const uploadImage = ({ target }) => {
     const selectedFile = target.files[0];
+    console.log(target.files[0]);
     const imagePreviewURL = URL.createObjectURL(selectedFile);
     setImagePreview(imagePreviewURL);
+    setPicture(target.files[0]);
   };
 
   const categoriesOptions = categories.map(category => {
@@ -41,8 +44,7 @@ const RecipeDescriptionFields = ({ categories }) => {
           alt="recipe placeholder"
           onClick={handleClick}
         />
-        <input
-          style={{ opacity: '0' }}
+        <FileInput
           type="file"
           id="picture"
           name="picture"
@@ -57,16 +59,21 @@ const RecipeDescriptionFields = ({ categories }) => {
           id="title"
           name="title"
           placeholder="Enter item title"
+          value={values.title}
+          onChange={handleChange}
         />
         <InputField
           type="text"
           id="description"
           name="description"
           placeholder="Enter about recipe"
+          value={values.description}
+          onChange={handleChange}
         />
         <Select
           options={categoriesOptions}
           placeholder="Category"
+          onChange={e => (values.category = e.value)}
           noOptionsMessage={() => 'No category found'}
           components={{
             IndicatorSeparator: () => null,
@@ -96,6 +103,7 @@ const RecipeDescriptionFields = ({ categories }) => {
         <Select
           options={timeOptions}
           placeholder="Cooking time"
+          onChange={e => (values.time = e.value)}
           components={{
             IndicatorSeparator: () => null,
           }}
