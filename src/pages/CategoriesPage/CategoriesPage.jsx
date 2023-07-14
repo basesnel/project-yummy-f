@@ -1,30 +1,20 @@
-import { Box, Grid, Pagination, Tab, Tabs, Typography } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { Container } from 'components/Container/Container';
-import { useNavigate, useParams } from 'react-router-dom';
 import CardCategorie from 'components/CardCategorie/CardCategorie';
 import API from 'api';
+import Title from 'components/Title/Title';
+import CategoriesList from './CategoriesList/CategoriesList';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
-
   const [recipieArr, setRecipieArr] = useState([]);
-  const [categoriesArr, setCategoriesArr] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const { categoryName } = useParams();
-
-  // download list categories name
-  useEffect(() => {
-    const categoriesList = async () => {
-      try {
-        setCategoriesArr(await API.fetchCategories());
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    categoriesList();
-  }, []);
 
   // set RecipierArr and url to initial state
   useEffect(() => {
@@ -32,6 +22,8 @@ const CategoriesPage = () => {
       try {
         const res = await API.fetchRecipies(categoryName);
         setRecipieArr(res?.recipes);
+        setTotalPages(res?.totalPages);
+        setPage(1);
       } catch (err) {
         console.log(err);
       }
@@ -42,14 +34,10 @@ const CategoriesPage = () => {
     navigate(`/categories/${tempCategoryName}`);
   }, [categoryName, navigate]);
 
-  const handleChange = (event, newValue) => {
-    navigate(`/categories/${newValue}`);
-  };
-
   const setPageHandler = async (_, value) => {
     setPage(value);
     try {
-      const res = await API.fetchRecipies(categoryName, page);
+      const res = await API.fetchRecipies(categoryName, value);
       setRecipieArr(res?.recipes);
     } catch (err) {
       console.log(err);
@@ -64,71 +52,9 @@ const CategoriesPage = () => {
   return (
     <section>
       <Container>
-        <Typography
-          variant="h2"
-          sx={{
-            color: '#001833',
-            fontFamily: 'Poppins',
-            fontWeight: '600',
-            lineHeight: '1',
-            pt: {
-              xs: 6.5,
-              md: 9,
-              lg: 20.5,
-            },
-            fontSize: {
-              xs: '28px',
-              md: '32px',
-              lg: '44px',
-            },
-            letterSpacing: {
-              xs: '-0.56px',
-              md: '-0.64px',
-              lg: '-0.88px',
-            },
-            mb: { xs: '28px', md: '32px', lg: '72px' },
-          }}
-        >
-          Categories
-        </Typography>
+        <Title>Categories</Title>
 
-        <Box
-          sx={{
-            width: '100%',
-          }}
-        >
-          {categoriesArr?.length && categoryName !== ':categoryName' && (
-            <Tabs
-              sx={{
-                mt: 10,
-                borderBottom: '1px solid #eaeaea',
-              }}
-              value={categoryName}
-              onChange={handleChange}
-              variant="scrollable"
-              scrollButtons="auto"
-            >
-              {categoriesArr.length &&
-                categoriesArr.map(categ => (
-                  <Tab
-                    sx={{
-                      py: { xs: '32px', md: '28px' },
-                      px: { xs: '14px', md: '28px' },
-                      textTransform: 'capitalize',
-                      color: '#BDBDBD',
-                      fontWeight: '400',
-                      lineHeight: '1',
-                      fontFamily: 'Poppins',
-                      fontSize: { xs: '14px', md: '18px' },
-                    }}
-                    key={categ}
-                    value={categ.toLowerCase()}
-                    label={categ}
-                  />
-                ))}
-            </Tabs>
-          )}
-        </Box>
+        <CategoriesList></CategoriesList>
 
         <Grid
           container
@@ -152,12 +78,16 @@ const CategoriesPage = () => {
         </Grid>
 
         <Pagination
-          count={10}
+          sx={{ display: 'flex', justifyContent: 'center', m: '50px 0 100px' }}
+          count={totalPages}
           page={page}
           onChange={setPageHandler}
           variant="outlined"
           color="primary"
+          size="large"
         />
+
+        {(!recipieArr || !recipieArr.length) && <NotFoundPage />}
       </Container>
     </section>
   );
