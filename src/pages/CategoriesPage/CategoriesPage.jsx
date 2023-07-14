@@ -1,4 +1,4 @@
-import { Grid, Pagination } from '@mui/material';
+import { Box, Grid, Pagination, styled, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ const CategoriesPage = () => {
       <Container>
         <Title>Categories</Title>
 
-        <CategoriesList></CategoriesList>
+        <CategoriesList />
 
         <Grid
           container
@@ -78,7 +78,11 @@ const CategoriesPage = () => {
         </Grid>
 
         <Pagination
-          sx={{ display: 'flex', justifyContent: 'center', m: '50px 0 100px' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            m: '50px 0 100px',
+          }}
           count={totalPages}
           page={page}
           onChange={setPageHandler}

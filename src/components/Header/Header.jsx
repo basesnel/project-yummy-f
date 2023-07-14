@@ -7,8 +7,10 @@ import { useMediaQuery } from 'react-responsive';
 // import { SIZE } from 'constants';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
+import { FormControlLabel } from '@mui/material';
+import MaterialUISwitch from './MaterialUISwitch';
 
-const Header = () => {
+const Header = ({ onTheme }) => {
   const [isModalShown, setIsModalShown] = useState(false);
 
   const isBurgerShown = useMediaQuery({
@@ -25,6 +27,10 @@ const Header = () => {
         <Logo />
         {!isBurgerShown && !isModalShown && <Navigation />}
         <UserLogo />
+        <FormControlLabel
+          onChange={onTheme}
+          control={<MaterialUISwitch sx={{ ml: 5 }} />}
+        />
         {/* <ThemeToggler/> */}
         {isBurgerShown && !isModalShown && (
           <BurgerBtn onClick={handleBurgerClick}>
