@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
 import API from 'api';
-import { RecipeForm } from './AddRecipeForm.styled';
+import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
 import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
@@ -58,7 +58,7 @@ const AddRecipeForm = () => {
           />
           <RecipeIngredientsFields />
           <RecipePreparationFields />
-          <button type="submit">Add</button>
+          <SubmitButton type="submit">Add</SubmitButton>
         </RecipeForm>
       )}
     </Formik>
