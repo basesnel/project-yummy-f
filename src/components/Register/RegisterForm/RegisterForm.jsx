@@ -41,18 +41,18 @@ export default function RegisterForm() {
   const { isVerify, authError } = useAuth();
 
   function visitCount() {
-    var visits = Number(localStorage.getItem('visitCount'));
+    var visited = Number(localStorage.getItem('visitCount'));
     var current = Boolean(sessionStorage.getItem('session'));
-    console.log(visits);
+    console.log(visited);
     console.log(current);
     if (!current) {
-      visits++;
+      visited++;
     }
 
-    localStorage.setItem('visitCount', visits);
+    localStorage.setItem('visitCount', visited);
     sessionStorage.setItem('session', true);
 
-    return visits;
+    return visited;
   }
   const formik = useFormik({
     initialValues: {
