@@ -40,6 +40,20 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const { isVerify, authError } = useAuth();
 
+  function visitCount() {
+    var visits = Number(localStorage.getItem('visitCount'));
+    var current = Boolean(sessionStorage.getItem('session'));
+    console.log(visits);
+    console.log(current);
+    if (!current) {
+      visits++;
+    }
+
+    localStorage.setItem('visitCount', visits);
+    sessionStorage.setItem('session', true);
+
+    return visits;
+  }
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -49,7 +63,9 @@ export default function RegisterForm() {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       // console.log(values);
+      visitCount();
       dispatch(register(values));
+
       resetForm();
     },
   });
