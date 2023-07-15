@@ -15,16 +15,22 @@ const CategoriesPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const { categoryName } = useParams();
+  const [error, setError] = useState(false);
 
   // set RecipierArr and url to initial state
   useEffect(() => {
     const oneCategorie = async categoryName => {
       try {
         const res = await API.fetchRecipies(categoryName);
-        setRecipieArr(res?.recipes);
-        setTotalPages(res?.totalPages);
-        setPage(1);
+        if (res?.recipes) {
+          setRecipieArr(res?.recipes);
+          setTotalPages(res?.totalPages);
+          setPage(1);
+          setError(false);
+        } else throw new Error('dont find this categories');
       } catch (err) {
+        setRecipieArr([]);
+        setError(true);
         console.log(err);
       }
     };
@@ -38,8 +44,13 @@ const CategoriesPage = () => {
     setPage(value);
     try {
       const res = await API.fetchRecipies(categoryName, value);
-      setRecipieArr(res?.recipes);
+      if (res?.recipes) {
+        setRecipieArr(res?.recipes);
+        setError(false);
+      } else throw new Error('dont find this category');
     } catch (err) {
+      setRecipieArr([]);
+      setError(true);
       console.log(err);
     }
   };
@@ -52,42 +63,50 @@ const CategoriesPage = () => {
   return (
     <section>
       <Container>
-        <Title>Categories</Title>
+        {!error && <Title>Categories</Title>}
 
-        <CategoriesList></CategoriesList>
+        {<CategoriesList onError={el => setError(el)} />}
 
-        <Grid
-          container
-          pt={{ xs: '32px', md: '50px' }}
-          mb={{ xs: '60px', md: '100px' }}
-          rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
-          columnSpacing={{ md: 4, lg: 1.5 }}
-        >
-          {recipieArr &&
-            recipieArr.length &&
-            recipieArr?.map(({ _id, title, thumb }) => (
-              <Grid item xs={12} md={6} lg={3} key={_id}>
-                <CardCategorie
-                  handleRecipe={chooseRecipe}
-                  id={_id}
-                  title={title}
-                  thumb={thumb}
-                ></CardCategorie>
-              </Grid>
-            ))}
-        </Grid>
+        {!error && (
+          <Grid
+            container
+            pt={{ xs: '32px', md: '50px' }}
+            mb={{ xs: '60px', md: '100px' }}
+            rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
+            columnSpacing={{ md: 4, lg: 1.5 }}
+          >
+            {recipieArr &&
+              recipieArr.length &&
+              recipieArr?.map(({ _id, title, thumb }) => (
+                <Grid item xs={12} md={6} lg={3} key={_id}>
+                  <CardCategorie
+                    handleRecipe={chooseRecipe}
+                    id={_id}
+                    title={title}
+                    thumb={thumb}
+                  ></CardCategorie>
+                </Grid>
+              ))}
+          </Grid>
+        )}
 
-        <Pagination
-          sx={{ display: 'flex', justifyContent: 'center', m: '50px 0 100px' }}
-          count={totalPages}
-          page={page}
-          onChange={setPageHandler}
-          variant="outlined"
-          color="primary"
-          size="large"
-        />
+        {!error && (
+          <Pagination
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              m: '50px 0 100px',
+            }}
+            count={totalPages}
+            page={page}
+            onChange={setPageHandler}
+            variant="outlined"
+            color="primary"
+            size="large"
+          />
+        )}
 
-        {(!recipieArr || !recipieArr.length) && <NotFoundPage />}
+        {error && <NotFoundPage />}
       </Container>
     </section>
   );
