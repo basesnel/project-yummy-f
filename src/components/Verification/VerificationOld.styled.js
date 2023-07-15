@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { SIZE } from 'constants';
 
 export const WrapperSection = styled.div`
-@media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     flex-direction: row;
-  };
-@media screen and (min-width: ${SIZE.mobile}) {
-      letter-spacing: -0.24px;
-    };
-@media screen and (min-width: ${SIZE.mobile}) {
-        margin: 33.5px 0 0 0;
-      }
-    };
+  }
+  @media screen and (min-width: ${SIZE.mobile}) {
+    letter-spacing: -0.24px;
+  }
+  @media screen and (min-width: ${SIZE.mobile}) {
+    margin: 33.5px 0 0 0;
+  }
 `;
+
 export const Button = styled.button`
   display: flex;
   position: relative;
@@ -40,8 +40,7 @@ export const Image = styled.img.attrs(props => ({
   jsname: 'kn3ccd',
   ariaHidden: 'false',
 }))`
-  textalign: center;
-  liststuletype: none;
+  text-align: center;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 0;
