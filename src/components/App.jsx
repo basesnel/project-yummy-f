@@ -21,9 +21,7 @@ const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage'));
 const SearchPage = lazy(() => import('../pages/SearchPage'));
 const ShoppingListPage = lazy(() => import('../pages/ShoppingListPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
-const VerificationPage = lazy(() =>
-  import('./VerificationPage/VerificationPage')
-);
+const VerificationPage = lazy(() => import('../pages/VerificationPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +53,16 @@ export const App = () => {
           path="/signin"
           element={
             <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
+          }
+        />
+        <Route
+          exact
+          path="/verification"
+          element={
+            <RestrictedRoute
+              redirectTo="/main"
+              component={<VerificationPage />}
+            />
           }
         />
         <Route
@@ -105,16 +113,6 @@ export const App = () => {
             <PrivateRoute
               redirectTo="/signin"
               component={<ShoppingListPage />}
-            />
-          }
-        />
-        <Route
-          exact
-          path="verification-page"
-          element={
-            <PrivateRoute
-              redirectTo="/verification-page"
-              component={token ? <VerificationPage /> : <NotFoundPage />}
             />
           }
         />
