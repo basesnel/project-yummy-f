@@ -11,15 +11,15 @@ import { Provider } from 'react-redux';
 import Loader from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <PersistGate loading={<Loader />} persistor={persistedStore}>
-                <BrowserRouter basename="/project-yummy-f">
-                    <ThemeProvider theme={theme}>
-                        <App />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </PersistGate>
-        </Provider>
-    </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={<Loader />} persistor={persistedStore}>
+      <BrowserRouter basename="/project-yummy-f">
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
+  // </React.StrictMode>
 );
