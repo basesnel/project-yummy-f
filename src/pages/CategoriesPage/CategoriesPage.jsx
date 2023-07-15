@@ -65,7 +65,7 @@ const CategoriesPage = () => {
       <Container>
         {!error && <Title>Categories</Title>}
 
-        {<CategoriesList onError={el => setError(el)} />}
+        <CategoriesList onError={el => setError(el)} />
 
         {!error && (
           <Grid
