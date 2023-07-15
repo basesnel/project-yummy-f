@@ -20,7 +20,7 @@ export const AccessNote = styled.section`
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
 `;
 

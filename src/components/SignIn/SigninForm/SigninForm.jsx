@@ -11,6 +11,7 @@ import {
   FormSignin,
   IconWrapper,
   SigninButton,
+  SigninButtonWrapper,
   SigninInput,
   SigninInputWrapper,
   SigninLabel,
@@ -100,7 +101,9 @@ export default function SigninForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </SigninInputWrapper>
-        <SigninButton type="submit">Sign In</SigninButton>
+        <SigninButtonWrapper>
+          <SigninButton type="submit">Sign In</SigninButton>
+        </SigninButtonWrapper>
       </FormSignin>
       <RegistrationLink />
       <ToastContainer autoClose={false} />

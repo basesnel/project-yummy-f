@@ -26,7 +26,7 @@ export const FormSignin = styled.form`
   }
 `;
 
-export const SigninLabel = styled.label`
+export const SigninLabel = styled.p`
   color: ${COLOR.second};
   font-family: Poppins;
   font-size: 24px;
@@ -42,9 +42,10 @@ export const SigninLabel = styled.label`
 `;
 
 export const SigninButton = styled.button`
+  width: 100%;
   border-radius: 6px;
   background: ${COLOR.main};
-  padding: 14px 110px;
+  padding: 14px 0;
   border: none;
   color: ${COLOR.second};
   text-align: center;
@@ -53,7 +54,6 @@ export const SigninButton = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 1.125;
-  margin-top: 16px;
   transition: ${TRANSITION.forHoverColor};
 
   &:hover,
@@ -108,6 +108,13 @@ export const SigninInputWrapper = styled.div`
   }
 `;
 
+export const SigninButtonWrapper = styled.div`
+  padding-top: 16px;
+  @media screen and (min-width: ${SIZE.tablet}) {
+    margin-bottom: 24px;
+  }
+`;
+
 export const IconWrapper = styled.div`
   position: absolute;
   top: 50%;
@@ -133,6 +140,14 @@ export const Box = styled.div`
 
 export const Warning = styled.p`
   position: absolute;
-  top: 65px;
+  top: 48px;
+  font-size: 8px;
   color: #e74a3b;
+  @media screen and (min-width: ${SIZE.tablet}) {
+    top: 64px;
+    font-size: 12px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    font-size: 14px;
+  }
 `;
