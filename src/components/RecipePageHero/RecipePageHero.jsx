@@ -21,7 +21,16 @@ export const RecipePageHero = ({ title, descr, time, isFavorite }) => {
       <MainTitle title={title} color={'#8baa36'} />
       <RecipeDeskr>{descr}</RecipeDeskr>
 
-      <SkewButton bgColor={'transparent'}>
+      <SkewButton
+        bgColor={'transparent'}
+        paddingHxs={12}
+        paddingHmd={22}
+        paddingHlg={22}
+        paddingWxs={24}
+        paddingWmd={44}
+        paddingWlg={44}
+        style={{ border: '1px solid #8baa36', color: '#23262a' }}
+      >
         {isFavorite ? 'Remove from favorite' : 'Add to favorite recipes'}
       </SkewButton>
       <TimeContainer>
