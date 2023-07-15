@@ -3,7 +3,8 @@ import API from 'api';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function CategoriesList() {
+export default function CategoriesList({ onError }) {
+  const [err, setErr] = useState(false);
   const [categoriesArr, setCategoriesArr] = useState([]);
   const { categoryName } = useParams();
   const navigate = useNavigate();
@@ -20,16 +21,30 @@ export default function CategoriesList() {
     categoriesList();
   }, []);
 
+  useEffect(() => {
+    if (
+      !categoriesArr?.length ||
+      !categoriesArr?.find(name => name.toLowerCase() === categoryName)
+    ) {
+      setErr(true);
+      onError("Don't find categorie");
+    } else {
+      setErr(false);
+      onError(false);
+    }
+  }, [categoriesArr, categoryName, onError]);
+
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
   };
+
   return (
-    <Box
-      sx={{
-        width: '100%',
-      }}
-    >
-      {categoriesArr?.length && categoryName !== ':categoryName' && (
+    !err && (
+      <Box
+        sx={{
+          width: '100%',
+        }}
+      >
         <Tabs
           sx={{
             mt: 10,
@@ -40,26 +55,25 @@ export default function CategoriesList() {
           variant="scrollable"
           scrollButtons="auto"
         >
-          {categoriesArr.length &&
-            categoriesArr.map(categ => (
-              <Tab
-                sx={{
-                  py: { xs: '32px', md: '28px' },
-                  px: { xs: '14px', md: '28px' },
-                  textTransform: 'capitalize',
-                  color: '#BDBDBD',
-                  fontWeight: '400',
-                  lineHeight: '1',
-                  fontFamily: 'Poppins',
-                  fontSize: { xs: '14px', md: '18px' },
-                }}
-                key={categ}
-                value={categ.toLowerCase()}
-                label={categ}
-              />
-            ))}
+          {categoriesArr?.map(categ => (
+            <Tab
+              sx={{
+                py: { xs: '32px', md: '28px' },
+                px: { xs: '14px', md: '28px' },
+                textTransform: 'capitalize',
+                color: '#BDBDBD',
+                fontWeight: '400',
+                lineHeight: '1',
+                fontFamily: 'Poppins',
+                fontSize: { xs: '14px', md: '18px' },
+              }}
+              key={categ}
+              value={categ.toLowerCase()}
+              label={categ}
+            />
+          ))}
         </Tabs>
-      )}
-    </Box>
+      </Box>
+    )
   );
 }

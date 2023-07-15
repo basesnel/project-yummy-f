@@ -1,12 +1,12 @@
 import { Container } from 'components/Container/Container';
+import ContainerSection from 'components/ContainerSection/ContainerSection';
 import MainTitle from 'components/MainTitle/MainTitle';
 import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
-import { WrapperMain } from './FavoritePage.styled';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
 
 const FavoritePage = () => {
   return (
-    <WrapperMain>
+    <ContainerSection>
       <Container>
         <MainTitle title="Favorites" />
         <MyRecipesList>
@@ -16,7 +16,7 @@ const FavoritePage = () => {
           <MyRecipesItem />
         </MyRecipesList>
       </Container>
-    </WrapperMain>
+    </ContainerSection>
   );
 };
 
