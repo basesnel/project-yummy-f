@@ -3,7 +3,8 @@ import API from 'api';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function CategoriesList() {
+export default function CategoriesList({ onError }) {
+  // const [err, setErr] = useState(false);
   const [categoriesArr, setCategoriesArr] = useState([]);
   const { categoryName } = useParams();
   const navigate = useNavigate();
@@ -20,16 +21,27 @@ export default function CategoriesList() {
     categoriesList();
   }, []);
 
+  useEffect(() => {
+    if (
+      !categoriesArr?.length ||
+      !categoriesArr?.find(name => name.toLowerCase() === categoryName)
+    ) {
+      onError("Don't find categorie");
+    } else onError(false);
+  }, [categoriesArr, categoryName, onError]);
+
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
   };
+
   return (
-    <Box
-      sx={{
-        width: '100%',
-      }}
-    >
-      {categoriesArr?.length && categoryName !== ':categoryName' && (
+    categoriesArr?.length &&
+    !categoryName === ':categoryName' && (
+      <Box
+        sx={{
+          width: '100%',
+        }}
+      >
         <Tabs
           sx={{
             mt: 10,
@@ -59,7 +71,7 @@ export default function CategoriesList() {
               />
             ))}
         </Tabs>
-      )}
-    </Box>
+      </Box>
+    )
   );
 }
