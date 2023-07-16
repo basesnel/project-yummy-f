@@ -1,15 +1,23 @@
 import styled from 'styled-components';
-import { SIZE } from 'constants';
+import { SIZE, COLOR } from 'constants';
 
 export const PrepSection = styled.section`
-  padding: 18px 21px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
 
   @media screen and (min-width: ${SIZE.tablet}) {
+    // flex-direction: row;
+    // justify-content: space-between;
+    padding: 46px 32px;
+    gap: 50px;
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
     flex-direction: row;
+    padding: 50px 100px;
   }
 
   h2 {
@@ -23,30 +31,69 @@ export const PrepSection = styled.section`
     @media screen and (min-width: ${SIZE.mobile}) {
       letter-spacing: -0.24px;
     }
+  }
 
-    ul {
-      margin: 31.5px 0 0 0;
+  ul {
+    margin: 28px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
 
-      @media screen and (min-width: ${SIZE.mobile}) {
-        margin: 33.5px 0 0 0;
-      }
+    @media screen and (min-width: ${SIZE.mobile}) {
+      margin: 33.5px 0 0 0;
     }
 
-    img {
-      margin: 40px 0 0 0;
-      border-radius: 8px;
-      width: 100%;
-      height: 250px;
+    li {
+      display: flex;
+      justify-content: flex-start;
+      gap: 14px;
+      align-items: flex-start;
 
-      @media screen and (min-width: ${SIZE.mobile}) {
-        margin-top: 53px;
-        max-width: 433px;
-        height: 332px;
+      span {
+        display: inline-block;
+        border-radius: 50%;
+        background-color: ${COLOR.hover};
+        text-align: center;
+        color: #fff;
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 600;
+        min-width: 21px;
+        height: 21px;
+        padding: 5px 6px;
       }
 
-      @media screen and (min-width: ${SIZE.tablet}) {
-        margin: 0;
+      p {
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.2;
+        letter-spacing: -0.24px;
+
+        @media screen and (min-width: ${SIZE.mobile}) {
+          font-size: 14px;
+          letter-spacing: -0.28px;
+          line-height: 1.3;
+        }
       }
+    }
+  }
+
+  img {
+    margin: 40px 0 0 0;
+    border-radius: 8px;
+    width: 100%;
+    height: 250px;
+
+    @media screen and (min-width: ${SIZE.mobile}) {
+      margin-top: 53px;
+      max-width: 433px;
+      height: 332px;
+    }
+
+    @media screen and (min-width: ${SIZE.tablet}) {
+      margin: 0;
+      width: 433px;
     }
   }
 `;
