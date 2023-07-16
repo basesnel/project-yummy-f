@@ -4,7 +4,7 @@ import { baseUrl } from 'constants';
 axios.defaults.baseURL = baseUrl;
 
 const removeFromFavorites = async recipeId => {
-  const res = await axios.delete(`api/favorites/${recipeId}`);
+  const res = await axios.delete(`favorites/${recipeId}`);
   return res.data;
 };
 
