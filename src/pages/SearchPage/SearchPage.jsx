@@ -1,16 +1,17 @@
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
+import { SearchPageComponent } from 'components/SearchPage/SearchPageComponent';
+import ContainerSection from 'components/ContainerSection/ContainerSection';
+import { Container } from 'components/Container/Container';
+
 const SearchPage = () => {
   return (
     <ThemeWrap>
-      <h1
-        style={{
-          padding: '200px',
-          textAlign: 'center',
-        }}
-      >
-        SearchPage
-      </h1>
+      <ContainerSection>
+        <Container>
+          <SearchPageComponent />
+        </Container>
+      </ContainerSection>
     </ThemeWrap>
   );
 };
