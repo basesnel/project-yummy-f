@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,6 +13,7 @@ import {
   RegisterButton,
   RegisterInput,
   RegisterInputWrapper,
+  RegisterButtonWrapper,
   RegisterLabel,
   Warning,
 } from './RegisterForm.styled';
@@ -37,6 +39,7 @@ const validationSchema = yup.object({
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const { isVerify, authError } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -49,18 +52,25 @@ export default function RegisterForm() {
       // console.log(values);
       dispatch(register(values));
       resetForm();
-      notify('Check your email to verify your profile');
     },
   });
 
   const notify = msg => {
-    toast(msg, {
-      toastId: 'idEmailAuth',
+    toast.success(msg, {
+      toastId: 'idEmailVerify',
+    });
+  };
+
+  const notifyError = msg => {
+    toast.error(msg, {
+      toastId: 'idError',
     });
   };
 
   return (
     <Box>
+      {isVerify && notify('Check your email to verify your profile')}
+      {authError && notifyError(authError)}
       <FormRegister onSubmit={formik.handleSubmit}>
         <RegisterLabel>Registation</RegisterLabel>
 
@@ -73,6 +83,7 @@ export default function RegisterForm() {
             id="name"
             name="name"
             placeholder="Name"
+            autoComplete="off"
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -94,6 +105,7 @@ export default function RegisterForm() {
             id="email"
             name="email"
             placeholder="Email"
+            autoComplete="off"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -115,6 +127,7 @@ export default function RegisterForm() {
             id="password"
             type="password"
             name="password"
+            autoComplete="off"
             placeholder="Password"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -127,10 +140,12 @@ export default function RegisterForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </RegisterInputWrapper>
-        <RegisterButton type="submit">Sign Up</RegisterButton>
+        <RegisterButtonWrapper>
+          <RegisterButton type="submit">Sign Up</RegisterButton>
+        </RegisterButtonWrapper>
       </FormRegister>
       <SigninLink />
-      <ToastContainer />
+      <ToastContainer autoClose={false} />
     </Box>
   );
 }

@@ -1,20 +1,21 @@
-import Select from 'react-select';
 import { useRef, useState } from 'react';
-// import { useFormikContext } from 'formik';
+import { useFormikContext } from 'formik';
 
+import CustomValueContainer from './CustomValueContainer';
 import blank from '../../assets/images/addRecipe/blank.png';
 import { timeOptions } from 'utils/selectors';
 import {
   SectionContainer,
   ImageHolder,
   ImagePlaceholder,
+  FileInput,
   InputsContainer,
   InputField,
+  StyledSelect,
 } from './RecipeDescriptionFields.styled';
-import { COLOR } from 'constants';
 
-const RecipeDescriptionFields = ({ categories }) => {
-  //   const { values, handleChange, handleBlur } = useFormikContext();
+const RecipeDescriptionFields = ({ categories, setPicture }) => {
+  const { values, handleChange } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
 
   const fileInputRef = useRef(null);
@@ -25,8 +26,10 @@ const RecipeDescriptionFields = ({ categories }) => {
 
   const uploadImage = ({ target }) => {
     const selectedFile = target.files[0];
+    console.log(target.files[0]);
     const imagePreviewURL = URL.createObjectURL(selectedFile);
     setImagePreview(imagePreviewURL);
+    setPicture(target.files[0]);
   };
 
   const categoriesOptions = categories.map(category => {
@@ -41,8 +44,7 @@ const RecipeDescriptionFields = ({ categories }) => {
           alt="recipe placeholder"
           onClick={handleClick}
         />
-        <input
-          style={{ opacity: '0' }}
+        <FileInput
           type="file"
           id="picture"
           name="picture"
@@ -57,67 +59,38 @@ const RecipeDescriptionFields = ({ categories }) => {
           id="title"
           name="title"
           placeholder="Enter item title"
+          value={values.title}
+          onChange={handleChange}
         />
         <InputField
           type="text"
           id="description"
           name="description"
           placeholder="Enter about recipe"
+          value={values.description}
+          onChange={handleChange}
         />
-        <Select
+        <StyledSelect
+          classNamePrefix="Select"
           options={categoriesOptions}
+          isSearchable={false}
           placeholder="Category"
-          noOptionsMessage={() => 'No category found'}
+          onChange={e => (values.category = e.value)}
+          menuShouldBlockScroll={true}
           components={{
             IndicatorSeparator: () => null,
-          }}
-          styles={{
-            dropdownIndicator: () => ({
-              color: `${COLOR.main}`,
-            }),
-            control: baseStyles => ({
-              ...baseStyles,
-              boxShadow: 'none',
-              border: '0',
-              borderRadius: '0',
-              borderBottom: '1px solid #E0E0E0',
-              height: '36px',
-              marginBottom: '32px',
-            }),
-            valueContainer: () => ({
-              padding: '0',
-            }),
-            indicatorsContainer: baseStyles => ({
-              ...baseStyles,
-              alignItems: 'top',
-            }),
+            ValueContainer: CustomValueContainer,
           }}
         />
-        <Select
+        <StyledSelect
+          classNamePrefix="Select"
           options={timeOptions}
+          isSearchable={false}
           placeholder="Cooking time"
+          onChange={e => (values.time = e.value)}
           components={{
             IndicatorSeparator: () => null,
-          }}
-          styles={{
-            dropdownIndicator: () => ({
-              color: `${COLOR.main}`,
-            }),
-            control: baseStyles => ({
-              ...baseStyles,
-              boxShadow: 'none',
-              border: '0',
-              borderRadius: '0',
-              borderBottom: '1px solid #E0E0E0',
-              height: '36px',
-            }),
-            valueContainer: () => ({
-              padding: '0',
-            }),
-            indicatorsContainer: baseStyles => ({
-              ...baseStyles,
-              alignItems: 'top',
-            }),
+            ValueContainer: CustomValueContainer,
           }}
         />
       </InputsContainer>

@@ -35,9 +35,13 @@ export const PrepSection = styled.section`
     img {
       margin: 40px 0 0 0;
       border-radius: 8px;
+      width: 100%;
+      height: 250px;
 
       @media screen and (min-width: ${SIZE.mobile}) {
         margin-top: 53px;
+        max-width: 433px;
+        height: 332px;
       }
 
       @media screen and (min-width: ${SIZE.tablet}) {

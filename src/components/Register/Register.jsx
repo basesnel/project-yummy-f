@@ -1,12 +1,12 @@
 import RegisterForm from 'components/Register/RegisterForm/RegisterForm';
-import SigninImg from 'components/SignIn/SigninImg';
-import { RegisterContainer } from 'components/Register/Register.styled';
+import AuthImg from 'components/AuthContainer/AuthImg';
+import AuthContainer from 'components/AuthContainer/AuthContainer';
 
 export default function Register() {
   return (
-    <RegisterContainer>
-      <SigninImg />
+    <AuthContainer>
+      <AuthImg />
       <RegisterForm />
-    </RegisterContainer>
+    </AuthContainer>
   );
 }

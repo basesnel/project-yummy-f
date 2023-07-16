@@ -11,6 +11,7 @@ import {
   FormSignin,
   IconWrapper,
   SigninButton,
+  SigninButtonWrapper,
   SigninInput,
   SigninInputWrapper,
   SigninLabel,
@@ -47,7 +48,7 @@ export default function SigninForm() {
     },
   });
 
-  const notify = msg => {
+  const notifyError = msg => {
     toast.error(msg, {
       toastId: 'idError',
     });
@@ -55,7 +56,7 @@ export default function SigninForm() {
 
   return (
     <Box>
-      {authError && notify(authError)}
+      {authError && notifyError(authError)}
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
@@ -68,6 +69,7 @@ export default function SigninForm() {
             id="email"
             name="email"
             placeholder="Email"
+            autoComplete="off"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -88,6 +90,7 @@ export default function SigninForm() {
             id="password"
             type="password"
             name="password"
+            autoComplete="off"
             placeholder="Password"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -100,10 +103,12 @@ export default function SigninForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </SigninInputWrapper>
-        <SigninButton type="submit">Sign In</SigninButton>
+        <SigninButtonWrapper>
+          <SigninButton type="submit">Sign In</SigninButton>
+        </SigninButtonWrapper>
       </FormSignin>
       <RegistrationLink />
-      <ToastContainer />
+      <ToastContainer autoClose={false} />
     </Box>
   );
 }

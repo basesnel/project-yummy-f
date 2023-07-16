@@ -13,7 +13,8 @@ const initialState = {
   token: null,
   error: null,
   isLoggedIn: false,
-  isRefreshing: false,
+  isVerify: false,
+  isRefreshing: true,
 };
 
 const authSlice = createSlice({
@@ -25,22 +26,29 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = null;
-        state.isLoggedIn = action.payload.user.verify;
+        state.isVerify = true;
       })
-      .addCase(register.rejected, (state, action) => state)
+      .addCase(register.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isVerify = false;
+      })
       .addCase(login.pending, (state, action) => state)
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = action.payload.verify;
+        state.isLoggedIn = true;
+        state.isVerify = false;
+        state.error = null;
       })
       .addCase(login.rejected, (state, action) => {
         state.error = action.payload;
+        state.isVerify = false;
       })
       .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
+        state.error = null;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -49,14 +57,16 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.error = null;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
       .addCase(verify.pending, (state, action) => state)
       .addCase(verify.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = action.payload.verify;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(verify.rejected, (state, action) => state)

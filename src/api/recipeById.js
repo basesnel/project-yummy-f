@@ -4,7 +4,7 @@ import { baseUrl } from 'constants';
 axios.defaults.baseURL = baseUrl;
 
 const getRecipeById = async recipeId => {
-  const res = await axios.get(`/recipes/${recipeId}`);
+  const res = await axios.get(`api/recipes/${recipeId}`);
   return res.data;
 };
 

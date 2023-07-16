@@ -22,11 +22,11 @@ export const FormSignin = styled.form`
   }
 
   .input__error {
-    border: 1px solid #e74a3b;
+    border: 1px solid ${COLOR.warning};
   }
 `;
 
-export const SigninLabel = styled.label`
+export const SigninLabel = styled.p`
   color: ${COLOR.second};
   font-family: Poppins;
   font-size: 24px;
@@ -42,9 +42,10 @@ export const SigninLabel = styled.label`
 `;
 
 export const SigninButton = styled.button`
+  width: 100%;
   border-radius: 6px;
   background: ${COLOR.main};
-  padding: 14px 110px;
+  padding: 14px 0;
   border: none;
   color: ${COLOR.second};
   text-align: center;
@@ -53,7 +54,6 @@ export const SigninButton = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 1.125;
-  margin-top: 16px;
   transition: ${TRANSITION.forHoverColor};
 
   &:hover,
@@ -71,22 +71,26 @@ export const SigninInput = styled.input`
   padding-bottom: 12px;
   width: 100%;
   padding-left: 40px;
-  color: ${COLOR.second};
-  font-family: Poppins;
+  color: rgba(250, 250, 250, 0.8);
+
+  /* font-family: Poppins; */
   font-size: 14px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
-  background: transparent;
-  border: 1px solid rgba(250, 250, 250, 0.15700000524520874);
+  background-color: transparent;
+  border: 1px solid rgba(250, 250, 250, 0.8);
   border-radius: 6px;
-  transition: ${TRANSITION.forHoverBorderColor};
+  transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverColor},
+    ${TRANSITION.forHoverOpacity};
 
   &:hover,
   &:focus {
-    border-color: #fafafa;
+    border: 1px solid rgba(250, 250, 250, 1);
+    color: rgba(250, 250, 250, 1);
   }
+
   @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -99,6 +103,14 @@ export const SigninInputWrapper = styled.div`
   position: relative;
 
   margin-bottom: 12px;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    margin-bottom: 24px;
+  }
+`;
+
+export const SigninButtonWrapper = styled.div`
+  padding-top: 16px;
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-bottom: 24px;
   }
@@ -129,6 +141,14 @@ export const Box = styled.div`
 
 export const Warning = styled.p`
   position: absolute;
-  top: 65px;
-  color: #e74a3b;
+  top: 48px;
+  font-size: 8px;
+  color: ${COLOR.warning};
+  @media screen and (min-width: ${SIZE.tablet}) {
+    top: 64px;
+    font-size: 12px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    font-size: 14px;
+  }
 `;

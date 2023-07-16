@@ -5,6 +5,7 @@ import API from 'api';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
+import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
 const RecipePage = () => {
   // const navigate = useNavigate();
@@ -17,6 +18,7 @@ const RecipePage = () => {
   const [descr, setDescr] = useState('');
   const [time, setTime] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [photo, setPhoto] = useState('');
 
   useEffect(() => {
     const getRecipe = async recipeId => {
@@ -30,6 +32,7 @@ const RecipePage = () => {
         setIsFavorite(recipe.favorite ? true : false);
         setIngredients(recipe.ingredients);
         setPreparation(recipe.instructions);
+        setPhoto(recipe.thumb);
       } catch (error) {
         console.log(error, recipeId);
       }
@@ -39,7 +42,7 @@ const RecipePage = () => {
   }, [recipeId]);
 
   return (
-    <>
+    <ThemeWrap>
       <RecipePageHero
         title={title}
         descr={descr}
@@ -47,8 +50,8 @@ const RecipePage = () => {
         isFavorite={isFavorite}
       />
       <RecipeIngredientsList ingredients={ingredients} />
-      <RecipePreparation instructions={preparation} />
-    </>
+      <RecipePreparation instructions={preparation} photo={photo} />
+    </ThemeWrap>
   );
 };
 
