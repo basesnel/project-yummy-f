@@ -96,7 +96,7 @@ const CategoriesPage = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              m: '50px 0 100px',
+              p: '50px 0 100px',
             }}
             count={totalPages}
             page={page}

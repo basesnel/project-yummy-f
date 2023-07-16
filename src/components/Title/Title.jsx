@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import TitleTheme from './Title.styled';
 
 export default function Title({ children }) {

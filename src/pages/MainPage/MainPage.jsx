@@ -4,10 +4,11 @@ import { Search } from 'components/Search/Search';
 
 import { Hero, HeroTitle, HeroWrapper } from './MainPage.styled';
 import { Container } from 'components/Container/Container';
+import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
 export default function MainPage() {
   return (
-    <>
+    <ThemeWrap>
       <Hero>
         <Container>
           <HeroWrapper>
@@ -30,6 +31,6 @@ export default function MainPage() {
         </Container>
       </Hero>
       <PreviewCategories />
-    </>
+    </ThemeWrap>
   );
 }

@@ -27,14 +27,10 @@ const lightTheme = createTheme({
       main: COLOR.dark,
     },
     text: {
-      primary: {
-        main: '#001833',
-      },
-
-      secondary: {
-        main: COLOR.dark,
-      },
+      primary: '#001833',
+      secondary: COLOR.dark,
     },
+
     categorie: {
       // main: '#bdbdbd',
       main: '#ff0000',
@@ -64,12 +60,9 @@ const darkTheme = createTheme({
       paper: '#121212',
     },
     text: {
-      primary: {
-        main: COLOR.second,
-      },
-      secondary: {
-        main: COLOR.main,
-      },
+      primary: COLOR.second,
+
+      secondary: COLOR.main,
     },
     categorie: {
       // main: '#bdbdbd',
