@@ -3,8 +3,8 @@ import heroMob from '../../assets/images/recipePage/heroMob.jpg';
 import heroMobRetina from '../../assets/images/recipePage/heroMob@2x.jpg';
 import heroTab from '../../assets/images/recipePage/heroTab.jpg';
 import heroTabRetina from '../../assets/images/recipePage/heroTab@2x.jpg';
-import heroDesk from '../../assets/images/recipePage/heroTab.jpg';
-import heroDeskRetina from '../../assets/images/recipePage/heroTab@2x.jpg';
+import heroDesk from '../../assets/images/recipePage/heroDesk.jpg';
+import heroDeskRetina from '../../assets/images/recipePage/heroDesk@2x.jpg';
 import { SIZE } from 'constants';
 
 export const RecipeHero = styled.section`
@@ -25,7 +25,7 @@ export const RecipeHero = styled.section`
     background-image: url('${heroMobRetina}');
   }
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     background-image: url('${heroTab}');
     height: 495px;
 
@@ -36,9 +36,11 @@ export const RecipeHero = styled.section`
     }
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     background-image: url('${heroDesk}');
     height: 493px;
+    padding: 32px;
+    justify-content: flex-end;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -80,7 +82,7 @@ export const RecipeDeskr = styled.p`
     max-width: 509px;
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     max-width: 656px;
     margin-bottom: 30px;
   }
@@ -98,7 +100,7 @@ export const TimeContainer = styled.div`
     margin-top: 60px;
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     margin-top: 48px;
   }
 
