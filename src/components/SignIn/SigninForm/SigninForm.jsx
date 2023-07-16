@@ -44,11 +44,11 @@ export default function SigninForm() {
     let lastSessionValue = localStorage.getItem('last-session-value');
 
     let registerValue = localStorage.getItem('visitCount');
-    if (lastSessionValue === null) {
+    if (lastSessionValue === '') {
       updateStorages(Number(registerValue));
     } else if (
-      lastSessionValue &&
-      sessionStorage.getItem('current-session') === null
+      lastSessionValue ||
+      sessionStorage.getItem('current-session') !== null
     ) {
       lastSessionValue++;
       updateStorages(lastSessionValue);
@@ -56,7 +56,7 @@ export default function SigninForm() {
     let sessionValue = parseInt(lastSessionValue);
     return sessionValue;
   };
-  getSessionCount();
+
   const session = localStorage.getItem('last-session-value');
   console.log(Number(session));
   const formik = useFormik({
@@ -67,6 +67,7 @@ export default function SigninForm() {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       dispatch(login(values));
+      getSessionCount();
       resetForm();
     },
   });
