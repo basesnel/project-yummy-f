@@ -35,6 +35,30 @@ export default function SigninForm() {
   const dispatch = useDispatch();
   const { authError } = useAuth();
 
+  let updateStorages = storageValue => {
+    const matches = document.querySelector('input.submitCount');
+    localStorage.setItem(matches, storageValue);
+    sessionStorage.setItem('current-session', storageValue);
+  };
+
+  let getSessionCount = () => {
+    let lastSessionValue = localStorage.getItem('last-session-value');
+    console.log(lastSessionValue);
+    let registerValue = localStorage.getItem('visitCount');
+    if (registerValue !== null) {
+      updateStorages(1);
+    } else if (
+      lastSessionValue &&
+      sessionStorage.getItem('current-session') === null
+    ) {
+      lastSessionValue++;
+
+      updateStorages(lastSessionValue);
+    }
+
+    return parseInt(lastSessionValue);
+  };
+  getSessionCount();
   const formik = useFormik({
     initialValues: {
       email: '',
