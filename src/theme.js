@@ -32,6 +32,8 @@ const lightTheme = createTheme({
       secondary: COLOR.primaryText,
     },
 
+    middleCube: '#22252a',
+
     categorie: {
       // main: '#bdbdbd',
       main: '#ff0000',
@@ -44,6 +46,7 @@ const lightTheme = createTheme({
   },
 });
 
+// DARK THEME
 const darkTheme = createTheme({
   ...lightTheme,
 
@@ -67,6 +70,8 @@ const darkTheme = createTheme({
       // input: COLOR.second,
       secondary: COLOR.second,
     },
+    middleCube: COLOR.second,
+
     categorie: {
       // main: '#bdbdbd',
       main: '#ff0000',

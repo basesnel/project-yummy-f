@@ -9,8 +9,8 @@ import Title from 'components/Title/Title';
 const FavoritePage = () => {
   return (
     <ThemeWrap>
-      <ContainerSection>
-        <Container>
+      <Container>
+        <ContainerSection>
           <Title>Favorites</Title>
           <MyRecipesList>
             <MyRecipesItem />
@@ -18,8 +18,8 @@ const FavoritePage = () => {
             <MyRecipesItem />
             <MyRecipesItem />
           </MyRecipesList>
-        </Container>
-      </ContainerSection>
+        </ContainerSection>
+      </Container>
     </ThemeWrap>
   );
 };
