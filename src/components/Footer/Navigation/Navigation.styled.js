@@ -6,6 +6,9 @@ import { ReactComponent as FooterLogo } from 'assets/images/footer/logo.svg';
 export const NavigationWrapper = styled.section`
 	padding: 28px 0 18px;
 
+	position: relative;
+	z-index: 1;
+
 	background-color: ${COLOR.dark};
 
 	@media screen and (min-width: ${SIZE.tablet}) {
@@ -18,7 +21,9 @@ export const NavigationWrapper = styled.section`
 `
 
 export const NavigationContainer = styled.div`
+	
 	> div {
+		
 		@media screen and (min-width: ${SIZE.desktop}) {
 			display: flex;
 			gap: 235px;
