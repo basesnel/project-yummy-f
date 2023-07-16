@@ -3,7 +3,7 @@ import { SIZE, COLOR, TRANSITION } from 'constants';
 
 import { ReactComponent as MailIcon } from 'assets/images/footer/mail.svg';
 
-export const SubscribeFormContainer = styled.form`
+export const SubscribeFormComponent = styled.form`
 	display: flex;
 	flex-direction: column;
 
@@ -75,6 +75,21 @@ export const SubscribeFormContainer = styled.form`
 				font-size: 18px;
 				letter-spacing: -0.36px;
 			}
+		}
+	}
+	.input__error{
+		> input {
+			border-color: ${COLOR.warning};
+		}
+
+		> svg {
+			stroke: ${COLOR.warning};
+		}
+		> p {
+			margin-top: 8px;
+
+			font-size: 14px;
+			color: ${COLOR.warning};
 		}
 	}
 

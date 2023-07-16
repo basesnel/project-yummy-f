@@ -4,6 +4,7 @@ import { COLOR } from 'constants';
 const SkewButton = ({
   children,
   bgColor,
+  borderColor = '#fafafa',
   paddingHxs,
   paddingHmd,
   paddingHlg,
@@ -19,7 +20,7 @@ const SkewButton = ({
 
   if (bgColor === 'transparent') {
     colorHover = COLOR.main;
-    border = '1px solid';
+    border = `2px solid ${borderColor}`;
   } else if (bgColor === 'dark') {
     bgColor = COLOR.dark;
     bgHover = COLOR.main;

@@ -4,6 +4,7 @@ import { SIZE } from "constants";
 
 export const MyRecipesContainer = styled.section`
 	padding: 114px 0 100px;
+	background-color: #FAFAFA;
 `
 
 export const TitleContainer = styled.div`

@@ -62,6 +62,7 @@ export const InputField = styled.input`
   margin-bottom: 24px;
   border: none;
   border-bottom: 1px solid #e0e0e0;
+  background: inherit;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     font-size: 16px;
@@ -85,6 +86,7 @@ export const StyledSelect = styled(Select)`
     height: 40px;
     align-items: baseline;
     cursor: pointer;
+    background: inherit;
 
     @media screen and (min-width: ${SIZE.tablet}) {
       font-size: 16px;
@@ -122,7 +124,7 @@ export const StyledSelect = styled(Select)`
 
   .Select__indicators {
     margin-left: 8px;
-    height: 21px;
+    height: 20px;
 
     @media screen and (min-width: ${SIZE.tablet}) {
       height: 24px;
@@ -184,7 +186,7 @@ export const StyledSelect = styled(Select)`
     margin-bottom: 10px;
   }
 
-  .Select__option--is-focused {
+  /* .Select__option--is-focused {
     background-color: rgba(139, 170, 54, 0.1);
     color: inherit;
   }
@@ -192,7 +194,7 @@ export const StyledSelect = styled(Select)`
   .Select__option--is-selected {
     background-color: rgba(139, 170, 54, 0.3);
     color: inherit;
-  }
+  } */
 
   .Select__menu-list::-webkit-scrollbar {
     width: 4px;

@@ -1,18 +1,34 @@
 import { IngrItemMUI } from './IngrItemMUI';
+import API from 'api';
 import {
   MainSection,
   ListHead,
   List,
   PositionedP,
-  IngrItem,
+  // IngrItem,
   ImgAndName,
   MeasureAndCheckbox,
   // Checked,
   Unchecked,
 } from './RecipeIngredientsList.styled';
-//import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const RecipeIngredientsList = ({ ingredients }) => {
+  const [ingrAvailable, setIngrAvailable] = useState([]);
+
+  useEffect(() => {
+    const getAllIngr = async () => {
+      const ingredients = await API.getIngredients();
+      setIngrAvailable(ingredients);
+    };
+
+    getAllIngr();
+  }, []);
+
+  const getIngredientById = ingrId => {
+    return ingrAvailable.find(({ _id }) => ingrId === _id);
+  };
+
   // const [checked, setChecked] = useState([]);
 
   //const handleCheck = e => {
@@ -40,11 +56,11 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       </ListHead>
       <List>
         {ingredients.map(ingr => (
-          <IngrItemMUI ey={ingr.id}>
+          <IngrItemMUI key={ingr.id}>
             {/* <IngrItem key={ingr.id}> */}
             <ImgAndName>
-              <img alt="ingredient" />
-              <p></p>
+              <img src={getIngredientById(ingr.id)?.img} alt="ingredient" />
+              <p>{getIngredientById(ingr.id)?.name}</p>
             </ImgAndName>
             <MeasureAndCheckbox>
               <div>

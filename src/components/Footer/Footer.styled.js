@@ -22,7 +22,7 @@ export const FooterTopBgImage = styled.div`
 	left: 0;
 	width: 300px;
 	height: 300px;
-	z-index: -99;
+	z-index: 0;
 	background-image: url(${footerTopBgImage});
 	background-repeat: no-repeat;
 

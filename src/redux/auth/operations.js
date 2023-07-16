@@ -105,3 +105,20 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const userSubscribe = createAsyncThunk(
+  'auth/userSubscribe',
+  async (credentials, thunkAPI) => {
+	  try {
+		  const res = await axios.patch('users/subscribe', credentials);
+
+      return res.data;
+	  } catch (error) {
+      if (error.response && error.response.data.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  }
+);
