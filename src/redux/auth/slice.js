@@ -6,6 +6,7 @@ import {
   refreshUser,
   verify,
   updateUser,
+  userSubscribe,
 } from './operations';
 
 const initialState = {
@@ -14,7 +15,8 @@ const initialState = {
   error: null,
   isLoggedIn: false,
   isVerify: false,
-  isRefreshing: true,
+isRefreshing: true,
+  subscribeMessage: false
 };
 
 const authSlice = createSlice({
@@ -72,7 +74,16 @@ const authSlice = createSlice({
       .addCase(verify.rejected, (state, action) => state)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
-      }),
+	  })
+		.addCase(userSubscribe.fulfilled, (state, { payload }) => {
+			state.user.subscription = payload.subscription;
+			state.error = null;
+			state.subscribeMessage = true;
+		})
+		  .addCase(userSubscribe.rejected, (state, { payload }) => {
+			  state.error = payload;
+			  state.subscribeMessage = false;
+		  })
 });
 
 export const authReducer = authSlice.reducer;

@@ -1,6 +1,10 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { FollowUs } from '../../FollowUs/FollowUs';
 import { Nav } from './Nav/Nav';
 import { SubscribeForm } from './SubscribeForm/SubscribeForm';
+import { Container } from 'components/Container/Container';
 
 import {
   FooterTabletWrapper,
@@ -9,7 +13,6 @@ import {
   NavigationContainer,
   NavigationWrapper,
 } from './Navigation.styled';
-import { Container } from 'components/Container/Container';
 
 export function Navigation() {
   return (
@@ -36,6 +39,7 @@ export function Navigation() {
           </div>
           <FollowUs hoverColor="#FFFFFF" />
         </NavigationContainer>
+        <ToastContainer autoClose={false} />
       </Container>
     </NavigationWrapper>
   );

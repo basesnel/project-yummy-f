@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const Item = styled.li`
   position: relative;
+  z-index: 1;
   display: flex;
   background-color: #fff;
   padding: 14px 9px;
