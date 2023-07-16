@@ -1,4 +1,4 @@
-import { Box, Grid, Pagination } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
