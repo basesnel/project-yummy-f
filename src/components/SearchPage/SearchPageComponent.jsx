@@ -1,9 +1,7 @@
-import { Container } from 'components/Container/Container';
 import MainTitle from 'components/MainTitle/MainTitle';
 import API from 'api';
 import { NoSearchResults } from './NoSearchResults/NoSearchResults';
 
-import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { TitleContainer } from './SearchPageComponent.styled';
 import { SearchedRecipesList } from './SearchedRecipesList/SearchedRecipesList';
 import { useState } from 'react';
