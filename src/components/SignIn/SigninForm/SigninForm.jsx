@@ -44,7 +44,7 @@ export default function SigninForm() {
     let lastSessionValue = localStorage.getItem('last-session-value');
 
     let registerValue = localStorage.getItem('visitCount');
-    if (registerValue) {
+    if (lastSessionValue === null) {
       updateStorages(Number(registerValue));
     } else if (
       lastSessionValue &&
@@ -53,7 +53,7 @@ export default function SigninForm() {
       lastSessionValue++;
       updateStorages(lastSessionValue);
     }
-    const sessionValue = Number(lastSessionValue);
+    let sessionValue = parseInt(lastSessionValue);
     return console.log(sessionValue);
   };
 
