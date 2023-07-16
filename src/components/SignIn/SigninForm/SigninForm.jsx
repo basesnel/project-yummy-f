@@ -36,28 +36,27 @@ export default function SigninForm() {
   const { authError } = useAuth();
 
   let updateStorages = storageValue => {
-    const matches = document.querySelector('input.submitCount');
-    localStorage.setItem(matches, storageValue);
+    localStorage.setItem('last-session-value', storageValue);
     sessionStorage.setItem('current-session', storageValue);
   };
 
   let getSessionCount = () => {
     let lastSessionValue = localStorage.getItem('last-session-value');
-    console.log(lastSessionValue);
+
     let registerValue = localStorage.getItem('visitCount');
-    if (registerValue !== null) {
-      updateStorages(1);
+    if (registerValue) {
+      updateStorages(Number(registerValue));
     } else if (
       lastSessionValue &&
       sessionStorage.getItem('current-session') === null
     ) {
       lastSessionValue++;
-
       updateStorages(lastSessionValue);
     }
-
-    return parseInt(lastSessionValue);
+    const sessionValue = Number(lastSessionValue);
+    return console.log(sessionValue);
   };
+
   getSessionCount();
   const formik = useFormik({
     initialValues: {
