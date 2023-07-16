@@ -1,6 +1,7 @@
 import { SIZE } from 'constants';
 import { styled } from 'styled-components';
 import { ReactComponent as IconRemove } from 'assets/images/favorite/Icon.svg';
+import { Link } from 'react-router-dom';
 
 export const Item = styled.li`
   position: relative;
@@ -148,7 +149,8 @@ export const TextTime = styled.p`
   }
 `;
 
-export const BtnRemove = styled.button`
+export const BtnRemove = styled(Link)`
+  text-decoration: none;
   position: absolute;
   border-radius: 4px;
   background: #ebf3d4;
@@ -158,12 +160,14 @@ export const BtnRemove = styled.button`
   top: 14px;
   width: 24px;
   height: 24px;
+  padding: 5px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     right: 24px;
     top: 28px;
     width: 38px;
     height: 38px;
+    padding: 8px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
@@ -171,18 +175,27 @@ export const BtnRemove = styled.button`
     top: 40px;
     width: 44px;
     height: 44px;
+    padding: 10px;
   }
 `;
 
 export const WrapperIconRemove = styled(IconRemove)`
-  width: 100%;
-  width: 100%;
-  display: flex;
-  align-item: center;
-  justify-content: center;
+  width: 14px;
+  height: 14px;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    width: 22px;
+    height: 22px;
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
-export const BtnDetail = styled.button`
+export const BtnDetail = styled(Link)`
+  text-decoration: none;
   position: absolute;
   right: 9px;
   bottom: 14px;

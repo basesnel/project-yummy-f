@@ -6,12 +6,14 @@ import { Footer } from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import { useAuth } from 'hooks';
 
-const SharedLayout = () => {
+// import THEME from 'theme';
+
+const SharedLayout = ({ onTheme }) => {
   const { isLoggedIn } = useAuth();
 
   return (
     <>
-      {isLoggedIn ? <Header /> : null}
+      {isLoggedIn ? <Header onTheme={onTheme} /> : null}
       <Suspense fallback={<Loader />}>
         <main>
           <Outlet />

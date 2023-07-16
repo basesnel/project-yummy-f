@@ -1,7 +1,7 @@
-import Select from 'react-select';
 import { useRef, useState } from 'react';
 import { useFormikContext } from 'formik';
 
+import CustomValueContainer from './CustomValueContainer';
 import blank from '../../assets/images/addRecipe/blank.png';
 import { timeOptions } from 'utils/selectors';
 import {
@@ -11,8 +11,8 @@ import {
   FileInput,
   InputsContainer,
   InputField,
+  StyledSelect,
 } from './RecipeDescriptionFields.styled';
-import { COLOR } from 'constants';
 
 const RecipeDescriptionFields = ({ categories, setPicture }) => {
   const { values, handleChange } = useFormikContext();
@@ -70,62 +70,27 @@ const RecipeDescriptionFields = ({ categories, setPicture }) => {
           value={values.description}
           onChange={handleChange}
         />
-        <Select
+        <StyledSelect
+          classNamePrefix="Select"
           options={categoriesOptions}
+          isSearchable={false}
           placeholder="Category"
           onChange={e => (values.category = e.value)}
-          noOptionsMessage={() => 'No category found'}
+          menuShouldBlockScroll={true}
           components={{
             IndicatorSeparator: () => null,
-          }}
-          styles={{
-            dropdownIndicator: () => ({
-              color: `${COLOR.main}`,
-            }),
-            control: baseStyles => ({
-              ...baseStyles,
-              boxShadow: 'none',
-              border: '0',
-              borderRadius: '0',
-              borderBottom: '1px solid #E0E0E0',
-              height: '36px',
-              marginBottom: '32px',
-            }),
-            valueContainer: () => ({
-              padding: '0',
-            }),
-            indicatorsContainer: baseStyles => ({
-              ...baseStyles,
-              alignItems: 'top',
-            }),
+            ValueContainer: CustomValueContainer,
           }}
         />
-        <Select
+        <StyledSelect
+          classNamePrefix="Select"
           options={timeOptions}
+          isSearchable={false}
           placeholder="Cooking time"
           onChange={e => (values.time = e.value)}
           components={{
             IndicatorSeparator: () => null,
-          }}
-          styles={{
-            dropdownIndicator: () => ({
-              color: `${COLOR.main}`,
-            }),
-            control: baseStyles => ({
-              ...baseStyles,
-              boxShadow: 'none',
-              border: '0',
-              borderRadius: '0',
-              borderBottom: '1px solid #E0E0E0',
-              height: '36px',
-            }),
-            valueContainer: () => ({
-              padding: '0',
-            }),
-            indicatorsContainer: baseStyles => ({
-              ...baseStyles,
-              alignItems: 'top',
-            }),
+            ValueContainer: CustomValueContainer,
           }}
         />
       </InputsContainer>
