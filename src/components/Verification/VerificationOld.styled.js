@@ -8,7 +8,7 @@ export const WrapperSection = styled.div`
   @media screen and (min-width: ${SIZE.mobile}) {
     letter-spacing: -0.24px;
   }
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.desctop}) {
     margin: 33.5px 0 0 0;
   }
 `;

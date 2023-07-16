@@ -1,46 +1,46 @@
 import { useState } from 'react';
-import { useFormik } from 'formik';
+// import { useFormik } from 'formik';
 import styled from './MotivatingModal.module.css';
+import { Area, Container, Information } from './MotivatingModal.styled.js';
 import { Form, Modal, Button } from 'react-bootstrap';
-import Axios from 'axios';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import axios from 'axios';
+import { ReactComponent as CloseIcon } from '../../../assets/images/motivating/closeIcon.svg';
 const AddCategories = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   //   const handleShow = () => setShow(true);
 
-  const formik = useFormik({
-    initialValues: {},
-    //  async values => {
-    //   console.log(values);
-    //   await Axios.get('', values);
-    // },
-  });
-
   return (
-    <div>
+    <Area>
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         className={styled.container}
         centered
         show={show}
-        onHide={handleClose}
+        // onHide={handleShow}
       >
-        <Form.Group onSubmit={formik.handleSubmit}>
+        <Form.Group>
           <Modal.Body>
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+            <Form>
+              <Container>
+                <Form.Text className="text-muted">
+                  <Information>
+                    Wow! You have been using the application for 100 days!
+                  </Information>
+                </Form.Text>
+              </Container>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={handleClose}>
-              Close
+            <Button onClick={handleClose}>
+              <CloseIcon />
             </Button>
           </Modal.Footer>
         </Form.Group>
       </Modal>
-    </div>
+    </Area>
   );
 };
 
