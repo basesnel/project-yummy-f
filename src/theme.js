@@ -28,7 +28,8 @@ const lightTheme = createTheme({
     },
     text: {
       primary: '#001833',
-      secondary: COLOR.dark,
+      // input: COLOR.primaryText,
+      secondary: COLOR.primaryText,
     },
 
     categorie: {
@@ -37,7 +38,9 @@ const lightTheme = createTheme({
     },
     background: {
       default: COLOR.second,
+      input: 'white',
     },
+    backgroundRecipieinput: COLOR.lightThemeInputRecipe,
   },
 });
 
@@ -57,17 +60,18 @@ const darkTheme = createTheme({
     },
     background: {
       default: '#121212',
-      paper: '#121212',
+      input: COLOR.darkThemeInput,
     },
     text: {
       primary: COLOR.second,
-
-      secondary: COLOR.main,
+      // input: COLOR.second,
+      secondary: COLOR.second,
     },
     categorie: {
       // main: '#bdbdbd',
       main: '#ff0000',
     },
+    backgroundRecipieinput: COLOR.darkThemeInputRecipe,
   },
 });
 

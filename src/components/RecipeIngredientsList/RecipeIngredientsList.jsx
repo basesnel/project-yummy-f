@@ -1,3 +1,4 @@
+import { IngrItemMUI } from './IngrItemMUI';
 import {
   MainSection,
   ListHead,
@@ -39,7 +40,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       </ListHead>
       <List>
         {ingredients.map(ingr => (
-          <IngrItem key={ingr.id}>
+          <IngrItemMUI ey={ingr.id}>
+            {/* <IngrItem key={ingr.id}> */}
             <ImgAndName>
               <img alt="ingredient" />
               <p></p>
@@ -50,7 +52,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
               </div>
               <Unchecked></Unchecked>
             </MeasureAndCheckbox>
-          </IngrItem>
+            {/* </IngrItem> */}
+          </IngrItemMUI>
         ))}
       </List>
     </MainSection>
