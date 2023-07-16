@@ -110,11 +110,15 @@ export const userSubscribe = createAsyncThunk(
   'auth/userSubscribe',
   async (credentials, thunkAPI) => {
 	  try {
-      const res = await axios.patch('users/subscribe', credentials);
+		  const res = await axios.patch('users/subscribe', credentials);
 
       return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+	  } catch (error) {
+      if (error.response && error.response.data.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );
