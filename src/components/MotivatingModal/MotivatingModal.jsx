@@ -6,10 +6,15 @@ import { Form, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import axios from 'axios';
 import { ReactComponent as CloseIcon } from '../../../assets/images/motivating/closeIcon.svg';
-const AddCategories = () => {
+const MotivatingModal = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  //   const handleShow = () => setShow(true);
+  const handleShow = () => {
+    const comparasion = localStorage.getItem('last-session-value');
+    if (parseInt(comparasion) > 100) {
+      setShow(true);
+    }
+  };
 
   return (
     <Area>
@@ -19,7 +24,7 @@ const AddCategories = () => {
         className={styled.container}
         centered
         show={show}
-        // onHide={handleShow}
+        onHide={handleShow}
       >
         <Form.Group>
           <Modal.Body>
@@ -44,4 +49,4 @@ const AddCategories = () => {
   );
 };
 
-export default AddCategories;
+export default MotivatingModal;

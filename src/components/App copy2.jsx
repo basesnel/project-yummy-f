@@ -21,6 +21,9 @@ const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage'));
 const SearchPage = lazy(() => import('../pages/SearchPage'));
 const ShoppingListPage = lazy(() => import('../pages/ShoppingListPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const MotivatingModal = lazy(() =>
+  import('../components/MotivatingModal/MotivatingModal')
+);
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -62,6 +65,7 @@ export const App = () => {
         <Route path="/my" element={<MyRecipesPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/shopping-list" element={<ShoppingListPage />} />
+        <Route path="/*" element={<MotivatingModal />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
