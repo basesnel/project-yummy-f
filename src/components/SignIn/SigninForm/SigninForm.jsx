@@ -54,10 +54,11 @@ export default function SigninForm() {
       updateStorages(lastSessionValue);
     }
     let sessionValue = parseInt(lastSessionValue);
-    return console.log(sessionValue);
+    return sessionValue;
   };
-
   getSessionCount();
+  const session = localStorage.getItem('last-session-value');
+  console.log(Number(session));
   const formik = useFormik({
     initialValues: {
       email: '',
