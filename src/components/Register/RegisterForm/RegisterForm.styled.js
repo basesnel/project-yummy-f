@@ -22,7 +22,7 @@ export const FormRegister = styled.form`
   }
 
   .input__error {
-    border: 1px solid #e74a3b;
+    border: 1px solid ${COLOR.warning};
   }
 `;
 
@@ -138,7 +138,7 @@ export const Warning = styled.p`
   position: absolute;
   top: 48px;
   font-size: 8px;
-  color: #e74a3b;
+  color: ${COLOR.warning};
   @media screen and (min-width: ${SIZE.tablet}) {
     top: 64px;
     font-size: 12px;

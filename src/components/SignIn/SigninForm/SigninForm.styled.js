@@ -22,7 +22,7 @@ export const FormSignin = styled.form`
   }
 
   .input__error {
-    border: 1px solid #e74a3b;
+    border: 1px solid ${COLOR.warning};
   }
 `;
 
@@ -73,13 +73,13 @@ export const SigninInput = styled.input`
   padding-left: 40px;
   color: rgba(250, 250, 250, 0.8);
 
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 14px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
-  background: transparent;
+  background-color: transparent;
   border: 1px solid rgba(250, 250, 250, 0.8);
   border-radius: 6px;
   transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverColor},
@@ -90,6 +90,7 @@ export const SigninInput = styled.input`
     border: 1px solid rgba(250, 250, 250, 1);
     color: rgba(250, 250, 250, 1);
   }
+
   @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -142,7 +143,7 @@ export const Warning = styled.p`
   position: absolute;
   top: 48px;
   font-size: 8px;
-  color: #e74a3b;
+  color: ${COLOR.warning};
   @media screen and (min-width: ${SIZE.tablet}) {
     top: 64px;
     font-size: 12px;

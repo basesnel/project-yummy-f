@@ -83,6 +83,7 @@ export default function RegisterForm() {
             id="name"
             name="name"
             placeholder="Name"
+            autoComplete="off"
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -104,6 +105,7 @@ export default function RegisterForm() {
             id="email"
             name="email"
             placeholder="Email"
+            autoComplete="off"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -125,6 +127,7 @@ export default function RegisterForm() {
             id="password"
             type="password"
             name="password"
+            autoComplete="off"
             placeholder="Password"
             value={formik.values.password}
             onChange={formik.handleChange}
