@@ -1,7 +1,7 @@
-const { styled, Container } = require('@mui/material');
+const { styled, Box } = require('@mui/material');
 
-const Main = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.background,
+const ThemeWrap = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
 }));
 
-export default Main;
+export default ThemeWrap;

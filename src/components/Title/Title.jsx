@@ -1,11 +1,11 @@
 import { Typography } from '@mui/material';
+import TitleTheme from './Title.styled';
 
 export default function Title({ children }) {
   return (
-    <Typography
+    <TitleTheme
       variant="h2"
       sx={{
-        color: '#001833',
         fontFamily: 'Poppins',
         fontWeight: '600',
         lineHeight: '1',
@@ -28,6 +28,6 @@ export default function Title({ children }) {
       }}
     >
       {children}
-    </Typography>
+    </TitleTheme>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Grid, Pagination, styled, useTheme } from '@mui/material';
+import { Box, Grid, Pagination } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import API from 'api';
 import Title from 'components/Title/Title';
 import CategoriesList from './CategoriesList/CategoriesList';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const CategoriesPage = () => {
   };
 
   return (
-    <section>
+    <ThemeWrap>
       <Container>
         {!error && <Title>Categories</Title>}
 
@@ -108,7 +109,7 @@ const CategoriesPage = () => {
 
         {error && <NotFoundPage />}
       </Container>
-    </section>
+    </ThemeWrap>
   );
 };
 

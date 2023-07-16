@@ -5,17 +5,15 @@ import Loader from 'components/Loader/Loader';
 import { Footer } from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import { useAuth } from 'hooks';
-import { Container, ThemeProvider, useTheme } from '@mui/material';
-import THEME from 'theme';
+import { Box, Container, ThemeProvider, useTheme } from '@mui/material';
+// import THEME from 'theme';
 
-const SharedLayout = () => {
+const SharedLayout = ({ onTheme }) => {
   const { isLoggedIn } = useAuth();
-  const [checked, setChecked] = useState(true);
-  const onTheme = e => {
-    setChecked(e.target.checked);
-  };
+
   return (
-    <ThemeProvider theme={checked ? THEME.lightTheme : THEME.darkTheme}>
+    <>
+      {/* <ThemeProvider theme={checked ? THEME.lightTheme : THEME.darkTheme}> */}
       {isLoggedIn ? <Header onTheme={onTheme} /> : null}
       <Suspense fallback={<Loader />}>
         <main>
@@ -23,7 +21,8 @@ const SharedLayout = () => {
         </main>
       </Suspense>
       {isLoggedIn ? <Footer /> : null}
-    </ThemeProvider>
+      {/* </ThemeProvider> */}
+    </>
   );
 };
 
