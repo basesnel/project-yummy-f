@@ -5,11 +5,13 @@ import rectangle_1440 from '../../assets/images/signin/Rectangle-1440.png';
 import { COLOR } from 'constants';
 import { SIZE } from 'constants';
 
-export const SigninContainer = styled.div`
+export const AuthStyledContainer = styled.div`
+  width: 100vw;
+  height: 100%;
   background: ${COLOR.second};
   background-image: url(${rectangle_375});
   background-position: center top 322px;
-  background-size: 100% 490px;
+  background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   min-width: 375px;
@@ -23,6 +25,7 @@ export const SigninContainer = styled.div`
   padding-right: 20px;
   padding-top: 87px;
   padding-bottom: 153px;
+
   @media screen and (min-width: ${SIZE.tablet}) {
     background-image: url(${rectangle_768});
     background-position: center top 418px;
@@ -44,7 +47,7 @@ export const SigninContainer = styled.div`
     background-size: 100% 325px;
     background-position: center top 444px;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     gap: 115px;
   }

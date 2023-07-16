@@ -13,6 +13,7 @@ import {
   RegisterButton,
   RegisterInput,
   RegisterInputWrapper,
+  RegisterButtonWrapper,
   RegisterLabel,
   Warning,
 } from './RegisterForm.styled';
@@ -136,7 +137,9 @@ export default function RegisterForm() {
             <Warning>{formik.errors.password}</Warning>
           )}
         </RegisterInputWrapper>
-        <RegisterButton type="submit">Sign Up</RegisterButton>
+        <RegisterButtonWrapper>
+          <RegisterButton type="submit">Sign Up</RegisterButton>
+        </RegisterButtonWrapper>
       </FormRegister>
       <SigninLink />
       <ToastContainer autoClose={false} />
