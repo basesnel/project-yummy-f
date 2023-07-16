@@ -1,5 +1,5 @@
 import { Container } from 'components/Container/Container';
-import MainTitle from 'components/MainTitle/MainTitle';
+// import MainTitle from 'components/MainTitle/MainTitle';
 import ShoppingListItem from 'components/IngredientsShoppingList/ShoppingListItem/ShoppingListItem';
 import {
   ShoppingListContainer,
@@ -8,6 +8,7 @@ import {
 } from './ShoppingListPage.styled';
 import ShoppingList from 'components/IngredientsShoppingList/ShoppingList/ShoppingList';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import Title from 'components/Title/Title';
 
 const ShoppingListPage = () => {
   return (
@@ -15,7 +16,8 @@ const ShoppingListPage = () => {
       <ShoppingListContainer>
         <Container>
           <TitleContainer>
-            <MainTitle title="Shopping list" />
+            <Title>Shopping list</Title>
+            {/* <MainTitle title="Shopping list" /> */}
           </TitleContainer>
 
           <Text>
