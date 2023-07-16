@@ -4,7 +4,7 @@ import { baseUrl } from 'constants';
 axios.defaults.baseURL = baseUrl;
 
 const fetchCategories = async () => {
-  const response = await axios.get('api/recipes/category-list');
+  const response = await axios.get('recipes/category-list');
   return response.data;
 };
 

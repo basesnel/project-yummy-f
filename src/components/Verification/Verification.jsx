@@ -1,12 +1,12 @@
 import VerifyFeedback from 'components/Verification/VerifyFeedback/VerifyFeedback';
-import SigninImg from 'components/Verification/VerificationImg';
-import { SigninContainer } from 'components/Verification/Verification.styled';
+import AuthImg from 'components/AuthContainer/AuthImg';
+import AuthContainer from 'components/AuthContainer/AuthContainer';
 
 export default function Verification() {
   return (
-    <SigninContainer>
-      <SigninImg />
+    <AuthContainer>
+      <AuthImg />
       <VerifyFeedback />
-    </SigninContainer>
+    </AuthContainer>
   );
 }

@@ -5,6 +5,7 @@ import API from 'api';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
+import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
 const RecipePage = () => {
   // const navigate = useNavigate();
@@ -41,7 +42,7 @@ const RecipePage = () => {
   }, [recipeId]);
 
   return (
-    <>
+    <ThemeWrap>
       <RecipePageHero
         title={title}
         descr={descr}
@@ -51,7 +52,7 @@ const RecipePage = () => {
       />
       <RecipeIngredientsList ingredients={ingredients} />
       <RecipePreparation instructions={preparation} photo={photo} />
-    </>
+    </ThemeWrap>
   );
 };
 

@@ -1,12 +1,12 @@
 import SigninForm from 'components/SignIn/SigninForm/SigninForm';
-import SigninImg from 'components/SignIn/SigninImg';
-import { SigninContainer } from 'components/SignIn/SignIn.styled';
+import AuthImg from 'components/AuthContainer/AuthImg';
+import AuthContainer from 'components/AuthContainer/AuthContainer';
 
 export default function Signin() {
   return (
-    <SigninContainer>
-      <SigninImg />
+    <AuthContainer>
+      <AuthImg />
       <SigninForm />
-    </SigninContainer>
+    </AuthContainer>
   );
 }
