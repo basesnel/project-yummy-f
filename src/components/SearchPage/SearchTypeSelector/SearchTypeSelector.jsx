@@ -4,8 +4,8 @@ import { MenuItem } from '@mui/material';
 import { ReactComponent as CustomIcon } from '../../../assets/images/search/chevron-up.svg';
 
 export const SearchTypeSelector = ({ setSelector }) => {
-  const [selectedOption, setSelectedOption] = useState('Title');
-  const options = ['Title', 'Ingredients'];
+  const [selectedOption, setSelectedOption] = useState('title');
+  const options = ['title', 'ingredients'];
 
   const handleSelectChange = e => {
     setSelectedOption(e.target.value);

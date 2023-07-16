@@ -8,35 +8,40 @@ import { useState } from 'react';
 
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchTypeSelector } from './SearchTypeSelector/SearchTypeSelector';
+import ContainerSection from 'components/ContainerSection/ContainerSection';
+import { Container } from 'components/Container/Container';
 
 export const SearchPageComponent = () => {
-  const [selector, setSelector] = useState('Title');
+  const [selector, setSelector] = useState('title');
   const [recipieArr, setRecipieArr] = useState(null);
   const getCards = async query => {
-    console.log(query, selector);
-    const res = await API.fetchSearchResults({
-      directory: 'ingredients',
-      selector: 'ingredient',
-      query,
-    });
+    // console.log(query, selector);
+    const queryData = { directory: 'recipes', selector, query };
+    if (selector === 'ingredients') {
+      queryData.directory = 'ingredients';
+      queryData.selector = 'ingredient';
+    }
+    const res = await API.fetchSearchResults(queryData);
     setRecipieArr(res);
-    console.log(res);
+    // console.log(res);
   };
   return (
-    <>
-      <TitleContainer>
-        <MainTitle title={'Search'} />
-      </TitleContainer>
-      <SearchInput ver="mobile" getCards={getCards} />
-      <SearchInput ver="tablet" getCards={getCards} />
+    <ContainerSection>
+      <Container>
+        <TitleContainer>
+          <MainTitle title={'Search'} />
+        </TitleContainer>
+        <SearchInput ver="mobile" getCards={getCards} />
+        <SearchInput ver="tablet" getCards={getCards} />
 
-      <SearchTypeSelector setSelector={setSelector} />
+        <SearchTypeSelector setSelector={setSelector} />
 
-      {recipieArr ? (
-        <SearchedRecipesList recipieArr={recipieArr} />
-      ) : (
-        <NoSearchResults />
-      )}
-    </>
+        {recipieArr ? (
+          <SearchedRecipesList recipieArr={recipieArr} />
+        ) : (
+          <NoSearchResults />
+        )}
+      </Container>
+    </ContainerSection>
   );
 };
