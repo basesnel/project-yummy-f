@@ -16,7 +16,7 @@ export const SearchForm = styled.form`
 		}
 	}};
 	position: relative;
-	max-width: 333px;
+	max-width: 295px;
 	margin: 0 auto;
 
 	@media screen and (min-width: ${SIZE.tablet}) {
