@@ -4,7 +4,7 @@ import { SIZE } from 'constants';
 export const BGContainer = styled.div`
   padding-top: 114px;
   padding-bottom: 100px;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   position: relative;
   z-index: -150;
 
