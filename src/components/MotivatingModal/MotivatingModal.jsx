@@ -18,6 +18,15 @@ const MotivatingModal = () => {
       setShow(true);
     }
   };
+  // <script>
+  //             const comparasion = localStorage.getItem('last-session-value');
+  //           $(window).on('shown.bs.modal', function(comparasion) {
+  //               if(parsInt(comparasion)) {
+  //                   $('#iform').modal('show');
+  //               }
+  //             return
+  //         });
+  //            </script>
 
   return (
     <Area onClick={handleShow}>
@@ -26,20 +35,19 @@ const MotivatingModal = () => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         show={show}
+        id="#iform"
         onHide={handleShow}
       >
         <Form.Group>
           <Modal.Body>
-            <Form>
-              <Container>
-                <Icon />
-                <Form.Text className="text-muted">
-                  <Information>
-                    Wow! You have been using the application for 100 days!
-                  </Information>
-                </Form.Text>
-              </Container>
-            </Form>
+            <Container>
+              <Icon />
+              <Form.Text className="text-muted">
+                <Information>
+                  Wow! You have been using the application for 100 days!
+                </Information>
+              </Form.Text>
+            </Container>
           </Modal.Body>
           <Modal.Footer>
             <Button className={css.button} onClick={handleClose}>
