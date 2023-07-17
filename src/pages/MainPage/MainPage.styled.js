@@ -91,67 +91,66 @@ export const HeroTitle = styled.section`
   }
 
   div {
-    @media screen and (min-width: ${SIZE.tablet}) {
+    /* @media screen and (min-width: ${SIZE.tablet}) {
       margin-bottom: 32px;
     }
 
     @media screen and (min-width: ${SIZE.desktop}) {
-      margin-bottom: 50px;
+      margin-bottom: 50px; */
+  }
+
+  h1 {
+    margin-bottom: 14px;
+    text-align: center;
+
+    /* color: ${COLOR.dark}; */
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -0.3px;
+    font-weight: 400;
+
+    @media screen and (min-width: ${SIZE.tablet}) {
+      margin-bottom: 24px;
+      text-align: start;
+
+      font-size: 72px;
+      letter-spacing: -0.36px;
     }
 
-    h1 {
+    @media screen and (min-width: ${SIZE.desktop}) {
       margin-bottom: 14px;
-      text-align: center;
 
-      /* color: ${COLOR.dark}; */
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -0.3px;
-      font-weight: 400;
-
-      @media screen and (min-width: ${SIZE.tablet}) {
-        margin-bottom: 24px;
-        text-align: start;
-
-        font-size: 72px;
-        letter-spacing: -0.36px;
-      }
-
-      @media screen and (min-width: ${SIZE.desktop}) {
-        margin-bottom: 14px;
-
-        font-size: 100px;
-        letter-spacing: -0.5px;
-      }
-
-      span {
-        color: ${COLOR.main};
-      }
+      font-size: 100px;
+      letter-spacing: -0.5px;
     }
 
-    p {
-      max-width: 248px;
-      margin: 0 auto;
-      text-align: center;
+    span {
+      color: ${COLOR.main};
+    }
+  }
 
-      /* color: #23262a; */
-      font-size: 14px;
-      line-height: ${18 / 14};
-      letter-spacing: -0.28px;
+  p {
+    max-width: 248px;
+    margin: 0 auto;
+    text-align: center;
 
-      @media screen and (min-width: ${SIZE.tablet}) {
-        max-width: 362px;
-        text-align: start;
-        margin: 0;
-      }
+    /* color: #23262a; */
+    font-size: 14px;
+    line-height: ${18 / 14};
+    letter-spacing: -0.28px;
 
-      @media screen and (min-width: ${SIZE.desktop}) {
-        max-width: 465px;
+    @media screen and (min-width: ${SIZE.tablet}) {
+      margin-bottom: 32px;
+      max-width: 362px;
+      text-align: start;
+    }
 
-        font-size: 18px;
-        line-height: ${24 / 18};
-        letter-spacing: -0.36px;
-      }
+    @media screen and (min-width: ${SIZE.desktop}) {
+      max-width: 465px;
+      margin-bottom: 50px;
+      font-size: 18px;
+      line-height: ${24 / 18};
+      letter-spacing: -0.36px;
     }
   }
 `;

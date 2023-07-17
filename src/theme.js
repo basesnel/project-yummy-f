@@ -41,6 +41,8 @@ const lightTheme = createTheme({
     background: {
       default: COLOR.second,
       input: 'white',
+      buttonSearch: COLOR.dark,
+      buttonSearchHover: COLOR.main,
     },
     backgroundRecipieinput: COLOR.lightThemeInputRecipe,
   },
@@ -64,6 +66,8 @@ const darkTheme = createTheme({
     background: {
       default: '#121212',
       input: COLOR.darkThemeInput,
+      buttonSearch: COLOR.main,
+      buttonSearchHover: 'transparent',
     },
     text: {
       primary: COLOR.second,
