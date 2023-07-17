@@ -13,7 +13,7 @@ const SkewButton = ({
   paddingWlg,
 }) => {
   // const theme = useTheme();
-  const color = 'inherit';
+  let color = 'inherit';
   let bgHover = bgColor,
     colorHover = 'inherit',
     border = 'none';
@@ -28,9 +28,16 @@ const SkewButton = ({
     bgColor = bgColor || COLOR.main;
     bgHover = COLOR.dark;
   }
+  if ((borderColor = 'green')) {
+    border = `2px solid ${COLOR.main}`;
+    bgHover = COLOR.main;
+    color = COLOR.dark;
+    colorHover = COLOR.second;
+  }
   return (
     <Button
       sx={{
+        textTransform: 'none',
         color,
         backgroundColor: bgColor,
         // [theme.breakpoints.up(theme.breakpoints.values.tablet)]: {
@@ -47,6 +54,10 @@ const SkewButton = ({
           xs: `${paddingHxs}px ${paddingWxs}px`,
           md: `${paddingHmd}px ${paddingWmd}px`,
           lg: `${paddingHlg}px ${paddingWlg}px`,
+        },
+        fontSize: {
+          xs: '10px',
+          md: '16px',
         },
         '&:hover': {
           color: colorHover,

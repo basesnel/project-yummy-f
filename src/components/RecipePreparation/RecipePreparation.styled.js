@@ -21,7 +21,7 @@ export const PrepSection = styled.section`
   }
 
   h2 {
-    color: #3e4462;
+    /* color: #3e4462; */
     font-family: Poppins;
     font-size: 24px;
     font-weight: 600;
