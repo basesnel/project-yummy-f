@@ -24,7 +24,6 @@ export const Area = styled.section`
 
 export const Icon = styled(mobile1x)`
   display: block;
-  position: absolute;
 
   @media only screen and (min-width: ${SIZE.mobile}) {
     flex-direction: row;

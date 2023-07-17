@@ -5,6 +5,7 @@ import {
   Information,
   Icon,
 } from './MotivatingModal.styled.js';
+import css from './style.module.css';
 import { Form, Modal, Button } from 'react-bootstrap';
 import { ReactComponent as CloseIcon } from '../../assets/images/motivating/close.svg';
 const MotivatingModal = () => {
@@ -13,7 +14,7 @@ const MotivatingModal = () => {
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value');
     console.log(comparasion);
-    if (parseInt(comparasion) > 5) {
+    if (parseInt(comparasion) > 100) {
       setShow(true);
     }
   };
@@ -41,8 +42,16 @@ const MotivatingModal = () => {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={handleClose}>
-              <CloseIcon />
+            <Button className={css.button} onClick={handleClose}>
+              <CloseIcon
+                style={{
+                  top: '0px',
+                  left: '0px',
+                  position: 'absolute',
+                  padding: '0px',
+                  margin: '0px',
+                }}
+              />
             </Button>
           </Modal.Footer>
         </Form.Group>
