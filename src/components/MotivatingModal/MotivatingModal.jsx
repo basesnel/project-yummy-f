@@ -1,27 +1,23 @@
 import { useState } from 'react';
-// import { useFormik } from 'formik';
-import styled from './MotivatingModal.module.css';
 import { Area, Container, Information } from './MotivatingModal.styled.js';
-import { Form, Modal, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import axios from 'axios';
+import { Form, Modal, Button, Icon } from 'react-bootstrap';
 import { ReactComponent as CloseIcon } from '../../../assets/images/motivating/closeIcon.svg';
 const MotivatingModal = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value');
-    if (parseInt(comparasion) > 100) {
+    console.log(comparasion);
+    if (parseInt(comparasion) > 5) {
       setShow(true);
     }
   };
 
   return (
-    <Area>
+    <Area onClick={handleShow}>
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        className={styled.container}
         centered
         show={show}
         onHide={handleShow}
@@ -30,6 +26,7 @@ const MotivatingModal = () => {
           <Modal.Body>
             <Form>
               <Container>
+                <Icon />
                 <Form.Text className="text-muted">
                   <Information>
                     Wow! You have been using the application for 100 days!

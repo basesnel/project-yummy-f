@@ -1,13 +1,14 @@
 import { SIZE } from 'constants';
 import { styled } from 'styled-components';
+import { ReactComponent as mobile1x } from '../../assets/images/motivating/background/mobile1x.svg';
 
-export const Field = styled.section`
+export const Area = styled.section`
   width: 100%;
   height: 100%;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
   flex-direction: column;
   margin-left: 14px;
   @media only screen and (min-width: ${SIZE.mobile}) {
@@ -16,12 +17,32 @@ export const Field = styled.section`
   @media only screen and (min-width: ${SIZE.tablet}) {
     letter-spacing: -0.24px;
   }
-  @media only screen and (min-width: ${SIZE.desctop}) {
+  @media only screen and (min-width: ${SIZE.desktop}) {
     margin: 33.5px 0 0 0;
   }
 `;
+
+export const Icon = styled(mobile1x)`
+  display: block;
+  position: absolute;
+
+  @media only screen and (min-width: ${SIZE.mobile}) {
+    flex-direction: row;
+  }
+  @media screen and (min-width: ${SIZE.tablet}) {
+    width: 268px;
+    height: 242px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    width: 268px;
+    height: 242px;
+  }
+`;
 export const Container = styled.div`
-  background: url();
+  position: relative;
+  ${
+    '' /* background-image: url(../../assets/images/motivating/background/mobile1x.svg); */
+  }
 `;
 export const Information = styled.span`
   display: flex;
