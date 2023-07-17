@@ -19,7 +19,14 @@ export const RecipePreparation = ({ instructions, photo }) => {
         </ul>
       </div>
       <div>
-        <img src={photo} alt="dish" />
+        <img
+          src={
+            photo ||
+            require('../../assets/images/recipePage/recipePlaceholder.png')
+              .default
+          }
+          alt="dish"
+        />
       </div>
     </PrepSection>
   );
