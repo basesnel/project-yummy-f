@@ -150,7 +150,7 @@ export const TextTime = styled.p`
   }
 `;
 
-export const BtnRemove = styled(Link)`
+export const BtnRemove = styled.button`
   text-decoration: none;
   position: absolute;
   border-radius: 4px;
