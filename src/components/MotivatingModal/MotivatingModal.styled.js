@@ -1,6 +1,6 @@
 import { SIZE } from 'constants';
 import { styled } from 'styled-components';
-import { ReactComponent as mobile1x } from '/assets/images/motivating/background/mobile1x.svg';
+import { ReactComponent as mobile1x } from 'assets/images/motivating/background/mobile1x.svg';
 
 export const Area = styled.section`
   width: 100%;
