@@ -37,7 +37,7 @@ export const SearchForm = styled.form`
     max-width: 510px;
   }
 
-  input {
+  /* input {
     width: 100%;
     padding: 17px 130px 17px 32px;
 
@@ -56,7 +56,7 @@ export const SearchForm = styled.form`
     @media screen and (min-width: ${SIZE.desktop}) {
       padding: 23px 130px 23px 48px;
     }
-  }
+  } */
 `;
 
 export const SearchBtn = styled.button`

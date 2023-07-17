@@ -1,3 +1,4 @@
+import InputMUI from 'components/Search/Input';
 import { SearchBtn, SearchForm } from 'components/Search/Search.styled';
 
 import { useSearchParams } from 'react-router-dom';
@@ -12,7 +13,7 @@ export const SearchInput = ({ ver, getCards }) => {
 
   return (
     <SearchForm $ver={ver} onSubmit={handleSubmit}>
-      <input
+      <InputMUI
         type="text"
         value={query ?? ''}
         onChange={e => setSearchParams({ q: e.target.value.trim() })}
