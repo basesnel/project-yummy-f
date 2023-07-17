@@ -13,27 +13,30 @@ const SkewButton = ({
   paddingWlg,
 }) => {
   // const theme = useTheme();
-  let color = 'inherit';
+  let color;
   let bgHover = bgColor,
     colorHover = 'inherit',
     border = 'none';
 
   if (bgColor === 'transparent') {
+    color = COLOR.second;
     colorHover = COLOR.main;
-    border = `2px solid ${borderColor}`;
+    border = `2px solid ${COLOR.second}`;
   } else if (bgColor === 'dark') {
     bgColor = COLOR.dark;
     bgHover = COLOR.main;
   } else {
     bgColor = bgColor || COLOR.main;
     bgHover = COLOR.dark;
+    color = COLOR.second;
   }
-  if ((borderColor = 'green')) {
+  if (borderColor === 'green') {
     border = `2px solid ${COLOR.main}`;
     bgHover = COLOR.main;
     color = COLOR.dark;
     colorHover = COLOR.second;
   }
+
   return (
     <Button
       sx={{
@@ -60,6 +63,7 @@ const SkewButton = ({
           md: '16px',
         },
         '&:hover': {
+          borderColor: colorHover,
           color: colorHover,
           backgroundColor: bgHover,
         },

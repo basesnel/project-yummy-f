@@ -4,17 +4,20 @@ import AddRecipeForm from 'components/AddRecipeForm/AddRecipeForm';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import Title from 'components/Title/Title';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
+import { Container } from 'components/Container/Container';
 
 const AddRecipePage = () => {
   return (
     <ThemeWrap>
-      <ContainerSection>
-        <MainContainer>
-          {/* <MainTitle title={'Add recipe'} /> */}
-          <Title>Add recipe</Title>
-          <AddRecipeForm />
-        </MainContainer>
-      </ContainerSection>
+      <Container>
+        <ContainerSection>
+          <MainContainer>
+            {/* <MainTitle title={'Add recipe'} /> */}
+            <Title>Add recipe</Title>
+            <AddRecipeForm />
+          </MainContainer>
+        </ContainerSection>
+      </Container>
     </ThemeWrap>
   );
 };
