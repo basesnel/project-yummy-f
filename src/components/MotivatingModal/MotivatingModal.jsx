@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import { Area, Container, Information } from './MotivatingModal.styled.js';
-import { Form, Modal, Button, Icon } from 'react-bootstrap';
-import { ReactComponent as CloseIcon } from '../../../assets/images/motivating/closeIcon.svg';
+import {
+  Area,
+  Container,
+  Information,
+  Icon,
+} from './MotivatingModal.styled.js';
+import { Form, Modal, Button } from 'react-bootstrap';
+import { ReactComponent as CloseIcon } from 'assets/images/motivating/closeIcon.svg';
 const MotivatingModal = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

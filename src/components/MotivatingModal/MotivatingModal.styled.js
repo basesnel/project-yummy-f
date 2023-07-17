@@ -1,6 +1,6 @@
 import { SIZE } from 'constants';
 import { styled } from 'styled-components';
-import { ReactComponent as mobile1x } from '../../assets/images/motivating/background/mobile1x.svg';
+import { ReactComponent as mobile1x } from '/assets/images/motivating/background/mobile1x.svg';
 
 export const Area = styled.section`
   width: 100%;
@@ -41,7 +41,7 @@ export const Icon = styled(mobile1x)`
 export const Container = styled.div`
   position: relative;
   ${
-    '' /* background-image: url(../../assets/images/motivating/background/mobile1x.svg); */
+    '' /* background-image: url(assets/images/motivating/background/mobile1x.svg); */
   }
 `;
 export const Information = styled.span`
