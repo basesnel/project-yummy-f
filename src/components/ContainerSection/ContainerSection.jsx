@@ -1,19 +1,19 @@
 import {
   BGContainer,
   Rectangle11,
-  Rectangle8,
   Rectangle9,
-  WrapperRectangle,
+  // WrapperRectangle,
 } from './ContainerSection.styled';
+import { Rectangle8 } from './Rectangle8';
 
 const ContainerSection = ({ children }) => {
   return (
     <BGContainer>
-      <WrapperRectangle>
-        <Rectangle11 />
-        <Rectangle9 />
-        <Rectangle8 />
-      </WrapperRectangle>
+      {/* <WrapperRectangle> */}
+      <Rectangle11 />
+      <Rectangle9 />
+      <Rectangle8 />
+      {/* </WrapperRectangle> */}
       {children}
     </BGContainer>
   );
