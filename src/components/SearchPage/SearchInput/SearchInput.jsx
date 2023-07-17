@@ -20,10 +20,11 @@ export const SearchInput = ({ ver, getCards, setRecipieArr }) => {
     setQuery(value.trim());
   };
   useEffect(() => {
+    console.log('hello');
     if (query) {
       getCards(query);
     }
-  }, []);
+  }, [getCards, query]);
 
   const formik = useFormik({
     initialValues: {
