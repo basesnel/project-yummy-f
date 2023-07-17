@@ -1,42 +1,54 @@
-// import API from 'api';
+import API from 'api';
 import { Container } from 'components/Container/Container';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 // import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
-// import MainTitle from 'components/MainTitle/MainTitle';
-// import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import Title from 'components/Title/Title';
 
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const FavoritePage = () => {
-  // const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [removeRecipe, setRemoveRecipe] = useState(false);
 
-  // useEffect(() => {
-  //   const recipes = async () => {
-  //     const response = await API.getFavorites();
-  //     const data = response.favorites;
+  useEffect(() => {
+    if (removeRecipe) {
+      setRemoveRecipe(false);
+    }
+    const recipes = async () => {
+      try {
+        const response = await API.getFavorites();
+        const data = response.favorites;
 
-  //     setFavoriteRecipes(prevState => [...data]);
-  //   };
+        setFavoriteRecipes(prevState => [...data]);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    if (!removeRecipe) {
+      recipes();
+    }
+  }, [removeRecipe]);
 
-  //   recipes();
-  // }, []);
+  const removeRecipeId = async recipeId => {
+    try {
+      const response = await API.removeFromFavorites(recipeId);
+      console.log(response);
+      setRemoveRecipe(true);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
-  // const removeRecipe = async ({ recipeId }) => {
-  //   const response = await API.removeFromFavorites(recipeId);
-  //   console.log(response);
-  // };
-
-  // console.log(favoriteRecipes);
+  console.log(favoriteRecipes);
 
   return (
     <ThemeWrap>
       <Container>
         <ContainerSection>
           <Title>Favorites</Title>
-          <MyRecipesList />
+          <MyRecipesList removeRecipeId={removeRecipeId} />
         </ContainerSection>
       </Container>
     </ThemeWrap>
