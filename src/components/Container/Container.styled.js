@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
   }
 
   @media screen and (min-width: ${SIZE.tablet}) {
-	max-width: none;
+    max-width: none;
     padding-left: ${PADDING.tablet};
     padding-right: ${PADDING.tablet};
     width: ${SIZE.tablet};

@@ -1,17 +1,54 @@
+import { IngrItemMUI } from './IngrItemMUI';
+import API from 'api';
 import {
   MainSection,
   ListHead,
   List,
   PositionedP,
-  IngrItem,
+  // IngrItem,
   ImgAndName,
   MeasureAndCheckbox,
   // Checked,
   Unchecked,
 } from './RecipeIngredientsList.styled';
-//import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { SIZE } from 'constants';
 
 export const RecipeIngredientsList = ({ ingredients }) => {
+  const [ingrAvailable, setIngrAvailable] = useState([]);
+
+  useEffect(() => {
+    const getAllIngr = async () => {
+      const ingredients = await API.getIngredients();
+      setIngrAvailable(ingredients);
+    };
+
+    getAllIngr();
+  }, []);
+
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${SIZE.tablet})`,
+  });
+
+  const isTablet = useMediaQuery({
+    query: `(max-width: ${SIZE.desktop})`,
+  });
+
+  const setPlaceholderByWidth = () => {
+    if (isMobile) {
+      return require('../../assets/images/recipePage/ingrMob.png').default;
+    } else if (isTablet) {
+      return require('../../assets/images/recipePage/ingrTab.png').default;
+    } else {
+      return require('../../assets/images/recipePage/ingrDesk.png').default;
+    }
+  };
+
+  const getIngredientById = ingrId => {
+    return ingrAvailable.find(({ _id }) => ingrId === _id);
+  };
+
   // const [checked, setChecked] = useState([]);
 
   //const handleCheck = e => {
@@ -39,10 +76,14 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       </ListHead>
       <List>
         {ingredients.map(ingr => (
-          <IngrItem key={ingr.id}>
+          <IngrItemMUI key={ingr.id}>
+            {/* <IngrItem key={ingr.id}> */}
             <ImgAndName>
-              <img alt="ingredient" />
-              <p></p>
+              <img
+                src={getIngredientById(ingr.id)?.img || setPlaceholderByWidth()}
+                alt="ingredient"
+              />
+              <p>{getIngredientById(ingr.id)?.name}</p>
             </ImgAndName>
             <MeasureAndCheckbox>
               <div>
@@ -50,7 +91,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
               </div>
               <Unchecked></Unchecked>
             </MeasureAndCheckbox>
-          </IngrItem>
+            {/* </IngrItem> */}
+          </IngrItemMUI>
         ))}
       </List>
     </MainSection>

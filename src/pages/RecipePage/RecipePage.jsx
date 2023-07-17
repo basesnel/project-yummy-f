@@ -50,6 +50,7 @@ const RecipePage = () => {
           descr={descr}
           time={time}
           isFavorite={isFavorite}
+          recipeId={recipeId}
         />
         <RecipeIngredientsList ingredients={ingredients} />
         <RecipePreparation instructions={preparation} photo={photo} />

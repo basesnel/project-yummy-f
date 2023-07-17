@@ -1,13 +1,16 @@
 import { ThemeProvider, createTheme } from '@mui/material';
 
-import MainTitle from 'components/MainTitle/MainTitle';
-import { MyRecipesContainer, TitleContainer } from './MyRecipesPage.styled';
+// import MainTitle from 'components/MainTitle/MainTitle';
+// import { MyRecipesContainer } from './MyRecipesPage.styled';
+// import { MyRecipesContainer, TitleContainer } from './MyRecipesPage.styled';
 import { Container } from 'components/Container/Container';
 
 import { Paginator } from 'components/Paginator/Paginator';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
 import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import Title from 'components/Title/Title';
+import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const theme = createTheme({
@@ -22,11 +25,13 @@ const MyRecipesPage = () => {
   return (
     <ThemeWrap>
       <FooterBgWrapper>
-        <MyRecipesContainer>
-          <Container>
-            <TitleContainer>
-              <MainTitle title="My recipes" />
-            </TitleContainer>
+        {/* <MyRecipesContainer> */}
+        <Container>
+          <ContainerSection>
+            <Title>My recipes</Title>
+            {/* <TitleContainer>
+	            <MainTitle title="My recipes" />
+	          </TitleContainer> */}
             <MyRecipesList>
               <MyRecipesItem />
               <MyRecipesItem />
@@ -36,8 +41,9 @@ const MyRecipesPage = () => {
             <ThemeProvider theme={theme}>
               <Paginator />
             </ThemeProvider>
-          </Container>
-        </MyRecipesContainer>
+          </ContainerSection>
+        </Container>
+        {/* </MyRecipesContainer> */}
       </FooterBgWrapper>
     </ThemeWrap>
   );

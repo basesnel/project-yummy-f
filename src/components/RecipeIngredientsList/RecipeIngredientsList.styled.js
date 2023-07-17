@@ -4,7 +4,15 @@ import checked from '../../assets/images/recipePage/checked.svg';
 import unchecked from '../../assets/images/recipePage/unchecked.svg';
 
 export const MainSection = styled.section`
-  padding: 50px 100px;
+  padding: 32px 16px;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    padding: 50px 32px;
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
+    padding: 50px 100px;
+  }
 `;
 
 export const ListHead = styled.div`
@@ -35,6 +43,10 @@ export const ListHead = styled.div`
     letter-spacing: 0.3px;
 
     @media screen and (min-width: ${SIZE.mobile}) {
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: ${SIZE.tablet}) {
       font-size: 18px;
       letter-spacing: 0.54px;
     }
@@ -43,10 +55,18 @@ export const ListHead = styled.div`
 
 export const PositionedP = styled.p`
   position: absolute;
-  right: 25%;
+  right: 86px;
+
+  @media screen and (min-width: ${SIZE.mobile}) {
+    right: 32%;
+  }
 
   @media screen and (min-width: ${SIZE.tablet}) {
-    right: 20%;
+    right: 167px;
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
+    right: 246px;
   }
 `;
 
@@ -75,11 +95,11 @@ export const IngrItem = styled.li`
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     padding: 0 24px;
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     padding: 0 32px;
   }
 `;
@@ -93,10 +113,12 @@ export const ImgAndName = styled.div`
 
   img {
     padding: 4px;
+    width: 65px;
+    height: 65px;
   }
 
   p {
-    color: ${COLOR.primaryText};
+    color: inherit;
     font-family: Poppins;
     font-size: 12px;
     font-weight: 500;
@@ -105,24 +127,32 @@ export const ImgAndName = styled.div`
   }
 
   @media screen and (min-width: ${SIZE.mobile}) {
-    gap: 24px;
+    gap: 8px;
 
     img {
       padding: 17px 16px;
+      width: 144px;
+      height: 146px;
     }
 
     p {
-      font-family: 24px;
+      font-size: 24px;
       line-height: 1;
     }
   }
 
   @media screen and (min-width: ${SIZE.tablet}) {
-    gap: 40px;
+    gap: 24px;
 
     img {
       padding: 26px;
+      width: 180px;
+      height: 180px;
     }
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
+    gap: 40px;
   }
 `;
 
@@ -147,7 +177,7 @@ export const MeasureAndCheckbox = styled.div`
   }
 
   @media screen and (min-width: ${SIZE.mobile}) {
-    gap: 78px;
+    //  gap: 78px;
 
     div:first-child {
       padding: 4px 8px;
@@ -159,6 +189,10 @@ export const MeasureAndCheckbox = styled.div`
   }
 
   @media screen and (min-width: ${SIZE.tablet}) {
+    gap: 78px;
+  }
+
+  @media screen and (min-width: ${SIZE.desktop}) {
     gap: 150px;
   }
 `;

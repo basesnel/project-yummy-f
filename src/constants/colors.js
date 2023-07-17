@@ -4,3 +4,6 @@ export const second = '#FAFAFA';
 export const hover = '#8baa36';
 export const primaryText = '#3e4462';
 export const warning = '#e74a3b';
+export const darkThemeInput = '#2A2C36';
+export const darkThemeInputRecipe = '#2A2C36';
+export const lightThemeInputRecipe = '#ebf3d4';

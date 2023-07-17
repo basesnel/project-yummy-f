@@ -2,8 +2,8 @@ import { PrepSection } from './RecipePreparation.styled';
 import { nanoid } from 'nanoid';
 
 export const RecipePreparation = ({ instructions, photo }) => {
-  const instr = instructions.split('\r\n');
-  console.log(instr);
+  const instr = instructions.split('\r\n').filter(item => item !== '');
+  //console.log(instr);
   console.log(instr);
   return (
     <PrepSection>
@@ -19,7 +19,14 @@ export const RecipePreparation = ({ instructions, photo }) => {
         </ul>
       </div>
       <div>
-        <img src={photo} alt="dish" />
+        <img
+          src={
+            photo ||
+            require('../../assets/images/recipePage/recipePlaceholder.png')
+              .default
+          }
+          alt="dish"
+        />
       </div>
     </PrepSection>
   );
