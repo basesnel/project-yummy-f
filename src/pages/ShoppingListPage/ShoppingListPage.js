@@ -1,21 +1,26 @@
 import { Container } from 'components/Container/Container';
-import MainTitle from 'components/MainTitle/MainTitle';
+// import MainTitle from 'components/MainTitle/MainTitle';
 import ShoppingListItem from 'components/IngredientsShoppingList/ShoppingListItem/ShoppingListItem';
 import {
-  ShoppingListContainer,
+  // ShoppingListContainer,
   TitleContainer,
   Text,
 } from './ShoppingListPage.styled';
 import ShoppingList from 'components/IngredientsShoppingList/ShoppingList/ShoppingList';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import Title from 'components/Title/Title';
+import ContainerSection from 'components/ContainerSection/ContainerSection';
 
 const ShoppingListPage = () => {
   return (
     <ThemeWrap>
-      <ShoppingListContainer>
-        <Container>
+      {/* <ShoppingListContainer> */}
+
+      <Container>
+        <ContainerSection>
           <TitleContainer>
-            <MainTitle title="Shopping list" />
+            <Title>Shopping list</Title>
+            {/* <MainTitle title="Shopping list" /> */}
           </TitleContainer>
 
           <Text>
@@ -31,8 +36,9 @@ const ShoppingListPage = () => {
             <ShoppingListItem />
             <ShoppingListItem />
           </ShoppingList>
-        </Container>
-      </ShoppingListContainer>
+        </ContainerSection>
+      </Container>
+      {/* </ShoppingListContainer> */}
     </ThemeWrap>
   );
 };

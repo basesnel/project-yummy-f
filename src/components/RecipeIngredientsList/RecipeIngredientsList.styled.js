@@ -118,7 +118,7 @@ export const ImgAndName = styled.div`
   }
 
   p {
-    color: ${COLOR.primaryText};
+    color: inherit;
     font-family: Poppins;
     font-size: 12px;
     font-weight: 500;

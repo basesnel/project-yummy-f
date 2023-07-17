@@ -3,7 +3,7 @@ import { SIZE, COLOR } from 'constants';
 
 export const HeaderContainer = styled.header`
   display: flex;
-
+  z-index: 100;
   position: absolute;
   top: 18px;
   width: 343px;

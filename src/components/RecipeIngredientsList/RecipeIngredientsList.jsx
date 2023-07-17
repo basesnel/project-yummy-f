@@ -1,10 +1,11 @@
+import { IngrItemMUI } from './IngrItemMUI';
 import API from 'api';
 import {
   MainSection,
   ListHead,
   List,
   PositionedP,
-  IngrItem,
+  // IngrItem,
   ImgAndName,
   MeasureAndCheckbox,
   // Checked,
@@ -55,7 +56,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       </ListHead>
       <List>
         {ingredients.map(ingr => (
-          <IngrItem key={ingr.id}>
+          <IngrItemMUI key={ingr.id}>
+            {/* <IngrItem key={ingr.id}> */}
             <ImgAndName>
               <img src={getIngredientById(ingr.id)?.img} alt="ingredient" />
               <p>{getIngredientById(ingr.id)?.name}</p>
@@ -66,7 +68,8 @@ export const RecipeIngredientsList = ({ ingredients }) => {
               </div>
               <Unchecked></Unchecked>
             </MeasureAndCheckbox>
-          </IngrItem>
+            {/* </IngrItem> */}
+          </IngrItemMUI>
         ))}
       </List>
     </MainSection>

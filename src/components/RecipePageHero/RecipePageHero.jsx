@@ -83,7 +83,7 @@ export const RecipePageHero = ({
           paddingWxs={24}
           paddingWmd={44}
           paddingWlg={44}
-          borderColor="#8baa36"
+          borderColor={'green'}
         >
           {isAddedToFavorite
             ? 'Remove from favorite'

@@ -4,7 +4,13 @@ import {
   CardMedia,
   CardContent,
   Typography,
+  styled,
 } from '@mui/material';
+
+const CardWrap = styled(CardContent)(({ theme }) => ({
+  backgroundColor: theme.palette.background.input,
+  color: theme.palette.text.secondary,
+}));
 
 const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
   return (
@@ -21,14 +27,13 @@ const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
           image={thumb}
           alt={title}
         />
-        <CardContent
+        <CardWrap
           sx={{
             p: 2,
             left: '16px',
             right: '16px',
             position: 'absolute',
             bottom: '24px',
-            backgroundColor: 'white',
             borderRadius: '8px',
           }}
         >
@@ -36,7 +41,7 @@ const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              color: ' #3E4462',
+              // color: ' #3E4462',
 
               fontFamily: 'Poppins',
               fontSize: '16px',
@@ -47,7 +52,7 @@ const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
           >
             {title}
           </Typography>
-        </CardContent>
+        </CardWrap>
       </CardActionArea>
     </Card>
   );

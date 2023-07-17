@@ -26,8 +26,8 @@ export const SearchPageComponent = () => {
     // console.log(res);
   };
   return (
-    <ContainerSection>
-      <Container>
+    <Container>
+      <ContainerSection>
         <TitleContainer>
           <MainTitle title={'Search'} />
         </TitleContainer>
@@ -41,7 +41,7 @@ export const SearchPageComponent = () => {
         ) : (
           <NoSearchResults />
         )}
-      </Container>
-    </ContainerSection>
+      </ContainerSection>
+    </Container>
   );
 };
