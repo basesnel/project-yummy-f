@@ -10,35 +10,38 @@ import ShoppingList from 'components/IngredientsShoppingList/ShoppingList/Shoppi
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import Title from 'components/Title/Title';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const ShoppingListPage = () => {
   return (
     <ThemeWrap>
-      {/* <ShoppingListContainer> */}
-
-      <Container>
-        <ContainerSection>
-          <TitleContainer>
-            <Title>Shopping list</Title>
-            {/* <MainTitle title="Shopping list" /> */}
-          </TitleContainer>
-
-          <Text>
-            <p> Products </p>
-            <p> Number </p>
-            <p> Remove</p>
-          </Text>
-
-          <ShoppingList>
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-          </ShoppingList>
-        </ContainerSection>
-      </Container>
-      {/* </ShoppingListContainer> */}
+      <FooterBgWrapper>
+      	{/* <ShoppingListContainer> */}
+	
+	      <Container>
+	        <ContainerSection>
+	          <TitleContainer>
+	            <Title>Shopping list</Title>
+	            {/* <MainTitle title="Shopping list" /> */}
+	          </TitleContainer>
+	
+	          <Text>
+	            <p> Products </p>
+	            <p> Number </p>
+	            <p> Remove</p>
+	          </Text>
+	
+	          <ShoppingList>
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	          </ShoppingList>
+	        </ContainerSection>
+	      </Container>
+	      {/* </ShoppingListContainer> */}
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };
