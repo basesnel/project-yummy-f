@@ -35,7 +35,7 @@ const MyRecipesItem = () => {
       <BtnRemove type="button">
         <WrapperIconRemove />
       </BtnRemove>
-      <BtnDetail type="button">See recipe</BtnDetail>
+      <BtnDetail to={'/recipe/6462a8f74c3d0ddd28897fc6'}>See recipe</BtnDetail>
     </Item>
   );
 };
