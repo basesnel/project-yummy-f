@@ -58,6 +58,7 @@ export const CloseBtn = styled.button`
 `;
 
 export const NavigationContainer = styled.div`
+  color: ${COLOR.dark};
   position: absolute;
   top: 50%;
   left: 50%;

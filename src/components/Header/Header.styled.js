@@ -17,10 +17,10 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const Burger = styled.img`
+export const Burger = styled.svg`
+  /* fill: currentColor; */
   width: 28px;
   height: 28px;
-
   &:hover,
   &:focus {
     fill: inherit;
@@ -43,10 +43,22 @@ export const BurgerBtn = styled.button`
   &:hover,
   &:focus {
     color: ${COLOR.hover};
+    stroke: ${COLOR.hover};
+
+    & > svg > path {
+      stroke: ${COLOR.hover};
+    }
   }
 
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 32px;
     height: 32px;
   }
+
+  /* & > svg > path {
+    &:hover,
+    &:focus {
+      stroke: ${COLOR.hover};
+    }
+  } */
 `;

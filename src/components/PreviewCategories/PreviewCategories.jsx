@@ -122,7 +122,7 @@ export function PreviewCategories() {
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            to="/categories"
+            to="/categories/beef"
           >
             Other categories
           </OtherBtn>
