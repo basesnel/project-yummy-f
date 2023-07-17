@@ -11,6 +11,7 @@ import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import Title from 'components/Title/Title';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const theme = createTheme({
   palette: {
@@ -23,25 +24,27 @@ const theme = createTheme({
 const MyRecipesPage = () => {
   return (
     <ThemeWrap>
-      {/* <MyRecipesContainer> */}
-      <Container>
-        <ContainerSection>
-          <Title>My recipes</Title>
-          {/* <TitleContainer>
-            <MainTitle title="My recipes" />
-          </TitleContainer> */}
-          <MyRecipesList>
-            <MyRecipesItem />
-            <MyRecipesItem />
-            <MyRecipesItem />
-            <MyRecipesItem />
-          </MyRecipesList>
-          <ThemeProvider theme={theme}>
-            <Paginator />
-          </ThemeProvider>
-        </ContainerSection>
-      </Container>
-      {/* </MyRecipesContainer> */}
+      <FooterBgWrapper>
+        {/* <MyRecipesContainer> */}
+        <Container>
+          <ContainerSection>
+            <Title>My recipes</Title>
+            {/* <TitleContainer>
+	            <MainTitle title="My recipes" />
+	          </TitleContainer> */}
+            <MyRecipesList>
+              <MyRecipesItem />
+              <MyRecipesItem />
+              <MyRecipesItem />
+              <MyRecipesItem />
+            </MyRecipesList>
+            <ThemeProvider theme={theme}>
+              <Paginator />
+            </ThemeProvider>
+          </ContainerSection>
+        </Container>
+        {/* </MyRecipesContainer> */}
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };
