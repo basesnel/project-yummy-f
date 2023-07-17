@@ -10,6 +10,7 @@ import { SearchInput } from './SearchInput/SearchInput';
 import { SearchTypeSelector } from './SearchTypeSelector/SearchTypeSelector';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { Container } from 'components/Container/Container';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 export const SearchPageComponent = () => {
   const [selector, setSelector] = useState('title');
@@ -26,22 +27,24 @@ export const SearchPageComponent = () => {
     // console.log(res);
   };
   return (
-    <ContainerSection>
-      <Container>
-        <TitleContainer>
-          <MainTitle title={'Search'} />
-        </TitleContainer>
-        <SearchInput ver="mobile" getCards={getCards} />
-        <SearchInput ver="tablet" getCards={getCards} />
+    <FooterBgWrapper>
+      <ContainerSection>
+        <Container>
+          <TitleContainer>
+            <MainTitle title={'Search'} />
+          </TitleContainer>
+          <SearchInput ver="mobile" getCards={getCards} />
+          <SearchInput ver="tablet" getCards={getCards} />
 
-        <SearchTypeSelector setSelector={setSelector} />
+          <SearchTypeSelector setSelector={setSelector} />
 
-        {recipieArr ? (
-          <SearchedRecipesList recipieArr={recipieArr} />
-        ) : (
-          <NoSearchResults />
-        )}
-      </Container>
-    </ContainerSection>
+          {recipieArr ? (
+            <SearchedRecipesList recipieArr={recipieArr} />
+          ) : (
+            <NoSearchResults />
+          )}
+        </Container>
+      </ContainerSection>
+    </FooterBgWrapper>
   );
 };

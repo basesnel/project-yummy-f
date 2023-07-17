@@ -9,6 +9,7 @@ import Title from 'components/Title/Title';
 import CategoriesList from './CategoriesList/CategoriesList';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -63,52 +64,54 @@ const CategoriesPage = () => {
 
   return (
     <ThemeWrap>
-      <Container>
-        {!error && <Title>Categories</Title>}
+      <FooterBgWrapper>
+        <Container>
+          {!error && <Title>Categories</Title>}
 
-        <CategoriesList onError={el => setError(el)} />
+          <CategoriesList onError={el => setError(el)} />
 
-        {!error && (
-          <Grid
-            container
-            pt={{ xs: '32px', md: '50px' }}
-            mb={{ xs: '60px', md: '100px' }}
-            rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
-            columnSpacing={{ md: 4, lg: 1.5 }}
-          >
-            {recipieArr &&
-              recipieArr.length &&
-              recipieArr?.map(({ _id, title, thumb }) => (
-                <Grid item xs={12} md={6} lg={3} key={_id}>
-                  <CardCategorie
-                    handleRecipe={chooseRecipe}
-                    id={_id}
-                    title={title}
-                    thumb={thumb}
-                  ></CardCategorie>
-                </Grid>
-              ))}
-          </Grid>
-        )}
+          {!error && (
+            <Grid
+              container
+              pt={{ xs: '32px', md: '50px' }}
+              mb={{ xs: '60px', md: '100px' }}
+              rowSpacing={{ xs: 3.5, md: 4, lg: 12.5 }}
+              columnSpacing={{ md: 4, lg: 1.5 }}
+            >
+              {recipieArr &&
+                recipieArr.length &&
+                recipieArr?.map(({ _id, title, thumb }) => (
+                  <Grid item xs={12} md={6} lg={3} key={_id}>
+                    <CardCategorie
+                      handleRecipe={chooseRecipe}
+                      id={_id}
+                      title={title}
+                      thumb={thumb}
+                    ></CardCategorie>
+                  </Grid>
+                ))}
+            </Grid>
+          )}
 
-        {!error && (
-          <Pagination
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              p: '50px 0 100px',
-            }}
-            count={totalPages}
-            page={page}
-            onChange={setPageHandler}
-            variant="outlined"
-            color="primary"
-            size="large"
-          />
-        )}
+          {!error && (
+            <Pagination
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                p: '50px 0 100px',
+              }}
+              count={totalPages}
+              page={page}
+              onChange={setPageHandler}
+              variant="outlined"
+              color="primary"
+              size="large"
+            />
+          )}
 
-        {error && <NotFoundPage />}
-      </Container>
+          {error && <NotFoundPage />}
+        </Container>
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };

@@ -8,6 +8,7 @@ import { Paginator } from 'components/Paginator/Paginator';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
 import MyRecipesItem from 'components/MyRecipesItem/MyRecipesItem';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const theme = createTheme({
   palette: {
@@ -20,22 +21,24 @@ const theme = createTheme({
 const MyRecipesPage = () => {
   return (
     <ThemeWrap>
-      <MyRecipesContainer>
-        <Container>
-          <TitleContainer>
-            <MainTitle title="My recipes" />
-          </TitleContainer>
-          <MyRecipesList>
-            <MyRecipesItem />
-            <MyRecipesItem />
-            <MyRecipesItem />
-            <MyRecipesItem />
-          </MyRecipesList>
-          <ThemeProvider theme={theme}>
-            <Paginator />
-          </ThemeProvider>
-        </Container>
-      </MyRecipesContainer>
+      <FooterBgWrapper>
+        <MyRecipesContainer>
+          <Container>
+            <TitleContainer>
+              <MainTitle title="My recipes" />
+            </TitleContainer>
+            <MyRecipesList>
+              <MyRecipesItem />
+              <MyRecipesItem />
+              <MyRecipesItem />
+              <MyRecipesItem />
+            </MyRecipesList>
+            <ThemeProvider theme={theme}>
+              <Paginator />
+            </ThemeProvider>
+          </Container>
+        </MyRecipesContainer>
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };

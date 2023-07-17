@@ -8,31 +8,34 @@ import {
 } from './ShoppingListPage.styled';
 import ShoppingList from 'components/IngredientsShoppingList/ShoppingList/ShoppingList';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const ShoppingListPage = () => {
   return (
     <ThemeWrap>
-      <ShoppingListContainer>
-        <Container>
-          <TitleContainer>
-            <MainTitle title="Shopping list" />
-          </TitleContainer>
-
-          <Text>
-            <p> Products </p>
-            <p> Number </p>
-            <p> Remove</p>
-          </Text>
-
-          <ShoppingList>
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-            <ShoppingListItem />
-          </ShoppingList>
-        </Container>
-      </ShoppingListContainer>
+      <FooterBgWrapper>
+      	<ShoppingListContainer>
+	        <Container>
+	          <TitleContainer>
+	            <MainTitle title="Shopping list" />
+	          </TitleContainer>
+	
+	          <Text>
+	            <p> Products </p>
+	            <p> Number </p>
+	            <p> Remove</p>
+	          </Text>
+	
+	          <ShoppingList>
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	            <ShoppingListItem />
+	          </ShoppingList>
+	        </Container>
+	      </ShoppingListContainer>
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };

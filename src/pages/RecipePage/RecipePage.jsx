@@ -6,6 +6,7 @@ import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const RecipePage = () => {
   // const navigate = useNavigate();
@@ -43,14 +44,16 @@ const RecipePage = () => {
 
   return (
     <ThemeWrap>
-      <RecipePageHero
-        title={title}
-        descr={descr}
-        time={time}
-        isFavorite={isFavorite}
-      />
-      <RecipeIngredientsList ingredients={ingredients} />
-      <RecipePreparation instructions={preparation} photo={photo} />
+      <FooterBgWrapper>
+        <RecipePageHero
+          title={title}
+          descr={descr}
+          time={time}
+          isFavorite={isFavorite}
+        />
+        <RecipeIngredientsList ingredients={ingredients} />
+        <RecipePreparation instructions={preparation} photo={photo} />
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };
