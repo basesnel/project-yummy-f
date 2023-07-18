@@ -1,21 +1,18 @@
 import { SearchForm } from 'components/Search/Search.styled';
-
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Message } from 'components/UserProfile/UserProfile.styled';
 import { SearchBtn } from './SearchInput.styled';
-
 const validationSchema = Yup.object().shape({
   query: Yup.string().required('Please enter your query').trim(),
 });
 
-export const SearchInput = ({
-  ver,
-  setQuery,
+export const SearchInput = ({ ver, getCards, setRecipieArr }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('q') ?? null);
 
-  query,
-  setSearchParams,
-}) => {
   const handleChange = e => {
     const { value } = e.target;
     formik.setFieldValue('query', value);
@@ -23,20 +20,32 @@ export const SearchInput = ({
     setQuery(value.trim());
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (query) {
+        getCards(query);
+      }
+    }, 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       query: query ?? '',
     },
 
     validationSchema,
-    onSubmit: () => {
-      setQuery(query);
+    onSubmit: values => {
+      getCards(values.query);
     },
   });
   const handleSubmit = e => {
     e.preventDefault();
-
-    formik.handleSubmit();
+    if (query) {
+      formik.handleSubmit();
+    } else {
+      setRecipieArr(null);
+    }
   };
 
   return (

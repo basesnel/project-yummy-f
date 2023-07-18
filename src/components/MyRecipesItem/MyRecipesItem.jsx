@@ -12,7 +12,7 @@ import {
   WrapperIconRemove,
 } from './MyRecipesItem.styled';
 
-const MyRecipesItem = () => {
+const MyRecipesItem = ({ removeRecipeId }) => {
   return (
     <Item>
       <WrapperPhoto>
@@ -32,10 +32,15 @@ const MyRecipesItem = () => {
         </Text>
         <TextTime>40 min</TextTime>
       </WrapperDescription>
-      <BtnRemove type="button">
+      <BtnRemove
+        onClick={() => {
+          removeRecipeId(`6462a8f74c3d0ddd28897ff2`);
+        }}
+        type="button"
+      >
         <WrapperIconRemove />
       </BtnRemove>
-      <BtnDetail type="button">See recipe</BtnDetail>
+      <BtnDetail to={'/recipe/6462a8f74c3d0ddd28898065'}>See recipe</BtnDetail>
     </Item>
   );
 };
