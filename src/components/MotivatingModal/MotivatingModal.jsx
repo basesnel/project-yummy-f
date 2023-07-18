@@ -21,7 +21,7 @@ const MotivatingModal = () => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    window.addEventistener('keydown', e => {
+    window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         setShow(false);
       }
