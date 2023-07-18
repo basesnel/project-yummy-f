@@ -28,16 +28,23 @@ export const SelectLabel = styled.p`
     font-size: 14px;
     line-height: 1.29;
   }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
 `;
 
 export const StyledSelect = styled(Select)`
+  border-radius: 6px;
+  border: none;
+  opacity: 0.5;
+
   .MuiSelect-select {
     box-sizing: border-box;
     width: 146px;
     height: 34px;
     padding: 8px 0 8px 14px;
     font-size: 12px;
-    @media screen and (min-width: ${SIZE.tablet});
   }
 
   input {
@@ -47,9 +54,6 @@ export const StyledSelect = styled(Select)`
   svg {
     right: 14px;
   }
-  border-radius: 6px;
-  border: none;
-  opacity: 0.5;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     // .MuiSelect-select {
