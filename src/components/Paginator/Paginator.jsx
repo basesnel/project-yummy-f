@@ -10,6 +10,7 @@ export function Paginator() {
       <StyleSheetManager shouldForwardProp={() => true}>
         <PaginationContainer>
           <PaginationMUI
+            sx={{ backgroundColor: theme.palette.background.input }}
             count={5}
             color="primary"
             siblingCount={0}

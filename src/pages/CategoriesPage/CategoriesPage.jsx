@@ -106,6 +106,7 @@ const CategoriesPage = () => {
                   p: '12px 18px',
                   m: '50px auto 100px',
                   backgroundColor: theme.palette.background.input,
+                  boxShadow: '0px 4px 4px 0px rgba(135, 135, 135, 0.20)',
                 }}
                 count={totalPages}
                 page={page}

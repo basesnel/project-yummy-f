@@ -47,9 +47,6 @@ const Header = ({ onTheme }) => {
                 <path
                   d="M2 10H26M2 2H26M2 18H18"
                   stroke={theme.palette.text.primary}
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                 />
               </svg>
               {/* <Burger

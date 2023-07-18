@@ -54,11 +54,4 @@ export const BurgerBtn = styled.button`
     width: 32px;
     height: 32px;
   }
-
-  /* & > svg > path {
-    &:hover,
-    &:focus {
-      stroke: ${COLOR.hover};
-    }
-  } */
 `;
