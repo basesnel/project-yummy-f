@@ -71,25 +71,23 @@ const RecipeDescriptionFields = ({ categories, setPicture }) => {
           onChange={handleChange}
         />
         <StyledSelect
+          isSearchable={false}
           classNamePrefix="Select"
           options={categoriesOptions}
-          isSearchable={false}
           placeholder="Category"
           onChange={e => (values.category = e.value)}
           menuShouldBlockScroll={true}
           components={{
-            IndicatorSeparator: () => null,
             ValueContainer: CustomValueContainer,
           }}
         />
         <StyledSelect
+          isSearchable={false}
           classNamePrefix="Select"
           options={timeOptions}
-          isSearchable={false}
           placeholder="Cooking time"
           onChange={e => (values.time = e.value)}
           components={{
-            IndicatorSeparator: () => null,
             ValueContainer: CustomValueContainer,
           }}
         />

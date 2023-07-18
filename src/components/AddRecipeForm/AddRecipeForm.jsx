@@ -10,6 +10,7 @@ import RecipePreparationFields from 'components/RecipePreparationFields/RecipePr
 const AddRecipeForm = () => {
   const [categories, setCategories] = useState([]);
   const [picture, setPicture] = useState(null);
+  const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -19,7 +20,17 @@ const AddRecipeForm = () => {
         console.log(error);
       }
     };
+
+    const getIngredients = async () => {
+      try {
+        setIngredients(await API.getIngredients());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getCategories();
+    getIngredients();
   }, []);
 
   return (
@@ -29,6 +40,7 @@ const AddRecipeForm = () => {
         description: '',
         category: '',
         time: '',
+        ingredients: [{ ingredient: '', amount: '' }],
         preparation: '',
       }}
       onSubmit={values => {
@@ -56,7 +68,7 @@ const AddRecipeForm = () => {
             categories={categories}
             setPicture={setPicture}
           />
-          <RecipeIngredientsFields />
+          <RecipeIngredientsFields ingredients={ingredients} />
           <RecipePreparationFields />
           <SubmitButton type="submit">Add</SubmitButton>
         </RecipeForm>
