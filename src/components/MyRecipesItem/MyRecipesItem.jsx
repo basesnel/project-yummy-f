@@ -12,37 +12,29 @@ import {
   WrapperIconRemove,
 } from './MyRecipesItem.styled';
 
-const MyRecipesItem = ({ removeRecipeId }) => {
-  return (
-    <Item>
+const MyRecipesItem = ({ favoriteRecipes, removeRecipeId }) => {
+  return favoriteRecipes.map(el => (
+    <Item key={el.id}>
       <WrapperPhoto>
-        <Photo alt="photo recipe" />
+        <Photo alt="photo recipe" src={el.preview} />
       </WrapperPhoto>
       <WrapperDescription>
-        <Title>Salmon Eggs Benedict</Title>
-        <MainText>
-          Salmon eggs are rich in essential nutrients, low in calories, and
-          recommended as part of a healthy diet. Including salmon in a balanced
-          diet can help decrease the chances of heart disease, ease
-          inflammation, and more.{' '}
-        </MainText>
-        <Text>
-          Studies have shown a number of potential health benefits to seafood
-          rich in omega-3 fatty acids, which include salmon eggs.
-        </Text>
-        <TextTime>40 min</TextTime>
+        <Title>{el.title}</Title>
+        <MainText>{el.description}</MainText>
+        <Text>{el.instructions}</Text>
+        <TextTime>{el.time} min</TextTime>
       </WrapperDescription>
       <BtnRemove
         onClick={() => {
-          removeRecipeId(`6462a8f74c3d0ddd28897ff2`);
+          removeRecipeId(`${el.id}`);
         }}
         type="button"
       >
         <WrapperIconRemove />
       </BtnRemove>
-      <BtnDetail to={'/recipe/6462a8f74c3d0ddd28898065'}>See recipe</BtnDetail>
+      <BtnDetail to={`/recipe/${el.id}`}>See recipe</BtnDetail>
     </Item>
-  );
+  ));
 };
 
 export default MyRecipesItem;
