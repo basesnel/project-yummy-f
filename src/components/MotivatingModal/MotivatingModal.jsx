@@ -17,7 +17,8 @@ const MotivatingModal = () => {
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value');
     console.log(comparasion);
-    if (parseInt(comparasion) > 100) {
+    console.log(comparasion);
+    if (parseInt(comparasion) > 5) {
       setShow(true);
     }
   };
