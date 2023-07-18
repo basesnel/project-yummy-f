@@ -14,6 +14,7 @@ import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styl
 import { useEffect, useState } from 'react';
 import API from 'api';
 import { useAuth } from 'hooks';
+import { NoSearchResults } from 'components/SearchPage/NoSearchResults/NoSearchResults';
 
 const theme = createTheme({
   palette: {
@@ -154,7 +155,7 @@ const MyRecipesPage = () => {
                 </ThemeProvider>
               </>
             ) : (
-              <p>You have not created any recipes</p>
+              <NoSearchResults text={`You have not created any recipe`} />
             )}
           </ContainerSection>
         </Container>
