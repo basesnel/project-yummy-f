@@ -79,14 +79,7 @@ export const RegisterInput = styled.input`
   line-height: normal;
   letter-spacing: -0.28px;
   background: transparent;
-  border: 1px solid rgba(250, 250, 250, 0.15700000524520874);
-  border-radius: 6px;
-  transition: ${TRANSITION.forHoverBorderColor};
-
-  &:hover,
-  &:focus {
-    border-color: #fafafa;
-  }
+  border: none;
   @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -99,6 +92,25 @@ export const RegisterInputWrapper = styled.div`
   position: relative;
 
   margin-bottom: 12px;
+  border: 1px solid rgba(250, 250, 250, 0.15700000524520874);
+  border-radius: 6px;
+  opacity: 0.8;
+
+  transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverOpacity};
+
+  svg {
+    opacity: 0.8;
+    transition: ${TRANSITION.forHoverOpacity};
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid rgba(250, 250, 250, 1);
+    opacity: 1;
+    & svg {
+      opacity: 1;
+    }
+  }
+
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-bottom: 24px;
   }

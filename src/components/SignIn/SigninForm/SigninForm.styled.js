@@ -80,16 +80,7 @@ export const SigninInput = styled.input`
   line-height: normal;
   letter-spacing: -0.28px;
   background-color: transparent;
-  border: 1px solid rgba(250, 250, 250, 0.8);
-  border-radius: 6px;
-  transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverColor},
-    ${TRANSITION.forHoverOpacity};
-
-  &:hover,
-  &:focus {
-    border: 1px solid rgba(250, 250, 250, 1);
-    color: rgba(250, 250, 250, 1);
-  }
+  border: none;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 16px;
@@ -101,8 +92,23 @@ export const SigninInput = styled.input`
 
 export const SigninInputWrapper = styled.div`
   position: relative;
-
+  border: 1px solid rgba(250, 250, 250, 0.8);
+  border-radius: 6px;
   margin-bottom: 12px;
+  transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverOpacity};
+  opacity: 0.8;
+  svg {
+    opacity: 0.8;
+    transition: ${TRANSITION.forHoverOpacity};
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid rgba(250, 250, 250, 1);
+    opacity: 1;
+    & svg {
+      opacity: 1;
+    }
+  }
 
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-bottom: 24px;
