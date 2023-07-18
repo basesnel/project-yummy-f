@@ -1,4 +1,4 @@
-import { Grid, Pagination } from '@mui/material';
+import { Grid, Pagination, PaginationItem, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
+// import { COLOR } from 'constants';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -42,6 +43,8 @@ const CategoriesPage = () => {
     oneCategorie(tempCategoryName);
     navigate(`/categories/${tempCategoryName}`);
   }, [categoryName, navigate]);
+
+  const theme = useTheme();
 
   const setPageHandler = async (_, value) => {
     setPage(value);
@@ -98,9 +101,11 @@ const CategoriesPage = () => {
             {!error && (
               <Pagination
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  p: '50px 0 100px',
+                  width: 'max-content',
+                  borderRadius: '26px',
+                  p: '12px 18px',
+                  m: '50px auto 100px',
+                  backgroundColor: theme.palette.background.input,
                 }}
                 count={totalPages}
                 page={page}
@@ -108,6 +113,24 @@ const CategoriesPage = () => {
                 variant="outlined"
                 color="primary"
                 size="large"
+                renderItem={item => (
+                  <PaginationItem
+                    sx={{
+                      backgroundColor: item.selected
+                        ? theme.palette.background.paginator + '!important'
+                        : 'transparent',
+                      color: item.selected
+                        ? theme.palette.paginator.active + '!important'
+                        : theme.palette.paginator.inactive,
+                      border: 'none !important',
+                      fontFamily: 'Poppins',
+                      fontSize: '12px',
+                      fontWeight: 500,
+                      margin: 0,
+                    }}
+                    {...item}
+                  />
+                )}
               />
             )}
 

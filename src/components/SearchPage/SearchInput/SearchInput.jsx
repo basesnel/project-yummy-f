@@ -2,7 +2,6 @@ import ButtonMUI from 'components/Search/ButtonMui';
 import InputMUI from 'components/Search/InputMUI';
 import { SearchForm } from 'components/Search/Search.styled';
 
-import { SearchForm } from 'components/Search/Search.styled';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useFormik } from 'formik';
