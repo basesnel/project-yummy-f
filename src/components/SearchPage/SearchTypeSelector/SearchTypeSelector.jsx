@@ -23,9 +23,14 @@ export const SearchTypeSelector = ({ setSelector }) => {
         value={selectedOption}
         onChange={handleSelectChange}
         IconComponent={CustomIcon}
+        style={{ textTransform: 'capitalize' }}
       >
         {options.map(option => (
-          <MenuItem key={option} value={option}>
+          <MenuItem
+            key={option}
+            value={option}
+            style={{ opacity: 0.5, textTransform: 'capitalize' }}
+          >
             {option}
           </MenuItem>
         ))}

@@ -3,8 +3,17 @@ import { baseUrl } from 'constants';
 
 axios.defaults.baseURL = baseUrl;
 
-const fetchSearchResults = async ({ directory, selector, query }) => {
-  const response = await axios.get(`${directory}/search?${selector}=${query}`);
+const fetchSearchResults = async ({
+  directory,
+  selector,
+  query,
+  page,
+  cardsPerPage,
+}) => {
+  const response = await axios.get(
+    `${directory}/search?${selector}=${query}&page=${page}&limit=${cardsPerPage}`
+  );
+  // console.log(response.data);
   return response.data;
 };
 

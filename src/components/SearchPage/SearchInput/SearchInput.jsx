@@ -12,7 +12,13 @@ const validationSchema = Yup.object().shape({
   query: Yup.string().required('Please enter your query').trim(),
 });
 
-export const SearchInput = ({ ver, getCards, setRecipieArr }) => {
+export const SearchInput = ({
+  ver,
+  getCards,
+  setRecipieArr,
+  page,
+  cardsPerPage,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') ?? null);
 
@@ -24,13 +30,12 @@ export const SearchInput = ({ ver, getCards, setRecipieArr }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      if (query) {
-        getCards(query);
-      }
-    }, 500);
+    if (query) {
+      getCards(query);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page, cardsPerPage]);
 
   const formik = useFormik({
     initialValues: {
