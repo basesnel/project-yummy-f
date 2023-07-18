@@ -17,7 +17,10 @@ const MotivatingModal = () => {
 
   const comparasion = localStorage.getItem('last-session-value');
   const isModal = show && parseInt(comparasion);
-  const handleClose = () => setShow(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
 
   useEffect(() => {
     const handleExit = e => {
@@ -30,7 +33,7 @@ const MotivatingModal = () => {
     return function cleanup() {
       window.removeEventListener('keydown', handleExit);
     };
-  }, [setShow]);
+  }, [show]);
   return isModal
     ? ReactDOM.createPortal(
         <Area id="#content-modal" data-toggle="modal">
