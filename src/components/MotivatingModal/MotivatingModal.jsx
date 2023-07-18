@@ -16,14 +16,16 @@ const MotivatingModal = () => {
   const [show, setShow] = useState(false);
 
   const comparasion = localStorage.getItem('last-session-value');
+
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    const comparasion = localStorage.getItem('last-session-value');
+    const comparasion = localStorage.getItem('last-session-value') > 100;
     console.log(comparasion);
     if (parseInt(comparasion) > 5) {
       setShow(true);
     }
   };
+
   // <script>
   //             const comparasion = localStorage.getItem('last-session-value');
   //           $(window).on('shown.bs.modal', function(comparasion) {
