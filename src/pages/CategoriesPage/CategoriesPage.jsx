@@ -11,6 +11,7 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
+import Loader from 'components/Loader/Loader';
 // import { COLOR } from 'constants';
 
 const CategoriesPage = () => {
@@ -19,29 +20,40 @@ const CategoriesPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const { categoryName } = useParams();
+  const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+
+  const oneCategorie = async categoryName => {
+    try {
+      setLoader(true);
+      const res = await API.fetchRecipies(categoryName);
+      if (res?.recipes?.length) {
+        console.log(res);
+        setRecipieArr(res.recipes);
+        setTotalPages(res?.totalPages);
+        setPage(1);
+      } else throw new Error('dont find this categories');
+    } catch (err) {
+      setRecipieArr([]);
+      setError(true);
+      console.log(err);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   // set RecipierArr and url to initial state
   useEffect(() => {
-    const oneCategorie = async categoryName => {
-      try {
-        const res = await API.fetchRecipies(categoryName);
-        if (res?.recipes) {
-          setRecipieArr(res?.recipes);
-          setTotalPages(res?.totalPages);
-          setPage(1);
-          setError(false);
-        } else throw new Error('dont find this categories');
-      } catch (err) {
-        setRecipieArr([]);
-        setError(true);
-        console.log(err);
-      }
-    };
-    const tempCategoryName =
-      categoryName === ':categoryName' ? 'beef' : categoryName;
-    oneCategorie(tempCategoryName);
-    navigate(`/categories/${tempCategoryName}`);
+    const name = categoryName === ':categoryName' ? 'beef' : categoryName;
+    oneCategorie(name);
+    navigate(`/categories/${name}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const name = categoryName === ':categoryName' ? 'beef' : categoryName;
+    oneCategorie(name);
+    navigate(`/categories/${name}`);
   }, [categoryName, navigate]);
 
   const theme = useTheme();
@@ -71,11 +83,11 @@ const CategoriesPage = () => {
       <FooterBgWrapper>
         <Container>
           <ContainerSection>
-            {!error && <Title>Categories</Title>}
+            {!error && !loader && <Title>Categories</Title>}
 
             <CategoriesList onError={el => setError(el)} />
 
-            {!error && (
+            {!error && !loader && (
               <Grid
                 container
                 pt={{ xs: '32px', md: '50px' }}
@@ -98,7 +110,7 @@ const CategoriesPage = () => {
               </Grid>
             )}
 
-            {!error && (
+            {!error && !loader && (
               <Pagination
                 sx={{
                   width: 'max-content',
@@ -135,6 +147,7 @@ const CategoriesPage = () => {
               />
             )}
 
+            {loader && <Loader />}
             {error && <NotFoundPage />}
           </ContainerSection>
         </Container>
