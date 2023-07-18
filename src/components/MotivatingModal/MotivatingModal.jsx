@@ -16,15 +16,15 @@ const MotivatingModal = () => {
   const [show, setShow] = useState(false);
 
   const comparasion = localStorage.getItem('last-session-value');
-  const isModal = parseInt(comparasion);
+  const isModal = show && parseInt(comparasion);
   const handleClose = () => setShow(false);
-  const handleShow = () => {
-    const comparasion = localStorage.getItem('last-session-value') > 100;
-    console.log(comparasion);
-    if (parseInt(comparasion) > 5) {
-      setShow(true);
-    }
-  };
+  // const handleShow = () => {
+  //   const comparasion = localStorage.getItem('last-session-value') > 100;
+  //   console.log(comparasion);
+  //   if (parseInt(comparasion) > 5) {
+  //     setShow(true);
+  //   }
+  // };
 
   // <script>
   //             const comparasion = localStorage.getItem('last-session-value');
@@ -36,7 +36,7 @@ const MotivatingModal = () => {
   //         });
   //            </script>
 
-  return show
+  return isModal
     ? ReactDOM.createPortal(
         <Area id="content-modal" data-toggle="modal">
           <Modal aria-labelledby="contained-modal-title-vcenter" id="#iform">
