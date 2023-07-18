@@ -21,10 +21,12 @@ import { ReactComponent as EmailIcon } from '../../../assets/images/signin/mail-
 import { ReactComponent as LockIcon } from '../../../assets/images/signin/lock-02.svg';
 import { login } from 'redux/auth/operations';
 
+import { mailRegexp } from 'constants';
+
 const validationSchema = yup.object({
   email: yup
     .string('Enter your email')
-    .email('Enter a valid email')
+    .matches(mailRegexp, 'Enter a valid email')
     .required('Email is required'),
   password: yup
     .string('Enter your password')
