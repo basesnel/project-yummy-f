@@ -23,17 +23,18 @@ const MotivatingModal = () => {
   };
 
   useEffect(() => {
-    const handleExit = e => {
+    window.addEventistener('keydown', e => {
       if (e.key === 'Escape') {
         setShow(false);
       }
-    };
-    window.addEventistener('keydown', handleExit);
+    });
 
-    return function cleanup() {
-      window.removeEventListener('keydown', handleExit);
-    };
-  }, [show]);
+    window.removeEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        setShow(false);
+      }
+    });
+  }, [setShow]);
   return isModal
     ? ReactDOM.createPortal(
         <Area id="#content-modal" data-toggle="modal">
