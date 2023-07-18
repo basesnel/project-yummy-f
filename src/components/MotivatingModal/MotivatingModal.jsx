@@ -29,7 +29,7 @@ const MotivatingModal = () => {
   //            </script>
 
   return (
-    <Area onClick={handleShow}>
+    <Area id="content-modal" onClick={handleShow}>
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
