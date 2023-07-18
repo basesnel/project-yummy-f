@@ -7,6 +7,8 @@ import {
   verify,
   updateUser,
   userSubscribe,
+  getStore,
+  patchStore,
 } from './operations';
 
 const initialState = {
@@ -15,8 +17,9 @@ const initialState = {
   error: null,
   isLoggedIn: false,
   isVerify: false,
-isRefreshing: true,
-  subscribeMessage: false
+  isRefreshing: true,
+  subscribeMessage: false,
+  store: null,
 };
 
 const authSlice = createSlice({
@@ -74,16 +77,34 @@ const authSlice = createSlice({
       .addCase(verify.rejected, (state, action) => state)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
-	  })
-		.addCase(userSubscribe.fulfilled, (state, { payload }) => {
-			state.user.subscription = payload.subscription;
-			state.error = null;
-			state.subscribeMessage = true;
-		})
-		  .addCase(userSubscribe.rejected, (state, { payload }) => {
-			  state.error = payload;
-			  state.subscribeMessage = false;
-		  })
+      })
+      .addCase(userSubscribe.fulfilled, (state, { payload }) => {
+        state.user.subscription = payload.subscription;
+        state.error = null;
+        state.subscribeMessage = true;
+      })
+      .addCase(userSubscribe.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.subscribeMessage = false;
+      })
+      .addCase(getStore.pending, (state, action) => state)
+      .addCase(getStore.fulfilled, (state, { payload }) => {
+        state.store = payload;
+        state.error = null;
+      })
+      .addCase(getStore.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.store = null;
+      })
+      .addCase(patchStore.pending, (state, action) => state)
+      .addCase(patchStore.fulfilled, (state, { payload }) => {
+        state.store = payload;
+        state.error = null;
+      })
+      .addCase(patchStore.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.store = null;
+      }),
 });
 
 export const authReducer = authSlice.reducer;

@@ -1,10 +1,9 @@
 import {
   Item,
-  Photo, 
-  Text,
-  WrapperDescription,
+  MeasureAndCheckbox,
+  
   WrapperPhoto,  
-  BtnRemove,
+ 
  
   
 } from './ShoppingListItem.styled';
@@ -13,18 +12,26 @@ const ShoppingListItem = () => {
   return (
    <Item>
       <WrapperPhoto>
-        <Photo alt="photo recipe" />
+        <img
+          src=""
+          alt="product"
+        />
+
+        <p> product </p>
       </WrapperPhoto>
-      <WrapperDescription>
-        
-        <Text>
-          Salmon{' '}
-        </Text>
-        
-        
-      </WrapperDescription>
-      <BtnRemove type="button">Icon</BtnRemove>
-      
+
+      <MeasureAndCheckbox>
+        <div>
+          <p> number</p>
+        </div>
+        <span>
+          <svg>
+            <use href="./images/svg/symbol-defs.svg#warning"></use>
+          </svg>
+        </span>
+      </MeasureAndCheckbox>  
+     
+            
     </Item>
   );
 };

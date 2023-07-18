@@ -6,6 +6,7 @@ import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
 import { RecipeIngredientsList } from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import { RecipePreparation } from 'components/RecipePreparation/RecipePreparation';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
 const RecipePage = () => {
   // const navigate = useNavigate();
@@ -41,17 +42,26 @@ const RecipePage = () => {
     getRecipe(recipeId);
   }, [recipeId]);
 
+  function updateIsFavorite(bool) {
+    console.log('is doing');
+    setIsFavorite(bool);
+    console.log('done');
+  }
+
   return (
     <ThemeWrap>
-      <RecipePageHero
-        title={title}
-        descr={descr}
-        time={time}
-        isFavorite={isFavorite}
-        recipeId={recipeId}
-      />
-      <RecipeIngredientsList ingredients={ingredients} />
-      <RecipePreparation instructions={preparation} photo={photo} />
+      <FooterBgWrapper>
+        <RecipePageHero
+          title={title}
+          descr={descr}
+          time={time}
+          isFavorite={isFavorite}
+          recipeId={recipeId}
+          setIsFavorite={updateIsFavorite}
+        />
+        <RecipeIngredientsList ingredients={ingredients} recipeId={recipeId} />
+        <RecipePreparation instructions={preparation} photo={photo} />
+      </FooterBgWrapper>
     </ThemeWrap>
   );
 };

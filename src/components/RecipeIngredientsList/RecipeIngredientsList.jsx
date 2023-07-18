@@ -1,5 +1,4 @@
 import { IngrItemMUI } from './IngrItemMUI';
-import API from 'api';
 import {
   MainSection,
   ListHead,
@@ -8,44 +7,51 @@ import {
   // IngrItem,
   ImgAndName,
   MeasureAndCheckbox,
+  MeasureCont,
   // Checked,
-  Unchecked,
+  //Unchecked,
 } from './RecipeIngredientsList.styled';
-import { useEffect, useState } from 'react';
 
-export const RecipeIngredientsList = ({ ingredients }) => {
-  const [ingrAvailable, setIngrAvailable] = useState([]);
+import { useMediaQuery } from 'react-responsive';
+import Checkbox from 'react-custom-checkbox';
+import { SIZE } from 'constants';
+import API from 'api';
 
-  useEffect(() => {
-    const getAllIngr = async () => {
-      const ingredients = await API.getIngredients();
-      setIngrAvailable(ingredients);
-    };
+export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${SIZE.tablet})`,
+  });
 
-    getAllIngr();
-  }, []);
+  const isTablet = useMediaQuery({
+    query: `(max-width: ${SIZE.desktop})`,
+  });
 
-  const getIngredientById = ingrId => {
-    return ingrAvailable.find(({ _id }) => ingrId === _id);
+  const setPlaceholderByWidth = () => {
+    if (isMobile) {
+      return require('../../assets/images/recipePage/ingrMob.png').default;
+    } else if (isTablet) {
+      return require('../../assets/images/recipePage/ingrTab.png').default;
+    } else {
+      return require('../../assets/images/recipePage/ingrDesk.png').default;
+    }
   };
 
-  // const [checked, setChecked] = useState([]);
+  const toggleRecipeIngredient = async data => {
+    try {
+      const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
+      console.log('success');
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  //const handleCheck = e => {
-  /// if (e.target.id === e.currentTarget.firstElementChild.key) {
-  //  setIsChecked(prev => !prev);
-  //  }
-  //  console.log('error');
-  /* if (checked) {
-      const ind = checked.findIndex(id => id === e.target.id);
-
-      if (ind > 0) {
-        setChecked(prev => prev.filter(id => id !== e.target.id));
-      } else {
-        setChecked(prev => [...prev, e.target.id]);
-      }
-    } */
-  // };
+  const handleCheck = (value, event) => {
+    // if (event.target.nodeName === 'INPUT') {
+    console.log('checkbox click');
+    toggleRecipeIngredient(value);
+    //  }
+  };
 
   return (
     <MainSection>
@@ -55,20 +61,33 @@ export const RecipeIngredientsList = ({ ingredients }) => {
         <p>Add to list</p>
       </ListHead>
       <List>
-        {ingredients.map(ingr => (
-          <IngrItemMUI key={ingr.id}>
-            {/* <IngrItem key={ingr.id}> */}
+        {ingredients.map(({ id, measure }) => (
+          <IngrItemMUI key={id._id}>
             <ImgAndName>
-              <img src={getIngredientById(ingr.id)?.img} alt="ingredient" />
-              <p>{getIngredientById(ingr.id)?.name}</p>
+              <img src={id.img || setPlaceholderByWidth()} alt="ingredients" />
+              <p>{id.name}</p>
             </ImgAndName>
             <MeasureAndCheckbox>
-              <div>
-                <p>{ingr.measure}</p>
-              </div>
-              <Unchecked></Unchecked>
+              <MeasureCont>
+                <p>{measure}</p>
+              </MeasureCont>
+              <Checkbox
+                borderColor="#7e7e7e"
+                size={isMobile ? 18 : 35}
+                backgroundColor="transparent"
+                borderRadius={4}
+                icon={
+                  <img
+                    src={
+                      require('../../assets/images/recipePage/pick.svg').default
+                    }
+                    alt="checkbox"
+                    style={{ width: isMobile ? 10 : 20 }}
+                  />
+                }
+                onChange={() => handleCheck({ id: id._id, measure, recipeId })}
+              />
             </MeasureAndCheckbox>
-            {/* </IngrItem> */}
           </IngrItemMUI>
         ))}
       </List>
