@@ -47,12 +47,7 @@ const MotivatingModal = () => {
                 </Information>
               </Text>
             </Container>
-            <Button
-              type="button"
-              className={css.button}
-              data-dismiss="modal"
-              onClick={handleClose}
-            >
+            <Button type="button" data-dismiss="modal" onClick={handleClose}>
               <CloseIcon
                 style={{
                   top: '0px',
