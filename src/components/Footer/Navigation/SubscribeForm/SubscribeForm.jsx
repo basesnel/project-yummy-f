@@ -41,12 +41,14 @@ export function SubscribeForm() {
     firstMessage.current = false;
     toast.success(msg, {
       toastId: 'idEmailVerify',
+      autoClose: 5000,
     });
   }
 
   function notifyError(msg) {
     toast.error(msg, {
       toastId: 'idError',
+      autoClose: 5000,
     });
   }
 
