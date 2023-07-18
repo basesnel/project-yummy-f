@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Area,
   Container,
@@ -10,6 +11,8 @@ import { Form, Modal, Button } from 'react-bootstrap';
 import { ReactComponent as CloseIcon } from '../../assets/images/motivating/close.svg';
 const MotivatingModal = () => {
   const [show, setShow] = useState(false);
+
+  const comparasion = localStorage.getItem('last-session-value');
   const handleClose = () => setShow(false);
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value');
@@ -28,44 +31,47 @@ const MotivatingModal = () => {
   //         });
   //            </script>
 
-  return (
-    <Area id="content-modal" onClick={handleShow}>
-      <Modal
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        show={show}
-        id="#iform"
-        onHide={handleShow}
-      >
-        <Form.Group>
-          <Modal.Body>
-            <Container>
-              <Icon />
-              <Form.Text className="text-muted">
-                <Information>
-                  Wow! You have been using the application for 100 days!
-                </Information>
-              </Form.Text>
-            </Container>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button className={css.button} onClick={handleClose}>
-              <CloseIcon
-                style={{
-                  top: '0px',
-                  left: '0px',
-                  position: 'absolute',
-                  padding: '0px',
-                  margin: '0px',
-                }}
-              />
-            </Button>
-          </Modal.Footer>
-        </Form.Group>
-      </Modal>
-    </Area>
-  );
+  return comparasion.open
+    ? ReactDOM.createPortal(
+        <Area id="content-modal" onClick={handleShow}>
+          <Modal
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            show={show}
+            id="#iform"
+            onHide={handleShow}
+          >
+            <Form.Group>
+              <Modal.Body>
+                <Container>
+                  <Icon />
+                  <Form.Text className="text-muted">
+                    <Information>
+                      Wow! You have been using the application for 100 days!
+                    </Information>
+                  </Form.Text>
+                </Container>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button className={css.button} onClick={handleClose}>
+                  <CloseIcon
+                    style={{
+                      top: '0px',
+                      left: '0px',
+                      position: 'absolute',
+                      padding: '0px',
+                      margin: '0px',
+                    }}
+                  />
+                </Button>
+              </Modal.Footer>
+            </Form.Group>
+          </Modal>
+        </Area>,
+        document.getElementById('#root')
+      )
+    : null;
 };
 
 export default MotivatingModal;
