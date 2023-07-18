@@ -53,8 +53,9 @@ const FavoritePage = () => {
               <Title>Please add something to your favorite dishes</Title>
             ) : (
               <MyRecipesList
-                favoriteRecipes={favoriteRecipes}
+                recipes={favoriteRecipes}
                 removeRecipeId={removeRecipeId}
+                pageName="favorite"
               />
             )}
           </ContainerSection>

@@ -2,6 +2,7 @@ import fetchCategories from './categories';
 import fetchRecipies from './recipies';
 import getRecipeById from './recipeById';
 import fetchRecipesMainPage from './mainPage';
+import {fetchMyRecipes, deleteMyRecipe} from './myRecipes'
 
 import getIngredients from './getIngredients';
 import addToFavorites from './addToFavorites';
@@ -22,7 +23,10 @@ const API = {
   removeFromFavorites,
   getFavorites,
 
-  fetchSearchResults,
+	fetchSearchResults,
+  
+	fetchMyRecipes,
+	deleteMyRecipe,
 
   toggleProduct,
 };
