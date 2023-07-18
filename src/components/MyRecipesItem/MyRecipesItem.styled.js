@@ -2,6 +2,7 @@ import { SIZE } from 'constants';
 import { styled } from 'styled-components';
 import { ReactComponent as IconRemove } from 'assets/images/favorite/Icon.svg';
 import { Link } from 'react-router-dom';
+import { TRANSITION } from 'constants';
 
 export const Item = styled.li`
   position: relative;
@@ -84,8 +85,8 @@ export const Title = styled.h2`
 
 export const MainText = styled.p`
   overflow: hidden;
-  // text-overflow: ellipsis;
-  // whitespace: nowrap;
+  text-overflow: ellipsis;
+  // white-space: normal;
 
   color: #23262a;
   font-family: Poppins;
@@ -121,8 +122,8 @@ export const Text = styled.p`
 
   @media screen and (min-width: ${SIZE.desktop}) {
     overflow: hidden;
-    // text-overflow: ellipsis;
-    // whitespace: nowrap;
+    text-overflow: ellipsis;
+    // white-space: normal;
     display: inline-block;
     color: #23262a;
     font-family: Poppins;
@@ -155,7 +156,31 @@ export const BtnRemove = styled.button`
   text-decoration: none;
   position: absolute;
   border-radius: 4px;
-  background: #ebf3d4;
+
+  transition: ${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor};
+
+  color: ${props => {
+    switch (props.$pageName) {
+      case 'my':
+        return '#FAFAFA';
+      case 'favorite':
+        return '#22252A';
+      default:
+        return '#22252A';
+    }
+  }};
+
+  background-color: ${props => {
+    switch (props.$pageName) {
+      case 'my':
+        return '#8BAA36';
+      case 'favorite':
+        return '#ebf3d4';
+      default:
+        return '#ebf3d4';
+    }
+  }};
+
   border: none;
 
   right: 9px;
@@ -179,11 +204,32 @@ export const BtnRemove = styled.button`
     height: 44px;
     padding: 10px;
   }
+
+  &:hover,
+  &:focus {
+    ${props => {
+      if (props.$pageName === 'favorite') {
+        return 'color: #FAFAFA;';
+      }
+    }}
+
+    background-color: ${props => {
+      switch (props.$pageName) {
+        case 'my':
+          return '#22252A';
+        case 'favorite':
+          return '#8BAA36';
+        default:
+          return '#8BAA36';
+      }
+    }};
+  }
 `;
 
 export const WrapperIconRemove = styled(IconRemove)`
   width: 14px;
   height: 14px;
+  stroke: currentColor;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 22px;
@@ -208,7 +254,19 @@ export const BtnDetail = styled(Link)`
   font-size: 10px;
   font-weight: 400;
   line-height: 1;
-  background-color: black;
+
+  transition: ${TRANSITION.forHoverBgColor};
+
+  background-color: ${props => {
+    switch (props.$pageName) {
+      case 'my':
+        return '#8BAA36';
+      case 'favorite':
+        return '#22252A';
+      default:
+        return '#22252A';
+    }
+  }};
 
   border-radius: 24px 44px;
   border: 0;
@@ -224,11 +282,20 @@ export const BtnDetail = styled(Link)`
     font-size: 16px;
     right: 40px;
     bottom: 40px;
-    padding: 14px 38px 22px 38px;
+    padding: 18px 38px;
   }
 
   &:hover,
   &:focus {
-    background-color: #8baa36;
+    background-color: ${props => {
+      switch (props.$pageName) {
+        case 'my':
+          return '#22252A';
+        case 'favorite':
+          return '#8BAA36';
+        default:
+          return '#8BAA36';
+      }
+    }};
   }
 `;

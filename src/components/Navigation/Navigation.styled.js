@@ -24,8 +24,13 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   gap: 8px;
   justify-content: center;
+<<<<<<< HEAD
   color: inherit;
   /* color: ${COLOR.dark}; */
+=======
+  color: ${COLOR.dark};
+  stroke: ${COLOR.dark};
+>>>>>>> main
   font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
@@ -47,10 +52,12 @@ export const StyledLink = styled(NavLink)`
 
   &.active {
     color: ${COLOR.hover};
+    stroke: ${COLOR.hover};
   }
   &:hover,
   &:focus {
     color: ${COLOR.hover};
+    stroke: ${COLOR.hover};
   }
 `;
 
@@ -58,10 +65,12 @@ export const WrapperSearchIcon = styled(SearchHeaderIcon)`
   display: flex;
   align-items: center;
   justify-content: center;
+  stroke: currentColor 
 
   // не прибирайте pointer-events:none, це щоб модалка закривалась по кліку на посилання
   pointer-events: none;
 
+<<<<<<< HEAD
   /* stroke: ${COLOR.dark}; */
   stroke: currentColor;
   &:hover,
@@ -70,6 +79,10 @@ export const WrapperSearchIcon = styled(SearchHeaderIcon)`
   }
 
   @media screen and (min-width: ${SIZE.mobile}) {
+=======
+  
+    @media screen and (min-width: ${SIZE.mobile}) {
+>>>>>>> main
     width: 20px;
     height: 20px;
   }

@@ -81,13 +81,11 @@ const CategoriesPage = () => {
   return (
     <ThemeWrap>
       <FooterBgWrapper>
-        <Container>
-          <ContainerSection>
-            {!error && !loader && <Title>Categories</Title>}
-
-            <CategoriesList onError={el => setError(el)} />
-
-            {!error && !loader && (
+        {!error && !loader && (
+          <Container>
+            <ContainerSection>
+              (<Title>Categories</Title>
+              <CategoriesList onError={el => setError(el)} />
               <Grid
                 container
                 pt={{ xs: '32px', md: '50px' }}
@@ -108,9 +106,6 @@ const CategoriesPage = () => {
                     </Grid>
                   ))}
               </Grid>
-            )}
-
-            {!error && !loader && (
               <Pagination
                 sx={{
                   width: 'max-content',
@@ -145,12 +140,12 @@ const CategoriesPage = () => {
                   />
                 )}
               />
-            )}
-
-            {loader && <Loader />}
-            {error && <NotFoundPage />}
-          </ContainerSection>
-        </Container>
+              )
+            </ContainerSection>
+          </Container>
+        )}
+        {loader && <Loader />}
+        {error && <NotFoundPage />}
       </FooterBgWrapper>
     </ThemeWrap>
   );

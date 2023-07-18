@@ -74,7 +74,7 @@ export const SearchPageComponent = () => {
             <Paginator totalPages={totalPages} setPage={setPage} />
           </>
         ) : (
-          <NoSearchResults />
+          <NoSearchResults text={`Try looking for something else..`} />
         )}
       </ContainerSection>
     </Container>

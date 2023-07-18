@@ -3,7 +3,7 @@ import veg_375_2x from '../../../assets/images/search/veg_375_2x.png';
 import veg_768_1x from '../../../assets/images/search/veg_768_1x.png';
 import veg_768_2x from '../../../assets/images/search/veg_768_2x.png';
 import { NoResultText, NoResultsWrapp } from './NoSearchResults.styled';
-export const NoSearchResults = () => {
+export const NoSearchResults = ({ text }) => {
   return (
     <NoResultsWrapp>
       <picture>
@@ -17,7 +17,9 @@ export const NoSearchResults = () => {
         />
         <img src={veg_375_1x} alt="Busket with vegetables" />
       </picture>
-      <NoResultText>Try looking for something else..</NoResultText>
+      <NoResultText>{text}</NoResultText>
     </NoResultsWrapp>
   );
 };
+
+// Try looking for something else..

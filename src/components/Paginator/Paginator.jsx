@@ -3,16 +3,21 @@ import { PaginationItem, useTheme } from '@mui/material';
 
 import { PaginationContainer, PaginationMUI } from './Paginator.styled';
 
-export function Paginator() {
+export function Paginator({ $pageQty, $page, $setPage }) {
   const theme = useTheme();
+  function handleChange(_, num) {
+    $setPage(num);
+  }
   return (
     <>
       <StyleSheetManager shouldForwardProp={() => true}>
         <PaginationContainer>
           <PaginationMUI
             sx={{ backgroundColor: theme.palette.background.input }}
-            count={5}
-            color="primary"
+            count={$pageQty}
+            page={$page}
+            onChange={handleChange}
+            // color="primary"
             siblingCount={0}
             renderItem={item => (
               <PaginationItem
