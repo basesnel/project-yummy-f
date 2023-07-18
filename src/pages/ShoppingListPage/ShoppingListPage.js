@@ -4,7 +4,8 @@ import ShoppingListItem from 'components/IngredientsShoppingList/ShoppingListIte
 import {
   // ShoppingListContainer,
   TitleContainer,
-  Text,
+	Text,
+  PositionedP,
 } from './ShoppingListPage.styled';
 import ShoppingList from 'components/IngredientsShoppingList/ShoppingList/ShoppingList';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
@@ -15,6 +16,7 @@ import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styl
 const ShoppingListPage = () => {
   return (
     <ThemeWrap>
+
       <FooterBgWrapper>
       	{/* <ShoppingListContainer> */}
 	
@@ -27,7 +29,7 @@ const ShoppingListPage = () => {
 	
 	          <Text>
 	            <p> Products </p>
-	            <p> Number </p>
+	            <PositionedP> Number </PositionedP>
 	            <p> Remove</p>
 	          </Text>
 	
@@ -42,6 +44,7 @@ const ShoppingListPage = () => {
 	      </Container>
 	      {/* </ShoppingListContainer> */}
       </FooterBgWrapper>
+
     </ThemeWrap>
   );
 };
