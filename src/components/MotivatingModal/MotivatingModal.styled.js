@@ -62,7 +62,7 @@ export const Text = styled.h3`
   letter-spacing: -0.2px;
   line-height: 1.1;
 `;
-export const Modal = styled.dialog`
+export const Modal = styled.div`
   position: absolute;
   overflow: hidden;
   top: 0;

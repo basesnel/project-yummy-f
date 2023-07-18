@@ -16,7 +16,7 @@ const MotivatingModal = () => {
   const [show, setShow] = useState(false);
 
   const comparasion = localStorage.getItem('last-session-value');
-
+  const isModal = parseInt(comparasion);
   const handleClose = () => setShow(false);
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value') > 100;
@@ -36,14 +36,10 @@ const MotivatingModal = () => {
   //         });
   //            </script>
 
-  return comparasion.open
+  return isModal
     ? ReactDOM.createPortal(
-        <Area id="content-modal" onClick={handleShow}>
-          <Modal
-            aria-labelledby="contained-modal-title-vcenter"
-            show={show}
-            id="#iform"
-          >
+        <Area id="content-modal" onClick={handleShow} show={show}>
+          <Modal aria-labelledby="contained-modal-title-vcenter" id="#iform">
             <Container>
               <Icon />
               <Text className="text-muted">
