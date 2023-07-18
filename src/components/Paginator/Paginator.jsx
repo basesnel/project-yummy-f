@@ -3,13 +3,18 @@ import { PaginationItem } from '@mui/material';
 
 import { PaginationContainer, PaginationMUI } from './Paginator.styled';
 
-export function Paginator() {
+export function Paginator({ $pageQty, $page, $setPage }) {
+  function handleChange(_, num) {
+    $setPage(num);
+  }
   return (
     <>
       <StyleSheetManager shouldForwardProp={() => true}>
         <PaginationContainer>
           <PaginationMUI
-            count={5}
+            count={$pageQty}
+            page={$page}
+            onChange={handleChange}
             color="primary"
             siblingCount={0}
             renderItem={item => (

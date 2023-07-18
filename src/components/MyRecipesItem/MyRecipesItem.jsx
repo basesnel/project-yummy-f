@@ -12,8 +12,8 @@ import {
   WrapperIconRemove,
 } from './MyRecipesItem.styled';
 
-const MyRecipesItem = ({ favoriteRecipes, removeRecipeId }) => {
-  return favoriteRecipes.map(el => (
+const MyRecipesItem = ({ recipes, removeRecipeId }) => {
+  return recipes.map(el => (
     <Item key={el.id}>
       <WrapperPhoto>
         <Photo alt="photo recipe" src={el.preview} />

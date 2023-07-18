@@ -3,9 +3,13 @@ import { baseUrl } from 'constants';
 
 axios.defaults.baseURL = baseUrl;
 
-const fetchMyRecipes = async ({userId}) => {
-	const response = await axios.get(`recipes/own-recipes/${userId}`);
+export const fetchMyRecipes = async ({ userId, page }) => {
+	const response = await axios.get(`recipes/own-recipes/${userId}?page=${page}`);
   return response.data;
 };
 
-export default fetchMyRecipes;
+export const deleteMyRecipe = async (recipeId) => {
+	const response = await axios.delete(`recipes/own-recipes/${recipeId}`);
+  return response.data;
+};
+ 
