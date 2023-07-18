@@ -14,7 +14,7 @@ import {
 
 const MyRecipesItem = ({ recipes, removeRecipeId, pageName }) => {
   return recipes.map(el => (
-    <Item key={el.id}>
+    <Item key={el._id}>
       <WrapperPhoto>
         <Photo alt="photo recipe" src={el.preview} />
       </WrapperPhoto>
@@ -27,13 +27,13 @@ const MyRecipesItem = ({ recipes, removeRecipeId, pageName }) => {
       <BtnRemove
         $pageName={pageName}
         onClick={() => {
-          removeRecipeId(`${el.id}`);
+          removeRecipeId(`${el._id}`);
         }}
         type="button"
       >
         <WrapperIconRemove />
       </BtnRemove>
-      <BtnDetail $pageName={pageName} to={`/recipe/${el.id}`}>
+      <BtnDetail $pageName={pageName} to={`/recipe/${el._id}`}>
         See recipe
       </BtnDetail>
     </Item>
