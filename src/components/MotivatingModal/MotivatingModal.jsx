@@ -36,9 +36,9 @@ const MotivatingModal = () => {
   //         });
   //            </script>
 
-  return isModal
+  return show
     ? ReactDOM.createPortal(
-        <Area id="content-modal" onClick={handleShow} show={show}>
+        <Area id="content-modal" data-toggle="modal">
           <Modal aria-labelledby="contained-modal-title-vcenter" id="#iform">
             <Container>
               <Icon />
@@ -48,7 +48,12 @@ const MotivatingModal = () => {
                 </Information>
               </Text>
             </Container>
-            <Button type="reset" className={css.button} onClick={handleClose}>
+            <Button
+              type="button"
+              className={css.button}
+              data-dismiss="modal"
+              onClick={handleClose}
+            >
               <CloseIcon
                 style={{
                   top: '0px',
