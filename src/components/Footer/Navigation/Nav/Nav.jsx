@@ -8,7 +8,7 @@ export function Nav() {
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          to="/search?ingredients"
+          to="/search?i=i"
         >
           Ingredients
         </StyledLink>

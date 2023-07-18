@@ -22,7 +22,16 @@ export const FormRegister = styled.form`
   }
 
   .input__error {
+    opacity: 1;
     border: 1px solid ${COLOR.warning};
+    svg {
+      stroke: ${COLOR.warning};
+      opacity: 1;
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid ${COLOR.warning};
+    }
   }
 `;
 
@@ -80,6 +89,7 @@ export const RegisterInput = styled.input`
   letter-spacing: -0.28px;
   background: transparent;
   border: none;
+  border-radius: 6px;
   @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -90,17 +100,15 @@ export const RegisterInput = styled.input`
 
 export const RegisterInputWrapper = styled.div`
   position: relative;
-
-  margin-bottom: 12px;
-  border: 1px solid rgba(250, 250, 250, 0.15700000524520874);
+  border: 1px solid rgba(250, 250, 250, 0.8);
   border-radius: 6px;
-  opacity: 0.8;
-
+  margin-bottom: 12px;
   transition: ${TRANSITION.forHoverBorderColor}, ${TRANSITION.forHoverOpacity};
-
+  opacity: 0.8;
   svg {
     opacity: 0.8;
-    transition: ${TRANSITION.forHoverOpacity};
+    transition: ${TRANSITION.forHoverOpacity}, ${TRANSITION.forHoverStroke};
+    stroke: ${COLOR.second};
   }
   &:hover,
   &:focus {

@@ -2,14 +2,20 @@ import { useState } from 'react';
 import { SelectLabel, StyledSelect, Wrapp } from './SearchTypeSelector.styled';
 import { MenuItem } from '@mui/material';
 import { ReactComponent as CustomIcon } from '../../../assets/images/search/chevron-up.svg';
+import { useSearchParams } from 'react-router-dom';
 
-export const SearchTypeSelector = ({ setSelector }) => {
-  const [selectedOption, setSelectedOption] = useState('title');
+export const SearchTypeSelector = ({ setSelector, setPage }) => {
+  const [searchParams] = useSearchParams();
+
+  const [selectedOption, setSelectedOption] = useState(
+    searchParams.get('i') ? 'ingredients' : 'title'
+  );
   const options = ['title', 'ingredients'];
 
   const handleSelectChange = e => {
     setSelectedOption(e.target.value);
     setSelector(e.target.value);
+    setPage(1);
   };
 
   return (

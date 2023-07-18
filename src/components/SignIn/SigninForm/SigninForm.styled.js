@@ -20,9 +20,17 @@ export const FormSignin = styled.form`
   @media screen and (min-width: ${SIZE.desktop}) {
     margin-top: 40px;
   }
-
   .input__error {
+    opacity: 1;
     border: 1px solid ${COLOR.warning};
+    svg {
+      stroke: ${COLOR.warning};
+      opacity: 1;
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid ${COLOR.warning};
+    }
   }
 `;
 
@@ -72,10 +80,10 @@ export const SigninInput = styled.input`
   width: 100%;
   padding-left: 40px;
   color: rgba(250, 250, 250, 0.8);
+  border-radius: 6px;
 
-  /* font-family: Poppins; */
   font-size: 14px;
-  /* font-style: normal; */
+
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
@@ -99,7 +107,8 @@ export const SigninInputWrapper = styled.div`
   opacity: 0.8;
   svg {
     opacity: 0.8;
-    transition: ${TRANSITION.forHoverOpacity};
+    transition: ${TRANSITION.forHoverOpacity}, ${TRANSITION.forHoverStroke};
+    stroke: ${COLOR.second};
   }
   &:hover,
   &:focus {

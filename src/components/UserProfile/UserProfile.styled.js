@@ -238,6 +238,7 @@ export const PlusIcon = styled(PlusSvg)`
   width: 24px;
   height: 24px;
   transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   &:hover,
   &:focus {
     scale: 1.1;
