@@ -13,15 +13,19 @@ export const RecipePageHero = ({
   title,
   descr,
   time,
-  // isFavorite,
+  isFavorite,
+  setIsFavorite,
   recipeId,
 }) => {
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(isFavorite);
+
   useEffect(() => {
     const getFav = async () => {
       try {
         const res = await API.getFavorites();
         console.log(res);
-        if (res.includes(recipeId)) {
+        if (res.favoriteRecipeInfo.some(({ id }) => id === recipeId)) {
+          console.log('it is favorite');
           setIsAddedToFavorite(true);
         }
 
@@ -34,8 +38,6 @@ export const RecipePageHero = ({
     getFav();
   }, [recipeId]);
 
-  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-
   const hours = Math.floor(+time / 60);
   const minutes = +time - hours * 60;
   //const id = recipeId;
@@ -43,6 +45,7 @@ export const RecipePageHero = ({
   const addToFav = async recipeId => {
     try {
       const res = await API.addToFavorites(recipeId);
+      setIsFavorite(true);
       setIsAddedToFavorite(true);
       return res.data;
     } catch (error) {
@@ -53,6 +56,7 @@ export const RecipePageHero = ({
   const removeFromFav = async recipeId => {
     try {
       const res = await API.removeFromFavorites(recipeId);
+      setIsFavorite(false);
       setIsAddedToFavorite(false);
       return res.data;
     } catch (error) {
@@ -62,13 +66,19 @@ export const RecipePageHero = ({
 
   const handleBtnClick = e => {
     console.log(e.target);
+    console.log(isFavorite);
 
     if (!isAddedToFavorite) {
       addToFav(recipeId);
+      //setIsFavorite();
     } else {
       removeFromFav(recipeId);
+      //setIsFavorite();
     }
+    //  console.log(isFavorite);
   };
+
+  console.log(isFavorite, isAddedToFavorite);
 
   return (
     <RecipeHero>
@@ -85,7 +95,7 @@ export const RecipePageHero = ({
           paddingWlg={44}
           borderColor={'green'}
         >
-          {isAddedToFavorite
+          {isAddedToFavorite || isFavorite
             ? 'Remove from favorite'
             : 'Add to favorite recipes'}
         </SkewButton>

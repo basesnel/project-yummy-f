@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { SIZE, COLOR } from 'constants';
-import checked from '../../assets/images/recipePage/checked.svg';
-import unchecked from '../../assets/images/recipePage/unchecked.svg';
 
 export const MainSection = styled.section`
   padding: 32px 16px;
@@ -162,32 +160,6 @@ export const MeasureAndCheckbox = styled.div`
   align-items: center;
   gap: 28px;
 
-  div:first-child {
-    background-color: ${COLOR.hover};
-    border-radius: 4px;
-    padding: 4px;
-
-    p {
-      color: ${COLOR.second};
-      text-align: right;
-      font-family: Poppins;
-      font-size: 10px;
-      font-weight: 600;
-    }
-  }
-
-  @media screen and (min-width: ${SIZE.mobile}) {
-    //  gap: 78px;
-
-    div:first-child {
-      padding: 4px 8px;
-
-      p {
-        font-size: 18px;
-      }
-    }
-  }
-
   @media screen and (min-width: ${SIZE.tablet}) {
     gap: 78px;
   }
@@ -197,7 +169,7 @@ export const MeasureAndCheckbox = styled.div`
   }
 `;
 
-export const Checked = styled.div`
+/*export const Checked = styled.div`
   width: 18px;
   height: 18px;
   background-image: url('${checked}');
@@ -224,5 +196,27 @@ export const Unchecked = styled.div`
   @media screen and (min-width: ${SIZE.mobile}) {
     width: 35px;
     height: 35px;
+  }
+`; */
+
+export const MeasureCont = styled.div`
+  background-color: ${COLOR.hover};
+  border-radius: 4px;
+  padding: 4px;
+
+  p {
+    color: ${COLOR.second};
+    text-align: right;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: ${SIZE.mobile}) {
+    padding: 4px 8px;
+
+    p {
+      font-size: 18px;
+    }
   }
 `;

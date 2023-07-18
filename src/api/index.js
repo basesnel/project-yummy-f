@@ -10,6 +10,7 @@ import getFavorites from './getFavorites';
 
 import fetchSearchResults from './search';
 
+import toggleProduct from './checkInShoppingList';
 
 const API = {
   fetchCategories,
@@ -23,6 +24,7 @@ const API = {
 
   fetchSearchResults,
 
+  toggleProduct,
 };
 
 export default API;
