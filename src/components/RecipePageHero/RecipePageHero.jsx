@@ -1,8 +1,4 @@
-import {
-  RecipeHero,
-  RecipeDeskr,
-  TimeContainer,
-} from './RecipePageHero.styled';
+import { RecipeHero, RecipeDeskr, TimeContainer } from './.styled';
 import SkewButton from 'components/SkewButton/SkewButton';
 import MainTitle from 'components/MainTitle/MainTitle';
 import API from 'api';
