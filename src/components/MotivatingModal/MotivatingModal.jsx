@@ -18,9 +18,7 @@ const MotivatingModal = () => {
   const comparasion = localStorage.getItem('last-session-value');
   const isModal = show && parseInt(comparasion);
 
-  const handleClose = () => {
-    setShow(false);
-  };
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     window.addEventistener('keydown', e => {
