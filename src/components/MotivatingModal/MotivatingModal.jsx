@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
   Area,
@@ -17,27 +18,22 @@ const MotivatingModal = () => {
   const comparasion = localStorage.getItem('last-session-value');
   const isModal = show && parseInt(comparasion);
   const handleClose = () => setShow(false);
-  // const handleShow = () => {
-  //   const comparasion = localStorage.getItem('last-session-value') > 100;
-  //   console.log(comparasion);
-  //   if (parseInt(comparasion) > 5) {
-  //     setShow(true);
-  //   }
-  // };
 
-  // <script>
-  //             const comparasion = localStorage.getItem('last-session-value');
-  //           $(window).on('shown.bs.modal', function(comparasion) {
-  //               if(parsInt(comparasion)) {
-  //                   $('#iform').modal('show');
-  //               }
-  //             return
-  //         });
-  //            </script>
+  useEffect(() => {
+    const handleExit = e => {
+      if (e.key === 'Escape') {
+        setShow(false);
+      }
+    };
+    window.addEventistener('keydown', handleExit);
 
+    return function cleanup() {
+      window.removeEventListener('keydown', handleExit);
+    };
+  }, [setShow]);
   return isModal
     ? ReactDOM.createPortal(
-        <Area id="content-modal" data-toggle="modal">
+        <Area id="#content-modal" data-toggle="modal">
           <Modal aria-labelledby="contained-modal-title-vcenter" id="#iform">
             <Container>
               <Icon />
@@ -60,7 +56,7 @@ const MotivatingModal = () => {
             </Button>
           </Modal>
         </Area>,
-        document.getElementById('#root')
+        document.getElementById('root')
       )
     : null;
 };
