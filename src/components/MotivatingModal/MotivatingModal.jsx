@@ -16,7 +16,7 @@ const MotivatingModal = () => {
   const [show, setShow] = useState(false);
 
   const comparasion = localStorage.getItem('last-session-value');
-  const isModal = show && parseInt(comparasion);
+  const isModal = show && parseInt(comparasion) > 100;
 
   const handleClose = () => setShow(false);
 
