@@ -12,7 +12,7 @@ import {
   WrapperIconRemove,
 } from './MyRecipesItem.styled';
 
-const MyRecipesItem = ({ recipes, removeRecipeId }) => {
+const MyRecipesItem = ({ recipes, removeRecipeId, pageName }) => {
   return recipes.map(el => (
     <Item key={el.id}>
       <WrapperPhoto>
@@ -25,6 +25,7 @@ const MyRecipesItem = ({ recipes, removeRecipeId }) => {
         <TextTime>{el.time} min</TextTime>
       </WrapperDescription>
       <BtnRemove
+        $pageName={pageName}
         onClick={() => {
           removeRecipeId(`${el.id}`);
         }}
@@ -32,7 +33,9 @@ const MyRecipesItem = ({ recipes, removeRecipeId }) => {
       >
         <WrapperIconRemove />
       </BtnRemove>
-      <BtnDetail to={`/recipe/${el.id}`}>See recipe</BtnDetail>
+      <BtnDetail $pageName={pageName} to={`/recipe/${el.id}`}>
+        See recipe
+      </BtnDetail>
     </Item>
   ));
 };

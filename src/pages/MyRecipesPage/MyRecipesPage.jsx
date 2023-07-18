@@ -141,6 +141,7 @@ const MyRecipesPage = () => {
                 <MyRecipesList
                   recipes={ownRecipes}
                   removeRecipeId={removeRecipeId}
+                  pageName="my"
                 />
                 <ThemeProvider theme={theme}>
                   {pageQty !== 1 && (

@@ -55,6 +55,7 @@ const FavoritePage = () => {
               <MyRecipesList
                 recipes={favoriteRecipes}
                 removeRecipeId={removeRecipeId}
+                pageName="favorite"
               />
             )}
           </ContainerSection>
