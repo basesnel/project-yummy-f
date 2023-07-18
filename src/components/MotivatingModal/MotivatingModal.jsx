@@ -5,9 +5,12 @@ import {
   Container,
   Information,
   Icon,
+  Button,
+  Text,
+  Modal,
 } from './MotivatingModal.styled.js';
 import css from './style.module.css';
-import { Form, Modal, Button } from 'react-bootstrap';
+
 import { ReactComponent as CloseIcon } from '../../assets/images/motivating/close.svg';
 const MotivatingModal = () => {
   const [show, setShow] = useState(false);
@@ -16,7 +19,6 @@ const MotivatingModal = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => {
     const comparasion = localStorage.getItem('last-session-value');
-    console.log(comparasion);
     console.log(comparasion);
     if (parseInt(comparasion) > 5) {
       setShow(true);
@@ -36,38 +38,29 @@ const MotivatingModal = () => {
     ? ReactDOM.createPortal(
         <Area id="content-modal" onClick={handleShow}>
           <Modal
-            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            centered
             show={show}
             id="#iform"
-            onHide={handleShow}
           >
-            <Form.Group>
-              <Modal.Body>
-                <Container>
-                  <Icon />
-                  <Form.Text className="text-muted">
-                    <Information>
-                      Wow! You have been using the application for 100 days!
-                    </Information>
-                  </Form.Text>
-                </Container>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button className={css.button} onClick={handleClose}>
-                  <CloseIcon
-                    style={{
-                      top: '0px',
-                      left: '0px',
-                      position: 'absolute',
-                      padding: '0px',
-                      margin: '0px',
-                    }}
-                  />
-                </Button>
-              </Modal.Footer>
-            </Form.Group>
+            <Container>
+              <Icon />
+              <Text className="text-muted">
+                <Information>
+                  Wow! You have been using the application for 100 days!
+                </Information>
+              </Text>
+            </Container>
+            <Button type="reset" className={css.button} onClick={handleClose}>
+              <CloseIcon
+                style={{
+                  top: '0px',
+                  left: '0px',
+                  position: 'absolute',
+                  padding: '0px',
+                  margin: '0px',
+                }}
+              />
+            </Button>
           </Modal>
         </Area>,
         document.getElementById('#root')

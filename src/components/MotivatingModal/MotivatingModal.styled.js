@@ -8,7 +8,7 @@ export const Area = styled.section`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed;
   flex-direction: column;
   margin-left: 14px;
   @media only screen and (min-width: ${SIZE.mobile}) {
@@ -52,4 +52,31 @@ export const Information = styled.span`
   font-size: 30px;
   letter-spacing: -0.2px;
   line-height: 1.1;
+`;
+export const Text = styled.h3`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
+`;
+export const Modal = styled.dialog`
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+`;
+export const Button = styled.button`
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  color: green;
+  border: 0px;
+  border-radius: 58px;
 `;
