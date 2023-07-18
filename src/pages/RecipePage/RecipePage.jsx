@@ -42,6 +42,12 @@ const RecipePage = () => {
     getRecipe(recipeId);
   }, [recipeId]);
 
+  function updateIsFavorite(bool) {
+    console.log('is doing');
+    setIsFavorite(bool);
+    console.log('done');
+  }
+
   return (
     <ThemeWrap>
       <FooterBgWrapper>
@@ -51,8 +57,9 @@ const RecipePage = () => {
           time={time}
           isFavorite={isFavorite}
           recipeId={recipeId}
+          setIsFavorite={updateIsFavorite}
         />
-        <RecipeIngredientsList ingredients={ingredients} />
+        <RecipeIngredientsList ingredients={ingredients} recipeId={recipeId} />
         <RecipePreparation instructions={preparation} photo={photo} />
       </FooterBgWrapper>
     </ThemeWrap>
