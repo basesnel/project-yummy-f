@@ -12,6 +12,9 @@ import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import Title from 'components/Title/Title';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
+import { useEffect, useState } from 'react';
+import API from 'api';
+import { useAuth } from 'hooks';
 
 const theme = createTheme({
   palette: {
@@ -22,6 +25,23 @@ const theme = createTheme({
 });
 
 const MyRecipesPage = () => {
+  const [ownRecipes, setOwnRecipes] = useState();
+  const [page, setPage] = useState(1);
+  const [AllPage, setAllPage] = useState(0);
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    const getMyRecipes = async () => {
+      try {
+        const res = await API.fetchMyRecipes({ userId: user.id });
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMyRecipes();
+  });
   return (
     <ThemeWrap>
       <FooterBgWrapper>
@@ -32,12 +52,9 @@ const MyRecipesPage = () => {
             {/* <TitleContainer>
 	            <MainTitle title="My recipes" />
 	          </TitleContainer> */}
-            <MyRecipesList>
+            {/* <MyRecipesList>
               <MyRecipesItem />
-              <MyRecipesItem />
-              <MyRecipesItem />
-              <MyRecipesItem />
-            </MyRecipesList>
+            </MyRecipesList> */}
             <ThemeProvider theme={theme}>
               <Paginator />
             </ThemeProvider>
