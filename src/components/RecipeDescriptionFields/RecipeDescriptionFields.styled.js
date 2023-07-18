@@ -117,6 +117,10 @@ export const StyledSelect = styled(Select)`
     }
   }
 
+  .Select__indicator-separator {
+    display: none;
+  }
+
   .Select__single-value {
     text-align: right;
     margin: 0;
@@ -185,16 +189,6 @@ export const StyledSelect = styled(Select)`
   #react-select-2-option-13 {
     margin-bottom: 10px;
   }
-
-  /* .Select__option--is-focused {
-    background-color: rgba(139, 170, 54, 0.1);
-    color: inherit;
-  }
-
-  .Select__option--is-selected {
-    background-color: rgba(139, 170, 54, 0.3);
-    color: inherit;
-  } */
 
   .Select__menu-list::-webkit-scrollbar {
     width: 4px;

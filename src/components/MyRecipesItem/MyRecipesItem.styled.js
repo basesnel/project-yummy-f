@@ -29,8 +29,6 @@ export const WrapperPhoto = styled.div`
   height: 124px;
   border-radius: 8px;
 
-  border: 1px solid black;
-
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 228px;
     height: 232px;
@@ -43,10 +41,9 @@ export const WrapperPhoto = styled.div`
 `;
 
 export const Photo = styled.img`
-  max-width: 100%;
-  //   @media screen and (min-width: ${SIZE.tablet}) {
-
-  //   }
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 export const WrapperDescription = styled.div`
@@ -87,8 +84,8 @@ export const Title = styled.h2`
 
 export const MainText = styled.p`
   overflow: hidden;
-  text-overflow: ellipsis;
-  whitespace: nowrap;
+  // text-overflow: ellipsis;
+  // whitespace: nowrap;
 
   color: #23262a;
   font-family: Poppins;
@@ -123,7 +120,10 @@ export const Text = styled.p`
   display: none;
 
   @media screen and (min-width: ${SIZE.desktop}) {
-    display: block;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    // whitespace: nowrap;
+    display: inline-block;
     color: #23262a;
     font-family: Poppins;
     font-size: 18px;
@@ -131,6 +131,7 @@ export const Text = styled.p`
     line-height: 1.33;
     letter-spacing: -0.36px;
     max-width: 679px;
+    height: 73px;
   }
 `;
 
@@ -150,7 +151,7 @@ export const TextTime = styled.p`
   }
 `;
 
-export const BtnRemove = styled(Link)`
+export const BtnRemove = styled.button`
   text-decoration: none;
   position: absolute;
   border-radius: 4px;

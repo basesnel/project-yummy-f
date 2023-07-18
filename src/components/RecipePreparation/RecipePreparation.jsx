@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 export const RecipePreparation = ({ instructions, photo }) => {
   const instr = instructions.split('\r\n').filter(item => item !== '');
   //console.log(instr);
-  console.log(instr);
+  // console.log(instr);
   return (
     <PrepSection>
       <div>
