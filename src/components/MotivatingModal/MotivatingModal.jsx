@@ -9,7 +9,6 @@ import {
   Text,
   Modal,
 } from './MotivatingModal.styled.js';
-import css from './style.module.css';
 
 import { ReactComponent as CloseIcon } from '../../assets/images/motivating/close.svg';
 const MotivatingModal = () => {
