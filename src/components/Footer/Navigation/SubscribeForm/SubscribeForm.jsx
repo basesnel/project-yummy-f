@@ -32,6 +32,7 @@ export function SubscribeForm() {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
+      firstMessage.current = true;
       dispatch(userSubscribe(values));
       resetForm();
     },
@@ -41,18 +42,21 @@ export function SubscribeForm() {
     firstMessage.current = false;
     toast.success(msg, {
       toastId: 'idEmailVerify',
+      autoClose: 3000,
     });
   }
 
   function notifyError(msg) {
+    firstMessage.current = false;
     toast.error(msg, {
       toastId: 'idError',
+      autoClose: 3000,
     });
   }
 
   return (
     <>
-      {authError && notifyError(authError)}
+      {authError && firstMessage.current && notifyError(authError)}
       {showSubscribeMessage &&
         firstMessage.current &&
         notify('You have successfully subscribed')}

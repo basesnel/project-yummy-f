@@ -17,6 +17,10 @@ export const LinkList = styled.ul`
 		align-items: start;
 		margin-bottom: 0;
 
+		li {
+			width: 89px;
+		}
+
 		li:not(:last-child) {
 			margin-bottom: 24px;
 		}

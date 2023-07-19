@@ -118,6 +118,7 @@ export const HeroArrowIcon = styled(ArrowHero)`
   position: absolute;
   top: 275px;
   left: 110px;
+  pointer-events: none;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     display: block;
