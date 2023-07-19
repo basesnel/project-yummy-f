@@ -1,23 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import recipies from 'tempFiles/recipies';
+import { fetchIngredients } from './operations';
 
 const initialState = {
-  ingredientd: null,
+  ingredients: [],
+  isLoading: false,
+  error: null,
 };
 
 const recipiesSlice = createSlice({
-  name: recipies,
+  name: 'recipies',
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(register.pending, (state, action) => state)
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = null;
-        state.isVerify = true;
+      .addCase(fetchIngredients.pending, (state, action) => {
+        state.isLoading = true;
       })
-      .addCase(register.rejected, (state, action) => {
+      .addCase(fetchIngredients.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.ingredients = action.payload;
+      })
+      .addCase(fetchIngredients.rejected, (state, action) => {
         state.error = action.payload;
-        state.isVerify = false;
+        state.isLoading = false;
       }),
 });
+
+export const recepiesReducer = recipiesSlice.reducer;
