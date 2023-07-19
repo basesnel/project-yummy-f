@@ -6,7 +6,7 @@ import { SIZE } from 'constants';
 
 export const PopUpContainer = styled.div`
   width: 161px;
-  heigth: 130px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -22,25 +22,25 @@ export const PopUpContainer = styled.div`
   }
 `;
 export const LogOutBtn = styled.button`
-     padding: 12px 24px 12px 27px;
-     width:125px;
-    border-radius: 24px 44px;
-    border: none;
-    display: flex;
-   gap:4px;
-    align-items: center;
-    background-color: ${COLOR.main};
-    font-size:14px;
-    color: ${COLOR.second};
-     transition: ${TRANSITION.forHoverBgColor};
-    &: hover, 
-    &:focus{
-        background-color:${COLOR.dark};
-    }
-     @media screen and (min-width: ${SIZE.tablet}){
-        width:141px;
-        padding: 12px 32px 12px 35px;
-     } 
+  padding: 12px 24px 12px 27px;
+  width: 125px;
+  border-radius: 24px 44px;
+  border: none;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  background-color: ${COLOR.main};
+  font-size: 14px;
+  color: ${COLOR.second};
+  transition: ${TRANSITION.forHoverBgColor};
+  &:hover,
+  &:focus {
+    background-color: ${COLOR.dark};
+  }
+  @media screen and (min-width: ${SIZE.tablet}) {
+    width: 141px;
+    padding: 12px 32px 12px 35px;
+  }
 `;
 
 export const EditBtn = styled.button`
@@ -54,7 +54,7 @@ export const EditBtn = styled.button`
   line-height: 22.4px;
   svg {
     width: 14px;
-    heigth: 14px;
+    height: 14px;
 
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
