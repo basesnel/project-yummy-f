@@ -31,6 +31,8 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   useEffect(() => {
     dispatch(getStore());
     console.log(shoppingList);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMobile = useMediaQuery({
