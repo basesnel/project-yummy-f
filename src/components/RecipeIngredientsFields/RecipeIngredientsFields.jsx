@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormikContext, FieldArray } from 'formik';
+import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
 
 import {
   SectionContainer,
@@ -14,6 +14,8 @@ import {
   SelectField,
   InputField,
   ButtonRemove,
+  IngredientError,
+  AmountError,
 } from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = ({ ingredients }) => {
@@ -104,11 +106,17 @@ const RecipeIngredientsFields = ({ ingredients }) => {
                         values.ingredients[index].ingredient = e.value;
                       }}
                     />
+                    <IngredientError>
+                      <ErrorMessage name={`ingredients[${index}].ingredient`} />
+                    </IngredientError>
                     <InputField
                       name={`ingredients[${index}].amount`}
                       placeholder="1 tbs"
                       type="text"
                     />
+                    <AmountError>
+                      <ErrorMessage name={`ingredients[${index}].amount`} />
+                    </AmountError>
                   </InputsContainer>
                   <ButtonRemove
                     type="button"

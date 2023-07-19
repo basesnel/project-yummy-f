@@ -76,7 +76,11 @@ export default function RegisterForm() {
       <FormRegister onSubmit={formik.handleSubmit}>
         <RegisterLabel>Registation</RegisterLabel>
 
-        <RegisterInputWrapper>
+        <RegisterInputWrapper
+          className={
+            formik.submitCount > 0 && formik.errors.name && 'input__error'
+          }
+        >
           <IconWrapper>
             <ManIcon />
           </IconWrapper>
@@ -89,16 +93,17 @@ export default function RegisterForm() {
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={
-              formik.submitCount > 0 && formik.errors.name && 'input__error'
-            }
           />
           {formik.submitCount > 0 && formik.errors.name && (
             <Warning>{formik.errors.name}</Warning>
           )}
         </RegisterInputWrapper>
 
-        <RegisterInputWrapper>
+        <RegisterInputWrapper
+          className={
+            formik.submitCount > 0 && formik.errors.email && 'input__error'
+          }
+        >
           <IconWrapper>
             <EmailIcon />
           </IconWrapper>
@@ -111,16 +116,17 @@ export default function RegisterForm() {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={
-              formik.submitCount > 0 && formik.errors.email && 'input__error'
-            }
           />
           {formik.submitCount > 0 && formik.errors.email && (
             <Warning>{formik.errors.email}</Warning>
           )}
         </RegisterInputWrapper>
 
-        <RegisterInputWrapper>
+        <RegisterInputWrapper
+          className={
+            formik.submitCount > 0 && formik.errors.email && 'input__error'
+          }
+        >
           <IconWrapper>
             <LockIcon />
           </IconWrapper>
@@ -134,9 +140,6 @@ export default function RegisterForm() {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
-            }
           />
           {formik.submitCount > 0 && formik.errors.password && (
             <Warning>{formik.errors.password}</Warning>

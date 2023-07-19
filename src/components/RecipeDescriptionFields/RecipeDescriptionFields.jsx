@@ -12,9 +12,16 @@ import {
   InputsContainer,
   InputField,
   StyledSelect,
+  InputErrorHandle,
+  ErrorField,
 } from './RecipeDescriptionFields.styled';
 
-const RecipeDescriptionFields = ({ categories, setPicture }) => {
+const RecipeDescriptionFields = ({
+  categories,
+  setPicture,
+  errors,
+  touched,
+}) => {
   const { values, handleChange } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
 
@@ -53,43 +60,63 @@ const RecipeDescriptionFields = ({ categories, setPicture }) => {
         />
       </ImageHolder>
       <InputsContainer>
-        <InputField
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Enter item title"
-          value={values.title}
-          onChange={handleChange}
-        />
-        <InputField
-          type="text"
-          id="description"
-          name="description"
-          placeholder="Enter about recipe"
-          value={values.description}
-          onChange={handleChange}
-        />
-        <StyledSelect
-          isSearchable={false}
-          classNamePrefix="Select"
-          options={categoriesOptions}
-          placeholder="Category"
-          onChange={e => (values.category = e.value)}
-          menuShouldBlockScroll={true}
-          components={{
-            ValueContainer: CustomValueContainer,
-          }}
-        />
-        <StyledSelect
-          isSearchable={false}
-          classNamePrefix="Select"
-          options={timeOptions}
-          placeholder="Cooking time"
-          onChange={e => (values.time = e.value)}
-          components={{
-            ValueContainer: CustomValueContainer,
-          }}
-        />
+        <InputErrorHandle>
+          <InputField
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter item title"
+            value={values.title}
+            onChange={handleChange}
+          />
+          {errors.title && touched.title ? (
+            <ErrorField>{errors.title}</ErrorField>
+          ) : null}
+        </InputErrorHandle>
+        <InputErrorHandle>
+          <InputField
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Enter about recipe"
+            value={values.description}
+            onChange={handleChange}
+          />
+          {errors.description && touched.description ? (
+            <ErrorField>{errors.description}</ErrorField>
+          ) : null}
+        </InputErrorHandle>
+        <InputErrorHandle>
+          <StyledSelect
+            isSearchable={false}
+            classNamePrefix="Select"
+            options={categoriesOptions}
+            placeholder="Category"
+            onChange={e => (values.category = e.value)}
+            menuShouldBlockScroll={true}
+            components={{
+              ValueContainer: CustomValueContainer,
+            }}
+          />
+          {errors.category && touched.category && values.category === '' ? (
+            <ErrorField>{errors.category}</ErrorField>
+          ) : null}
+        </InputErrorHandle>
+        <InputErrorHandle>
+          <StyledSelect
+            isSearchable={false}
+            classNamePrefix="Select"
+            options={timeOptions}
+            placeholder="Cooking time"
+            onChange={e => (values.time = e.value)}
+            components={{
+              ValueContainer: CustomValueContainer,
+            }}
+          />
+          {errors.time && touched.time && values.time === '' ? (
+            <ErrorField>{errors.time}</ErrorField>
+          ) : null}
+        </InputErrorHandle>
       </InputsContainer>
     </SectionContainer>
   );
