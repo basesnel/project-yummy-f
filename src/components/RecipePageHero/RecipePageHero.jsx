@@ -22,9 +22,9 @@ export const RecipePageHero = ({
   useEffect(() => {
     const getFav = async () => {
       try {
-        const res = await API.getFavorites();
+        const res = await API.getAllFavorites();
         console.log(res);
-        if (res.favoriteRecipeInfo.some(({ id }) => id === recipeId)) {
+        if (res.some(item => item === recipeId)) {
           console.log('it is favorite');
           setIsAddedToFavorite(true);
         }
@@ -67,6 +67,8 @@ export const RecipePageHero = ({
   const handleBtnClick = e => {
     console.log(e.target);
     console.log(isFavorite);
+    console.log('added:', isAddedToFavorite);
+    console.log(recipeId);
 
     if (!isAddedToFavorite) {
       addToFav(recipeId);
