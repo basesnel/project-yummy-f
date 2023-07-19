@@ -55,7 +55,7 @@ const FavoritePage = () => {
     // console.log(recipeId);
     try {
       const response = await API.removeFromFavorites(recipeId);
-      // console.log(response);
+      console.log(response);
       setRemoveRecipe(true);
     } catch (error) {
       console.log(error.message);
