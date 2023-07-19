@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
 import API from 'api';
-import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
 import RecipeIngredientsFields from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import RecipePreparationFields from 'components/RecipePreparationFields/RecipePreparationFields';
+import RecipeSchema from 'pages/AddRecipePage/RecipeValidationSchema';
+
+import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
 
 const AddRecipeForm = () => {
   const [categories, setCategories] = useState([]);
@@ -43,8 +45,10 @@ const AddRecipeForm = () => {
         ingredients: [{ ingredient: '', amount: '' }],
         preparation: '',
       }}
+      validationSchema={RecipeSchema}
       onSubmit={values => {
         console.log(picture);
+        alert(JSON.stringify(values, null, 2));
         if (typeof values.preparation === 'string') {
           values.preparation = values.preparation.split(/\r?\n/);
         }
@@ -53,23 +57,28 @@ const AddRecipeForm = () => {
 
         for (const key in values) {
           formData.append(key, values[key]);
-          console.log(key, values[key]);
         }
 
-        alert(JSON.stringify(values, null, 2));
-        for (let pair of formData.entries()) {
-          console.log(pair[0] + ', ' + pair[1]);
-        }
+        // alert(JSON.stringify(values, null, 2));
+        // for (let pair of formData.entries()) {
+        //   console.log(pair[0] + ', ' + pair[1]);
+        // }
       }}
     >
-      {({ handleSubmit }) => (
+      {({ errors, touched, handleSubmit }) => (
         <RecipeForm onSubmit={handleSubmit}>
           <RecipeDescriptionFields
             categories={categories}
             setPicture={setPicture}
+            errors={errors}
+            touched={touched}
           />
-          <RecipeIngredientsFields ingredients={ingredients} />
-          <RecipePreparationFields />
+          <RecipeIngredientsFields
+            ingredients={ingredients}
+            errors={errors}
+            touched={touched}
+          />
+          <RecipePreparationFields errors={errors} touched={touched} />
           <SubmitButton type="submit">Add</SubmitButton>
         </RecipeForm>
       )}

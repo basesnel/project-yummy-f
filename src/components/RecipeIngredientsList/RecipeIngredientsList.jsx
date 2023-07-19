@@ -47,7 +47,9 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   };
 
   const handleCheck = (value, event) => {
+
     console.log('checkbox click');
+
     toggleRecipeIngredient(value);
   };
 

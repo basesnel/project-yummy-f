@@ -26,7 +26,7 @@ const RecipePage = () => {
     const getRecipe = async recipeId => {
       try {
         const recipe = await API.getRecipeById(recipeId);
-        console.log(recipe);
+        // console.log(recipe);
         //  setRecipe(recipe);
         setTitle(recipe.title);
         setDescr(recipe.description);
@@ -44,9 +44,9 @@ const RecipePage = () => {
   }, [recipeId]);
 
   function updateIsFavorite(bool) {
-    console.log('is doing');
+    // console.log('is doing');
     setIsFavorite(bool);
-    console.log('done');
+    // console.log('done');
   }
 
   return (

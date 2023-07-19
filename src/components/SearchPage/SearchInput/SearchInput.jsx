@@ -1,4 +1,7 @@
+import ButtonMUI from 'components/Search/ButtonMui';
+import InputMUI from 'components/Search/InputMUI';
 import { SearchForm } from 'components/Search/Search.styled';
+
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -15,6 +18,7 @@ export const SearchInput = ({
   setRecipieArr,
   page,
   cardsPerPage,
+  setPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') ?? null);
@@ -47,6 +51,7 @@ export const SearchInput = ({
   const handleSubmit = e => {
     e.preventDefault();
     if (query) {
+      setPage(1);
       formik.handleSubmit();
     } else {
       setRecipieArr(null);
@@ -55,13 +60,15 @@ export const SearchInput = ({
 
   return (
     <SearchForm $ver={ver} onSubmit={handleSubmit}>
-      <input
+      <InputMUI
         type="text"
         name="query"
         value={formik.values.query}
         onChange={handleChange}
         onBlur={formik.handleBlur}
       />
+      <ButtonMUI type="submit">Search</ButtonMUI>
+      {/* <SearchBtn type="submit">Search</SearchBtn> */}
       {formik.touched.query && formik.errors.query ? (
         <Message style={{ fontSize: '14px', left: '30px', bottom: '-20px' }}>
           {formik.errors.query}

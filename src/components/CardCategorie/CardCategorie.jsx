@@ -41,8 +41,6 @@ const CardCategorie = ({ id, title, thumb, handleRecipe }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              // color: ' #3E4462',
-
               fontFamily: 'Poppins',
               fontSize: '16px',
               fontWeight: '500',
