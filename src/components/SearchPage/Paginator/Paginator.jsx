@@ -5,11 +5,9 @@ import {
   PaginationMUI,
 } from 'components/Paginator/Paginator.styled';
 
-export function Paginator({ totalPages, setPage }) {
-  const handlePageChange = (event, page) => {
-    event.preventDefault();
-
-    setPage(page);
+export function Paginator({ totalPages, setPage, page }) {
+  const handlePageChange = (_, num) => {
+    setPage(num);
   };
 
   return (
@@ -17,6 +15,7 @@ export function Paginator({ totalPages, setPage }) {
       <PaginationContainer>
         <PaginationMUI
           count={totalPages}
+          page={page}
           color="primary"
           siblingCount={0}
           onChange={handlePageChange}
