@@ -1,41 +1,29 @@
 import {
+  BtnRemove,
+  IconRemove,
   Item,
-  MeasureAndCheckbox,
-  
-  WrapperPhoto,  
- 
- 
-  
+  LeftContainer,
+  Number,
+  Photo,
+  Text,
+  WrapperPhoto,
 } from './ShoppingListItem.styled';
 
 const ShoppingListItem = () => {
   return (
-   <Item>
+    <Item>
       <WrapperPhoto>
-        <img
-          src=""
-          alt="product"
-        />
-
-        <p> product </p>
+        <Photo src="" alt="product" />
       </WrapperPhoto>
-
-      <MeasureAndCheckbox>
-        <div>
-          <p> number</p>
-        </div>
-        <span>
-          <svg>
-            <use href="./images/svg/symbol-defs.svg#warning"></use>
-          </svg>
-        </span>
-      </MeasureAndCheckbox>  
-     
-            
+      <Text>Product</Text>
+      <LeftContainer>
+        <Number>5</Number>
+        <BtnRemove>
+          <IconRemove />
+        </BtnRemove>
+      </LeftContainer>
     </Item>
   );
 };
-
-
 
 export default ShoppingListItem;

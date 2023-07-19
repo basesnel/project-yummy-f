@@ -1,7 +1,12 @@
+import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
 import { WrapperList } from './ShoppingList.styled';
 
-const ShoppingList = ({ children }) => {
-  return <WrapperList>{children}</WrapperList>;
+const ShoppingList = ({ ...otherProps }) => {
+  return (
+    <WrapperList>
+      <ShoppingListItem {...otherProps} />
+    </WrapperList>
+  );
 };
 
 export default ShoppingList;
