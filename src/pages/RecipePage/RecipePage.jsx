@@ -22,6 +22,7 @@ const RecipePage = () => {
   const [photo, setPhoto] = useState('');
 
   useEffect(() => {
+    //console.log(recipeId);
     const getRecipe = async recipeId => {
       try {
         const recipe = await API.getRecipeById(recipeId);

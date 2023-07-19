@@ -22,15 +22,11 @@ export const RecipePageHero = ({
   useEffect(() => {
     const getFav = async () => {
       try {
-        const res = await API.getFavorites();
-        let value = true;
-        if (res.favoriteRecipeInfo.length === 1 && value) {
-          localStorage.setItem('existFavorite', 1);
-          value = false;
-        }
+        const res = await API.getAllFavorites();
         console.log(res);
-        if (res.favoriteRecipeInfo.some(({ id }) => id === recipeId)) {
-          // console.log('it is favorite');
+        if (res.some(item => item === recipeId)) {
+          console.log('it is favorite');
+
           setIsAddedToFavorite(true);
         }
 

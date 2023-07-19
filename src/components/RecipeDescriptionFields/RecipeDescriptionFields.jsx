@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik';
 import CustomValueContainer from './CustomValueContainer';
 import blank from '../../assets/images/addRecipe/blank.png';
 import { timeOptions } from 'utils/selectors';
+import { useRecipies } from 'hooks';
 import {
   SectionContainer,
   ImageHolder,
@@ -16,14 +17,11 @@ import {
   ErrorField,
 } from './RecipeDescriptionFields.styled';
 
-const RecipeDescriptionFields = ({
-  categories,
-  setPicture,
-  errors,
-  touched,
-}) => {
+const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
   const { values, handleChange } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
+
+  const { categories } = useRecipies();
 
   const fileInputRef = useRef(null);
 

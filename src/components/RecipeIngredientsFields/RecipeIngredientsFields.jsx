@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
 
+import { useRecipies } from 'hooks';
 import {
   SectionContainer,
   SectionTitle,
@@ -18,9 +19,11 @@ import {
   AmountError,
 } from './RecipeIngredientsFields.styled';
 
-const RecipeIngredientsFields = ({ ingredients }) => {
+const RecipeIngredientsFields = () => {
   const { values } = useFormikContext();
   const [counter, setCounter] = useState(1);
+
+  const { ingredients } = useRecipies();
 
   const increaseCounter = () => {
     values.ingredients.push({ ingredient: '', amount: '' });
@@ -35,7 +38,7 @@ const RecipeIngredientsFields = ({ ingredients }) => {
   };
 
   const ingredientsOptions = ingredients.map(ingredient => {
-    return { value: ingredient.name.toLowerCase(), label: ingredient.name };
+    return { value: ingredient._id, label: ingredient.name };
   });
 
   return (

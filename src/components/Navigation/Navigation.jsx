@@ -24,7 +24,7 @@ const Navigation = ({ closeModal }) => {
       style={{ color: theme.palette.text.primary }}
       onClick={handleLinkClick}
     >
-      <StyledLink to="/categories/:categoryName">Categories</StyledLink>
+      <StyledLink to="/categories/beef">Categories</StyledLink>
       <StyledLink to="/add">Add recipes</StyledLink>
       <StyledLink to="/my">My recipes</StyledLink>
       <StyledLink to="/favorite">Favorites</StyledLink>
