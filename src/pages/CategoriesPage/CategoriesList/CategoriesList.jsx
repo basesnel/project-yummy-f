@@ -30,19 +30,6 @@ export default function CategoriesList({ onError }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (
-  //     !categoriesArr?.length ||
-  //     !categoriesArr?.find(name => name.toLowerCase() === categoryName)
-  //   ) {
-  //     setErr(true);
-  //     onError("Don't find categorie");
-  //   } else {
-  //     setErr(false);
-  //     onError(false);
-  //   }
-  // }, [categoriesArr, categoryName, onError]);
-
   const handleChange = (event, newValue) => {
     navigate(`/categories/${newValue}`);
   };

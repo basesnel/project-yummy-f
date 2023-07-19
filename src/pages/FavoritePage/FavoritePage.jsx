@@ -52,17 +52,17 @@ const FavoritePage = () => {
   }, [removeRecipe, page]);
 
   const removeRecipeId = async recipeId => {
-    console.log(recipeId);
+    // console.log(recipeId);
     try {
       const response = await API.removeFromFavorites(recipeId);
-      console.log(response);
+      // console.log(response);
       setRemoveRecipe(true);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  console.log(favoriteRecipes);
+  // console.log(favoriteRecipes);
 
   return (
     <ThemeWrap>

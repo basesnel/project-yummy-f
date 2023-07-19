@@ -26,7 +26,6 @@ const RecipeDescriptionFields = ({ categories, setPicture }) => {
 
   const uploadImage = ({ target }) => {
     const selectedFile = target.files[0];
-    console.log(target.files[0]);
     const imagePreviewURL = URL.createObjectURL(selectedFile);
     setImagePreview(imagePreviewURL);
     setPicture(target.files[0]);

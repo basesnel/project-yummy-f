@@ -44,7 +44,6 @@ const AddRecipeForm = () => {
         preparation: '',
       }}
       onSubmit={values => {
-        console.log(picture);
         if (typeof values.preparation === 'string') {
           values.preparation = values.preparation.split(/\r?\n/);
         }
@@ -53,13 +52,12 @@ const AddRecipeForm = () => {
 
         for (const key in values) {
           formData.append(key, values[key]);
-          console.log(key, values[key]);
         }
 
-        alert(JSON.stringify(values, null, 2));
-        for (let pair of formData.entries()) {
-          console.log(pair[0] + ', ' + pair[1]);
-        }
+        // alert(JSON.stringify(values, null, 2));
+        // for (let pair of formData.entries()) {
+        //   console.log(pair[0] + ', ' + pair[1]);
+        // }
       }}
     >
       {({ handleSubmit }) => (

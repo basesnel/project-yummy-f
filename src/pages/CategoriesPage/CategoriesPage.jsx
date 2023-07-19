@@ -28,7 +28,6 @@ const CategoriesPage = () => {
       setLoader(true);
       const res = await API.fetchRecipies(categoryName);
       if (res?.recipes?.length) {
-        console.log(res);
         setRecipieArr(res.recipes);
         setTotalPages(res?.totalPages);
         setPage(1);
@@ -36,7 +35,6 @@ const CategoriesPage = () => {
     } catch (err) {
       setRecipieArr([]);
       setError(true);
-      console.log(err);
     } finally {
       setLoader(false);
     }
@@ -44,14 +42,16 @@ const CategoriesPage = () => {
 
   // set RecipierArr and url to initial state
   useEffect(() => {
-    const name = categoryName === ':categoryName' ? 'beef' : categoryName;
+    const name =
+      categoryName === ':categoryName' || !categoryName ? 'beef' : categoryName;
     oneCategorie(name);
     navigate(`/categories/${name}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const name = categoryName === ':categoryName' ? 'beef' : categoryName;
+    const name =
+      categoryName === ':categoryName' || !categoryName ? 'beef' : categoryName;
     oneCategorie(name);
     navigate(`/categories/${name}`);
   }, [categoryName, navigate]);
@@ -69,7 +69,6 @@ const CategoriesPage = () => {
     } catch (err) {
       setRecipieArr([]);
       setError(true);
-      console.log(err);
     }
   };
 
@@ -84,7 +83,7 @@ const CategoriesPage = () => {
         {!error && !loader && (
           <Container>
             <ContainerSection>
-              (<Title>Categories</Title>
+              <Title>Categories</Title>
               <CategoriesList onError={el => setError(el)} />
               <Grid
                 container
@@ -140,7 +139,6 @@ const CategoriesPage = () => {
                   />
                 )}
               />
-              )
             </ContainerSection>
           </Container>
         )}

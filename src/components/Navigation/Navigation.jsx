@@ -1,4 +1,3 @@
-// import { useLocation } from 'react-router-dom';
 import {
   NavContainer,
   StyledLink,
@@ -6,10 +5,7 @@ import {
   WrapperSearchIcon,
 } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
-// import { ThemeProvider, useTheme } from '@mui/material';
-// import { useState, useEffect } from 'react';
-// import THEME from 'theme';
-// import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
+import { useTheme } from '@mui/material';
 
 const Navigation = ({ closeModal }) => {
   const isMobile = useMediaQuery({
@@ -17,17 +13,17 @@ const Navigation = ({ closeModal }) => {
   });
   // const { pathname } = useLocation();
 
-  // console.log(pathname);
   const handleLinkClick = e => {
-    // console.log(e.target);
-
     if (e.target.nodeName === 'A' && isMobile) {
       closeModal();
     }
   };
-
+  const theme = useTheme();
   return (
-    <NavContainer onClick={handleLinkClick}>
+    <NavContainer
+      style={{ color: theme.palette.text.primary }}
+      onClick={handleLinkClick}
+    >
       <StyledLink to="/categories/:categoryName">Categories</StyledLink>
       <StyledLink to="/add">Add recipes</StyledLink>
       <StyledLink to="/my">My recipes</StyledLink>
