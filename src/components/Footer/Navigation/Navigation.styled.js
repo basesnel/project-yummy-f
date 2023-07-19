@@ -28,6 +28,7 @@ export const NavigationContainer = styled.div`
 			display: flex;
 			gap: 235px;
 			margin-bottom: 41px;
+			/* justify-content: space-between; */
 		}
 	}
 	
