@@ -8,7 +8,22 @@ import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 
+// redux start
+import { fetchIngredients, fetchCategories } from 'redux/recipies/operations';
+// import { useRecipies } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+//redux end
+
 export default function MainPage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+    dispatch(fetchCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ThemeWrap>
       <FooterBgWrapper>

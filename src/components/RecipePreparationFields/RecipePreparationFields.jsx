@@ -1,24 +1,28 @@
-import { useFormikContext } from 'formik';
+import { useFormikContext, ErrorMessage } from 'formik';
 
 import {
   SectionContainer,
   SectionTitle,
-  TextFields,
+  Textarea,
+  TextError,
 } from './RecipePreparationFields.styled';
 
-const RecipePreparationFields = () => {
+const RecipePreparationFields = (errors, touched) => {
   const { values, handleChange, handleBlur } = useFormikContext();
 
   return (
     <SectionContainer>
       <SectionTitle>Recipe Preparation</SectionTitle>
-      <TextFields
-        name="preparation"
+      <Textarea
+        name="instructions"
         placeholder="Enter recipe"
         onChange={handleChange}
         onBlur={handleBlur}
-        value={values.preparation}
-      ></TextFields>
+        value={values.instructions}
+      ></Textarea>
+      <TextError>
+        <ErrorMessage name={'instructions'} />
+      </TextError>
     </SectionContainer>
   );
 };

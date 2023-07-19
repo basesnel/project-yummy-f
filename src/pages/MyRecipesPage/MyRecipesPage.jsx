@@ -14,6 +14,8 @@ import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styl
 import { useEffect, useState } from 'react';
 import API from 'api';
 import { useAuth } from 'hooks';
+import { NoSearchResults } from 'components/SearchPage/NoSearchResults/NoSearchResults';
+import Loader from 'components/Loader/Loader';
 
 const theme = createTheme({
   palette: {
@@ -29,9 +31,12 @@ const MyRecipesPage = () => {
   const [pageQty, setPageQty] = useState(0);
   const [removeRecipe, setRemoveRecipe] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const { user } = useAuth();
 
   useEffect(() => {
+    setLoading(true);
     if (removeRecipe) {
       setRemoveRecipe(false);
     }
@@ -43,6 +48,8 @@ const MyRecipesPage = () => {
         setPageQty(data.totalPages);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -67,10 +74,11 @@ const MyRecipesPage = () => {
         <Container>
           <ContainerSection>
             <Title>My recipes</Title>
+            {loading && <Loader />}
             {/* <TitleContainer>
 	            <MainTitle title="My recipes" />
 	          </TitleContainer> */}
-            {ownRecipes.length !== 0 ? (
+            {ownRecipes.length !== 0 && !loading ? (
               <>
                 <MyRecipesList
                   recipes={ownRecipes}
@@ -88,7 +96,7 @@ const MyRecipesPage = () => {
                 </ThemeProvider>
               </>
             ) : (
-              <p>You have not created any recipes</p>
+              <NoSearchResults text={`You have not created any recipe`} />
             )}
           </ContainerSection>
         </Container>

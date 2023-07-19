@@ -33,15 +33,27 @@ export const App = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    const lsTheme = localStorage.getItem('theme');
+    console.log(lsTheme, '  ', typeof lsTheme);
+    setChecked(lsTheme === 'dark');
+  }, []);
+
+  // useEffect(() => {
+  //   return () => {
+  //     localStorage.setItem('theme', checked ? 'dark' : 'light');
+  //   };
+  // }, [checked]);
+
+  useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
   const onTheme = e => {
     setChecked(e.target.checked);
+    localStorage.setItem('theme', e.target.checked ? 'dark' : 'light');
   };
   return (
     <ThemeProvider theme={checked ? THEME.darkTheme : THEME.lightTheme}>
-      {/* // <ThemeProvider theme={THEME.darkTheme}> */}
       {isRefreshing ? (
         <Loader />
       ) : (
@@ -93,6 +105,15 @@ export const App = () => {
             />
             <Route
               path="/categories/:categoryName"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<CategoriesPage />}
+                />
+              }
+            />
+            <Route
+              path="/categories"
               element={
                 <PrivateRoute
                   redirectTo="/signin"
