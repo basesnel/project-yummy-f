@@ -26,6 +26,7 @@ const HeaderWrap = ({ onTheme }) => {
       {!isBurgerShown && !isModalShown && <Navigation />}
       <UserLogo />
       <FormControlLabel
+        checked={localStorage.getItem('theme') === 'dark'}
         onChange={onTheme}
         control={<MaterialUISwitch sx={{ ml: 5 }} />}
       />
