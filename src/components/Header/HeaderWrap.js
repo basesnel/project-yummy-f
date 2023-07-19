@@ -30,7 +30,6 @@ const HeaderWrap = ({ onTheme }) => {
         onChange={onTheme}
         control={<MaterialUISwitch sx={{ ml: 5 }} />}
       />
-      {/* <ThemeToggler/> */}
       {isBurgerShown && !isModalShown && (
         <BurgerBtn onClick={handleBurgerClick}>
           <svg
@@ -45,10 +44,6 @@ const HeaderWrap = ({ onTheme }) => {
               stroke={theme.palette.text.primary}
             />
           </svg>
-          {/* <Burger
-              src={require('../../assets/images/header/burger.svg').default}
-              alt="burger-menu"
-            /> */}
         </BurgerBtn>
       )}
 
@@ -59,12 +54,3 @@ const HeaderWrap = ({ onTheme }) => {
   );
 };
 export default HeaderWrap;
-// const ThemeHeaderWrap = styled('header')(({ theme }) => ({
-//   display: 'flex',
-//   zIndex: '100',
-//   position: 'absolute',
-//   top: '18px',
-//   width: '343px',
-//   [theme.breakpoints.up('md')]: { width: '704px' },
-//   [theme.breakpoints.up('lg')]: { width: '1240px' },
-// }));

@@ -47,7 +47,7 @@ export const UserPhoto = styled.img`
 
 export const UserName = styled.p`
   /* color: #22252a; */
-  color: inherit;
+  /* color: inherit; */
   font-family: Poppins;
   font-size: 12px;
   font-weight: 600;
