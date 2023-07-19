@@ -86,8 +86,22 @@ export const Text = styled.h3`
   line-height: 1.1;
 `;
 export const Modal = styled.form`
-  width: 400px;
-  height: 400px;
+  @media only screen and (min-width: ${SIZE.mobile}) {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    flex-direction: row;
+  }
+  @media screen and (min-width: ${SIZE.tablet}) {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
   align-items: center;
   justify-content: center;
   position: absolute;
