@@ -39,4 +39,4 @@ const recipiesSlice = createSlice({
       }),
 });
 
-export const recepiesReducer = recipiesSlice.reducer;
+export const recipiesReducer = recipiesSlice.reducer;
