@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { fetchIngredients } from 'redux/recipies/operations';
 
 import { useRecipies } from 'hooks';
 import {
@@ -20,10 +23,17 @@ import {
 } from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = () => {
+  const dispatch = useDispatch();
+
   const { values, handleChange, setFieldValue } = useFormikContext();
   const [counter, setCounter] = useState(1);
 
   const { ingredients } = useRecipies();
+
+  useEffect(() => {
+    !ingredients && dispatch(fetchIngredients());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const increaseCounter = () => {
     values.ingredients.push({ ingredient: '', measure: '' });
@@ -37,7 +47,7 @@ const RecipeIngredientsFields = () => {
     }
   };
 
-  const ingredientsOptions = ingredients.map(ingredient => {
+  const ingredientsOptions = (ingredients || []).map(ingredient => {
     return { value: ingredient._id, label: ingredient.name };
   });
 

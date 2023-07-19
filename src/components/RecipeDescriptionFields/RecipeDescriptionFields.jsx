@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFormikContext } from 'formik';
+import { useDispatch } from 'react-redux';
 
+import { fetchCategories } from 'redux/recipies/operations';
 import CustomValueContainer from './CustomValueContainer';
 import blank from '../../assets/images/addRecipe/blank.png';
 import { timeOptions } from 'utils/selectors';
@@ -18,10 +20,17 @@ import {
 } from './RecipeDescriptionFields.styled';
 
 const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
+  const dispatch = useDispatch();
+
   const { values, handleChange } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
 
   const { categories } = useRecipies();
+
+  useEffect(() => {
+    !categories && dispatch(fetchCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fileInputRef = useRef(null);
 
@@ -36,7 +45,7 @@ const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
     setPicture(target.files[0]);
   };
 
-  const categoriesOptions = categories.map(category => {
+  const categoriesOptions = (categories || []).map(category => {
     return { value: category.toLowerCase(), label: category };
   });
 
