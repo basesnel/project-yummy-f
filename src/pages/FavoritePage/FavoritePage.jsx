@@ -71,7 +71,7 @@ const FavoritePage = () => {
           <ContainerSection>
             <Title>Favorites</Title>
             {loading && <Loader />}
-            {favoriteRecipes.length === 0 ? (
+            {favoriteRecipes.length === 0 && !loading ? (
               <NoSearchResults
                 text={`Please add something to your favorite dishes`}
               />
