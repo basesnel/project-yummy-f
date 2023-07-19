@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 import { fetchIngredients } from 'redux/recipies/operations';
 
@@ -36,7 +37,7 @@ const RecipeIngredientsFields = () => {
   }, []);
 
   const increaseCounter = () => {
-    values.ingredients.push({ ingredient: '', measure: '' });
+    values.ingredients.push({ ingredient: '', measure: '', key: nanoid() });
     setCounter(counter + 1);
   };
 
@@ -108,17 +109,17 @@ const RecipeIngredientsFields = () => {
           <FieldsContainer>
             {values.ingredients.length > 0 &&
               values.ingredients.map((ingredient, index) => (
-                <InputRaw key={index}>
+                <InputRaw key={ingredient.key}>
                   <InputsContainer>
                     <SelectField
                       name={`ingredients[${index}].ingredient`}
                       classNamePrefix="Select"
                       options={ingredientsOptions}
                       placeholder="Ingredient"
-                      onChange={e =>
+                      onChange={option =>
                         setFieldValue(
                           `ingredients[${index}].ingredient`,
-                          e.value
+                          option.value
                         )
                       }
                     />
