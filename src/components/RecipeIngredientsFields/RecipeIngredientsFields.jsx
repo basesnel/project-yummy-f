@@ -20,13 +20,13 @@ import {
 } from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = () => {
-  const { values, handleChange } = useFormikContext();
+  const { values, handleChange, setFieldValue } = useFormikContext();
   const [counter, setCounter] = useState(1);
 
   const { ingredients } = useRecipies();
 
   const increaseCounter = () => {
-    values.ingredients.push({ ingredient: '', amount: '' });
+    values.ingredients.push({ ingredient: '', measure: '' });
     setCounter(counter + 1);
   };
 
@@ -105,19 +105,25 @@ const RecipeIngredientsFields = () => {
                       classNamePrefix="Select"
                       options={ingredientsOptions}
                       placeholder="Ingredient"
-                      onChange={e => handleChange(e.value)}
+                      onChange={e =>
+                        setFieldValue(
+                          `ingredients[${index}].ingredient`,
+                          e.value
+                        )
+                      }
                     />
                     <IngredientError>
                       <ErrorMessage name={`ingredients[${index}].ingredient`} />
                     </IngredientError>
                     <InputField
-                      name={`ingredients[${index}].amount`}
+                      name={`ingredients[${index}].measure`}
+                      value={ingredient.measure}
                       placeholder="1 tbs"
                       type="text"
                       onChange={handleChange}
                     />
                     <AmountError>
-                      <ErrorMessage name={`ingredients[${index}].amount`} />
+                      <ErrorMessage name={`ingredients[${index}].measure`} />
                     </AmountError>
                   </InputsContainer>
                   <ButtonRemove
