@@ -13,7 +13,7 @@ const RecipeSchema = Yup.object().shape({
       })
       .nullable()
   ),
-  preparation: Yup.string().required('Enter preparation*'),
+  instructions: Yup.string().required('Enter preparation*'),
 });
 
 export default RecipeSchema;
