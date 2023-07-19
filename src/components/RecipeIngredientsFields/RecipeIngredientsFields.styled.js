@@ -218,3 +218,28 @@ export const ButtonRemove = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
+
+export const IngredientError = styled.div`
+  position: absolute;
+  margin-top: 55px;
+  left: 40px;
+  font-size: 12px;
+  color: orange;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    margin-top: 60px;
+  }
+`;
+
+export const AmountError = styled.div`
+  position: absolute;
+  margin-top: 55px;
+  left: 210px;
+  font-size: 12px;
+  color: orange;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    margin-top: 60px;
+    left: 439px;
+  }
+`;

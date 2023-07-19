@@ -59,6 +59,7 @@ export const InputField = styled.input`
   padding: 0 0 19px 0;
   font-size: 14px;
   height: 40px;
+  width: 100%;
   margin-bottom: 24px;
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -202,5 +203,23 @@ export const StyledSelect = styled(Select)`
     background: #e7e5e5;
     border-radius: 12px;
     height: 93px;
+  }
+`;
+
+export const InputErrorHandle = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ErrorField = styled.div`
+  position: absolute;
+  margin-top: -40px;
+  margin-left: 40px;
+  font-size: 12px;
+  color: orange;
+
+  @media screen and (min-width: ${SIZE.tablet}) {
+    margin-top: -50px;
   }
 `;

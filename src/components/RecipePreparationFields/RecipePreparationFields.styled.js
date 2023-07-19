@@ -21,7 +21,7 @@ export const SectionTitle = styled.h2`
   }
 `;
 
-export const TextFields = styled.textarea`
+export const Textarea = styled.textarea`
   width: 100%;
   border-color: transparent;
   background-color: rgba(217, 217, 217, 0.157);
@@ -40,4 +40,10 @@ export const TextFields = styled.textarea`
     font-size: 18px;
     padding: 16px 23px;
   }
+`;
+
+export const TextError = styled.div`
+  margin-left: 40px;
+  font-size: 12px;
+  color: orange;
 `;
