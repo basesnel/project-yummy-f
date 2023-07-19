@@ -21,6 +21,13 @@ const MotivatingModal = () => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
+    const comparasion = localStorage.getItem('last-session-value');
+    // const element = document.getElementById('content-modal');
+    window.addEventListener('click', () => {
+      if (parseInt(comparasion) > 100) {
+        setShow(true);
+      }
+    });
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         setShow(false);
