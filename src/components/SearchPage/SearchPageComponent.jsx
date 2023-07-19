@@ -38,6 +38,7 @@ export const SearchPageComponent = () => {
       queryData.directory = 'ingredients';
       queryData.selector = 'ingredient';
     }
+    setRecipieArr(null);
     setIsLoading(true);
     try {
       const res = await API.fetchSearchResults(queryData);
@@ -61,6 +62,8 @@ export const SearchPageComponent = () => {
           ver="mobile"
           getCards={getCards}
           setRecipieArr={setRecipieArr}
+          cardsPerPage={cardsPerPage}
+          setPage={setPage}
         />
         <SearchInput
           ver="tablet"
@@ -70,17 +73,17 @@ export const SearchPageComponent = () => {
           cardsPerPage={cardsPerPage}
           setPage={setPage}
         />
-
         <SearchTypeSelector setSelector={setSelector} setPage={setPage} />
         {isLoading && <Loader />}
-        {recipieArr && recipieArr.length > 0 ? (
+        {recipieArr && recipieArr.length > 0 && (
           <>
             <SearchedRecipesList recipieArr={recipieArr} />
             {totalPages > 1 && (
               <Paginator totalPages={totalPages} setPage={setPage} />
             )}
           </>
-        ) : (
+        )}
+        {(!recipieArr || recipieArr.length === 0) && !isLoading && (
           <NoSearchResults text={`Try looking for something else..`} />
         )}
       </ContainerSection>
