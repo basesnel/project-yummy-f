@@ -39,7 +39,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   const toggleRecipeIngredient = async data => {
     try {
       const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
-      console.log('success');
+      // console.log('success');
       return res.data;
     } catch (error) {
       console.log(error);
@@ -47,10 +47,10 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   };
 
   const handleCheck = (value, event) => {
-    // if (event.target.nodeName === 'INPUT') {
+
     console.log('checkbox click');
+
     toggleRecipeIngredient(value);
-    //  }
   };
 
   return (
@@ -74,7 +74,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
               <Checkbox
                 borderColor="#7e7e7e"
                 size={isMobile ? 18 : 35}
-                backgroundColor="transparent"
+                backgroundcolor="transparent"
                 borderRadius={4}
                 icon={
                   <img

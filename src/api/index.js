@@ -9,6 +9,7 @@ import getIngredients from './getIngredients';
 import addToFavorites from './addToFavorites';
 import removeFromFavorites from './removeFromFavorites';
 import getFavorites from './getFavorites';
+import getAllFavorites from './getAllFavorites';
 
 import fetchSearchResults from './search';
 
@@ -24,6 +25,7 @@ const API = {
   addToFavorites,
   removeFromFavorites,
   getFavorites,
+  getAllFavorites,
 
   fetchSearchResults,
 

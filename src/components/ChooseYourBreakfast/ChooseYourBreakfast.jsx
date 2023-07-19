@@ -4,11 +4,13 @@ import {
   HeroArrowIcon,
   SeeRecipesBtn,
 } from './ChooseYourBreakfast.styled';
+import WrapBreakfast from './WrapBreakfast';
 
 export function ChooseYourBreakfast() {
   return (
     <BreakfastContainer>
-      <div>
+      {/* <div> */}
+      <WrapBreakfast>
         <p>
           <span>Delicious and healthy</span> way to enjoy a variety of fresh
           ingredients in one satisfying meal
@@ -22,7 +24,8 @@ export function ChooseYourBreakfast() {
           <span>See recipes</span>
           <ArrowRight />
         </SeeRecipesBtn>
-      </div>
+      </WrapBreakfast>
+      {/* </div> */}
       <HeroArrowIcon />
     </BreakfastContainer>
   );

@@ -9,6 +9,8 @@ const toggleProduct = async (id, measure, recipeId) => {
     measure,
     recipeId,
   });
+  // console.log('success');
+  // console.log(res.status);
   return res.data;
 };
 
