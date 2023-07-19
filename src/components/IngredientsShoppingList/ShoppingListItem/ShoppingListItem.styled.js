@@ -1,7 +1,6 @@
-import { TRANSITION } from 'constants';
+import { TRANSITION, COLOR } from 'constants';
 import { SIZE } from 'constants';
 import { styled } from 'styled-components';
-import { ReactComponent as IconRemoveX } from 'assets/images/modal/x.svg';
 
 export const Item = styled.li`
   display: flex;
@@ -105,13 +104,15 @@ export const Number = styled.p`
 export const BtnRemove = styled.button`
   text-decoration: none;
   transition: ${TRANSITION.forHoverColor};
-  /* transition: ${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}; */
-  background-color: 'transparent';
   border: none;
   width: 20px;
   height: 20px;
   // margin-right:19px
   // margin-left:46px;
+  &:hover,
+  &:focus {
+    color: ${COLOR.main}!important;
+  }
 
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 38px;
