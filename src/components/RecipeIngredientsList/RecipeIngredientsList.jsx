@@ -13,11 +13,26 @@ import {
 } from './RecipeIngredientsList.styled';
 
 import { useMediaQuery } from 'react-responsive';
+import { useEffect } from 'react';
 import Checkbox from 'react-custom-checkbox';
 import { SIZE } from 'constants';
 import API from 'api';
 
+//import { fetchIngredients } from 'redux/recipies/operations';
+//import { selectIngredients } from 'redux/recipies/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStore } from 'redux/auth/operations';
+import { selectStore } from 'redux/auth/selectors';
+
 export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
+  const shoppingList = useSelector(selectStore);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getStore());
+    console.log(shoppingList);
+  }, []);
+
   const isMobile = useMediaQuery({
     query: `(max-width: ${SIZE.tablet})`,
   });
@@ -47,7 +62,6 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   };
 
   const handleCheck = (value, event) => {
-
     console.log('checkbox click');
 
     toggleRecipeIngredient(value);
@@ -72,6 +86,12 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
                 <p>{measure}</p>
               </MeasureCont>
               <Checkbox
+                checked={
+                  shoppingList &&
+                  shoppingList.some(item => item.id._id === id._id)
+                    ? true
+                    : false
+                }
                 borderColor="#7e7e7e"
                 size={isMobile ? 18 : 35}
                 backgroundcolor="transparent"
