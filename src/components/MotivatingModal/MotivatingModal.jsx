@@ -23,10 +23,13 @@ const MotivatingModal = () => {
   useEffect(() => {
     const comparasion = localStorage.getItem('last-session-value');
     // const element = document.getElementById('content-modal');
-    window.addEventListener('click', () => {
+    window.addEventListener('click', function fireOnce() {
+      if (fireOnce.onCall) return;
+      fireOnce.onCall = true;
       if (parseInt(comparasion) > 100) {
         setShow(true);
       }
+      return;
     });
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
@@ -43,7 +46,7 @@ const MotivatingModal = () => {
   return isModal
     ? ReactDOM.createPortal(
         <Area id="#content-modal" data-toggle="modal">
-          <Modal aria-labelledby="contained-modal-title-vcenter" id="#iform">
+          <Modal aria-labelledby="contained-modal-title-vcenter">
             <Container>
               <Icon />
               <Text className="text-muted">
@@ -51,18 +54,18 @@ const MotivatingModal = () => {
                   Wow! You have been using the application for 100 days!
                 </Information>
               </Text>
+              <Button type="button" data-dismiss="modal" onClick={handleClose}>
+                <CloseIcon
+                  style={{
+                    top: '0px',
+                    left: '0px',
+                    position: 'absolute',
+                    padding: '0px',
+                    margin: '0px',
+                  }}
+                />
+              </Button>
             </Container>
-            <Button type="button" data-dismiss="modal" onClick={handleClose}>
-              <CloseIcon
-                style={{
-                  top: '0px',
-                  left: '0px',
-                  position: 'absolute',
-                  padding: '0px',
-                  margin: '0px',
-                }}
-              />
-            </Button>
           </Modal>
         </Area>,
         document.getElementById('root')
