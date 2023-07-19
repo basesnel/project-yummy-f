@@ -9,11 +9,11 @@ const RecipeSchema = Yup.object().shape({
     Yup.object()
       .shape({
         ingredient: Yup.string().required('Choose ingredient*'),
-        amount: Yup.string().required('Enter amount*'),
+        measure: Yup.string().required('Enter measure*'),
       })
       .nullable()
   ),
-  instructions: Yup.string().required('Enter preparation*'),
+  instructions: Yup.string().required('Enter preparation instructions*'),
 });
 
 export default RecipeSchema;
