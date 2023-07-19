@@ -15,6 +15,7 @@ export const SearchInput = ({
   setRecipieArr,
   page,
   cardsPerPage,
+  setPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') ?? null);
@@ -47,6 +48,7 @@ export const SearchInput = ({
   const handleSubmit = e => {
     e.preventDefault();
     if (query) {
+      setPage(1);
       formik.handleSubmit();
     } else {
       setRecipieArr(null);

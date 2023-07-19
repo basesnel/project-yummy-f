@@ -7,6 +7,8 @@ import {
 
 export function Paginator({ totalPages, setPage }) {
   const handlePageChange = (event, page) => {
+    event.preventDefault();
+
     setPage(page);
   };
 

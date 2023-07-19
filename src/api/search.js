@@ -13,7 +13,7 @@ const fetchSearchResults = async ({
   const response = await axios.get(
     `${directory}/search?${selector}=${query}&page=${page}&limit=${cardsPerPage}`
   );
-  // console.log(response.data);
+
   return response.data;
 };
 

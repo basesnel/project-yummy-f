@@ -49,6 +49,7 @@ export const EditBtn = styled.button`
   justify-content: space-between;
   align-items: center;
   color: ${COLOR.dark};
+  transition: ${TRANSITION.forHoverColor};
   font-weight: 500;
   line-height: 22.4px;
   svg {
@@ -58,9 +59,12 @@ export const EditBtn = styled.button`
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  &:hover svg,
-  &:focus svg {
-    fill: ${COLOR.main};
+  &:hover,
+  &:focus {
+    color: ${COLOR.main};
+    & svg {
+      fill: ${COLOR.main};
+    }
   }
 `;
 
