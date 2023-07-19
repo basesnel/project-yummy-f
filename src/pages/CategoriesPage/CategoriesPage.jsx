@@ -1,4 +1,4 @@
-import { Grid, Pagination } from '@mui/material';
+import { Grid, Pagination, PaginationItem, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
+import Loader from 'components/Loader/Loader';
+// import { COLOR } from 'constants';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -18,30 +20,43 @@ const CategoriesPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const { categoryName } = useParams();
+  const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+
+  const oneCategorie = async categoryName => {
+    try {
+      setLoader(true);
+      const res = await API.fetchRecipies(categoryName);
+      if (res?.recipes?.length) {
+        setRecipieArr(res.recipes);
+        setTotalPages(res?.totalPages);
+        setPage(1);
+      } else throw new Error('dont find this categories');
+    } catch (err) {
+      setRecipieArr([]);
+      setError(true);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   // set RecipierArr and url to initial state
   useEffect(() => {
-    const oneCategorie = async categoryName => {
-      try {
-        const res = await API.fetchRecipies(categoryName);
-        if (res?.recipes) {
-          setRecipieArr(res?.recipes);
-          setTotalPages(res?.totalPages);
-          setPage(1);
-          setError(false);
-        } else throw new Error('dont find this categories');
-      } catch (err) {
-        setRecipieArr([]);
-        setError(true);
-        console.log(err);
-      }
-    };
-    const tempCategoryName =
-      categoryName === ':categoryName' ? 'beef' : categoryName;
-    oneCategorie(tempCategoryName);
-    navigate(`/categories/${tempCategoryName}`);
+    const name =
+      categoryName === ':categoryName' || !categoryName ? 'beef' : categoryName;
+    oneCategorie(name);
+    navigate(`/categories/${name}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const name =
+      categoryName === ':categoryName' || !categoryName ? 'beef' : categoryName;
+    oneCategorie(name);
+    navigate(`/categories/${name}`);
   }, [categoryName, navigate]);
+
+  const theme = useTheme();
 
   const setPageHandler = async (_, value) => {
     setPage(value);
@@ -54,7 +69,6 @@ const CategoriesPage = () => {
     } catch (err) {
       setRecipieArr([]);
       setError(true);
-      console.log(err);
     }
   };
 
@@ -66,13 +80,11 @@ const CategoriesPage = () => {
   return (
     <ThemeWrap>
       <FooterBgWrapper>
-        <Container>
-          <ContainerSection>
-            {!error && <Title>Categories</Title>}
-
-            <CategoriesList onError={el => setError(el)} />
-
-            {!error && (
+        {!error && !loader && (
+          <Container>
+            <ContainerSection>
+              <Title>Categories</Title>
+              <CategoriesList onError={el => setError(el)} />
               <Grid
                 container
                 pt={{ xs: '32px', md: '50px' }}
@@ -93,14 +105,14 @@ const CategoriesPage = () => {
                     </Grid>
                   ))}
               </Grid>
-            )}
-
-            {!error && (
               <Pagination
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  p: '50px 0 100px',
+                  width: 'max-content',
+                  borderRadius: '26px',
+                  p: '12px 18px',
+                  m: '50px auto 100px',
+                  backgroundColor: theme.palette.background.input,
+                  boxShadow: '0px 4px 4px 0px rgba(135, 135, 135, 0.20)',
                 }}
                 count={totalPages}
                 page={page}
@@ -108,12 +120,30 @@ const CategoriesPage = () => {
                 variant="outlined"
                 color="primary"
                 size="large"
+                renderItem={item => (
+                  <PaginationItem
+                    sx={{
+                      backgroundColor: item.selected
+                        ? theme.palette.background.paginator + '!important'
+                        : 'transparent',
+                      color: item.selected
+                        ? theme.palette.paginator.active + '!important'
+                        : theme.palette.paginator.inactive,
+                      border: 'none !important',
+                      fontFamily: 'Poppins',
+                      fontSize: '12px',
+                      fontWeight: 500,
+                      margin: 0,
+                    }}
+                    {...item}
+                  />
+                )}
               />
-            )}
-
-            {error && <NotFoundPage />}
-          </ContainerSection>
-        </Container>
+            </ContainerSection>
+          </Container>
+        )}
+        {loader && <Loader />}
+        {error && <NotFoundPage />}
       </FooterBgWrapper>
     </ThemeWrap>
   );

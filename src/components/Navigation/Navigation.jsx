@@ -5,22 +5,25 @@ import {
   WrapperSearchIcon,
 } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
+import { useTheme } from '@mui/material';
 
 const Navigation = ({ closeModal }) => {
   const isMobile = useMediaQuery({
     query: `(max-width: 1439px)`,
   });
+  // const { pathname } = useLocation();
 
   const handleLinkClick = e => {
-    console.log(e.target);
-
     if (e.target.nodeName === 'A' && isMobile) {
       closeModal();
     }
   };
-
+  const theme = useTheme();
   return (
-    <NavContainer onClick={handleLinkClick}>
+    <NavContainer
+      style={{ color: theme.palette.text.primary }}
+      onClick={handleLinkClick}
+    >
       <StyledLink to="/categories/:categoryName">Categories</StyledLink>
       <StyledLink to="/add">Add recipes</StyledLink>
       <StyledLink to="/my">My recipes</StyledLink>
