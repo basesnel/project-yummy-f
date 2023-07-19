@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
+import { nanoid } from 'nanoid';
 
 import API from 'api';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
@@ -19,7 +20,7 @@ const AddRecipeForm = () => {
         description: '',
         category: '',
         time: '',
-        ingredients: [{ ingredient: '', measure: '' }],
+        ingredients: [{ ingredient: '', measure: '', key: nanoid() }],
         instructions: '',
       }}
       validationSchema={RecipeSchema}

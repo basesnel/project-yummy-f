@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+
+import { fetchIngredients } from 'redux/recipies/operations';
 
 import { useRecipies } from 'hooks';
 import {
@@ -20,13 +24,20 @@ import {
 } from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = () => {
+  const dispatch = useDispatch();
+
   const { values, handleChange, setFieldValue } = useFormikContext();
   const [counter, setCounter] = useState(1);
 
   const { ingredients } = useRecipies();
 
+  useEffect(() => {
+    !ingredients && dispatch(fetchIngredients());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const increaseCounter = () => {
-    values.ingredients.push({ ingredient: '', measure: '' });
+    values.ingredients.push({ ingredient: '', measure: '', key: nanoid() });
     setCounter(counter + 1);
   };
 
@@ -37,7 +48,7 @@ const RecipeIngredientsFields = () => {
     }
   };
 
-  const ingredientsOptions = ingredients.map(ingredient => {
+  const ingredientsOptions = (ingredients || []).map(ingredient => {
     return { value: ingredient._id, label: ingredient.name };
   });
 
@@ -98,17 +109,17 @@ const RecipeIngredientsFields = () => {
           <FieldsContainer>
             {values.ingredients.length > 0 &&
               values.ingredients.map((ingredient, index) => (
-                <InputRaw key={index}>
+                <InputRaw key={ingredient.key}>
                   <InputsContainer>
                     <SelectField
                       name={`ingredients[${index}].ingredient`}
                       classNamePrefix="Select"
                       options={ingredientsOptions}
                       placeholder="Ingredient"
-                      onChange={e =>
+                      onChange={option =>
                         setFieldValue(
                           `ingredients[${index}].ingredient`,
-                          e.value
+                          option.value
                         )
                       }
                     />
