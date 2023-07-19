@@ -18,7 +18,7 @@ export const Area = styled.section`
     letter-spacing: -0.24px;
   }
   @media only screen and (min-width: ${SIZE.desktop}) {
-    margin: 33.5px 0 0 0;
+    margin: 0;
   }
 `;
 
