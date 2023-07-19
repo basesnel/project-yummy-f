@@ -31,7 +31,13 @@ const AddRecipeForm = () => {
         for (const key in values) {
           if (key === 'ingredients') {
             values[key].forEach(item => {
-              formData.append(`ingredients[]`, JSON.stringify(item));
+              formData.append(
+                `ingredients[]`,
+                JSON.stringify({
+                  ingredient: item.ingredient,
+                  measure: item.measure,
+                })
+              );
             });
           } else if (key === 'instructions') {
             const arr = values[key].split(/\r?\n/).filter(item => item.length);
