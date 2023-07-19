@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormikContext, FieldArray } from 'formik';
+import { useFormikContext, FieldArray, ErrorMessage } from 'formik';
 
 import {
   SectionContainer,
@@ -14,6 +14,8 @@ import {
   SelectField,
   InputField,
   ButtonRemove,
+  IngredientError,
+  AmountError,
 } from './RecipeIngredientsFields.styled';
 
 const RecipeIngredientsFields = ({ ingredients }) => {
@@ -87,27 +89,34 @@ const RecipeIngredientsFields = ({ ingredients }) => {
         </CounterContainer>
       </SectionTitle>
 
-      <FieldArray name="ingredients">
-        {({ remove }) => (
+      <FieldArray
+        name="ingredients"
+        render={({ remove }) => (
           <FieldsContainer>
             {values.ingredients.length > 0 &&
               values.ingredients.map((ingredient, index) => (
                 <InputRaw key={index}>
                   <InputsContainer>
                     <SelectField
+                      name={`ingredients[${index}].ingredient`}
                       classNamePrefix="Select"
                       options={ingredientsOptions}
                       placeholder="Ingredient"
                       onChange={e => {
                         values.ingredients[index].ingredient = e.value;
-                        console.log(e.value);
                       }}
                     />
+                    <IngredientError>
+                      <ErrorMessage name={`ingredients[${index}].ingredient`} />
+                    </IngredientError>
                     <InputField
-                      name={`ingredients.${index}.amount`}
+                      name={`ingredients[${index}].amount`}
                       placeholder="1 tbs"
                       type="text"
                     />
+                    <AmountError>
+                      <ErrorMessage name={`ingredients[${index}].amount`} />
+                    </AmountError>
                   </InputsContainer>
                   <ButtonRemove
                     type="button"
@@ -144,7 +153,7 @@ const RecipeIngredientsFields = ({ ingredients }) => {
               ))}
           </FieldsContainer>
         )}
-      </FieldArray>
+      />
     </SectionContainer>
   );
 };

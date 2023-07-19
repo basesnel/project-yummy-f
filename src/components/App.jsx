@@ -101,6 +101,15 @@ export const App = () => {
               }
             />
             <Route
+              path="/categories"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<CategoriesPage />}
+                />
+              }
+            />
+            <Route
               path="/add"
               element={
                 <PrivateRoute

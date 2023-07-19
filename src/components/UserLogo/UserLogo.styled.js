@@ -9,6 +9,7 @@ export const StyledPopover = styled(Popover)`
 `;
 
 export const WrapperUserLogo = styled.button`
+  color: inherit;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -45,7 +46,8 @@ export const UserPhoto = styled.img`
 `;
 
 export const UserName = styled.p`
-  color: #22252a;
+  /* color: #22252a; */
+  color: inherit;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 600;

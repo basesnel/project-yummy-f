@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { SearchBtn, SearchForm } from './Search.styled';
+import { SearchForm } from './Search.styled';
 import { useNavigate } from 'react-router';
+import InputMUI from './InputMUI';
+import ButtonMUI from './ButtonMui';
 
 export function Search({ ver }) {
   const navigate = useNavigate();
@@ -17,14 +19,15 @@ export function Search({ ver }) {
 
   return (
     <SearchForm onSubmit={handleSubmit} $ver={ver}>
-      <input
+      <InputMUI
         type="text"
         onChange={e => {
           setSearchText(e.target.value);
         }}
         value={searchText}
       />
-      <SearchBtn type="submit">Search</SearchBtn>
+      <ButtonMUI type="submit">Search</ButtonMUI>
+      {/* <SearchBtn type="submit">Search</SearchBtn> */}
     </SearchForm>
   );
 }

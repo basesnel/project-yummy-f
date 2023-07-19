@@ -16,6 +16,7 @@ import plug from 'assets/images/PreviewCategories/1.jpg';
 import { SIZE } from 'constants';
 import API from 'api';
 import Loader from 'components/Loader/Loader';
+import { CardContent, styled } from '@mui/material';
 
 export function PreviewCategories() {
   const [amountRecipe, setAmountRecipe] = useState(0);
@@ -57,6 +58,10 @@ export function PreviewCategories() {
     setAmountRecipe(resize());
   }, [isDesktopScreen, isMobileScreen, isTabletScreen]);
 
+  const CardWrap = styled(CardContent)(({ theme }) => ({
+    backgroundColor: theme.palette.background.input,
+    color: theme.palette.text.secondary,
+  }));
   return (
     <PreviewCategoriesWrapper>
       <Container>
@@ -87,9 +92,9 @@ export function PreviewCategories() {
                                     src={recipe.preview ? recipe.preview : plug}
                                     alt={recipe.title}
                                   />
-                                  <div>
+                                  <CardWrap>
                                     <h3>{recipe.title}</h3>
-                                  </div>
+                                  </CardWrap>
                                 </RecipesLink>
                               </li>
                             );
@@ -117,7 +122,7 @@ export function PreviewCategories() {
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            to="/categories"
+            to="/categories/beef"
           >
             Other categories
           </OtherBtn>

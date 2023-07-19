@@ -48,7 +48,6 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
 
   const handleCheck = (value, event) => {
     // if (event.target.nodeName === 'INPUT') {
-    console.log('checkbox click');
     toggleRecipeIngredient(value);
     //  }
   };

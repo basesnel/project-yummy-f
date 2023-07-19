@@ -87,7 +87,11 @@ export default function SigninForm() {
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
-        <SigninInputWrapper>
+        <SigninInputWrapper
+          className={
+            formik.submitCount > 0 && formik.errors.email && 'input__error'
+          }
+        >
           <IconWrapper>
             <EmailIcon />
           </IconWrapper>
@@ -100,15 +104,16 @@ export default function SigninForm() {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={
-              formik.submitCount > 0 && formik.errors.email && 'input__error'
-            }
           />
           {formik.submitCount > 0 && formik.errors.email && (
             <Warning>{formik.errors.email}</Warning>
           )}
         </SigninInputWrapper>
-        <SigninInputWrapper>
+        <SigninInputWrapper
+          className={
+            formik.submitCount > 0 && formik.errors.email && 'input__error'
+          }
+        >
           <IconWrapper>
             <LockIcon />
           </IconWrapper>
@@ -122,9 +127,6 @@ export default function SigninForm() {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            className={
-              formik.submitCount > 0 && formik.errors.password && 'input__error'
-            }
           />
           {formik.submitCount > 0 && formik.errors.password && (
             <Warning>{formik.errors.password}</Warning>
