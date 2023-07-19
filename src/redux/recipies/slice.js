@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchIngredients } from './operations';
 
 const initialState = {
-  ingredients: [],
+  ingredients: null,
   isLoading: false,
   error: null,
 };
