@@ -43,26 +43,35 @@ const AddRecipeForm = () => {
         category: '',
         time: '',
         ingredients: [{ ingredient: '', amount: '' }],
-        preparation: '',
+        instructions: '',
       }}
       validationSchema={RecipeSchema}
       onSubmit={values => {
-        console.log(picture);
-        alert(JSON.stringify(values, null, 2));
-        if (typeof values.preparation === 'string') {
-          values.preparation = values.preparation.split(/\r?\n/);
-        }
         const formData = new FormData();
         formData.append('picture', picture);
 
         for (const key in values) {
-          formData.append(key, values[key]);
+          if (key === 'ingredients') {
+            values[key].forEach((item, index) => {
+              formData.append(
+                `ingredients[${index}][ingredient]`,
+                item.ingredient
+              );
+              formData.append(`ingredients[${index}][amount]`, item.amount);
+            });
+          } else if (key === 'instructions') {
+            const arr = values[key].split(/\r?\n/).filter(item => item.length);
+            arr.forEach((item, index) => {
+              formData.append(`instructions[${index}]`, item);
+            });
+          } else {
+            formData.append(key, values[key]);
+          }
+
+          console.log(key, values[key]);
         }
 
-        // alert(JSON.stringify(values, null, 2));
-        // for (let pair of formData.entries()) {
-        //   console.log(pair[0] + ', ' + pair[1]);
-        // }
+        API.addRecipe(formData);
       }}
     >
       {({ errors, touched, handleSubmit }) => (

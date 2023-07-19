@@ -1,3 +1,4 @@
+import addRecipe from './addRecipe';
 import fetchCategories from './categories';
 import fetchRecipies from './recipies';
 import getRecipeById from './recipeById';
@@ -15,6 +16,7 @@ import fetchSearchResults from './search';
 import toggleProduct from './checkInShoppingList';
 
 const API = {
+  addRecipe,
   fetchCategories,
   fetchRecipies,
   getRecipeById,

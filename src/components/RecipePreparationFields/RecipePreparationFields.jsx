@@ -14,18 +14,15 @@ const RecipePreparationFields = (errors, touched) => {
     <SectionContainer>
       <SectionTitle>Recipe Preparation</SectionTitle>
       <Textarea
-        name="preparation"
+        name="instructions"
         placeholder="Enter recipe"
         onChange={handleChange}
         onBlur={handleBlur}
-        value={values.preparation}
+        value={values.instructions}
       ></Textarea>
       <TextError>
-        <ErrorMessage name={'preparation'} />
+        <ErrorMessage name={'instructions'} />
       </TextError>
-      {/* {errors.preparation && touched.preparation && (
-        <TextError>{errors.preparation}</TextError>
-      )} */}
     </SectionContainer>
   );
 };
