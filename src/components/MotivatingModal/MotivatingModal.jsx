@@ -15,8 +15,10 @@ import { ReactComponent as CloseIcon } from '../../assets/images/motivating/clos
 const MotivatingModal = () => {
   const [show, setShow] = useState(false);
 
+  const favorite = localStorage.getItem('existFavorite');
+  const getNumber = favorite?.length;
   const comparasion = localStorage.getItem('last-session-value');
-  const isModal = show && parseInt(comparasion) > 100;
+  const isModal = show || parseInt(comparasion) > 100 || getNumber;
 
   const handleClose = () => setShow(false);
 
@@ -59,7 +61,10 @@ const MotivatingModal = () => {
               <Icon />
               <Text className="text-muted">
                 <Information>
-                  Wow! You have been using the application for 100 days!
+                  {comparasion &&
+                    'Wow! You have been using the application for 100 days!'}
+                  {getNumber &&
+                    'Wow! You have added the first recipe to your favorites!'}
                 </Information>
               </Text>
               <Button type="button" data-dismiss="modal" onClick={handleClose}>
