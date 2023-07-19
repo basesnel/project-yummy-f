@@ -62,6 +62,7 @@ export const SearchPageComponent = () => {
           ver="mobile"
           getCards={getCards}
           setRecipieArr={setRecipieArr}
+          page={page}
           cardsPerPage={cardsPerPage}
           setPage={setPage}
         />
@@ -79,7 +80,11 @@ export const SearchPageComponent = () => {
           <>
             <SearchedRecipesList recipieArr={recipieArr} />
             {totalPages > 1 && (
-              <Paginator totalPages={totalPages} setPage={setPage} />
+              <Paginator
+                totalPages={totalPages}
+                setPage={setPage}
+                page={page}
+              />
             )}
           </>
         )}
