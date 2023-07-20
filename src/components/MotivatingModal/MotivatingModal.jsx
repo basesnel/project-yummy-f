@@ -17,8 +17,8 @@ const MotivatingModal = () => {
 
   const favorite = localStorage.getItem('existFavorite');
   const getNumber = favorite?.length === 1;
-  const comparasion = localStorage.getItem('last-session-value');
-  const isModal = show || getNumber || parseInt(comparasion) > 100;
+  const comparasion = parseInt(localStorage.getItem('last-session-value'));
+  const isModal = show || getNumber || parseInt(comparasion) === 100;
 
   const handleClose = () => setShow(false);
 
