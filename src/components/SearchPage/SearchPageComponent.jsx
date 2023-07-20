@@ -11,8 +11,9 @@ import { SearchTypeSelector } from './SearchTypeSelector/SearchTypeSelector';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { Container } from 'components/Container/Container';
 import Loader from 'components/Loader/Loader';
-import { Paginator } from './Paginator/Paginator';
+
 import { useMediaQuery } from '@mui/material';
+import { Paginator } from 'components/Paginator/Paginator';
 
 export const SearchPageComponent = () => {
   const [searchParams] = useSearchParams();
@@ -81,9 +82,9 @@ export const SearchPageComponent = () => {
             <SearchedRecipesList recipieArr={recipieArr} />
             {totalPages > 1 && (
               <Paginator
-                totalPages={totalPages}
-                setPage={setPage}
-                page={page}
+                $pageQty={totalPages}
+                $page={page}
+                $setPage={setPage}
               />
             )}
           </>

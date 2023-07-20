@@ -13,6 +13,7 @@ import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material';
 import { TRANSITION } from 'constants';
+import { StyleSheetManager } from 'styled-components';
 
 const UserLogo = () => {
   const user = useSelector(selectUser);
@@ -50,37 +51,39 @@ const UserLogo = () => {
   const theme = useTheme();
 
   return (
-    <WrapperUserLogo onClick={handleClick}>
-      <UserPhoto src={user.avatarURL} />
-      <UserName
-        style={{
-          color: theme.palette.text.primary,
-          transition: TRANSITION.forHoverColor,
-        }}
-      >
-        {user.name}
-      </UserName>
+    <StyleSheetManager shouldForwardProp={() => true}>
+      <WrapperUserLogo onClick={handleClick}>
+        <UserPhoto src={user.avatarURL} />
+        <UserName
+          style={{
+            color: theme.palette.text.primary,
+            transition: TRANSITION.forHoverColor,
+          }}
+        >
+          {user.name}
+        </UserName>
 
-      <StyledPopover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <PopUp showModal={showModal} showProfile={showProfile} />
-      </StyledPopover>
-      {showLogOut && <LogOut closeModal={closeModal} />}
-      {showUserProfile && (
-        <UserProfile closeUserProfile={closeUserProfile} user={user} />
-      )}
-    </WrapperUserLogo>
+        <StyledPopover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+          <PopUp showModal={showModal} showProfile={showProfile} />
+        </StyledPopover>
+        {showLogOut && <LogOut closeModal={closeModal} />}
+        {showUserProfile && (
+          <UserProfile closeUserProfile={closeUserProfile} user={user} />
+        )}
+      </WrapperUserLogo>
+    </StyleSheetManager>
   );
 };
 
