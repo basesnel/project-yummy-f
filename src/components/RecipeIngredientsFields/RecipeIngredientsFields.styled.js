@@ -224,7 +224,7 @@ export const IngredientError = styled.div`
   margin-top: 55px;
   left: 40px;
   font-size: 12px;
-  color: orange;
+  color: #e74a3c;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-top: 60px;
@@ -236,7 +236,7 @@ export const AmountError = styled.div`
   margin-top: 55px;
   left: 210px;
   font-size: 12px;
-  color: orange;
+  color: #e74a3c;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-top: 60px;
