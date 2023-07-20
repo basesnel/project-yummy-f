@@ -25,6 +25,7 @@ const MotivatingModal = () => {
   useEffect(() => {
     const comparasion = localStorage.getItem('last-session-value');
     const favorite = localStorage.getItem('existFavorite');
+    const ingredient = localStorage.getItem('existItem');
     const getNumber = favorite?.length;
     // const element = document.getElementById('content-modal');
     window.addEventListener(
@@ -59,6 +60,17 @@ const MotivatingModal = () => {
       }
       return;
     });
+    window.addEventListener(
+      'click',
+      function fireOnce() {
+        if (ingredient === 1) {
+          setShow(true);
+        }
+        return;
+      },
+      { once: true }
+    );
+
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         setShow(false);
@@ -79,6 +91,9 @@ const MotivatingModal = () => {
               <Icon />
               <Text className="text-muted">
                 <Information>
+                  {localStorage.getItem('existItem') &&
+                    'Wow! You have created your first shopping list!'}
+
                   {isMessage
                     ? 'Wow! You have been using the application for 100 days!'
                     : null}

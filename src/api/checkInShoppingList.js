@@ -9,6 +9,17 @@ const toggleProduct = async (id, measure, recipeId) => {
     measure,
     recipeId,
   });
+  console.log(res);
+  function currentShop() {
+    if (currentShop.once) return;
+    currentShop.once = true;
+    if (res?.length) {
+      localStorage.setItem('existItem', 1);
+    }
+
+    return;
+  }
+  currentShop();
   // console.log('success');
   // console.log(res.status);
   return res.data;
