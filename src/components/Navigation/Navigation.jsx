@@ -6,6 +6,7 @@ import {
 } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
 import { useTheme } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 const Navigation = ({ closeModal }) => {
   const isMobile = useMediaQuery({
@@ -21,7 +22,10 @@ const Navigation = ({ closeModal }) => {
   const theme = useTheme();
   return (
     <NavContainer
-      style={{ color: theme.palette.text.primary }}
+      style={{
+        color: theme.palette.text.primary,
+        transition: `${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}`,
+      }}
       onClick={handleLinkClick}
     >
       <StyledLink to="/categories/beef">Categories</StyledLink>

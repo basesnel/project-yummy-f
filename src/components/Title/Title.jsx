@@ -1,3 +1,4 @@
+import { TRANSITION } from 'constants';
 import TitleTheme from './Title.styled';
 
 export default function Title({ children }) {
@@ -8,11 +9,7 @@ export default function Title({ children }) {
         fontFamily: 'Poppins',
         fontWeight: '600',
         lineHeight: '1',
-        // pt: {
-        //   xs: 6.5,
-        //   md: 9,
-        //   lg: 20.5,
-        // },
+        transition: TRANSITION.forHoverBgColor,
         fontSize: {
           xs: '28px',
           md: '32px',
