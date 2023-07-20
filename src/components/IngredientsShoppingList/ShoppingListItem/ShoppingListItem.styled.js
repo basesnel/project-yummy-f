@@ -31,8 +31,6 @@ export const WrapperPhoto = styled.div`
   background-color: #ebf3d4;
   padding: 6px;
 
-  border: 1px solid black;
-
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 93px;
     height: 97px;
@@ -67,10 +65,9 @@ export const Text = styled.p`
   }
 `;
 
-export const LeftContainer = styled.div`
-  width: 116px;
-  margin-left: auto;
+export const ImageContainer = styled.div`
   display: flex;
+  flex-grow: 1;
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 243px;
   }
@@ -79,7 +76,35 @@ export const LeftContainer = styled.div`
   }
 `;
 
+export const NumberContainer = styled.div`
+  width: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  @media screen and (min-width: ${SIZE.tablet}) {
+    width: 190px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    width: 370px;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  @media screen and (min-width: ${SIZE.tablet}) {
+    width: 120px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    width: 70px;
+  }
+`;
+
 export const Number = styled.p`
+  min-width: 37px;
+  text-align: center;
   color: #fafafa;
   font-family: Poppins;
   font-size: 10px;
@@ -87,26 +112,25 @@ export const Number = styled.p`
   line-height: normal;
   border-radius: 4px;
   background: #8baa36;
-  padding: 4px 14px;
-  margin-right: 46px;
+  padding: 4px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
+    min-width: 68px;
     font-size: 18px;
-    padding: 4px 28px;
-    margin-right: 110px;
-  }
-
-  @media screen and (min-width: ${SIZE.desktop}) {
-    margin-right: 174px;
+    padding: 4px;
   }
 `;
 
 export const BtnRemove = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   transition: ${TRANSITION.forHoverColor};
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
   // margin-right:19px
   // margin-left:46px;
   &:hover,

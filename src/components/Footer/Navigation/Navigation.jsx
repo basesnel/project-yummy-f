@@ -6,6 +6,7 @@ import { Container } from 'components/Container/Container';
 import { Link } from 'react-router-dom';
 
 import {
+  FollowUsContainer,
   FooterTabletWrapper,
   FooterTitleContainer,
   NavLogo,
@@ -51,10 +52,13 @@ export function Navigation() {
               }}
             />
           </div>
-          <FollowUs
-            hoverColor={theme.palette.iconHeaderHover}
-            colorIcon={theme.palette.iconHeader}
-          />
+
+          <FollowUsContainer>
+            <FollowUs
+              hoverColor={theme.palette.iconHeaderHover}
+              colorIcon={theme.palette.iconHeader}
+            />
+          </FollowUsContainer>
         </NavigationContainer>
       </Container>
     </NavigationWrapper>
