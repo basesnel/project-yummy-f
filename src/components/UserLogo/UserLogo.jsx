@@ -12,6 +12,7 @@ import { UserProfile } from 'components/UserProfile/UserProfile';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 const UserLogo = () => {
   const user = useSelector(selectUser);
@@ -51,7 +52,12 @@ const UserLogo = () => {
   return (
     <WrapperUserLogo onClick={handleClick}>
       <UserPhoto src={user.avatarURL} />
-      <UserName style={{ color: theme.palette.text.primary }}>
+      <UserName
+        style={{
+          color: theme.palette.text.primary,
+          transition: TRANSITION.forHoverColor,
+        }}
+      >
         {user.name}
       </UserName>
 

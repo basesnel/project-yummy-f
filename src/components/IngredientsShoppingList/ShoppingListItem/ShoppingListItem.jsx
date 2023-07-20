@@ -9,6 +9,7 @@ import {
   Text,
   WrapperPhoto,
 } from './ShoppingListItem.styled';
+import { TRANSITION } from 'constants';
 
 const ShoppingListItem = () => {
   const theme = useTheme();
@@ -17,13 +18,21 @@ const ShoppingListItem = () => {
       <WrapperPhoto>
         <Photo src="" alt="product" />
       </WrapperPhoto>
-      <Text style={{ color: theme.palette.text.primary }}>Product</Text>
+      <Text
+        style={{
+          color: theme.palette.text.primary,
+          transition: TRANSITION.forHoverColor,
+        }}
+      >
+        Product
+      </Text>
       <LeftContainer>
         <Number>5</Number>
         <BtnRemove
           style={{
             color: theme.palette.text.primary,
             backgroundColor: 'transparent',
+            transition: TRANSITION.forHoverColor,
           }}
         >
           <IconRemove viewBox="0 0 20 20">

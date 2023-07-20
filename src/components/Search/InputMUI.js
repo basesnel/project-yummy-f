@@ -1,4 +1,5 @@
 import { Input, styled } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 const InputMUI = styled(Input)(({ theme }) => ({
   width: '100%',
@@ -6,6 +7,7 @@ const InputMUI = styled(Input)(({ theme }) => ({
   borderRadius: '24px 44px',
   backgroundColor: theme.palette.background.input,
   color: theme.palette.text.secondary,
+  transition: `${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}`,
   [theme.breakpoints.up('xs')]: {
     padding: '17px 130px 17px 32px',
     fontSize: '12px',
