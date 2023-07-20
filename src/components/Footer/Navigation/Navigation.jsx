@@ -13,10 +13,18 @@ import {
   NavigationContainer,
   NavigationWrapper,
 } from './Navigation.styled';
+import { useTheme } from '@mui/material';
+import { COLOR } from 'constants';
 
 export function Navigation() {
+  const theme = useTheme();
   return (
-    <NavigationWrapper>
+    <NavigationWrapper
+      style={{
+        backgroundColor: theme.palette.background.header,
+        color: COLOR.second,
+      }}
+    >
       <Container>
         <NavigationContainer>
           <div>
@@ -35,7 +43,11 @@ export function Navigation() {
               </FooterTitleContainer>
               <Nav />
             </FooterTabletWrapper>
-            <SubscribeForm />
+            <SubscribeForm
+              style={{
+                color: COLOR.second,
+              }}
+            />
           </div>
           <FollowUs hoverColor="#FFFFFF" />
         </NavigationContainer>
