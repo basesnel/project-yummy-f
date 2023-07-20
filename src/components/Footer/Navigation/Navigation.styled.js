@@ -9,8 +9,6 @@ export const NavigationWrapper = styled.section`
   position: relative;
   z-index: 1;
 
-  /* background-color: ${COLOR.dark}; */
-
   @media screen and (min-width: ${SIZE.tablet}) {
     padding: 50px 0 24px;
   }
@@ -21,12 +19,11 @@ export const NavigationWrapper = styled.section`
 `;
 
 export const NavigationContainer = styled.div`
-  > div {
+  > div:first-child {
     @media screen and (min-width: ${SIZE.desktop}) {
       display: flex;
       gap: 235px;
       margin-bottom: 41px;
-      /* justify-content: space-between; */
     }
   }
 `;
@@ -122,4 +119,9 @@ export const NavLogo = styled(FooterLogo)`
     width: 44px;
     height: 44px;
   }
+`;
+
+export const FollowUsContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;

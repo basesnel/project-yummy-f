@@ -6,6 +6,7 @@ import { Container } from 'components/Container/Container';
 import { Link } from 'react-router-dom';
 
 import {
+  FollowUsContainer,
   FooterTabletWrapper,
   FooterTitleContainer,
   NavLogo,
@@ -51,7 +52,9 @@ export function Navigation() {
               }}
             />
           </div>
-          <FollowUs hoverColor="#FFFFFF" />
+          <FollowUsContainer>
+            <FollowUs hoverColor="#FFFFFF" />
+          </FollowUsContainer>
         </NavigationContainer>
       </Container>
     </NavigationWrapper>
