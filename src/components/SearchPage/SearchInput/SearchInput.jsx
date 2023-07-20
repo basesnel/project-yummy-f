@@ -59,7 +59,7 @@ export const SearchInput = ({
   };
 
   return (
-    <SearchForm $ver={ver} onSubmit={handleSubmit}>
+    <SearchForm $ver={ver} onSubmit={handleSubmit} autoComplete="off">
       <InputMUI
         type="text"
         name="query"
