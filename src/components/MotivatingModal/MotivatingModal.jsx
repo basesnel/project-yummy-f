@@ -22,7 +22,7 @@ const MotivatingModal = () => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    const comparasion = localStorage.getItem('last-session-value');
+    const comparasion = localStorage.getItem('last-session-value') === 100;
     const favorite = localStorage.getItem('existFavorite');
     const getNumber = favorite?.length;
     // const element = document.getElementById('content-modal');
