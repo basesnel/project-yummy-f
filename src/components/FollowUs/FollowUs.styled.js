@@ -1,27 +1,32 @@
 import { styled } from 'styled-components';
-import { SIZE, COLOR, TRANSITION } from 'constants';
+import { SIZE } from 'constants';
 
 import { Facebook, Instagram, Twitter, Youtube } from 'assets/images/followUs';
+import { TRANSITION } from 'constants';
 
 export const SocialList = styled.ul`
   margin: 0;
-
   width: 119px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 14px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 134px;
   }
 
   a {
-    color: ${COLOR.main};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: ${props => props.$color};
     transition: ${TRANSITION.forHoverColor};
     &:hover,
     &:focus {
       color: ${props => props.$hovercolor};
     }
+    transition: ${TRANSITION.forHoverColor};
   }
 
   svg {

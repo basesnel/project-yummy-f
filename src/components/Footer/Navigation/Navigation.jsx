@@ -52,8 +52,12 @@ export function Navigation() {
               }}
             />
           </div>
+
           <FollowUsContainer>
-            <FollowUs hoverColor="#FFFFFF" />
+            <FollowUs
+              hoverColor={theme.palette.iconHeaderHover}
+              colorIcon={theme.palette.iconHeader}
+            />
           </FollowUsContainer>
         </NavigationContainer>
       </Container>
