@@ -25,7 +25,7 @@ export const RecipePageHero = ({
         const res = await API.getAllFavorites();
         console.log(res);
         let value = true;
-        if (res.favoriteRecipeInfo.length === 1 && value) {
+        if (res.favoriteRecipeInfo.length > 1 && value) {
           localStorage.setItem('existFavorite', 1);
           value = false;
         }

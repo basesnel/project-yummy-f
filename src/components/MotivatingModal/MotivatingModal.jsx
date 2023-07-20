@@ -18,13 +18,22 @@ const MotivatingModal = () => {
   const favorite = localStorage.getItem('existFavorite');
   const getNumber = favorite?.length === 1;
   const comparasion = parseInt(localStorage.getItem('last-session-value'));
-  const isModal = show || getNumber || parseInt(comparasion) === 100;
-
+  const isModal = show;
   const handleClose = () => setShow(false);
 
   useEffect(() => {
     const comparasion = localStorage.getItem('last-session-value');
+    const favorite = localStorage.getItem('existFavorite');
+    const getNumber = favorite?.length;
     // const element = document.getElementById('content-modal');
+    window.addEventListener('click', function fireOnce() {
+      if (fireOnce.onCall) return;
+      fireOnce.onCall = true;
+      if (getNumber === 1) {
+        setShow(true);
+      }
+      return;
+    });
     window.addEventListener('click', function fireOnce() {
       if (fireOnce.onCall) return;
       fireOnce.onCall = true;
@@ -61,8 +70,9 @@ const MotivatingModal = () => {
               <Icon />
               <Text className="text-muted">
                 <Information>
-                  {comparasion &&
-                    'Wow! You have been using the application for 100 days!'}
+                  {comparasion
+                    ? 'Wow! You have been using the application for 100 days!'
+                    : null}
                   {getNumber &&
                     'Wow! You have added the first recipe to your favorites!'}
                 </Information>
