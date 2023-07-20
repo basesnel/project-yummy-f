@@ -28,28 +28,26 @@ const lightTheme = createTheme({
     },
     text: {
       primary: '#001833',
-      // input: COLOR.primaryText,
       secondary: COLOR.primaryText,
+      hover: COLOR.dark,
     },
 
     middleCube: '#22252a',
-
-    categorie: {
-      // main: '#bdbdbd',
-      main: '#ff0000',
-    },
     background: {
       default: COLOR.second,
       input: 'white',
       buttonSearch: COLOR.dark,
       buttonSearchHover: COLOR.main,
       paginator: '#EBF3D4',
+      header: COLOR.dark,
+      btnSub: COLOR.main,
     },
     backgroundRecipieinput: COLOR.lightThemeInputRecipe,
     paginator: {
       active: '#22252A',
       inactive: '#656565',
     },
+    iconHeader: COLOR.main,
   },
 });
 
@@ -73,24 +71,24 @@ const darkTheme = createTheme({
       input: COLOR.darkThemeInput,
       buttonSearch: COLOR.main,
       buttonSearchHover: 'transparent',
-      paginator: '#8BAA36',
+      paginator: COLOR.main,
+      header: COLOR.main,
+      btnSub: COLOR.dark,
     },
     text: {
       primary: COLOR.second,
       // input: COLOR.second,
       secondary: COLOR.second,
+      hover: COLOR.main,
     },
     middleCube: COLOR.second,
 
-    categorie: {
-      // main: '#bdbdbd',
-      main: '#ff0000',
-    },
     backgroundRecipieinput: COLOR.darkThemeInputRecipe,
     paginator: {
       active: COLOR.second,
       inactive: 'rgba(250, 250, 250, 0.60)',
     },
+    iconHeader: COLOR.second,
   },
 });
 
