@@ -2,8 +2,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
+import { toast } from 'react-toastify';
 
 import SigninLink from '../SigninLink/SigninLink';
 import {
@@ -49,6 +49,8 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const { isVerify, authError } = useAuth();
 
+  const firstMessage = useRef(true);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -57,23 +59,33 @@ export default function RegisterForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      // console.log(values);
-      dispatch(register(values));
+      firstMessage.current = true;
+      dispatch(register(values))
+        .unwrap()
+        .then(originalPromiseResult => {
+          resetForm();
+        })
+        .catch(rejectedValueOrSerializedError => {});
       resetForm();
     },
   });
 
-  const notify = msg => {
+  function notify(msg) {
+    firstMessage.current = false;
     toast.success(msg, {
       toastId: 'idEmailVerify',
+      autoClose: 3000,
     });
-  };
+  }
 
-  const notifyError = msg => {
+  function notifyError(msg) {
+    firstMessage.current = false;
     toast.error(msg, {
       toastId: 'idError',
+      autoClose: 3000,
     });
-  };
+  }
+
   const handleClearEmail = () => {
     formik.setFieldValue('email', '');
   };
@@ -83,6 +95,7 @@ export default function RegisterForm() {
   const handleClearName = () => {
     formik.setFieldValue('name', '');
   };
+
   return (
     <Box>
       {isVerify && notify('Check your email to verify your profile')}
@@ -210,7 +223,6 @@ export default function RegisterForm() {
         </RegisterButtonWrapper>
       </FormRegister>
       <SigninLink />
-      <ToastContainer autoClose={false} />
     </Box>
   );
 }

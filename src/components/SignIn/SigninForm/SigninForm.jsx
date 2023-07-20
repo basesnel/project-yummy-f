@@ -2,8 +2,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
+import { toast } from 'react-toastify';
 
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import {
@@ -42,6 +42,8 @@ export default function SigninForm() {
   const dispatch = useDispatch();
   const { authError } = useAuth();
 
+  const firstMessage = useRef(true);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -49,16 +51,23 @@ export default function SigninForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      dispatch(login(values));
-      resetForm();
+      firstMessage.current = true;
+      dispatch(login(values))
+        .unwrap()
+        .then(originalPromiseResult => {
+          resetForm();
+        })
+        .catch(rejectedValueOrSerializedError => {});
     },
   });
 
-  const notifyError = msg => {
+  function notifyError(msg) {
+    firstMessage.current = false;
     toast.error(msg, {
       toastId: 'idError',
+      autoClose: 3000,
     });
-  };
+  }
 
   const handleClearEmail = () => {
     formik.setFieldValue('email', '');
@@ -68,7 +77,7 @@ export default function SigninForm() {
   };
   return (
     <Box>
-      {authError && notifyError(authError)}
+      {authError && firstMessage.current && notifyError(authError)}
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
@@ -154,7 +163,6 @@ export default function SigninForm() {
         </SigninButtonWrapper>
       </FormSignin>
       <RegistrationLink />
-      <ToastContainer autoClose={false} />
     </Box>
   );
 }
