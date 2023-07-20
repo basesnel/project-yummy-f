@@ -1,5 +1,5 @@
 import { PopUp } from 'components/PopUp/PopUp';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   WrapperUserLogo,
   UserPhoto,
@@ -13,13 +13,26 @@ import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material';
 import { TRANSITION } from 'constants';
+import { useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { SIZE } from 'constants';
+import { COLOR } from 'constants';
 import { StyleSheetManager } from 'styled-components';
 
 const UserLogo = () => {
+  const { pathname } = useLocation();
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${SIZE.desktop})`,
+  });
   const user = useSelector(selectUser);
   const [anchorEl, setAnchorEl] = useState(null);
   const [showLogOut, setShowLogOut] = useState(false);
   const [showUserProfile, setShowUserProfile] = useState(false);
+  const [isColor, setIsColor] = useState(false);
+
+  useEffect(() => {
+    setIsColor(isDesktop && pathname === '/main');
+  }, [isDesktop, pathname]);
 
   const handleClick = event => {
     if (showLogOut || showUserProfile) {
@@ -56,7 +69,7 @@ const UserLogo = () => {
         <UserPhoto src={user.avatarURL} />
         <UserName
           style={{
-            color: theme.palette.text.primary,
+            color: isColor ? COLOR.dark : theme.palette.text.primary,
             transition: TRANSITION.forHoverColor,
           }}
         >
