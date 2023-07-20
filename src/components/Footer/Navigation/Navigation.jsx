@@ -1,10 +1,9 @@
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { FollowUs } from '../../FollowUs/FollowUs';
 import { Nav } from './Nav/Nav';
 import { SubscribeForm } from './SubscribeForm/SubscribeForm';
 import { Container } from 'components/Container/Container';
+
+import { Link } from 'react-router-dom';
 
 import {
   FooterTabletWrapper,
@@ -31,7 +30,10 @@ export function Navigation() {
             <FooterTabletWrapper>
               <FooterTitleContainer>
                 <div>
-                  <NavLogo />
+                  <Link to="/main">
+                    <NavLogo />
+                  </Link>
+
                   <h3>So Yummy</h3>
                 </div>
                 <ul>
@@ -51,7 +53,6 @@ export function Navigation() {
           </div>
           <FollowUs hoverColor="#FFFFFF" />
         </NavigationContainer>
-        <ToastContainer autoClose={false} />
       </Container>
     </NavigationWrapper>
   );

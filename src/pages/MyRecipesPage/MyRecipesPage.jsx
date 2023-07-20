@@ -70,14 +70,10 @@ const MyRecipesPage = () => {
   return (
     <ThemeWrap>
       <FooterBgWrapper>
-        {/* <MyRecipesContainer> */}
         <Container>
           <ContainerSection>
             <Title>My recipes</Title>
             {loading && <Loader />}
-            {/* <TitleContainer>
-	            <MainTitle title="My recipes" />
-	          </TitleContainer> */}
             {ownRecipes.length !== 0 && !loading ? (
               <>
                 <MyRecipesList
@@ -100,7 +96,6 @@ const MyRecipesPage = () => {
             )}
           </ContainerSection>
         </Container>
-        {/* </MyRecipesContainer> */}
       </FooterBgWrapper>
     </ThemeWrap>
   );
