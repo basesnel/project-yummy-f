@@ -12,6 +12,7 @@ import ThemeWrap from 'components/SharedLayout/SharedLayoutStyled';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 import Loader from 'components/Loader/Loader';
+import { TRANSITION } from 'constants';
 // import { COLOR } from 'constants';
 
 const CategoriesPage = () => {
@@ -105,40 +106,43 @@ const CategoriesPage = () => {
                     </Grid>
                   ))}
               </Grid>
-              <Pagination
-                sx={{
-                  width: 'max-content',
-                  borderRadius: '26px',
-                  p: '12px 18px',
-                  m: '50px auto 100px',
-                  backgroundColor: theme.palette.background.input,
-                  boxShadow: '0px 4px 4px 0px rgba(135, 135, 135, 0.20)',
-                }}
-                count={totalPages}
-                page={page}
-                onChange={setPageHandler}
-                variant="outlined"
-                color="primary"
-                size="large"
-                renderItem={item => (
-                  <PaginationItem
-                    sx={{
-                      backgroundColor: item.selected
-                        ? theme.palette.background.paginator + '!important'
-                        : 'transparent',
-                      color: item.selected
-                        ? theme.palette.paginator.active + '!important'
-                        : theme.palette.paginator.inactive,
-                      border: 'none !important',
-                      fontFamily: 'Poppins',
-                      fontSize: '12px',
-                      fontWeight: 500,
-                      margin: 0,
-                    }}
-                    {...item}
-                  />
-                )}
-              />
+              {totalPages > 1 && (
+                <Pagination
+                  sx={{
+                    width: 'max-content',
+                    borderRadius: '26px',
+                    p: '12px 18px',
+                    m: '50px auto 100px',
+                    backgroundColor: theme.palette.background.input,
+                    boxShadow: '0px 4px 4px 0px rgba(135, 135, 135, 0.20)',
+                    transition: `${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}`,
+                  }}
+                  count={totalPages}
+                  page={page}
+                  onChange={setPageHandler}
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  renderItem={item => (
+                    <PaginationItem
+                      sx={{
+                        backgroundColor: item.selected
+                          ? theme.palette.background.paginator + '!important'
+                          : 'transparent',
+                        color: item.selected
+                          ? theme.palette.paginator.active + '!important'
+                          : theme.palette.paginator.inactive,
+                        border: 'none !important',
+                        fontFamily: 'Poppins',
+                        fontSize: '12px',
+                        fontWeight: 500,
+                        margin: 0,
+                      }}
+                      {...item}
+                    />
+                  )}
+                />
+              )}
             </ContainerSection>
           </Container>
         )}

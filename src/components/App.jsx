@@ -34,15 +34,8 @@ export const App = () => {
 
   useEffect(() => {
     const lsTheme = localStorage.getItem('theme');
-    console.log(lsTheme, '  ', typeof lsTheme);
     setChecked(lsTheme === 'dark');
   }, []);
-
-  // useEffect(() => {
-  //   return () => {
-  //     localStorage.setItem('theme', checked ? 'dark' : 'light');
-  //   };
-  // }, [checked]);
 
   useEffect(() => {
     dispatch(refreshUser());

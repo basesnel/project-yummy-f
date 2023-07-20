@@ -1,7 +1,9 @@
 import { ListItem, styled } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 export const IngrItemMUI = styled(ListItem)(({ theme }) => ({
   backgroundColor: theme.palette.backgroundRecipieinput,
+  transition: TRANSITION.forHoverBgColor,
   borderRadius: '8px',
   display: 'flex',
   alignItems: 'center',

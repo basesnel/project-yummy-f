@@ -1,10 +1,9 @@
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { FollowUs } from '../../FollowUs/FollowUs';
 import { Nav } from './Nav/Nav';
 import { SubscribeForm } from './SubscribeForm/SubscribeForm';
 import { Container } from 'components/Container/Container';
+
+import { Link } from 'react-router-dom';
 
 import {
   FooterTabletWrapper,
@@ -13,17 +12,28 @@ import {
   NavigationContainer,
   NavigationWrapper,
 } from './Navigation.styled';
+import { useTheme } from '@mui/material';
+import { COLOR } from 'constants';
 
 export function Navigation() {
+  const theme = useTheme();
   return (
-    <NavigationWrapper>
+    <NavigationWrapper
+      style={{
+        backgroundColor: theme.palette.background.header,
+        color: COLOR.second,
+      }}
+    >
       <Container>
         <NavigationContainer>
           <div>
             <FooterTabletWrapper>
               <FooterTitleContainer>
                 <div>
-                  <NavLogo />
+                  <Link to="/main">
+                    <NavLogo />
+                  </Link>
+
                   <h3>So Yummy</h3>
                 </div>
                 <ul>
@@ -35,11 +45,14 @@ export function Navigation() {
               </FooterTitleContainer>
               <Nav />
             </FooterTabletWrapper>
-            <SubscribeForm />
+            <SubscribeForm
+              style={{
+                color: COLOR.second,
+              }}
+            />
           </div>
           <FollowUs hoverColor="#FFFFFF" />
         </NavigationContainer>
-        <ToastContainer autoClose={false} />
       </Container>
     </NavigationWrapper>
   );
