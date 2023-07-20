@@ -27,22 +27,30 @@ const MotivatingModal = () => {
     const favorite = localStorage.getItem('existFavorite');
     const getNumber = favorite?.length;
     // const element = document.getElementById('content-modal');
-    window.addEventListener('click', function fireOnce() {
-      if (fireOnce.onCall) return;
-      fireOnce.onCall = true;
-      if (getNumber === 1) {
-        setShow(true);
-      }
-      return;
-    });
-    window.addEventListener('click', function fireOnce() {
-      if (fireOnce.onCall) return;
-      fireOnce.onCall = true;
-      if (parseInt(comparasion) === 100) {
-        setShow(true);
-      }
-      return;
-    });
+    window.addEventListener(
+      'click',
+      function fireOnce() {
+        if (fireOnce.onCall) return;
+        fireOnce.onCall = true;
+        if (getNumber === 1) {
+          setShow(true);
+        }
+        return;
+      },
+      { once: true }
+    );
+    window.addEventListener(
+      'click',
+      function fireOnce() {
+        if (fireOnce.onCall) return;
+        fireOnce.onCall = true;
+        if (parseInt(comparasion) === 100) {
+          setShow(true);
+        }
+        return;
+      },
+      { once: true }
+    );
     window.removeEventListener('click', function fireOnce() {
       if (fireOnce.onCall) return;
       fireOnce.onCall = true;
