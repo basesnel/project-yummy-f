@@ -43,7 +43,8 @@ export const Textarea = styled.textarea`
 `;
 
 export const TextError = styled.div`
+  position: absolute;
   margin-left: 40px;
   font-size: 12px;
-  color: orange;
+  color: #e74a3c;
 `;

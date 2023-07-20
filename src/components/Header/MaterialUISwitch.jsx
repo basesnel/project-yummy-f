@@ -1,6 +1,8 @@
 import { Switch, styled } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  transition: `${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}`,
   width: 62,
   height: 34,
   padding: 7,
@@ -18,7 +20,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+        backgroundColor: theme.palette.mode === 'dark' ? '#8BAA36' : '#EFEFEF',
+        background: 'linear-gradint (#FFFFFF, #E8EAEA)',
       },
     },
   },

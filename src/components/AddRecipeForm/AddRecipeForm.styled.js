@@ -24,4 +24,10 @@ export const SubmitButton = styled.button`
   color: #fafafa;
   border-radius: 24px 44px;
   font-size: 16px;
+
+  &:disabled {
+    color: #23262a;
+    background-color: #d9d9d9;
+    cursor: wait;
+  }
 `;

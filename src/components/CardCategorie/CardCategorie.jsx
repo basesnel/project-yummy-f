@@ -6,10 +6,12 @@ import {
   Typography,
   styled,
 } from '@mui/material';
+import { TRANSITION } from 'constants';
 
 const CardWrap = styled(CardContent)(({ theme }) => ({
   backgroundColor: theme.palette.background.input,
   color: theme.palette.text.secondary,
+  transition: `${TRANSITION.forHoverBgColor}, ${TRANSITION.forHoverColor}`,
 }));
 
 const CardCategorie = ({ id, title, thumb, handleRecipe }) => {

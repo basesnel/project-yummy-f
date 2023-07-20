@@ -11,6 +11,7 @@ import {
 import { userSubscribe } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { useRef } from 'react';
+import ButtonSub from './ButtonSub';
 
 const validationSchema = yup.object({
   email: yup
@@ -21,7 +22,6 @@ const validationSchema = yup.object({
 
 export function SubscribeForm() {
   const dispatch = useDispatch();
-
   const { authError, showSubscribeMessage } = useAuth();
 
   const firstMessage = useRef(true);
@@ -86,7 +86,7 @@ export function SubscribeForm() {
           )}
           <EmailIcon />
         </label>
-        <button type="submit">Subscribe</button>
+        <ButtonSub type="submit">Subscribe</ButtonSub>
       </SubscribeFormComponent>
     </>
   );

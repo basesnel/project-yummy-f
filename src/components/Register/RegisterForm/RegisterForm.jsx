@@ -20,9 +20,15 @@ import {
 import { ReactComponent as EmailIcon } from '../../../assets/images/signin/mail-01.svg';
 import { ReactComponent as LockIcon } from '../../../assets/images/signin/lock-02.svg';
 import { ReactComponent as ManIcon } from '../../../assets/images/signin/man-03.svg';
+import { ReactComponent as ErrorIcon } from '../../../assets/images/signin/error.svg';
+import { ReactComponent as ValidIcon } from '../../../assets/images/signin/iconvalid.svg';
 import { register } from 'redux/auth/operations';
 
 import { mailRegexp } from 'constants';
+import {
+  ValidMessage,
+  ValidationIcon,
+} from 'components/SignIn/SigninForm/SigninForm.styled';
 
 const validationSchema = yup.object({
   name: yup
@@ -84,7 +90,15 @@ export default function RegisterForm() {
       toastId: 'idError',
     });
   };
-
+  const handleClearEmail = () => {
+    formik.setFieldValue('email', '');
+  };
+  const handleClearPassword = () => {
+    formik.setFieldValue('password', '');
+  };
+  const handleClearName = () => {
+    formik.setFieldValue('name', '');
+  };
   return (
     <Box>
       {isVerify && notify('Check your email to verify your profile')}
@@ -94,7 +108,11 @@ export default function RegisterForm() {
 
         <RegisterInputWrapper
           className={
-            formik.submitCount > 0 && formik.errors.name && 'input__error'
+            formik.submitCount > 0 && formik.errors.name
+              ? 'input__error'
+              : formik.touched.email && !formik.errors.name
+              ? 'input__valid'
+              : ''
           }
         >
           <IconWrapper>
@@ -110,14 +128,29 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.submitCount > 0 && formik.errors.name && (
-            <Warning>{formik.errors.name}</Warning>
-          )}
+          {formik.submitCount > 0 && formik.errors.name ? (
+            <>
+              <Warning>{formik.errors.name}</Warning>
+              <ValidationIcon onClick={handleClearName}>
+                <ErrorIcon />
+              </ValidationIcon>
+            </>
+          ) : formik.touched.name && !formik.errors.name ? (
+            <>
+              <ValidationIcon>
+                <ValidIcon />
+              </ValidationIcon>
+            </>
+          ) : null}
         </RegisterInputWrapper>
 
         <RegisterInputWrapper
           className={
-            formik.submitCount > 0 && formik.errors.email && 'input__error'
+            formik.submitCount > 0 && formik.errors.email
+              ? 'input__error'
+              : formik.touched.email && !formik.errors.email
+              ? 'input__valid'
+              : ''
           }
         >
           <IconWrapper>
@@ -133,14 +166,29 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.submitCount > 0 && formik.errors.email && (
-            <Warning>{formik.errors.email}</Warning>
-          )}
+          {formik.submitCount > 0 && formik.errors.email ? (
+            <>
+              <Warning>{formik.errors.email}</Warning>
+              <ValidationIcon onClick={handleClearEmail}>
+                <ErrorIcon />
+              </ValidationIcon>
+            </>
+          ) : formik.touched.email && !formik.errors.email ? (
+            <>
+              <ValidationIcon>
+                <ValidIcon />
+              </ValidationIcon>
+            </>
+          ) : null}
         </RegisterInputWrapper>
 
         <RegisterInputWrapper
           className={
-            formik.submitCount > 0 && formik.errors.email && 'input__error'
+            formik.submitCount > 0 && formik.errors.password
+              ? 'input__error'
+              : formik.touched.password && !formik.errors.password
+              ? 'input__valid'
+              : ''
           }
         >
           <IconWrapper>
@@ -157,9 +205,21 @@ export default function RegisterForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.submitCount > 0 && formik.errors.password && (
-            <Warning>{formik.errors.password}</Warning>
-          )}
+          {formik.submitCount > 0 && formik.errors.password ? (
+            <>
+              <Warning>{formik.errors.password}</Warning>
+              <ValidationIcon onClick={handleClearPassword}>
+                <ErrorIcon />
+              </ValidationIcon>
+            </>
+          ) : formik.touched.password && !formik.errors.password ? (
+            <>
+              <ValidMessage>Password is secure</ValidMessage>
+              <ValidationIcon>
+                <ValidIcon />
+              </ValidationIcon>
+            </>
+          ) : null}
         </RegisterInputWrapper>
         <RegisterButtonWrapper>
           <RegisterButton type="submit">Sign Up</RegisterButton>

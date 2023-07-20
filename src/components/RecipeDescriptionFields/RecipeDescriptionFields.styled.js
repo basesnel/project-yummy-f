@@ -217,9 +217,9 @@ export const ErrorField = styled.div`
   margin-top: -40px;
   margin-left: 40px;
   font-size: 12px;
-  color: orange;
+  color: #e74a3c;
 
   @media screen and (min-width: ${SIZE.tablet}) {
-    margin-top: -50px;
+    margin-top: -55px;
   }
 `;
