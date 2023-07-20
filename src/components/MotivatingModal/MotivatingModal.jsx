@@ -18,11 +18,12 @@ const MotivatingModal = () => {
   const favorite = localStorage.getItem('existFavorite');
   const getNumber = favorite?.length === 1;
   const comparasion = parseInt(localStorage.getItem('last-session-value'));
+  const isMessage = comparasion === 100;
   const isModal = show;
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    const comparasion = localStorage.getItem('last-session-value') === 100;
+    const comparasion = localStorage.getItem('last-session-value');
     const favorite = localStorage.getItem('existFavorite');
     const getNumber = favorite?.length;
     // const element = document.getElementById('content-modal');
@@ -70,7 +71,7 @@ const MotivatingModal = () => {
               <Icon />
               <Text className="text-muted">
                 <Information>
-                  {comparasion
+                  {isMessage
                     ? 'Wow! You have been using the application for 100 days!'
                     : null}
                   {getNumber &&
