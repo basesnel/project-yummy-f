@@ -14,7 +14,9 @@ const PopularRecipe = () => {
   useEffect(() => {
     const getRecipes = async () => {
       const recipes = await getPopularRecipes();
-      setPopularRecipes(recipes.slice(0, 4));
+      if (recipes) {
+        setPopularRecipes(recipes.slice(0, 4));
+      }
     };
 
     getRecipes();

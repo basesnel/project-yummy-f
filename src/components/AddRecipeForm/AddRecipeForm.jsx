@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 
@@ -12,6 +13,7 @@ import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
 
 const AddRecipeForm = () => {
   const [picture, setPicture] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -24,7 +26,7 @@ const AddRecipeForm = () => {
         instructions: '',
       }}
       validationSchema={RecipeSchema}
-      onSubmit={values => {
+      onSubmit={async values => {
         const formData = new FormData();
         formData.append('preview', picture);
 
@@ -47,11 +49,13 @@ const AddRecipeForm = () => {
           } else {
             formData.append(key, values[key]);
           }
-
-          console.log(key, values[key]);
         }
 
-        API.addRecipe(formData);
+        const response = await API.addRecipe(formData);
+
+        if (response) {
+          navigate('/my');
+        }
       }}
     >
       {({ errors, touched, handleSubmit }) => (
