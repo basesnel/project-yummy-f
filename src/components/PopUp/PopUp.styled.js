@@ -16,7 +16,7 @@ export const PopUpContainer = styled.div`
   background: ${COLOR.second};
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 177px;
-    heigth: 134px;
+    height: 134px;
     gap: 32px;
     border: none;
   }
