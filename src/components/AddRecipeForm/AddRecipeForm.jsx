@@ -14,6 +14,7 @@ import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
 const AddRecipeForm = () => {
   const [picture, setPicture] = useState(null);
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <Formik
@@ -50,8 +51,11 @@ const AddRecipeForm = () => {
             formData.append(key, values[key]);
           }
         }
+        setIsSubmitting(true);
 
         const response = await API.addRecipe(formData);
+
+        setIsSubmitting(false);
 
         if (response) {
           navigate('/my');
@@ -67,7 +71,9 @@ const AddRecipeForm = () => {
           />
           <RecipeIngredientsFields errors={errors} touched={touched} />
           <RecipePreparationFields errors={errors} touched={touched} />
-          <SubmitButton type="submit">Add</SubmitButton>
+          <SubmitButton type="submit" disabled={isSubmitting}>
+            Add
+          </SubmitButton>
         </RecipeForm>
       )}
     </Formik>
