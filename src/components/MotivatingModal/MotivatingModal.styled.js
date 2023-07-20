@@ -11,6 +11,7 @@ export const Area = styled.section`
   position: fixed;
   flex-direction: column;
   margin-left: 14px;
+  z-index: 99;
   @media only screen and (min-width: ${SIZE.mobile}) {
     flex-direction: row;
   }

@@ -36,7 +36,7 @@ const MotivatingModal = () => {
     window.removeEventListener('click', function fireOnce() {
       if (fireOnce.onCall) return;
       fireOnce.onCall = true;
-      if (parseInt(comparasion) > 100) {
+      if (parseInt(comparasion) === 100) {
         setShow(true);
       }
       return;
