@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
+import { nanoid } from 'nanoid';
 
 import API from 'api';
 import RecipeDescriptionFields from 'components/RecipeDescriptionFields/RecipeDescriptionFields';
@@ -19,7 +20,7 @@ const AddRecipeForm = () => {
         description: '',
         category: '',
         time: '',
-        ingredients: [{ ingredient: '', measure: '' }],
+        ingredients: [{ ingredient: '', measure: '', key: nanoid() }],
         instructions: '',
       }}
       validationSchema={RecipeSchema}
@@ -30,7 +31,13 @@ const AddRecipeForm = () => {
         for (const key in values) {
           if (key === 'ingredients') {
             values[key].forEach(item => {
-              formData.append(`ingredients[]`, JSON.stringify(item));
+              formData.append(
+                `ingredients[]`,
+                JSON.stringify({
+                  ingredient: item.ingredient,
+                  measure: item.measure,
+                })
+              );
             });
           } else if (key === 'instructions') {
             const arr = values[key].split(/\r?\n/).filter(item => item.length);

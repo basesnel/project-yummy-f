@@ -1,41 +1,39 @@
+import { useTheme } from '@mui/material';
 import {
+  BtnRemove,
+  IconRemove,
   Item,
-  MeasureAndCheckbox,
-  
-  WrapperPhoto,  
- 
- 
-  
+  LeftContainer,
+  Number,
+  Photo,
+  Text,
+  WrapperPhoto,
 } from './ShoppingListItem.styled';
 
 const ShoppingListItem = () => {
+  const theme = useTheme();
   return (
-   <Item>
+    <Item>
       <WrapperPhoto>
-        <img
-          src=""
-          alt="product"
-        />
-
-        <p> product </p>
+        <Photo src="" alt="product" />
       </WrapperPhoto>
-
-      <MeasureAndCheckbox>
-        <div>
-          <p> number</p>
-        </div>
-        <span>
-          <svg>
-            <use href="./images/svg/symbol-defs.svg#warning"></use>
-          </svg>
-        </span>
-      </MeasureAndCheckbox>  
-     
-            
+      <Text style={{ color: theme.palette.text.primary }}>Product</Text>
+      <LeftContainer>
+        <Number>5</Number>
+        <BtnRemove
+          style={{
+            color: theme.palette.text.primary,
+            backgroundColor: 'transparent',
+          }}
+        >
+          <IconRemove viewBox="0 0 20 20">
+            <path d="M15.625 4.375L4.375 15.625" stroke="currentColor" />
+            <path d="M15.625 15.625L4.375 4.375" stroke="currentColor" />
+          </IconRemove>
+        </BtnRemove>
+      </LeftContainer>
     </Item>
   );
 };
-
-
 
 export default ShoppingListItem;

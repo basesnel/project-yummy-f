@@ -3,8 +3,8 @@ import { baseUrl } from 'constants';
 
 axios.defaults.baseURL = baseUrl;
 
-const getFavorites = async () => {
-  const res = await axios.get('favorites/');
+const getFavorites = async ({ page }) => {
+  const res = await axios.get(`favorites/?page=${page}`);
   return res.data;
 };
 
