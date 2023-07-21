@@ -37,7 +37,7 @@ const RecipeIngredientsFields = () => {
   }, []);
 
   const increaseCounter = () => {
-    values.ingredients.push({ ingredient: '', measure: '', key: nanoid() });
+    values.ingredients.push({ id: '', measure: '', key: nanoid() });
     setCounter(counter + 1);
   };
 
