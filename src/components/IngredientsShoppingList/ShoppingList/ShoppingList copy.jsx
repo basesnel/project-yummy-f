@@ -2,22 +2,29 @@ import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
 import { WrapperList } from './ShoppingList.styled';
 
 import { getStore } from 'redux/auth/operations';
-// import { patchStore } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useAuth } from 'hooks';
 
 import { nanoid } from 'nanoid';
 
 import API from 'api';
 
-const ShoppingList = ({ shopping }) => {
+const ShoppingList = () => {
   const dispatch = useDispatch();
+  const { store } = useAuth();
+
+  useEffect(() => {
+    dispatch(getStore());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const prepStore = inStore => {
     const outStore = inStore.map(({ id, measure, recipeId }) => {
       return {
         shopId: nanoid(),
         ...id,
-        measure,
+        measure: measure[0],
         recipeId: recipeId,
       };
     });
@@ -45,22 +52,15 @@ const ShoppingList = ({ shopping }) => {
     }
   };
 
-  const ingStore = shopping && prepStore(shopping);
+  const ingStore = store && prepStore(store);
 
   const handleClick = shopId => {
     const { _id, measure, recipeId } = ingStore.find(
       item => item.shopId === shopId
     );
-    const value = { id: _id, measure, recipeId };
+    const value = { id: _id, measure: [measure], recipeId };
     toggleRecipeIngredient(value);
-    // dispatch(patchStore(value));
     dispatch(getStore());
-    dispatch(getStore());
-    // .unwrap()
-    // .then(originalPromiseResult => {
-    //   dispatch(getStore());
-    // })
-    // .catch(rejectedValueOrSerializedError => {});
   };
 
   return (

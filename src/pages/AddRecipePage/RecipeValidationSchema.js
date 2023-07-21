@@ -8,7 +8,7 @@ const RecipeSchema = Yup.object().shape({
   ingredients: Yup.array().of(
     Yup.object()
       .shape({
-        ingredient: Yup.string().required('Choose ingredient*'),
+        id: Yup.string().required('Choose ingredient*'),
         measure: Yup.string().required('Enter measure*'),
       })
       .nullable()

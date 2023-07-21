@@ -10,7 +10,8 @@ export const SectionContainer = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #3e4462;
+  /* color: #3e4462; */
+  color: inherit;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.24px;
@@ -29,7 +30,7 @@ export const Textarea = styled.textarea`
   border-radius: 6px;
   font-size: 14px;
   line-height: normal;
-  color: #000;
+  /* color: #000; */
   padding: 10px 16px;
   resize: none;
   outline: none;

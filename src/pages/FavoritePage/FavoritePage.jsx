@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/system';
+import { Helmet } from 'react-helmet-async';
 import API from 'api';
 import { Container } from 'components/Container/Container';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
@@ -66,6 +67,9 @@ const FavoritePage = () => {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>Favorites</title>
+      </Helmet>
       <FooterBgWrapper>
         <Container>
           <ContainerSection>

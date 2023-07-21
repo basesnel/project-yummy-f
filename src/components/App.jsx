@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
@@ -46,134 +47,142 @@ export const App = () => {
     localStorage.setItem('theme', e.target.checked ? 'dark' : 'light');
   };
   return (
-    <ThemeProvider theme={checked ? THEME.darkTheme : THEME.lightTheme}>
-      {isRefreshing ? (
-        <Loader />
-      ) : (
-        <Routes>
-          <Route path="/" element={<SharedLayout onTheme={onTheme} />}>
-            <Route
-              index
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<WelcomePage />}
-                />
-              }
-            />
+    <HelmetProvider>
+      <ThemeProvider theme={checked ? THEME.darkTheme : THEME.lightTheme}>
+        {isRefreshing ? (
+          <Loader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<SharedLayout onTheme={onTheme} />}>
+              <Route
+                index
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<WelcomePage />}
+                  />
+                }
+              />
 
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<SigninPage />}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/verification"
-              element={
-                <RestrictedRoute
-                  redirectTo="/main"
-                  component={<VerificationPage />}
-                />
-              }
-            />
-            <Route
-              path="/main"
-              element={
-                <PrivateRoute redirectTo="/signin" component={<MainPage />} />
-              }
-            />
-            <Route
-              path="/categories/:categoryName"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<CategoriesPage />}
-                />
-              }
-            />
-            <Route
-              path="/categories"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<CategoriesPage />}
-                />
-              }
-            />
-            <Route
-              path="/add"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<AddRecipePage />}
-                />
-              }
-            />
-            <Route
-              path="/favorite"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<FavoritePage />}
-                />
-              }
-            />
-            <Route
-              path="/recipe/:recipeId"
-              element={
-                <PrivateRoute redirectTo="/signin" component={<RecipePage />} />
-              }
-            />
-            <Route
-              path="/my"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<MyRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="/search"
-              element={
-                <PrivateRoute redirectTo="/signin" component={<SearchPage />} />
-              }
-            />
-            <Route
-              path="/shopping-list"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<ShoppingListPage />}
-                />
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<NotFoundPage />}
-                />
-              }
-            />
-          </Route>
-        </Routes>
-      )}
-    </ThemeProvider>
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<RegisterPage />}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<SigninPage />}
+                  />
+                }
+              />
+              <Route
+                exact
+                path="/verification"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/main"
+                    component={<VerificationPage />}
+                  />
+                }
+              />
+              <Route
+                path="/main"
+                element={
+                  <PrivateRoute redirectTo="/signin" component={<MainPage />} />
+                }
+              />
+              <Route
+                path="/categories/:categoryName"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<CategoriesPage />}
+                  />
+                }
+              />
+              <Route
+                path="/categories"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<CategoriesPage />}
+                  />
+                }
+              />
+              <Route
+                path="/add"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<AddRecipePage />}
+                  />
+                }
+              />
+              <Route
+                path="/favorite"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<FavoritePage />}
+                  />
+                }
+              />
+              <Route
+                path="/recipe/:recipeId"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<RecipePage />}
+                  />
+                }
+              />
+              <Route
+                path="/my"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<MyRecipesPage />}
+                  />
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<SearchPage />}
+                  />
+                }
+              />
+              <Route
+                path="/shopping-list"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<ShoppingListPage />}
+                  />
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <PrivateRoute
+                    redirectTo="/signin"
+                    component={<NotFoundPage />}
+                  />
+                }
+              />
+            </Route>
+          </Routes>
+        )}
+      </ThemeProvider>
+    </HelmetProvider>
   );
 };

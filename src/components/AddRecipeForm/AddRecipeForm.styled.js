@@ -3,16 +3,10 @@ import { styled } from 'styled-components';
 import { SIZE } from 'constants';
 
 export const RecipeForm = styled.form`
-  margin-top: 72px;
   margin-bottom: 72px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
-    margin-top: 100px;
     margin-bottom: 100px;
-  }
-
-  @media screen and (min-width: ${SIZE.desktop}) {
-    margin-bottom: 200px;
   }
 `;
 
@@ -24,4 +18,10 @@ export const SubmitButton = styled.button`
   color: #fafafa;
   border-radius: 24px 44px;
   font-size: 16px;
+
+  &:disabled {
+    color: #23262a;
+    background-color: #d9d9d9;
+    cursor: wait;
+  }
 `;
