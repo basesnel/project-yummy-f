@@ -13,10 +13,18 @@ export const Modal = ({ closeModal }) => {
       <TopFrame>
         <Logo />
         <CloseBtn onClick={closeModal}>
-          <img
-            src={require('../../assets/images/modal/x.svg').default}
-            alt="close"
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M14.6663 1.33334L1.33301 14.6667M1.33301 1.33334L14.6663 14.6667"
+              stroke="currentColor"
+            />
+          </svg>
         </CloseBtn>
       </TopFrame>
       <NavigationContainer>

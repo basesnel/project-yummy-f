@@ -3,7 +3,7 @@ import modalMob from '../../assets/images/modal/spinachMob.png';
 import modalMobRetina from '../../assets/images/modal/spinachMob@2x.png';
 import modalTab from '../../assets/images/modal/spinachTab.png';
 import modalTabRetina from '../../assets/images/modal/spinachTab@2x.png';
-import { SIZE, COLOR } from 'constants';
+import { SIZE, COLOR, TRANSITION } from 'constants';
 
 export const ModalContainer = styled.div`
   padding: 24px 22px;
@@ -51,9 +51,10 @@ export const CloseBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: ${TRANSITION.forHoverColor};
 
   &:hover {
-    fill: ${COLOR.hover};
+    color: ${COLOR.hover};
   }
 `;
 
