@@ -28,7 +28,7 @@ export const PrepSection = styled.section`
     line-height: 1;
     letter-spacing: -0.48px;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    @media screen and (min-width: ${SIZE.tablet}) {
       letter-spacing: -0.24px;
     }
   }
@@ -39,7 +39,7 @@ export const PrepSection = styled.section`
     flex-direction: column;
     gap: 21px;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    @media screen and (min-width: ${SIZE.tablet}) {
       margin: 33.5px 0 0 0;
     }
 
@@ -70,7 +70,7 @@ export const PrepSection = styled.section`
         line-height: 1.2;
         letter-spacing: -0.24px;
 
-        @media screen and (min-width: ${SIZE.mobile}) {
+        @media screen and (min-width: ${SIZE.tablet}) {
           font-size: 14px;
           letter-spacing: -0.28px;
           line-height: 1.3;
@@ -85,13 +85,13 @@ export const PrepSection = styled.section`
     width: 100%;
     height: 250px;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    @media screen and (min-width: ${SIZE.tablet}) {
       margin-top: 53px;
       max-width: 433px;
       height: 332px;
     }
 
-    @media screen and (min-width: ${SIZE.tablet}) {
+    @media screen and (min-width: ${SIZE.desktop}) {
       margin: 0;
       width: 433px;
     }

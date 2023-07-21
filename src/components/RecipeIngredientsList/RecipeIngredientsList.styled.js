@@ -24,12 +24,12 @@ export const ListHead = styled.div`
   padding: 12px 14px;
   position: relative;
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     height: 60px;
     padding: 21px 32px;
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     padding: 21px 40px;
   }
 
@@ -40,11 +40,11 @@ export const ListHead = styled.div`
     font-weight: 600;
     letter-spacing: 0.3px;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    @media screen and (min-width: ${SIZE.tablet}) {
       font-size: 14px;
     }
 
-    @media screen and (min-width: ${SIZE.tablet}) {
+    @media screen and (min-width: ${SIZE.desktop}) {
       font-size: 18px;
       letter-spacing: 0.54px;
     }
@@ -75,12 +75,12 @@ export const List = styled.ul`
   justify-content: flex-start;
   gap: 16px;
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     margin-top: 32px;
     gap: 24px;
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.desktop}) {
     margin-top: 50px;
   }
 `;
@@ -169,36 +169,6 @@ export const MeasureAndCheckbox = styled.div`
   }
 `;
 
-/*export const Checked = styled.div`
-  width: 18px;
-  height: 18px;
-  background-image: url('${checked}');
-  border-radius: 4px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  @media screen and (min-width: ${SIZE.mobile}) {
-    width: 35px;
-    height: 35px;
-  }
-`;
-
-export const Unchecked = styled.div`
-  width: 18px;
-  height: 18px;
-  background-image: url('${unchecked}');
-  border-radius: 4px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  @media screen and (min-width: ${SIZE.mobile}) {
-    width: 35px;
-    height: 35px;
-  }
-`; */
-
 export const MeasureCont = styled.div`
   background-color: ${COLOR.hover};
   border-radius: 4px;
@@ -212,7 +182,7 @@ export const MeasureCont = styled.div`
     font-weight: 600;
   }
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     padding: 4px 8px;
 
     p {

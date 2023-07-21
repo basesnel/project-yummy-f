@@ -4,12 +4,9 @@ import {
   ListHead,
   List,
   PositionedP,
-  // IngrItem,
   ImgAndName,
   MeasureAndCheckbox,
   MeasureCont,
-  // Checked,
-  //Unchecked,
 } from './RecipeIngredientsList.styled';
 
 import { useMediaQuery } from 'react-responsive';
@@ -18,8 +15,6 @@ import Checkbox from 'react-custom-checkbox';
 import { SIZE } from 'constants';
 import API from 'api';
 
-//import { fetchIngredients } from 'redux/recipies/operations';
-//import { selectIngredients } from 'redux/recipies/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStore } from 'redux/auth/operations';
 import { selectStore } from 'redux/auth/selectors';
@@ -30,7 +25,6 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
 
   useEffect(() => {
     dispatch(getStore());
-    console.log(shoppingList);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -56,7 +50,6 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
   const toggleRecipeIngredient = async data => {
     try {
       const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
-      // console.log('success');
       return res.data;
     } catch (error) {
       console.log(error);

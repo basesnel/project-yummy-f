@@ -143,9 +143,10 @@ export const patchStore = createAsyncThunk(
   'auth/patchStore',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.patch('users/shopping-list', credentials);
+      // const res =
+      await axios.patch('users/shopping-list', credentials);
 
-      return res.data;
+      // return res.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
         return thunkAPI.rejectWithValue(error.response.data.message);
