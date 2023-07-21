@@ -6,7 +6,6 @@ import { COLOR } from 'constants';
 import { SIZE } from 'constants';
 
 export const AuthStyledContainer = styled.div`
-  width: 100vw;
   min-height: 100vh;
   background: ${COLOR.second};
   background-image: url(${rectangle_375});
