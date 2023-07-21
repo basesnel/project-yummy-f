@@ -15,6 +15,7 @@ import {
   RecipeName,
   RecipeDescription,
 } from './PopularRecipe.styled';
+import { useTheme } from '@mui/material';
 
 const PopularRecipe = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -29,7 +30,7 @@ const PopularRecipe = () => {
 
     getRecipes();
   }, []);
-
+  const theme = useTheme();
   return (
     <SectionContainer>
       <SectionTitle>Popular recipe</SectionTitle>
@@ -48,7 +49,9 @@ const PopularRecipe = () => {
                     />
                   </PreviewHolder>
                   <RecipeInfo>
-                    <RecipeName>{recipe.title}</RecipeName>
+                    <RecipeName style={{ color: theme.palette.text.primary }}>
+                      {recipe.title}
+                    </RecipeName>
                     <RecipeDescription>{recipe.description}</RecipeDescription>
                   </RecipeInfo>
                 </RecipeInfoContainer>

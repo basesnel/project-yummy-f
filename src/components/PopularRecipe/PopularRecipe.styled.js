@@ -12,7 +12,7 @@ export const SectionContainer = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #3e4462;
+  /* color: #3e4462; */
   font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.24px;
@@ -95,7 +95,7 @@ export const RecipeName = styled.h4`
   font-weight: 500;
   line-height: 20px;
   margin-bottom: 4px;
-  color: #3e4462;
+  /* color: #3e4462; */
 `;
 
 export const RecipeDescription = styled.p`

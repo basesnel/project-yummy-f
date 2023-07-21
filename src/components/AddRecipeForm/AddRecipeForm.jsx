@@ -10,11 +10,13 @@ import RecipePreparationFields from 'components/RecipePreparationFields/RecipePr
 import RecipeSchema from 'pages/AddRecipePage/RecipeValidationSchema';
 
 import { RecipeForm, SubmitButton } from './AddRecipeForm.styled';
+import { useTheme } from '@mui/material';
 
 const AddRecipeForm = () => {
   const [picture, setPicture] = useState(null);
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const theme = useTheme();
 
   return (
     <Formik
@@ -64,7 +66,10 @@ const AddRecipeForm = () => {
       }}
     >
       {({ errors, touched, handleSubmit }) => (
-        <RecipeForm onSubmit={handleSubmit}>
+        <RecipeForm
+          style={{ color: theme.palette.text.primary }}
+          onSubmit={handleSubmit}
+        >
           <RecipeDescriptionFields
             setPicture={setPicture}
             errors={errors}
