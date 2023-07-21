@@ -12,35 +12,17 @@ import {
   WrapperPhoto,
 } from './ShoppingListItem.styled';
 
-import API from 'api';
-
-import { getStore } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
-
 const ShoppingListItem = props => {
-  const { shopId, _id, name, img, measure, recipeId } = props;
+  const { shopId, name, img, measure, handleClick } = props;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  // console.log(ingId, name);
 
   // const formMeasure = (measure, count) => {
   //   const num = parseInt(measure);
   //   return measure.replace(num, num * count);
   // };
-
-  const toggleRecipeIngredient = async data => {
-    try {
-      const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
-      // console.log('success');
-      return res.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleClick = value => {
-    toggleRecipeIngredient(value);
-    dispatch(getStore());
-  };
 
   const theme = useTheme();
   return (
@@ -56,7 +38,7 @@ const ShoppingListItem = props => {
       </NumberContainer>
       <ButtonContainer>
         <BtnRemove
-          onClick={() => handleClick({ id: _id, measure, recipeId })}
+          onClick={handleClick}
           style={{
             color: theme.palette.text.primary,
             backgroundColor: 'transparent',
