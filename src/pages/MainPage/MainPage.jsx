@@ -1,6 +1,7 @@
 import { ChooseYourBreakfast } from 'components/ChooseYourBreakfast/ChooseYourBreakfast';
 import { PreviewCategories } from 'components/PreviewCategories/PreviewCategories';
 import { Search } from 'components/Search/Search';
+import { Helmet } from 'react-helmet-async';
 
 import { Hero, HeroTitle, HeroWrapper } from './MainPage.styled';
 import { Container } from 'components/Container/Container';
@@ -26,6 +27,9 @@ export default function MainPage() {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>SoYummy</title>
+      </Helmet>
       <FooterBgWrapper>
         <Hero>
           <Container>

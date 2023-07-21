@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 // import { MyRecipesContainer } from './MyRecipesPage.styled';
 // import { MyRecipesContainer, TitleContainer } from './MyRecipesPage.styled';
 import { Container } from 'components/Container/Container';
+import { Helmet } from 'react-helmet-async';
 
 import { Paginator } from 'components/Paginator/Paginator';
 import MyRecipesList from 'components/MyRecipesList/MyRecipesList';
@@ -69,6 +70,9 @@ const MyRecipesPage = () => {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>My Recipes</title>
+      </Helmet>
       <FooterBgWrapper>
         <Container>
           <ContainerSection>
