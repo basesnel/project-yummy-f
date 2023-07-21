@@ -50,21 +50,6 @@ export const RecipeHero = styled.section`
   }
 `;
 
-/*export const RecipeTitle = styled.h1`
-  color: '#8baa36';
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.48px;
-  margin: 0;
-
-  @media screen and (min-width: ${SIZE.mobile}) {
-    font-size: 44px;
-    letter-spacing: -0.88px;
-  }
-`;*/
-
 export const RecipeDeskr = styled.p`
   color: #22252a;
   font-family: Poppins;
@@ -76,7 +61,7 @@ export const RecipeDeskr = styled.p`
   max-width: 299px;
   text-align: center;
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     font-size: 18px;
     letter-spacing: -0.36px;
     max-width: 509px;
@@ -95,7 +80,7 @@ export const TimeContainer = styled.div`
   gap: 4px;
   margin: 42px 0 0 0;
 
-  @media screen and (min-width: ${SIZE.mobile}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     gap: 8px;
     margin-top: 60px;
   }
@@ -112,7 +97,7 @@ export const TimeContainer = styled.div`
     letter-spacing: -0.24px;
     color: #23262a;
 
-    @media screen and (min-width: ${SIZE.mobile}) {
+    @media screen and (min-width: ${SIZE.tablet}) {
       font-size: 14px;
       line-height: 1.4;
     }
