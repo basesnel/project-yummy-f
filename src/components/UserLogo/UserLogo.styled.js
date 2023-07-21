@@ -24,6 +24,11 @@ export const WrapperUserLogo = styled.button`
     color: ${COLOR.hover};
   }
 
+  @media screen and (max-width: 374px) {
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+
   @media screen and (min-width: ${SIZE.tablet}) {
     margin-right: 50px;
   }
