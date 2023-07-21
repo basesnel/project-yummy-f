@@ -32,6 +32,18 @@ export const FormSignin = styled.form`
       border: 1px solid ${COLOR.warning};
     }
   }
+  .input__valid {
+    opacity: 1;
+    border: 1px solid #3cbc81;
+    svg {
+      stroke: #3cbc81;
+      opacity: 1;
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid #3cbc81;
+    }
+  }
 `;
 
 export const SigninLabel = styled.p`
@@ -159,6 +171,30 @@ export const Warning = styled.p`
   top: 48px;
   font-size: 8px;
   color: ${COLOR.warning};
+  @media screen and (min-width: ${SIZE.tablet}) {
+    top: 64px;
+    font-size: 12px;
+  }
+  @media screen and (min-width: ${SIZE.desktop}) {
+    font-size: 14px;
+  }
+`;
+
+export const ValidationIcon = styled.div`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+`;
+
+export const ValidMessage = styled.p`
+  position: absolute;
+  top: 48px;
+  font-size: 8px;
+  color: #3cbc81;
   @media screen and (min-width: ${SIZE.tablet}) {
     top: 64px;
     font-size: 12px;

@@ -33,6 +33,18 @@ export const FormRegister = styled.form`
       border: 1px solid ${COLOR.warning};
     }
   }
+  .input__valid {
+    opacity: 1;
+    border: 1px solid #3cbc81;
+    svg {
+      stroke: #3cbc81;
+      opacity: 1;
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid #3cbc81;
+    }
+  }
 `;
 
 export const RegisterLabel = styled.p`

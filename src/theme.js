@@ -48,6 +48,7 @@ const lightTheme = createTheme({
       inactive: '#656565',
     },
     iconHeader: COLOR.main,
+    iconHeaderHover: COLOR.second,
   },
 });
 
@@ -89,6 +90,7 @@ const darkTheme = createTheme({
       inactive: 'rgba(250, 250, 250, 0.60)',
     },
     iconHeader: COLOR.second,
+    iconHeaderHover: COLOR.dark,
   },
 });
 

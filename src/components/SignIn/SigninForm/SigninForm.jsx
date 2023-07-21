@@ -2,8 +2,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
+import { toast } from 'react-toastify';
 
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import {
@@ -15,10 +15,14 @@ import {
   SigninInput,
   SigninInputWrapper,
   SigninLabel,
+  ValidMessage,
+  ValidationIcon,
   Warning,
 } from './SigninForm.styled';
 import { ReactComponent as EmailIcon } from '../../../assets/images/signin/mail-01.svg';
 import { ReactComponent as LockIcon } from '../../../assets/images/signin/lock-02.svg';
+import { ReactComponent as ErrorIcon } from '../../../assets/images/signin/error.svg';
+import { ReactComponent as ValidIcon } from '../../../assets/images/signin/iconvalid.svg';
 import { login } from 'redux/auth/operations';
 
 import { mailRegexp } from 'constants';
@@ -38,6 +42,8 @@ export default function SigninForm() {
   const dispatch = useDispatch();
   const { authError } = useAuth();
 
+  const firstMessage = useRef(true);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -45,26 +51,43 @@ export default function SigninForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      dispatch(login(values));
-      resetForm();
+      firstMessage.current = true;
+      dispatch(login(values))
+        .unwrap()
+        .then(originalPromiseResult => {
+          resetForm();
+        })
+        .catch(rejectedValueOrSerializedError => {});
     },
   });
 
-  const notifyError = msg => {
+  function notifyError(msg) {
+    firstMessage.current = false;
     toast.error(msg, {
       toastId: 'idError',
+      autoClose: 3000,
     });
-  };
+  }
 
+  const handleClearEmail = () => {
+    formik.setFieldValue('email', '');
+  };
+  const handleClearPassword = () => {
+    formik.setFieldValue('password', '');
+  };
   return (
     <Box>
-      {authError && notifyError(authError)}
+      {authError && firstMessage.current && notifyError(authError)}
       <FormSignin onSubmit={formik.handleSubmit}>
         <SigninLabel>Sign In</SigninLabel>
 
         <SigninInputWrapper
           className={
-            formik.submitCount > 0 && formik.errors.email && 'input__error'
+            formik.submitCount > 0 && formik.errors.email
+              ? 'input__error'
+              : formik.touched.email && !formik.errors.email
+              ? 'input__valid'
+              : ''
           }
         >
           <IconWrapper>
@@ -80,13 +103,28 @@ export default function SigninForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.submitCount > 0 && formik.errors.email && (
-            <Warning>{formik.errors.email}</Warning>
-          )}
+          {formik.submitCount > 0 && formik.errors.email ? (
+            <>
+              <Warning>{formik.errors.email}</Warning>
+              <ValidationIcon onClick={handleClearEmail}>
+                <ErrorIcon />
+              </ValidationIcon>
+            </>
+          ) : formik.touched.email && !formik.errors.email ? (
+            <>
+              <ValidationIcon>
+                <ValidIcon />
+              </ValidationIcon>
+            </>
+          ) : null}
         </SigninInputWrapper>
         <SigninInputWrapper
           className={
-            formik.submitCount > 0 && formik.errors.email && 'input__error'
+            formik.submitCount > 0 && formik.errors.password
+              ? 'input__error'
+              : formik.touched.password && !formik.errors.password
+              ? 'input__valid'
+              : ''
           }
         >
           <IconWrapper>
@@ -103,16 +141,28 @@ export default function SigninForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.submitCount > 0 && formik.errors.password && (
-            <Warning>{formik.errors.password}</Warning>
-          )}
+
+          {formik.submitCount > 0 && formik.errors.password ? (
+            <>
+              <Warning>{formik.errors.password}</Warning>
+              <ValidationIcon onClick={handleClearPassword}>
+                <ErrorIcon />
+              </ValidationIcon>
+            </>
+          ) : formik.touched.password && !formik.errors.password ? (
+            <>
+              <ValidMessage>Password is secure</ValidMessage>
+              <ValidationIcon>
+                <ValidIcon />
+              </ValidationIcon>
+            </>
+          ) : null}
         </SigninInputWrapper>
         <SigninButtonWrapper>
           <SigninButton type="submit">Sign In</SigninButton>
         </SigninButtonWrapper>
       </FormSignin>
       <RegistrationLink />
-      <ToastContainer autoClose={false} />
     </Box>
   );
 }
