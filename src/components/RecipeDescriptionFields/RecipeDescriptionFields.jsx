@@ -18,6 +18,8 @@ import {
   InputErrorHandle,
   ErrorField,
 } from './RecipeDescriptionFields.styled';
+import { useTheme } from '@mui/material';
+import IngradientsMUI from 'components/RecipeIngredientsFields/IngradientsMUI';
 
 const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
   const dispatch = useDispatch();
@@ -49,83 +51,93 @@ const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
     return { value: category.toLowerCase(), label: category };
   });
 
+  const theme = useTheme();
+
   return (
-    <SectionContainer>
-      <ImageHolder>
-        <ImagePlaceholder
-          src={imagePreview}
-          alt="recipe placeholder"
-          onClick={handleClick}
-        />
-        <FileInput
-          type="file"
-          id="picture"
-          name="picture"
-          accept="image/*"
-          ref={fileInputRef}
-          onChange={uploadImage}
-        />
-      </ImageHolder>
-      <InputsContainer>
-        <InputErrorHandle>
-          <InputField
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Enter item title"
-            value={values.title}
-            onChange={handleChange}
+    <IngradientsMUI>
+      <SectionContainer>
+        <ImageHolder>
+          <ImagePlaceholder
+            src={imagePreview}
+            alt="recipe placeholder"
+            onClick={handleClick}
           />
-          {errors.title && touched.title ? (
-            <ErrorField>{errors.title}</ErrorField>
-          ) : null}
-        </InputErrorHandle>
-        <InputErrorHandle>
-          <InputField
-            type="text"
-            id="description"
-            name="description"
-            placeholder="Enter about recipe"
-            value={values.description}
-            onChange={handleChange}
+          <FileInput
+            type="file"
+            id="picture"
+            name="picture"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={uploadImage}
           />
-          {errors.description && touched.description ? (
-            <ErrorField>{errors.description}</ErrorField>
-          ) : null}
-        </InputErrorHandle>
-        <InputErrorHandle>
-          <StyledSelect
-            isSearchable={false}
-            classNamePrefix="Select"
-            options={categoriesOptions}
-            placeholder="Category"
-            onChange={e => (values.category = e.value)}
-            menuShouldBlockScroll={true}
-            components={{
-              ValueContainer: CustomValueContainer,
-            }}
-          />
-          {errors.category && touched.category && values.category === '' ? (
-            <ErrorField>{errors.category}</ErrorField>
-          ) : null}
-        </InputErrorHandle>
-        <InputErrorHandle>
-          <StyledSelect
-            isSearchable={false}
-            classNamePrefix="Select"
-            options={timeOptions}
-            placeholder="Cooking time"
-            onChange={e => (values.time = e.value)}
-            components={{
-              ValueContainer: CustomValueContainer,
-            }}
-          />
-          {errors.time && touched.time && values.time === '' ? (
-            <ErrorField>{errors.time}</ErrorField>
-          ) : null}
-        </InputErrorHandle>
-      </InputsContainer>
-    </SectionContainer>
+        </ImageHolder>
+
+        <InputsContainer>
+          <InputErrorHandle>
+            <InputField
+              style={{ color: theme.palette.text.primary }}
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter item title"
+              value={values.title}
+              onChange={handleChange}
+            />
+            {errors.title && touched.title ? (
+              <ErrorField>{errors.title}</ErrorField>
+            ) : null}
+          </InputErrorHandle>
+          <InputErrorHandle>
+            <InputField
+              style={{ color: theme.palette.text.primary }}
+              type="text"
+              id="description"
+              name="description"
+              placeholder="Enter about recipe"
+              value={values.description}
+              onChange={handleChange}
+            />
+            {errors.description && touched.description ? (
+              <ErrorField>{errors.description}</ErrorField>
+            ) : null}
+          </InputErrorHandle>
+          <InputErrorHandle>
+            <StyledSelect
+              style={{ color: theme.palette.text.primary }}
+              isSearchable={false}
+              classNamePrefix="Select"
+              options={categoriesOptions}
+              placeholder="Category"
+              onChange={e => (values.category = e.value)}
+              menuShouldBlockScroll={true}
+              components={{
+                ValueContainer: CustomValueContainer,
+              }}
+            />
+            {errors.category && touched.category && values.category === '' ? (
+              <ErrorField>{errors.category}</ErrorField>
+            ) : null}
+          </InputErrorHandle>
+
+          <InputErrorHandle>
+            <StyledSelect
+              style={{ color: theme.palette.text.primary }}
+              isSearchable={false}
+              classNamePrefix="Select"
+              options={timeOptions}
+              placeholder="Cooking time"
+              onChange={e => (values.time = e.value)}
+              components={{
+                ValueContainer: CustomValueContainer,
+              }}
+            />
+            {errors.time && touched.time && values.time === '' ? (
+              <ErrorField>{errors.time}</ErrorField>
+            ) : null}
+          </InputErrorHandle>
+        </InputsContainer>
+      </SectionContainer>
+    </IngradientsMUI>
   );
 };
 
