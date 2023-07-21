@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+
 import AddRecipeForm from 'components/AddRecipeForm/AddRecipeForm';
 import PopularRecipe from 'components/PopularRecipe/PopularRecipe';
 import FollowUsSidebar from 'components/FollowUsSidebar/FollowUsSidebar';
@@ -15,6 +17,9 @@ const AddRecipePage = () => {
       <FooterBgWrapper>
         <Container>
           <ContainerSection>
+            <Helmet>
+              <title>Add Recipe</title>
+            </Helmet>
             <Title>Add recipe</Title>
             <ContentWrapper>
               <AddRecipeForm />

@@ -7,10 +7,14 @@ import {
   BtnText,
 } from './WelcomePage.styled';
 import SkewButton from 'components/SkewButton/SkewButton';
+import { Helmet } from 'react-helmet-async';
 
 export default function WelcomePage() {
   return (
     <Container>
+      <Helmet>
+        <title>Welcome to SoYummy</title>
+      </Helmet>
       <Logo
         src={require('../../assets/images/welcome/logo.svg').default}
         alt="logo"

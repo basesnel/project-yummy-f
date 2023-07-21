@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Grid, Pagination, PaginationItem, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -80,6 +81,9 @@ const CategoriesPage = () => {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>Categories</title>
+      </Helmet>
       <FooterBgWrapper>
         {!error && !loader && (
           <Container>
