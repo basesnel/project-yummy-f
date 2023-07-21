@@ -33,7 +33,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
     console.log(shoppingList);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   const isMobile = useMediaQuery({
     query: `(max-width: ${SIZE.tablet})`,
@@ -57,6 +57,7 @@ export const RecipeIngredientsList = ({ ingredients, recipeId }) => {
     try {
       const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
       // console.log('success');
+
       return res.data;
     } catch (error) {
       console.log(error);
