@@ -2,6 +2,7 @@ import { SIZE, COLOR } from 'constants';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { ReactComponent as SearchHeaderIcon } from 'assets/images/header/searchHeader.svg';
+import { TRANSITION } from 'constants';
 
 export const NavContainer = styled.nav`
   display: flex;
@@ -25,8 +26,8 @@ export const StyledLink = styled(NavLink)`
   gap: 8px;
   justify-content: center;
   color: inherit;
-  /* color: ${COLOR.dark}; */
-  font-family: Poppins;
+  transition: ${TRANSITION.forHoverColor};
+  font-family: 'Poppins';
   font-size: 18px;
   font-weight: 500;
   line-height: 1;
