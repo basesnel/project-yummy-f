@@ -121,22 +121,20 @@ const RecipeIngredientsFields = () => {
                   <IngradientsMUI>
                     <InputsContainer>
                       <SelectField
-                        name={`ingredients[${index}].ingredient`}
+                        name={`ingredients[${index}].id`}
                         classNamePrefix="Select"
                         options={ingredientsOptions}
                         placeholder="Ingredient"
                         onChange={option =>
                           setFieldValue(
-                            `ingredients[${index}].ingredient`,
+                            `ingredients[${index}].id`,
                             option.value
                           )
                         }
                       />
 
                       <IngredientError>
-                        <ErrorMessage
-                          name={`ingredients[${index}].ingredient`}
-                        />
+                        <ErrorMessage name={`ingredients[${index}].id`} />
                       </IngredientError>
                       <InputField
                         style={{ color: theme.palette.text.primary }}
