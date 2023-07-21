@@ -21,7 +21,7 @@ export const Title = styled.h2`
   display: inline-block;
   font-size: 24px;
   font-weight: 600;
-  color: #3e4462;
+  /* color: #3e4462; */
 `;
 
 export const SectionTitle = styled.div`
@@ -44,8 +44,8 @@ export const CounterContainer = styled.div`
   width: 92px;
   font-size: 14px;
   line-height: 18px;
-  color: #333;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  /* color: #333; */
+  /* border: 1px solid rgba(51, 51, 51, 0.3); */
   border-radius: 14px;
 `;
 
@@ -58,6 +58,7 @@ export const MinusButton = styled.button`
   border-top-left-radius: 14px;
   border: none;
   background-color: transparent;
+  color: inherit;
 `;
 
 export const PlusButton = styled.button`

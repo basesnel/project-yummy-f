@@ -22,6 +22,8 @@ import {
   IngredientError,
   AmountError,
 } from './RecipeIngredientsFields.styled';
+import { useTheme } from '@mui/material';
+import IngradientsMUI from './IngradientsMUI';
 
 const RecipeIngredientsFields = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ const RecipeIngredientsFields = () => {
 
   const { ingredients } = useRecipies();
 
+  const theme = useTheme();
   useEffect(() => {
     !ingredients && dispatch(fetchIngredients());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,7 +59,12 @@ const RecipeIngredientsFields = () => {
     <SectionContainer>
       <SectionTitle>
         <Title>Ingredients</Title>
-        <CounterContainer>
+        <CounterContainer
+          style={{
+            color: theme.palette.text.primary,
+            border: `1px solid ${theme.palette.text.primary}`,
+          }}
+        >
           <MinusButton type="button" onClick={decreaseCounter}>
             <svg
               width="14"
@@ -66,8 +74,8 @@ const RecipeIngredientsFields = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
+                style={{ stroke: theme.palette.text.primary }}
                 d="M2.1875 7H11.8125"
-                stroke="rgb(51, 51, 51)"
                 strokeOpacity="0.3"
                 strokeWidth="1.5"
                 strokeLinecap="round"
@@ -110,34 +118,41 @@ const RecipeIngredientsFields = () => {
             {values.ingredients.length > 0 &&
               values.ingredients.map((ingredient, index) => (
                 <InputRaw key={ingredient.key}>
-                  <InputsContainer>
-                    <SelectField
-                      name={`ingredients[${index}].ingredient`}
-                      classNamePrefix="Select"
-                      options={ingredientsOptions}
-                      placeholder="Ingredient"
-                      onChange={option =>
-                        setFieldValue(
-                          `ingredients[${index}].ingredient`,
-                          option.value
-                        )
-                      }
-                    />
-                    <IngredientError>
-                      <ErrorMessage name={`ingredients[${index}].ingredient`} />
-                    </IngredientError>
-                    <InputField
-                      name={`ingredients[${index}].measure`}
-                      value={ingredient.measure}
-                      placeholder="1 tbs"
-                      type="text"
-                      onChange={handleChange}
-                    />
-                    <AmountError>
-                      <ErrorMessage name={`ingredients[${index}].measure`} />
-                    </AmountError>
-                  </InputsContainer>
+                  <IngradientsMUI>
+                    <InputsContainer>
+                      <SelectField
+                        name={`ingredients[${index}].ingredient`}
+                        classNamePrefix="Select"
+                        options={ingredientsOptions}
+                        placeholder="Ingredient"
+                        onChange={option =>
+                          setFieldValue(
+                            `ingredients[${index}].ingredient`,
+                            option.value
+                          )
+                        }
+                      />
+
+                      <IngredientError>
+                        <ErrorMessage
+                          name={`ingredients[${index}].ingredient`}
+                        />
+                      </IngredientError>
+                      <InputField
+                        style={{ color: theme.palette.text.primary }}
+                        name={`ingredients[${index}].measure`}
+                        value={ingredient.measure}
+                        placeholder="1 tbs"
+                        type="text"
+                        onChange={handleChange}
+                      />
+                      <AmountError>
+                        <ErrorMessage name={`ingredients[${index}].measure`} />
+                      </AmountError>
+                    </InputsContainer>
+                  </IngradientsMUI>
                   <ButtonRemove
+                    style={{ color: theme.palette.text.primary }}
                     type="button"
                     className="secondary"
                     onClick={() => {
@@ -154,14 +169,14 @@ const RecipeIngredientsFields = () => {
                     >
                       <path
                         d="M14.0625 4.4375L3.9375 14.5625"
-                        stroke="#333333"
+                        stroke={theme.palette.text.primary}
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                       <path
                         d="M14.0625 14.5625L3.9375 4.4375"
-                        stroke="#333333"
+                        stroke={theme.palette.text.primary}
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
