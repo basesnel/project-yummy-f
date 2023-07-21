@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 //import getRecipeById from 'api/recipeById';
 import { useParams } from 'react-router';
 import API from 'api';
@@ -51,6 +52,9 @@ const RecipePage = () => {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>Recipe Details</title>
+      </Helmet>
       <FooterBgWrapper>
         <RecipePageHero
           title={title}

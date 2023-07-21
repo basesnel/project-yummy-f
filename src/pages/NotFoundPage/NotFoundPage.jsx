@@ -1,9 +1,13 @@
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
+import { Helmet } from 'react-helmet-async';
 
 const NotFoundPage = () => {
   return (
     <FooterBgWrapper>
+      <Helmet>
+        <title>Not Found</title>
+      </Helmet>
       <Box p={{ xs: '164px 0 100px', lg: '198px 0 203px' }}>
         <Card>
           <CardMedia

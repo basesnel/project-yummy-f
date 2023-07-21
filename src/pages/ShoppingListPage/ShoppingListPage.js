@@ -7,6 +7,7 @@ import Title from 'components/Title/Title';
 import ContainerSection from 'components/ContainerSection/ContainerSection';
 import { FooterBgWrapper } from 'components/FooterBgWrapper/FooterBgWrapper.styled';
 import { NoSearchResults } from 'components/SearchPage/NoSearchResults/NoSearchResults';
+import { Helmet } from 'react-helmet-async';
 
 import Loader from 'components/Loader/Loader';
 
@@ -34,6 +35,9 @@ const ShoppingListPage = () => {
 
   return (
     <ThemeWrap>
+      <Helmet>
+        <title>Shopping List</title>
+      </Helmet>
       <FooterBgWrapper>
         {/* <ShoppingListContainer> */}
 

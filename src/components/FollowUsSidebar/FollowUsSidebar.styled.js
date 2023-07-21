@@ -7,6 +7,20 @@ export const SectionContainer = styled.div`
   text-align: left;
   display: none;
 
+  ul {
+    justify-content: left;
+  }
+
+  a {
+    color: #8baa35;
+    scale: 1.2;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+
   @media screen and (min-width: ${SIZE.desktop}) {
     display: inline-block;
   }
