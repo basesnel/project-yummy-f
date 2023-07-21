@@ -7,7 +7,6 @@ import SkewButton from 'components/SkewButton/SkewButton';
 import MainTitle from 'components/MainTitle/MainTitle';
 import API from 'api';
 import { useState, useEffect } from 'react';
-//import { useParams } from 'react-router-dom';
 
 export const RecipePageHero = ({
   title,
@@ -23,14 +22,10 @@ export const RecipePageHero = ({
     const getFav = async () => {
       try {
         const res = await API.getAllFavorites();
-        console.log(res);
-        if (res.some(item => item === recipeId)) {
-          console.log('it is favorite');
 
+        if (res.some(item => item === recipeId)) {
           setIsAddedToFavorite(true);
         }
-
-        // return res.data;
       } catch (error) {
         console.log(error);
       }
@@ -41,7 +36,6 @@ export const RecipePageHero = ({
 
   const hours = Math.floor(+time / 60);
   const minutes = +time - hours * 60;
-  //const id = recipeId;
 
   const addToFav = async recipeId => {
     try {
@@ -66,19 +60,12 @@ export const RecipePageHero = ({
   };
 
   const handleBtnClick = e => {
-
-
     if (!isAddedToFavorite) {
       addToFav(recipeId);
-      //setIsFavorite();
     } else {
       removeFromFav(recipeId);
-      //setIsFavorite();
     }
-    //  console.log(isFavorite);
   };
-
-  // console.log(isFavorite, isAddedToFavorite);
 
   return (
     <RecipeHero>
