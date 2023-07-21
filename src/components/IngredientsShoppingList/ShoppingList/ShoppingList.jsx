@@ -2,12 +2,12 @@ import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
 import { WrapperList } from './ShoppingList.styled';
 
 import { getStore } from 'redux/auth/operations';
-import { patchStore } from 'redux/auth/operations';
+// import { patchStore } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 
 import { nanoid } from 'nanoid';
 
-// import API from 'api';
+import API from 'api';
 
 const ShoppingList = ({ shopping }) => {
   const dispatch = useDispatch();
@@ -36,14 +36,14 @@ const ShoppingList = ({ shopping }) => {
     // ];
   };
 
-  // const toggleRecipeIngredient = async data => {
-  //   try {
-  //     const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
-  //     return res.data;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const toggleRecipeIngredient = async data => {
+    try {
+      const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const ingStore = shopping && prepStore(shopping);
 
@@ -52,8 +52,9 @@ const ShoppingList = ({ shopping }) => {
       item => item.shopId === shopId
     );
     const value = { id: _id, measure, recipeId };
-    // toggleRecipeIngredient(value);
-    dispatch(patchStore(value));
+    toggleRecipeIngredient(value);
+    // dispatch(patchStore(value));
+    dispatch(getStore());
     dispatch(getStore());
     // .unwrap()
     // .then(originalPromiseResult => {
