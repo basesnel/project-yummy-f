@@ -24,7 +24,7 @@ import IngradientsMUI from 'components/RecipeIngredientsFields/IngradientsMUI';
 const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
   const dispatch = useDispatch();
 
-  const { values, handleChange } = useFormikContext();
+  const { values, handleChange, setFieldValue } = useFormikContext();
   const [imagePreview, setImagePreview] = useState(blank);
 
   const { categories } = useRecipies();
@@ -108,7 +108,8 @@ const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
               classNamePrefix="Select"
               options={categoriesOptions}
               placeholder="Category"
-              onChange={e => (values.category = e.value)}
+              name="category"
+              onChange={option => setFieldValue('category', option.value)}
               menuShouldBlockScroll={true}
               components={{
                 ValueContainer: CustomValueContainer,
@@ -126,7 +127,8 @@ const RecipeDescriptionFields = ({ setPicture, errors, touched }) => {
               classNamePrefix="Select"
               options={timeOptions}
               placeholder="Cooking time"
-              onChange={e => (values.time = e.value)}
+              name="time"
+              onChange={option => setFieldValue('time', option.value)}
               components={{
                 ValueContainer: CustomValueContainer,
               }}
