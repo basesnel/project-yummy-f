@@ -6,7 +6,11 @@ export const HeaderContainer = styled.header`
   z-index: 100;
   position: absolute;
   top: 18px;
-  width: 343px;
+  // width: 343px;
+
+  @media screen and (min-width: ${SIZE.mobile}) {
+    width: 343px;
+  }
 
   @media screen and (min-width: ${SIZE.tablet}) {
     width: 704px;
