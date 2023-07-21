@@ -23,11 +23,12 @@ const AddRecipeForm = () => {
         description: '',
         category: '',
         time: '',
-        ingredients: [{ ingredient: '', measure: '', key: nanoid() }],
+        ingredients: [{ id: '', measure: '', key: nanoid() }],
         instructions: '',
       }}
       validationSchema={RecipeSchema}
       onSubmit={async values => {
+        console.log(values);
         const formData = new FormData();
         formData.append('preview', picture);
 
@@ -37,7 +38,7 @@ const AddRecipeForm = () => {
               formData.append(
                 `ingredients[]`,
                 JSON.stringify({
-                  ingredient: item.ingredient,
+                  id: item.id,
                   measure: item.measure,
                 })
               );
