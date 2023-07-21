@@ -8,6 +8,8 @@ import { useAuth } from 'hooks';
 
 import { nanoid } from 'nanoid';
 
+import API from 'api';
+
 const ShoppingList = () => {
   const dispatch = useDispatch();
   const { store } = useAuth();
@@ -26,7 +28,6 @@ const ShoppingList = () => {
         recipeId: recipeId,
       };
     });
-    console.log(outStore);
 
     return outStore;
 
@@ -42,9 +43,25 @@ const ShoppingList = () => {
     // ];
   };
 
+  const toggleRecipeIngredient = async data => {
+    try {
+      const res = await API.toggleProduct(data.id, data.measure, data.recipeId);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const ingStore = store && prepStore(store);
 
-  // console.log(ingStore);
+  const handleClick = shopId => {
+    const { _id, measure, recipeId } = ingStore.find(
+      item => item.shopId === shopId
+    );
+    const value = { id: _id, measure: [measure], recipeId };
+    toggleRecipeIngredient(value);
+    dispatch(getStore());
+  };
 
   return (
     <WrapperList>
@@ -57,6 +74,7 @@ const ShoppingList = () => {
             img={img}
             measure={measure}
             recipeId={recipeId}
+            handleClick={() => handleClick(shopId)}
           />
         ))}
     </WrapperList>
