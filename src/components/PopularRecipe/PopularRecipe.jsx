@@ -65,12 +65,3 @@ const PopularRecipe = () => {
 };
 
 export default PopularRecipe;
-
-// description
-// "Cheesecake with salted caramel sauce"
-// preview
-// "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560538/rqosylmwzeyiu6sgudun.jpg"
-// title
-// "Salted Caramel Cheescake"
-// _id
-// "6462a8f74c3d0ddd28897fc9"
