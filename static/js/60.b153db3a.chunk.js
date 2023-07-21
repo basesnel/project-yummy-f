@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[60],{3060:function(e,t,r){r.r(t),r.d(t,{default:function(){return a.Z}});var a=r(1794)}}]);
