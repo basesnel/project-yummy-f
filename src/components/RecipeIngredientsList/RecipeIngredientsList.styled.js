@@ -2,13 +2,18 @@ import styled from 'styled-components';
 import { SIZE, COLOR } from 'constants';
 
 export const MainSection = styled.section`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 375px;
   padding: 32px 16px;
 
   @media screen and (min-width: ${SIZE.tablet}) {
+    max-width: 768px;
     padding: 50px 32px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
+    max-width: 1440px;
     padding: 50px 100px;
   }
 `;
@@ -124,8 +129,8 @@ export const ImgAndName = styled.div`
     letter-spacing: -0.24px;
   }
 
-  @media screen and (min-width: ${SIZE.mobile}) {
-    gap: 8px;
+  @media screen and (min-width: ${SIZE.tablet}) {
+    gap: 24px;
 
     img {
       padding: 17px 16px;
@@ -139,18 +144,13 @@ export const ImgAndName = styled.div`
     }
   }
 
-  @media screen and (min-width: ${SIZE.tablet}) {
-    gap: 24px;
-
+  @media screen and (min-width: ${SIZE.desktop}) {
+    gap: 40px;
     img {
       padding: 26px;
       width: 180px;
       height: 180px;
     }
-  }
-
-  @media screen and (min-width: ${SIZE.desktop}) {
-    gap: 40px;
   }
 `;
 

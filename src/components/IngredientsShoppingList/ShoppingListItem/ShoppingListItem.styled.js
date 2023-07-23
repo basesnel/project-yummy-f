@@ -77,7 +77,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const NumberContainer = styled.div`
-  width: 50px;
+  width: 100px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
