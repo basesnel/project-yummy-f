@@ -22,7 +22,7 @@ const MyRecipesItem = ({ recipes, removeRecipeId, pageName }) => {
         <Title>{el.title}</Title>
         <MainText>{el.description}</MainText>
         <Text>{el.instructions}</Text>
-        <TextTime>{el.time} min</TextTime>
+        <TextTime>{el.time}</TextTime>
       </WrapperDescription>
       <BtnRemove
         $pageName={pageName}
