@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { SIZE, COLOR } from 'constants';
 
 export const PrepSection = styled.section`
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 18px 16px;
   display: flex;
   flex-direction: column;
@@ -11,11 +14,13 @@ export const PrepSection = styled.section`
   @media screen and (min-width: ${SIZE.tablet}) {
     // flex-direction: row;
     // justify-content: space-between;
+    max-width: 768px;
     padding: 46px 32px;
     gap: 50px;
   }
 
   @media screen and (min-width: ${SIZE.desktop}) {
+    max-width: 1440px;
     flex-direction: row;
     padding: 50px 100px;
   }
