@@ -22,6 +22,7 @@ export function Paginator({ $pageQty, $page, $setPage }) {
               <PaginationItem
                 {...item}
                 sx={{
+                  m: '0 10px',
                   backgroundColor: item.selected
                     ? theme.palette.background.paginator + '!important'
                     : 'transparent',
@@ -32,7 +33,6 @@ export function Paginator({ $pageQty, $page, $setPage }) {
                   fontFamily: 'Poppins',
                   fontSize: '12px',
                   fontWeight: 500,
-                  margin: 0,
                 }}
               />
             )}
