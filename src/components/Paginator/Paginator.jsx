@@ -17,18 +17,11 @@ export function Paginator({ $pageQty, $page, $setPage }) {
             count={$pageQty}
             page={$page}
             onChange={handleChange}
-            // color="primary"
             siblingCount={0}
             renderItem={item => (
               <PaginationItem
                 {...item}
                 sx={{
-                  // fontFamily: 'Poppins',
-                  // color: item.selected ? '#22252A' : '#656565',
-                  // fontSize: '12px',
-                  // fontWeight: 500,
-                  // margin: 0,
-
                   backgroundColor: item.selected
                     ? theme.palette.background.paginator + '!important'
                     : 'transparent',

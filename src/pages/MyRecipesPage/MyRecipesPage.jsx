@@ -1,8 +1,3 @@
-import { ThemeProvider, createTheme } from '@mui/material';
-
-// import MainTitle from 'components/MainTitle/MainTitle';
-// import { MyRecipesContainer } from './MyRecipesPage.styled';
-// import { MyRecipesContainer, TitleContainer } from './MyRecipesPage.styled';
 import { Container } from 'components/Container/Container';
 import { Helmet } from 'react-helmet-async';
 
@@ -17,14 +12,6 @@ import API from 'api';
 import { useAuth } from 'hooks';
 import { NoSearchResults } from 'components/SearchPage/NoSearchResults/NoSearchResults';
 import Loader from 'components/Loader/Loader';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#EBF3D4',
-    },
-  },
-});
 
 const MyRecipesPage = () => {
   const [ownRecipes, setOwnRecipes] = useState([]);
@@ -85,15 +72,13 @@ const MyRecipesPage = () => {
                   removeRecipeId={removeRecipeId}
                   pageName="my"
                 />
-                <ThemeProvider theme={theme}>
-                  {pageQty !== 1 && (
-                    <Paginator
-                      $pageQty={pageQty}
-                      $page={page}
-                      $setPage={setPage}
-                    />
-                  )}
-                </ThemeProvider>
+                {pageQty !== 1 && (
+                  <Paginator
+                    $pageQty={pageQty}
+                    $page={page}
+                    $setPage={setPage}
+                  />
+                )}
               </>
             ) : (
               <NoSearchResults text={`You have not created any recipe`} />
