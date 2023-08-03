@@ -146,11 +146,9 @@ export const StyledSelect = styled(Select)`
     height: 144px;
     margin: 0;
     padding: 0;
-    overflow: scroll;
     font-size: 12px;
     line-height: normal;
     color: rgba(0, 0, 0, 0.5);
-    position: absolute;
     right: 0;
     top: 26px;
     border-radius: 6px;
@@ -172,18 +170,24 @@ export const StyledSelect = styled(Select)`
   }
 
   .Select__menu-list {
-    margin: 4px 4px 0 0;
-    padding: 4px 0 0 0;
-    height: inherit;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; 
   }
 
   .Select__option {
-    margin: 0 0 4px 0;
+    margin: 0;
     padding: 1px 0 1px 14px;
+    height: 24px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-
+    
     @media screen and (min-width: ${SIZE.tablet}) {
-      padding: 0 0 0 18px;
+      height: 27px;
     }
   }
 
